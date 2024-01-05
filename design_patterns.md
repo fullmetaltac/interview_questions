@@ -719,6 +719,7 @@ if __name__ == "__main__":
     doctest.testmod(optionflags=doctest.ELLIPSIS)
 ```
 
+---
 ## Structural Design Patterns
 Structural design patterns are about organizing different classes and objects to form larger structures and provide new functionality while keeping these structures flexible and efficient. Mostly they use Inheritance to compose all the interfaces. It also identifies the relationships which led to the simplification of the structure.
 
@@ -1394,6 +1395,7 @@ if __name__ == "__main__":
     doctest.testmod()
 ```
 
+---
 ## Behavioral Design Pattern
 Behavioral patterns are all about identifying the common communication patterns between objects and realize these patterns. These patterns are concerned with algorithms and the assignment of responsibilities between objects.
 
@@ -2383,7 +2385,7 @@ if __name__ == "__main__":
     doctest.testmod()
 ```
 
-
+---
 ## References
  - https://github.com/faif/python-patterns
  - https://www.geeksforgeeks.org/python-design-patterns/
