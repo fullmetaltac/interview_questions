@@ -1565,6 +1565,7 @@ The following two are the most commonly used representations of a graph.
 - Adjacency List
 
 **Adjacency Matrix**
+
 Adjacency Matrix is a 2D array of size V x V where V is the number of vertices in a graph. Let the 2D array be `adj[][]`, a slot `adj[i][j] = 1` indicates that there is an edge from vertex `i` to vertex `j`. The adjacency matrix for an undirected graph is always symmetric. Adjacency Matrix is also used to represent weighted graphs. If `adj[i][j] = w`, then there is an edge from vertex `i` to vertex `j` with weight `w`. 
 
 
@@ -1644,6 +1645,7 @@ Adjacency Matrix of Graph
 ```
 
 **Adjacency List**
+
 An array of lists is used. The size of the array is equal to the number of vertices. Let the array be an `array[]`. An entry `array[i]` represents the list of vertices adjacent to the ith vertex. This representation can also be used to represent a weighted graph. The weights of edges can be represented as lists of pairs. Following is the adjacency list representation of the above graph. 
 
 
@@ -1722,6 +1724,7 @@ Adjacency list of vertex 4
  ```
 
 **Graph Traversal**
+
 Breadth-First Search or BFS
 
 Breadth-First Traversal for a graph is similar to Breadth-First Traversal of a tree. The only catch here is, unlike trees, graphs may contain cycles, so we may come to the same node again. To avoid processing a node more than once, we use a boolean visited array. For simplicity, it is assumed that all vertices are reachable from the starting vertex.
