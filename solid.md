@@ -7,6 +7,7 @@
   - [Dependency Inversion Principle](#dependency-inversion-principle)
   - [References](#references)
 
+---
 ## Single Responsibility Principle
 A class should have only one job. 
 If a class has more than one responsibility, it becomes coupled. 
@@ -53,6 +54,7 @@ When designing our classes, we should aim to put related features together,
 so whenever they tend to change they change for the same reason. 
 And we should try to separate features if they will change for different reasons. - Steve Fenton
 
+---
 ## Open-Closed Principle
 Software entities(Classes, modules, functions) should be open for extension, not modification.
 
@@ -205,7 +207,7 @@ class SuperVIPDiscount(VIPDiscount):
     def get_discount(self):
         return super().get_discount() * 2
 ```
-
+---
 ## Liskov Substitution Principle
 
 A sub-class must be substitutable for its super-class.
@@ -262,6 +264,7 @@ When it’s passed to the animal_leg_count function, it returns the number of le
 You see, the animal_leg_count doesn’t need to know the type of Animal to return its leg count, 
 it just calls the leg_count method of the Animal type because by contract a sub-class of Animal class must implement the leg_count function.
 
+---
 ## Interface Segregation Principle
 Make fine grained interfaces that are client specific
 Clients should not be forced to depend upon interfaces that they do not use.
@@ -368,6 +371,7 @@ class Rectangle(IShape):
 
 We can then use the I -interfaces to create Shape specifics like Semi Circle, Right-Angled Triangle, Equilateral Triangle, Blunt-Edged Rectangle, etc.
 
+---
 ## Dependency Inversion Principle
 Dependency should be on abstractions not concretions
 A. High-level modules should not depend upon low-level modules. Both should depend upon abstractions.
@@ -452,5 +456,6 @@ the Http service types(low level modules) in turn, depends on the Connection int
 Also, this DIP will force us not to violate the Liskov Substitution Principle: 
 The Connection types Node-XML-MockHttpService are substitutable for their parent type Connection.
 
+---
 ## References
 - https://gist.github.com/dmmeteo/f630fa04c7a79d3c132b9e9e5d037bfd
