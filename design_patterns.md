@@ -26,7 +26,7 @@
     - [State Method](#state-method)
     - [Strategy Method](#strategy-method)
     - [Template Method](#template-method)
-    - [Visistor Method](#visistor-method)
+    - [Visitor Method](#visitor-method)
   - [References](#references)
 
 Design Patterns is the most essential part of Software Engineering, as they provide the general repeatable solution to a commonly occurring problem in software design. They usually represent some of the best practices adopted by experienced object-oriented software developers. We can not consider the Design Patterns as the finished design that can be directly converted into code. They are only templates that describe how to solve a particular problem with great efficiency.
@@ -2315,7 +2315,7 @@ if __name__ == "__main__":
     doctest.testmod()
 ```
 
-### Visistor Method
+### Visitor Method
 * http://peter-hoffmann.com/2010/extrinsic-visitor-pattern-python-inheritance.html
 
 * Examples in Python ecosystem:

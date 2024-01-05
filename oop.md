@@ -2,9 +2,8 @@
 - [Table of Contents](#table-of-contents)
   - [Class](#class)
   - [Objects](#objects)
-  - [self](#self)
-  - [init](#init)
-  - [Creating Classes and objects with methods](#creating-classes-and-objects-with-methods)
+    - [self](#self)
+    - [init](#init)
   - [Inheritance](#inheritance)
   - [Polymorphism](#polymorphism)
   - [Encapsulation](#encapsulation)
@@ -59,7 +58,7 @@ To understand the state, behavior, and identity let us take the example of the c
 obj = Dog()
 ```
 
-##  self  
+###  self  
 In object-oriented programming, whenever we define methods for a class, we use `self` as the first parameter in each case. Let's look at the definition of a class called `Cat`.
 
 ```python
@@ -87,7 +86,7 @@ The self keyword is used to represent an instance (object) of the given class. I
 
 However, since the class is just a blueprint, `self` allows access to the attributes and methods of each object in python. This allows each object to have its own attributes and methods. Thus, even long before creating these objects, we reference the objects as `self` while defining the class.
 
-## init 
+### init 
 The `__init__` method is similar to constructors in C++ and Java. It is run as soon as an object of a class is instantiated. The method is useful to do any initialization you want to do with your object. Now let us define a class and create some objects using the self and `__init__` method.
 
 Creating a class and object with class and instance attributes
@@ -124,7 +123,8 @@ My name is Rodger
 My name is Tommy
 ```
 
-## Creating Classes and objects with methods
+**Creating Classes and objects with methods**
+
 Here, The Dog class is defined with two attributes:
 
 - attr1 is a class attribute set to the value “mammal”. Class attributes are shared by all instances of the class.
