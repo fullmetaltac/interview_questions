@@ -1,29 +1,100 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
-  - [Syntax](#syntax)
-  - [Strings](#strings)
-  - [Files](#files)
+  - [Basics](#basics)
   - [Functions](#functions)
   - [Collections](#collections)
   - [OOP](#oop)
   - [Concurrency](#concurrency)
-  - [Environment](#environment)
-  - [Built-in](#built-in)
+  - [References](#references)
 
-## Syntax
+## Basics
 
-* ***What is the `//` operator?***
+>🔹***What is PEP 8?***
+
+Python Enhancement Proposal or `PEP 8` is a set of rules that specify how to format Python code for maximum readability.
+
+--- 
+
+>🔹***What is `PYTHONPATH?***
+
+`PYTHONPATH` is a special environment variable that provides guidance to the Python interpreter about where to find various libraries and applications.
+
+---
+
+>🔹***What's the difference between a Python module and a Python package?***
+
+*Module*
+The module is a Python file that contains collections of functions and global variables and with having a .py extension file.
+
+*Package*
+The package is a directory having collections of modules. This directory contains Python modules and also having init.py file by which the interpreter interprets it as a Package.
+
+---
+
+>🔹***What is namespace in Python?***
+
+A naming system used to make sure that names are unique to avoid naming conflicts refers to as Namespace.
+
+---
+
+>🔹***Explain how memory is managed in Python.***
+
+Unlike other programming languages, python stores references to an object after it is created. For example, an `uuid4` object might have two names(variables are called names in python) a and b. The memory manager in python keeps track of the reference count of each object, this would be 2 for `uuid4` object. Once the object reference count reaches 0, object is removed from memory.
+
+The reference count:
+- increases if an object is assigned a new name or is placed in a container, like tuple or dictionary.
+- decreases when the object's reference goes out of scope or when name is assigned to another object. Python's garbage collector handles the job of removing objects & a programmer need not to worry about allocating/de-allocating memory like it is done in C.
+
+```python
+import sys
+import uuid
+
+
+def main():
+    """
+    >>> a = uuid.uuid4()
+    >>> sys.getrefcount(a)
+    2
+    >>> b = a
+    >>> a is b
+    True
+    >>> sys.getrefcount(a)
+    3
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
+
+>🔹***What are the Python built-in data types?***
+
+| Data Types |           Classes            |                       Description |
+| ---------- | :--------------------------: | --------------------------------: |
+| Numeric    |     int, float, complex      |              holds numeric values |
+| String     |             str              |      holds sequence of characters |
+| Sequence   |      list, tuple, range      |         holds collection of items |
+| Mapping    |             dict             | holds data in key-value pair form |
+| Boolean    |             bool             |    holds either `True` or `False` |
+| Set        |       set, frozeenset        |   hold collection of unique items |
+| Binary     | bytes, bytearray, memoryview |       hold collection binary data |
+
+---
+
+>🔹 ***What is the // operator?***
 
 In Python, floor division is a mathematical operation that rounds down the result of a division operation to the nearest integer. 
 
 ```python
 def main():
     """
-    # Integer Division
+    >>> # Integer Division
     >>> print(5/2)
     2.5
-    
-    # Floor Division
+    >>> # Floor Division
     >>> print(5//2)
     2
     """
@@ -34,10 +105,28 @@ if __name__ == "__main__":
     doctest.testmod()
 
 ```
+---
 
-## Strings
+>🔹 ***Explain exception handling in Python.***
 
-* ***What is the split function used for?***
+Exception handling is the way by which a programmer can control an error within the program without breaking out the flow of execution.
+
+```python
+try:
+    # Part which might cause an error
+except TypeError:
+    # What happens when error occurs | In this case what happens what a TypeError occurs
+else:
+    # what happens if there is no exception | Optional
+finally:
+    # Executed after try and except| always executed | Optional
+```
+
+*Examples* : TypeError, ValueError, ImportError, KeyError, IndexError, NameError, PermissionError, EOFError, ZeroDivisionError, StopIteration
+
+---
+
+>🔹***What is the split function used for?***
 
 The split function breaks the string into shorter strings using the defined separator. It returns the list of all the words present in the string.
 
@@ -57,11 +146,11 @@ if __name__ == "__main__":
     doctest.testmod()
 ```
 
-## Files
+---
 
 ## Functions
 
-* ***What is the lambda function?***
+>🔹***What is the lambda function?***
 
 An anonymous function is known as a lambda function. This function can have only one statement but can have any number of parameters.
 
@@ -84,11 +173,11 @@ if __name__ == "__main__":
 
 ---
 
-* ***What are Python decorators?***
+>🔹***What are Python decorators?***
 
 A decorator is a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure.
 
-**Example 1 - Simple decorator**
+*Simple decorator*
 
 ```python
 def make_pretty(func):
@@ -120,7 +209,7 @@ if __name__ == "__main__":
 
 ```
 
-**Example 2 - Decorating Functions with Parameters**
+*Decorating Functions with Parameters*
 
 ```python
 def smart_divide(func):
@@ -157,7 +246,7 @@ if __name__ == "__main__":
 
 ```
 
-**Example 3 - Chaining Decorators in Python**
+*Chaining Decorators in Python*
 
 ```python
 def star(func):
@@ -198,7 +287,46 @@ if __name__ == "__main__":
     doctest.testmod()
 ```
 
-* ***What is the `map()` function used for in Python?***
+---
+
+>🔹***What is generator function in Python?***
+
+In Python, a generator is a function that returns an iterator that produces a sequence of values when iterated over.
+
+```python
+def my_generator(n):
+    value = 0
+    while value < n:
+        yield value
+        value += 1
+
+
+def main():
+    """
+    >>> for value in my_generator(3):
+    ...     print(value)
+    0
+    1
+    2
+    >>> # generator expression
+    >>> squares_generator = (i * i for i in range(4))
+    >>> for i in squares_generator:
+    ...     print(i)
+    0
+    1
+    4
+    9
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
+
+>🔹***What is the map() function used for in Python?***
 
 The `map()` function applies a given function to each element of an iterable (`list`, `tuple` etc.) and returns an iterator containing the results.
 
@@ -223,21 +351,21 @@ if __name__ == "__main__":
 
 ---
 
-* ***What is the `filter()` function used for in Python?***
+>🔹***What is the filter() function used for in Python?***
 
 The `filter()` function selects elements from an iterable (`list`, `tuple` etc.) based on the output of a function.
 The function is applied to each element of the iterable and if it returns True, the element is selected by the `filter()` function.
 
 ```python
-num1, num2 = [4, 5, 6], [5, 6, 7]
+numbers = [1, 2, 3, 4, 5, 6, 7]
 
-result = map(lambda n1, n2: n1+n2, num1, num2)
+even_numbers_iterator = filter(lambda x: (x % 2 == 0), numbers)
 
 
 def main():
     """
-    >>> print(list(result))
-    [9, 11, 13]
+    >>> list(even_numbers_iterator)
+    [2, 4, 6]
     """
 
 
@@ -245,13 +373,14 @@ if __name__ == "__main__":
     import doctest
     doctest.testmod()
 
+
 ```
 
 ---
 
 ## Collections
 
-* ***What is slicing in Python?***
+>🔹***What is slicing in Python?***
 
 Slicing refers to the mechanism to select the range of items from sequence types like lists, tuples, strings
 
@@ -283,7 +412,57 @@ if __name__ == "__main__":
     import doctest
 ```
 
-* ***Differentiate between list and tuple?***
+---
+
+>🔹***Three different ways to fetch every 3rd item of a list***
+
+```python
+example_list = [0,1,2,3,4,5,6]
+
+
+def main():
+    """
+    >>> # index jump
+    >>> example_list[::3]
+    [0, 3, 6]
+    >>> # list comprehension
+    >>> [x for x in example_list if example_list.index(x) % 3 == 0]
+    [0, 3, 6]
+    >>> i, res = 0, []
+    >>> for idx, i in enumerate(example_list):
+    ...     if idx % 3 == 0:
+    ...         res.append(i)
+    >>> res
+    [0, 3, 6]
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+```
+
+>🔹***How to merge two dictionaries together?***
+
+```python
+first_dict = {'name': 'Tom', 'age': 44}
+second_dict = {'occupation': 'actor', 'nationality': 'British'}
+
+
+def main():
+    """
+    >>> {**first_dict, **second_dict}
+    {'name': 'Tom', 'age': 44, 'occupation': 'actor', 'nationality': 'British'}
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+>🔹***Differentiate between list and tuple?***
 
 1. The literal syntax of tuples is shown by parentheses `()` whereas the literal syntax of lists is shown by square brackets `[]` .
 2. Lists has variable length, tuple has fixed length.
@@ -338,11 +517,74 @@ def main():
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
-
 ```
+---
+
+* ***Difference between an array and list***
+
+
+|                       List                        |                             Array                              |
+| :-----------------------------------------------: | :------------------------------------------------------------: |
+|   Can contain elements of different data types    |     Contains homogeneous elements only i.e. same data type     |
+|                 No need to import                 |               Need to import via numpy or array                |
+|    Preferred for short sequence of data items     | Preferred for large sequence of data items i.e., data analysis |
+| Can't perform arithmetic operations on whole list |                Great for arithmetic operations                 |
+
 ## OOP
 
-* ***What is monkey patching in Python?***
+>🔹***What is MRO in Python? How does it work?***
+```python
+class A:
+    def process(self):
+        print('A')
+        
+class B(A):
+    pass
+    
+class C(A):
+    def process(self):
+        print('C')
+
+class D(B,C):
+    pass
+    
+obj = D()
+obj.process()
+# D -> B -> C -> A -> object 
+```
+Note: a class can't be called before its superclass in resolving MRO. Super Class has to be called after derived class
+
+---
+>🔹***What is the difference between staticmethod and classmethod?***
+
+| Parameter |                 Class Method                  |            Static Method            |
+| :-------: | :-------------------------------------------: | :---------------------------------: |
+| Decorator |                 @classmethod                  |            @staticmethod            |
+| Use Case  | More widely used as a factory method to class |      Acts as utility functions      |
+|   Scope   |      Bound to the class and not objects       | Also bound to class and not objects |
+| Behaviour |       Can modify the state of the class       |      Can't access class state       |
+| Parameter |         Takes cls as first parameter          |        No specific parameter        |
+
+
+```python
+class Circle:
+    no_of_circles = 0
+    def __init__(self, radius):
+        self.radius = radius
+        Circle.no_of_circles += 1
+        
+    @staticmethod
+    def square(num):
+        return num**2
+    
+    @classmethod
+    def getCircleCount(cls):
+        return cls.no_of_circles
+```
+
+---
+
+>🔹***What is monkey patching in Python?***
 
 The dynamic modifications made to a class or module at runtime are termed as monkey patching in Python
 
@@ -368,33 +610,131 @@ if __name__ == "__main__":
 
 ```
 
+---
+
+>🔹***Explain Meta Classes in Python.***
+
+In Python everything is an object, even a class is an object. As a result, a class also must have a type. All classes in Python are of 'type' type. Even the class of 'type' is 'type'. So 'type' is the meta class in Python and to create custom meta class, you would need to inherit from 'type'.
+
+*Use Case of Meta Class*
+
+A meta class is the class of a class. A class is an instance of a metaclass. A metaclass is most commonly used as a class-factory. When you create an object by calling the class, Python creates a new class (when it executes the 'class' statement) by calling the metaclass.
+
+```python
+def main():
+    """
+    >>> type(17)
+    <class 'int'>
+    >>> type(int)
+    <class 'type'>
+    >>> str.__class__
+    <class 'type'>
+    >>> type.__class__
+    <class 'type'>
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+```
+*Meta Class call*
+
+The metaclass is called with the
+- name: name of the class,
+- bases: tuple of the parent class (for inheritance, can be empty) and
+- attributes: dictionary containing attributes names and values.
+
+```python
+def init(self, make):
+    self.make = make
+
+# type(name, bases, attrs) 
+Car = type('Car', (object,), {'__init__': init, '__repr__': lambda self: self.make,  'wheels': 4})
+car = Car('Kia')
+
+
+def main():
+    """
+    >>> car
+    Kia
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+---
+
+>🔹 ***Explain object creation process in detail. Which method is called first?***
+
+When an object of a class is created or a class is instantiated, the `__new__()` method of class is called. This particular method is resposible for returning a new class object. It can be overriden to implement object creational restrictions on class.
+
+1. The constructor of the class is `__new__()`
+1. The initializer of the class is `__init__()`.
+
+Initializer is called right after the constructor, if the constructor has not returned a class object, the initializer call is useless.
+
+**Note**: that the reason `__init__()` could use class object(self) to initialize is because when the code flow reaches `__init__()` the object of the class is already created.
+
+---
+
+>🔹***Difference between a class variable and instance variable.***
+
+|  Parameter  |                       Class Variable                        |        Instance Variable         |
+| :---------: | :---------------------------------------------------------: | :------------------------------: |
+| Declaration | Inside class definition but outside of any instance methods |     Inside `__init__` method     |
+|    Scope    |                  Shared across all objects                  |   Tied to the object instance    |
+|  Behaviour  |        Any change is reflected across all instances         | Change limited to instances only |
+|   Access    |                      cls.variable_name                      |        self.variable_name        |
+
+
+```python
+class Car:
+    total_cars, wheels = 0, 4
+
+    def __init__(self, engine_power):
+        self.engine_power = engine_power
+        Car.total_cars += 1
+
+
+car = Car(120)
+
+
+def main():
+    """
+    >>> Car.total_cars
+    1
+    >>> car.wheels += 1
+    >>> Car.wheels += 2
+    >>> car.wheels
+    5
+    >>> Car.wheels
+    6
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
+
 ## Concurrency
 
-## Environment
-* ***What is `PYTHONPATH`?***
+*🔹***Difference between multiprocessing and multithreading***
 
-`PYTHONPATH` is a special environment variable that provides guidance to the Python interpreter about where to find various libraries and applications.
+The threading module uses threads, the multiprocessing module uses processes. The difference is that threads run in the same memory space, while processes have separate memory. This makes it a bit harder to share objects between processes with multiprocessing. Since threads use the same memory, precautions have to be taken or two threads will write to the same memory at the same time.
 
----
-
-## Built-in
-
-* ***What are the Python built-in data types?***
-
-| Data Types |           Classes            |                       Description |
-| ---------- | :--------------------------: | --------------------------------: |
-| Numeric    |     int, float, complex      |              holds numeric values |
-| String     |             str              |      holds sequence of characters |
-| Sequence   |      list, tuple, range      |         holds collection of items |
-| Mapping    |             dict             | holds data in key-value pair form |
-| Boolean    |             bool             |    holds either `True` or `False` |
-| Set        |       set, frozeenset        |   hold collection of unique items |
-| Binary     | bytes, bytearray, memoryview |       hold collection binary data |
+- Multithreading is concurrent and is used for IO-bound tasks
+- Multiprocessing achieves true parallelism and is used for CPU-bound tasks Use Multithreading if most of your task involves waiting on API-calls, because why not start up another request in another thread while you wait, rather than have your CPU sit idly by.
 
 ---
 
-* ***Explain memory managed in Python?***
-
-Python private heap space takes place of memory management in Python. It contains all Python objects and data structures. The interpreter is responsible to take care of this private heap and the programmer does not have access to it. The Python memory manager is responsible for the allocation of Python heap space for Python objects. The programmer may access some tools for the code with the help of the core API. Python also provides an inbuilt garbage collector, which recycles all the unused memory and frees the memory and makes it available to heap space.
-
----
+## References
+- [Python_Theoretical_Interview_Questions](https://github.com/Tanu-N-Prabhu/Python/blob/master/Python%20Coding%20Interview%20Prep/Python_Theoritical_Interview_Questions.md)
+- [Python Coding Interview Questions (Beginner to Advanced)](https://github.com/Tanu-N-Prabhu/Python/blob/master/Python%20Coding%20Interview%20Prep/Python%20Coding%20Interview%20Questions%20(Beginner%20to%20Advanced).md)
+- [Python-Interview-Preparation](https://github.com/baliyanvinay/Python-Interview-Preparation)
