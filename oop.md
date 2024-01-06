@@ -1,331 +1,201 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
-  - [Class](#class)
-  - [Objects](#objects)
-    - [self](#self)
-    - [init](#init)
-  - [Inheritance](#inheritance)
-  - [Polymorphism](#polymorphism)
-  - [Encapsulation](#encapsulation)
+  - [OOP Concepts](#oop-concepts)
+    - [Encapsulation](#encapsulation)
+    - [Inheritance](#inheritance)
+    - [Polymorphism](#polymorphism)
+    - [Abstraction](#abstraction)
   - [Quiz](#quiz)
   - [References](#references)
 
-In Python, object-oriented Programming (OOPs) is a programming paradigm that uses objects and classes in programming. It aims to implement real-world entities like inheritance, polymorphisms, encapsulation, etc. in the programming. The main concept of OOPs is to bind the data and the functions that work on that together as a single unit so that no other part of the code can access this data.
+## OOP Concepts
 
-## Class 
-A class is a collection of objects. A class contains the blueprints or the prototype from which the objects are being created. It is a logical entity that contains some attributes and methods. 
+### Encapsulation
+Encapsulation is one of the fundamental concepts of object-oriented programming, which helps to protect the data and methods of an object from unauthorized access and modification. It is a way to achieve data abstraction, which means that the implementation details of an object are hidden from the outside world, and only the essential information is exposed.
 
-To understand the need for creating a class let’s consider an example, let’s say you wanted to track the number of dogs that may have different attributes like breed, and age. If a list is used, the first element could be the dog’s breed while the second element could represent its age. Let’s suppose there are 100 different dogs, then how would you know which element is supposed to be which? What if you wanted to add other properties to these dogs? This lacks organization and it’s the exact need for classes. 
+In Python, encapsulation can be achieved by using access modifiers. Access modifiers are keywords that define the accessibility of attributes and methods in a class. The three access modifiers available in Python are public, private, and protected. However, Python does not have an explicit way of defining access modifiers like some other programming languages such as Java and C++. Instead, it uses a convention of using underscore prefixes to indicate the access level.
 
-**Some points on Python class:**
+In the given code example, the class MyClass has two attributes, _protected_var and __private_var. The _protected_var is marked as protected by using a single underscore prefix. This means that the attribute can be accessed within the class and its subclasses but not outside the class. The __private_var is marked as private by using two underscore prefixes. This means that the attribute can only be accessed within the class and not outside the class, not even in its subclasses.
 
-- Classes are created by keyword class.
-- Attributes are the variables that belong to a class.
-- Attributes are always public and can be accessed using the dot (.) operator. Eg.: Myclass.Myattribute
+When we create an object of the MyClass class, we can access the _protected_var attribute using the object name with a single underscore prefix. However, we cannot access the __private_var attribute using the object name, as it is hidden from the outside world. If we try to access the __private_var attribute, we will get an AttributeError as shown in the code.
 
-```python
-class ClassName:
-   # Statement-1
-   # ...
-   # Statement-N
-```
-Creating an Empty Class in Python
-In the above example, we have created a class named Dog using the class keyword.
+In summary, encapsulation is an important concept in object-oriented programming that helps to protect the implementation details of an object. In Python, we can achieve encapsulation by using access modifiers and using underscore prefixes to indicate the access level.
 
 ```python
-# a class definition
- 
-class Dog:
-    pass
-```
+# Define a class named MyClass
+class MyClass:
 
-## Objects
-The object is an entity that has a state and behavior associated with it. It may be any real-world object like a mouse, keyboard, chair, table, pen, etc. Integers, strings, floating-point numbers, even arrays, and dictionaries, are all objects. More specifically, any single integer or any single string is an object. The number 12 is an object, the string “Hello, world” is an object, a list is an object that can hold other objects, and so on. You’ve been using objects all along and may not even realize it.
+    # Constructor method that initializes the class object
+    def __init__(self):
 
-**An object consists of**
-- State: It is represented by the attributes of an object. It also reflects the properties of an object.
-- Behavior: It is represented by the methods of an object. It also reflects the response of an object to other objects.
-- Identity: It gives a unique name to an object and enables one object to interact with other objects.
+        # Define a protected variable with an initial value of 10
+        # The variable name starts with a single underscore, which indicates protected access
+        self._protected_var = 10
 
-To understand the state, behavior, and identity let us take the example of the class dog (explained above). 
+        # Define a private variable with an initial value of 20
+        # The variable name starts with two underscores, which indicates private access
+        self.__private_var = 20
 
-- The identity can be considered as the name of the dog.
-- State or Attributes can be considered as the breed, age, or color of the dog.
-- The behavior can be considered as to whether the dog is eating or sleeping.
+# Create an object of MyClass class
+obj = MyClass()
 
-```python
-# creating an object
-obj = Dog()
+# Access the protected variable using the object name and print its value
+# The protected variable can be accessed outside the class but
+# it is intended to be used within the class or its subclasses
+print(obj._protected_var)   # output: 10
+
+# Try to access the private variable using the object name and print its value
+# The private variable cannot be accessed outside the class, even by its subclasses
+# This will raise an AttributeError because the variable is not accessible outside the class
+print(obj.__private_var)    # AttributeError: 'MyClass' object has no attribute '__private_var'
 ```
 
-###  self  
-In object-oriented programming, whenever we define methods for a class, we use `self` as the first parameter in each case. Let's look at the definition of a class called `Cat`.
+### Inheritance
+Inheritance promotes code reuse and allows you to create a hierarchy of classes that share common attributes and methods. It helps in creating clean and organized code by keeping related functionality in one place and promoting the concept of modularity. The base class from which a new class is derived is also known as a parent class, and the new class is known as the child class or subclass.
+
+In the code, we define a class named Animal which has a constructor method that initializes the class object with a name attribute and a method named speak. The speak method is defined in the Animal class but does not have a body.
+
+We then define two subclasses named Dog and Cat which inherit from the Animal class. These subclasses override the speak method of the Animal class.
+
+We create a Dog object with a name attribute “Rover” and a Cat object with a name attribute “Whiskers”. We call the speak method of the Dog object using dog.speak(), and it prints “Woof!” because the speak method of the Dog class overrides the speak method of the Animal class. Similarly, we call the speak method of the Cat object using cat.speak(), and it prints “Meow!” because the speak method of the Cat class overrides the speak method of the Animal class.
 
 ```python
-class Cat:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+# Define a class named Animal
+class Animal:
 
-    def info(self):
-        print(f"I am a cat. My name is {self.name}. I am {self.age} years old.")
-
-    def make_sound(self):
-        print("Meow")
-```
-In this case all the methods, including `__init__`, have the first parameter as `self`.
-
-We know that class is a blueprint for the objects. This blueprint can be used to create multiple numbers of objects. Let's create two different objects from the above class.
-
-```python
-cat1 = Cat('Andy', 2)
-cat2 = Cat('Phoebe', 3)
-```
-
-The self keyword is used to represent an instance (object) of the given class. In this case, the two `Cat` objects `cat1` and `cat2` have their own `name` and `age` attributes. If there was no `self` argument, the same class couldn't hold the information for both these objects.
-
-However, since the class is just a blueprint, `self` allows access to the attributes and methods of each object in python. This allows each object to have its own attributes and methods. Thus, even long before creating these objects, we reference the objects as `self` while defining the class.
-
-### init 
-The `__init__` method is similar to constructors in C++ and Java. It is run as soon as an object of a class is instantiated. The method is useful to do any initialization you want to do with your object. Now let us define a class and create some objects using the self and `__init__` method.
-
-Creating a class and object with class and instance attributes
-
-```python
-class Dog:
- 
-    # class attribute
-    attr1 = "mammal"
- 
-    # Instance attribute
+    # Constructor method that initializes the class object with a name attribute
     def __init__(self, name):
         self.name = name
- 
-# Driver code
-# Object instantiation
-Rodger = Dog("Rodger")
-Tommy = Dog("Tommy")
- 
-# Accessing class attributes
-print("Rodger is a {}".format(Rodger.__class__.attr1))
-print("Tommy is also a {}".format(Tommy.__class__.attr1))
- 
-# Accessing instance attributes
-print("My name is {}".format(Rodger.name))
-print("My name is {}".format(Tommy.name))
-```
 
-```python
-# Output
-Rodger is a mammal
-Tommy is also a mammal
-My name is Rodger
-My name is Tommy
-```
-
-**Creating Classes and objects with methods**
-
-Here, The Dog class is defined with two attributes:
-
-- attr1 is a class attribute set to the value “mammal”. Class attributes are shared by all instances of the class.
-- __init__ is a special method (constructor) that initializes an instance of the Dog class. It takes two parameters: self (referring to the instance being created) and name (representing the name of the dog). The name parameter is used to assign a name attribute to each instance of Dog.
-The speak method is defined within the Dog class. This method prints a string that includes the name of the dog instance.
-
-The driver code starts by creating two instances of the Dog class: Rodger and Tommy. The __init__ method is called for each instance to initialize their name attributes with the provided names. The speak method is called in both instances (Rodger.speak() and Tommy.speak()), causing each dog to print a statement with its name.
-
-```python
-class Dog:
- 
-    # class attribute
-    attr1 = "mammal"
- 
-    # Instance attribute
-    def __init__(self, name):
-        self.name = name
-         
+    # Method that is defined in the Animal class but does not have a body
+    # This method will be overridden in the subclasses of Animal
     def speak(self):
-        print("My name is {}".format(self.name))
- 
-# Driver code
-# Object instantiation
-Rodger = Dog("Rodger")
-Tommy = Dog("Tommy")
- 
-# Accessing class methods
-Rodger.speak()
-Tommy.speak()
+        print("")
+
+# Define a subclass named Dog that inherits from the Animal class
+class Dog(Animal):
+
+    # Override the speak method of the Animal class
+    def speak(self):
+        print("Woof!")
+
+# Define a subclass named Cat that inherits from the Animal class
+class Cat(Animal):
+
+    # Override the speak method of the Animal class
+    def speak(self):
+        print("Meow!")
+
+# Create a Dog object with a name attribute "Rover"
+dog = Dog("Rover")
+
+# Create a Cat object with a name attribute "Whiskers"
+cat = Cat("Whiskers")
+
+# Call the speak method of the Dog class and print the output
+# The speak method of the Dog class overrides the speak method of the Animal class
+# Therefore, when we call the speak method of the Dog object, it will print "Woof!"
+dog.speak()   # output: Woof!
+
+# Call the speak method of the Cat class and print the output
+# The speak method of the Cat class overrides the speak method of the Animal class
+# Therefore, when we call the speak method of the Cat object, it will print "Meow!"
+cat.speak()   # output: Meow!
 ```
-```python
-# Output
-My name is Rodger
-My name is Tommy
-```
 
-## Inheritance
-Inheritance is the capability of one class to derive or inherit the properties from another class. The class that derives properties is called the derived class or child class and the class from which the properties are being derived is called the base class or parent class. The benefits of inheritance are:
+### Polymorphism
+Polymorphism is an important concept in object-oriented programming that allows you to write code that can work with objects of different classes in a uniform way. In Python, polymorphism is achieved by using method overriding or method overloading.
 
-- It represents real-world relationships well.
-- It provides the reusability of a code. We don’t have to write the same code again and again. Also, it allows us to add more features to a class without modifying it.
-- It is transitive in nature, which means that if class B inherits from another class A, then all the subclasses of B would automatically inherit from class A.
+Method overriding is when a subclass provides its own implementation of a method that is already defined in its parent class. This allows the subclass to modify the behavior of the method without changing its name or signature.
 
-**Types of Inheritance**
+Method overloading is when multiple methods have the same name but different parameters. Python does not support method overloading directly, but it can be achieved using default arguments or variable-length arguments.
 
-- Single Inheritance: Single-level inheritance enables a derived class to inherit characteristics from a single-parent class.
- - Multilevel Inheritance: Multi-level inheritance enables a derived class to inherit properties from an immediate parent class which in turn inherits properties from his parent class. 
-- Hierarchical Inheritance: Hierarchical-level inheritance enables more than one derived class to inherit properties from a parent class.
-- Multiple Inheritance: Multiple-level inheritance enables one derived class to inherit properties from more than one base class.
-
-**Inheritance in Python**
-
-In the above article, we have created two classes i.e. Person (parent class) and Employee (Child Class). The Employee class inherits from the Person class. We can use the methods of the person class through the employee class as seen in the display function in the above code. A child class can also modify the behavior of the parent class as seen through the details() method.
-
-```python 
-# Python code to demonstrate how parent constructors
-# are called.
-
-# parent class
-class Person(object):
- 
-    # __init__ is known as the constructor
-    def __init__(self, name, idnumber):
-        self.name = name
-        self.idnumber = idnumber
- 
-    def display(self):
-        print(self.name)
-        print(self.idnumber)
-         
-    def details(self):
-        print("My name is {}".format(self.name))
-        print("IdNumber: {}".format(self.idnumber))
-     
-# child class
-class Employee(Person):
-    def __init__(self, name, idnumber, salary, post):
-        self.salary = salary
-        self.post = post
- 
-        # invoking the __init__ of the parent class
-        Person.__init__(self, name, idnumber)
-         
-    def details(self):
-        print("My name is {}".format(self.name))
-        print("IdNumber: {}".format(self.idnumber))
-        print("Post: {}".format(self.post))
- 
- 
-# creation of an object variable or an instance
-a = Employee('Rahul', 886012, 200000, "Intern")
- 
-# calling a function of the class Person using
-# its instance
-a.display()
-a.details()
-```
-```python
-# Output
-Rahul
-886012
-My name is Rahul
-IdNumber: 886012
-Post: Intern
-```
-## Polymorphism
-Polymorphism simply means having many forms. For example, we need to determine if the given species of birds fly or not, using polymorphism we can do this using a single function.
-
-**Polymorphism in Python**
-
-This code demonstrates the concept of inheritance and method overriding in Python classes. It shows how subclasses can override methods defined in their parent class to provide specific behavior while still inheriting other methods from the parent class.
+Polymorphism makes it easier to write flexible and reusable code. It allows you to write code that can work with different objects without needing to know their specific types.
 
 ```python
-class Bird:
-   
-    def intro(self):
-        print("There are many types of birds.")
- 
-    def flight(self):
-        print("Most of the birds can fly but some cannot.")
- 
-class sparrow(Bird):
-   
-    def flight(self):
-        print("Sparrows can fly.")
- 
-class ostrich(Bird):
- 
-    def flight(self):
-        print("Ostriches cannot fly.")
- 
-obj_bird = Bird()
-obj_spr = sparrow()
-obj_ost = ostrich()
- 
-obj_bird.intro()
-obj_bird.flight()
- 
-obj_spr.intro()
-obj_spr.flight()
- 
-obj_ost.intro()
-obj_ost.flight()
-```
-```python
-# Output
-There are many types of birds.
-Most of the birds can fly but some cannot.
-There are many types of birds.
-Sparrows can fly.
-There are many types of birds.
-Ostriches cannot fly.
+#The Shape class is defined with an abstract area method, which is intended to be overridden by subclasses.
+class Shape:
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    # The Rectangle class is defined with an __init__ method that initializes
+    # width and height instance variables.
+    # It also defines an area method that calculates and returns
+    # the area of a rectangle using the width and height instance variables.
+    def __init__(self, width, height):
+        self.width = width  # Initialize width instance variable
+        self.height = height  # Initialize height instance variable
+
+    def area(self):
+        return self.width * self.height  # Return area of rectangle
+
+
+ # The Circle class is defined with an __init__ method
+ # that initializes a radius instance variable.
+ # It also defines an area method that calculates and
+ # returns the area of a circle using the radius instance variable.
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius  # Initialize radius instance variable
+
+    def area(self):
+        return 3.14 * self.radius ** 2  # Return area of circle using pi * r^2
+
+# The shapes list is created with one Rectangle object and one Circle object. The for
+# loop iterates over each object in the list and calls the area method of each object
+# The output will be the area of the rectangle (20) and the area of the circle (153.86).
+shapes = [Rectangle(4, 5), Circle(7)]  # Create a list of Shape objects
+for shape in shapes:
+    print(shape.area())  # Output the area of each Shape object
 ```
 
-## Encapsulation
-Encapsulation is one of the fundamental concepts in object-oriented programming (OOP). It describes the idea of wrapping data and the methods that work on data within one unit. This puts restrictions on accessing variables and methods directly and can prevent the accidental modification of data. To prevent accidental change, an object’s variable can only be changed by an object’s method. Those types of variables are known as private variables.
+### Abstraction
+Abstraction is an important concept in object-oriented programming (OOP) because it allows you to focus on the essential features of an object or system while ignoring the details that aren’t relevant to the current context. By reducing complexity and hiding unnecessary details, abstraction can make code more modular, easier to read, and easier to maintain.
 
-A class is an example of encapsulation as it encapsulates all the data that is member functions, variables, etc.
+In Python, abstraction can be achieved by using abstract classes or interfaces. An abstract class is a class that cannot be instantiated directly, but is meant to be subclassed by other classes. It often includes abstract methods that have no implementation, but provide a template for how the subclass should be implemented. This allows the programmer to define a common interface for a group of related classes, while still allowing each class to have its own specific behavior.
 
-**Encapsulation in Python**
+An interface, on the other hand, is a collection of method signatures that a class must implement in order to be considered “compatible” with the interface. Interfaces are often used to define a common set of methods that multiple classes can implement, allowing them to be used interchangeably in certain contexts.
 
-In the above example, we have created the c variable as the private attribute. We cannot even access this attribute directly and can’t even change its value.
+Python does not have built-in support for abstract classes or interfaces, but they can be implemented using the abc (abstract base class) module. This module provides the ABC class and the abstractmethod decorator, which can be used to define abstract classes and methods.
+
+Overall, abstraction is a powerful tool for managing complexity and improving code quality in object-oriented programming, and Python provides a range of options for achieving abstraction in your code.
 
 ```python
-# Python program to
-# demonstrate private members
-# "__" double underscore represents private attribute. 
-# Private attributes start with "__".
- 
-# Creating a Base class
-class Base:
-    def __init__(self):
-        self.a = "GeeksforGeeks"
-        self.__c = "GeeksforGeeks"
- 
-# Creating a derived class
-class Derived(Base):
-    def __init__(self):
- 
-        # Calling constructor of
-        # Base class
-        Base.__init__(self)
-        print("Calling private member of base class: ")
-        print(self.__c)
- 
- 
-# Driver code
-obj1 = Base()
-print(obj1.a)
- 
-# Uncommenting print(obj1.c) will
-# raise an AttributeError
- 
-# Uncommenting obj2 = Derived() will
-# also raise an AtrributeError as
-# private member of base class
-# is called inside derived class
-```
-```python
-# Output
-GeeksforGeeks
+# Import the abc module to define abstract classes and methods
+from abc import ABC, abstractmethod
+
+# Define an abstract class called Shape that has an abstract method called area
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+# Define a Rectangle class that inherits from Shape
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    # Implement the area method for Rectangles
+    def area(self):
+        return self.width * self.height
+
+# Define a Circle class that also inherits from Shape
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    # Implement the area method for Circles
+    def area(self):
+        return 3.14 * self.radius ** 2
+
+# Create a list of shapes that includes both Rectangles and Circles
+shapes = [Rectangle(4, 5), Circle(7)]
+
+# Loop through each shape in the list and print its area
+for shape in shapes:
+    print(shape.area())
 ```
 
 ## Quiz
@@ -412,6 +282,14 @@ In Python, the `@property` decorator allows you to treat a method as a property 
 The `@property` decorator provides a way to implement encapsulation – a key concept in Object-Oriented Programming (OOP). It helps in managing the attributes of a class and making the code more readable.
 
 ---
+* ***What are the different types of inheritance?***
+
+- *Single Inheritance* – A single derived class acquires from on single superclass.
+- *Multi-Level Inheritance* – At least 2 different derived classes acquire from two distinct base classes.
+- *Hierarchical Inheritance* – A number of child classes acquire from one superclass
+- *Multiple Inheritance* – A derived class acquires from several superclasses.
+
+---
 * ***How can you achieve multiple inheritance in Python?***
 
 Multiple inheritance in Python means that a class can inherit characteristics and features from more than one parent class. You can achieve this by defining a class with more than one parent class inside parentheses in the class definition. This lets the derived class access attributes and methods from all its parent classes. 
@@ -457,5 +335,6 @@ This enables more flexible and reusable code, as you can write functions that wo
 ---
 
 ## References
+- https://www.pythoncheatsheet.org/cheatsheet/oop-basics
 - https://www.testgorilla.com/blog/python-oops-interview-questions/
 - https://www.programiz.com/article/python-self-why
