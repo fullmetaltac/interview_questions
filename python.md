@@ -84,48 +84,6 @@ if __name__ == "__main__":
 
 ---
 
->🔹 ***What is the // operator?***
-
-In Python, floor division is a mathematical operation that rounds down the result of a division operation to the nearest integer. 
-
-```python
-def main():
-    """
-    >>> # Integer Division
-    >>> print(5/2)
-    2.5
-    >>> # Floor Division
-    >>> print(5//2)
-    2
-    """
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-
-```
----
-
->🔹 ***Explain exception handling in Python.***
-
-Exception handling is the way by which a programmer can control an error within the program without breaking out the flow of execution.
-
-```python
-try:
-    # Part which might cause an error
-except TypeError:
-    # What happens when error occurs | In this case what happens what a TypeError occurs
-else:
-    # what happens if there is no exception | Optional
-finally:
-    # Executed after try and except| always executed | Optional
-```
-
-*Examples* : TypeError, ValueError, ImportError, KeyError, IndexError, NameError, PermissionError, EOFError, ZeroDivisionError, StopIteration
-
----
-
 >🔹***What is the split function used for?***
 
 The split function breaks the string into shorter strings using the defined separator. It returns the list of all the words present in the string.
@@ -146,9 +104,223 @@ if __name__ == "__main__":
     doctest.testmod()
 ```
 
+>🔹***What is RegEx in Python?***
+
+A **Reg**ular **Ex**pression (RegEx) is a sequence of characters that defines a search pattern.
+
+```python
+import re
+
+line1 = "Should we use regex more often? Let me know at doggy@poop.com"
+match1 = re.search(r'[\w.+-]+@[\w-]+\.[\w.-]+', line1)
+
+line2 = f'{line1} or doggy.support@poop.com'
+match2 = re.findall(r'[\w.+-]+@[\w-]+\.[\w.-]+', line2)
+
+
+def main():
+    """
+    >>> match1.group(0)
+    'doggy@poop.com'
+    >>> match2
+    ['doggy@poop.com', 'doggy.support@poop.com']
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+---
+
+>🔹 ***Explain exception handling in Python.***
+
+Exception handling is the way by which a programmer can control an error within the program without breaking out the flow of execution.
+
+```python
+class SatanError(Exception):
+    pass
+
+
+def fraction(num):
+    try:
+        if num == 666:
+            raise SatanError
+        1 / num
+    except (ZeroDivisionError, SatanError) as ex:
+        print(ex.__class__.__name__)
+    except Exception as ex:
+        print(ex.__class__.__name__)
+    else:
+        print('else')
+    finally:
+        print('finally')
+
+
+def main():
+    """
+    >>> fraction(666)
+    SatanError
+    finally
+    >>> fraction(0)
+    ZeroDivisionError
+    finally
+    >>> fraction('ten')
+    TypeError
+    finally
+    >>> fraction(3)
+    else
+    finally
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+*Examples* : `TypeError`, `ValueError`, `ImportError`, `KeyError`, `IndexError`, `NameError`, `PermissionError`, `EOFError`, `ZeroDivisionError`, `StopIteration`
+
+---
+
+>🔹***What is the python “with” statement designed for?***
+
+The `with` statement simplifies exception handling by encapsulating common preparation and cleanup tasks in so-called context managers.
+
+For instance, the `open` statement is a context manager in itself, which lets you open a file, keep it open as long as the execution is in the context of the `with` statement where you used it, and close it as soon as you leave the context, no matter whether you have left it because of an exception or during regular control flow.
+
+```python
+# file CRUD
+
+from os import remove
+from os.path import isfile
+
+file_name = 'temp.txt'
+
+
+def write(file, num=4):
+    with open(file, 'w') as file:
+        file.writelines([f'{n**2};' for n in range(num)])
+
+
+def read(file):
+    with open(file, 'r') as file:
+        return file.read()
+
+
+def update(file):
+    with open(file, 'r+') as file:
+        data = file.read()
+        file.write(data[::-1])
+
+
+def delete(file):
+    if isfile(file):
+        remove(file)
+
+
+def main():
+    """
+    >>> file_name = 'temp.txt'
+    >>> write(file_name)
+    >>> read(file_name)
+    '0;1;4;9;'
+    >>> update(file_name)
+    >>> read(file_name)
+    '0;1;4;9;;9;4;1;0'
+    >>> delete(file_name)
+    >>> isfile(file_name)
+    False
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
+
+>🔹***Explain Python `*args` and `**kwargs`?***
+
+- Use `*args` when we aren't sure how many arguments are going to be passed to a function, or if we want to pass a stored list or tuple of arguments to a function.
+
+- `**kwargs` is used when we don't know how many keyword arguments will be passed to a function, or it can be used to pass the values of a dictionary as keyword arguments.  
+
+```python
+from functools import reduce
+
+
+def multiply(*args):
+    assert args.__class__.__name__ == 'tuple'
+    return reduce(lambda a, b: a * b, args)
+
+
+def url_formatter(**kwargs):
+    assert kwargs.__class__.__name__ == 'dict'
+
+    protocol = kwargs.get('protocol', 'http')
+    server = kwargs.get('server', '127.0.0.1')
+    port = kwargs.get('port', 8080)
+    endpoint = kwargs.get('endpoint', 'index.html')
+
+    return f'{protocol}://{server}:{port}/{endpoint}'
+
+
+config = {
+    'protocol': 'https',
+    'endpoint': 'api/docs',
+}
+
+url_formatter(**config)
+
+
+def main():
+    """
+    >>> multiply(4, 5)
+    20
+    >>> multiply(2, 2, 2)
+    8
+    >>> url_formatter(server='localhost', port=80)
+    'http://localhost:80/index.html'
+    >>> url_formatter(**config)
+    'https://127.0.0.1:8080/api/docs'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+```python
+def ordering(arg_1, arg_2, *args, kw_1="shark", kw_2="blobfish", **kwargs):
+    pass
+```
+
 ---
 
 ## Functions
+
+
+>🔹***What are the Dunder/Magic/Special methods in Python?***
+
+Dunder (**Double Underscores**) methods are special/magic predefined methods in Python, with names that start and end with a double underscore. They are defined by built-in classes in Python.
+
+```python
+def main():
+    """
+    >>> dir(int)[:4]
+    ['__abs__', '__add__', '__and__', '__bool__']
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
 
 >🔹***What is the lambda function?***
 
@@ -410,6 +582,7 @@ def main():
 
 if __name__ == "__main__":
     import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -443,17 +616,27 @@ if __name__ == "__main__":
 
 ```
 
->🔹***How to merge two dictionaries together?***
+---
+
+>🔹***Explain dictionaries merge and update?***
 
 ```python
-first_dict = {'name': 'Tom', 'age': 44}
-second_dict = {'occupation': 'actor', 'nationality': 'British'}
+x = {"key1": "value1 from x", "key2": "value2 from x"}
+y = {"key2": "value2 from y", "key3": "value3 from y"}
 
 
 def main():
     """
-    >>> {**first_dict, **second_dict}
-    {'name': 'Tom', 'age': 44, 'occupation': 'actor', 'nationality': 'British'}
+    >>> # dict merge
+    >>> {**x, **y}
+    {'key1': 'value1 from x', 'key2': 'value2 from y', 'key3': 'value3 from y'}
+    >>> # python3.9
+    >>> x | y
+    {'key1': 'value1 from x', 'key2': 'value2 from y', 'key3': 'value3 from y'}
+    >>> # dict update
+    >>> x |= y
+    >>> x
+    {'key1': 'value1 from x', 'key2': 'value2 from y', 'key3': 'value3 from y'}
     """
 
 
@@ -461,6 +644,8 @@ if __name__ == "__main__":
     import doctest
     doctest.testmod()
 ```
+
+---
 
 >🔹***Differentiate between list and tuple?***
 
@@ -530,6 +715,8 @@ if __name__ == "__main__":
 |    Preferred for short sequence of data items     | Preferred for large sequence of data items i.e., data analysis |
 | Can't perform arithmetic operations on whole list |                Great for arithmetic operations                 |
 
+---
+
 ## OOP
 
 >🔹***What is MRO in Python? How does it work?***
@@ -586,7 +773,7 @@ class Circle:
 
 >🔹***What is monkey patching in Python?***
 
-The dynamic modifications made to a class or module at runtime are termed as monkey patching in Python
+The dynamic modifications made to a class or module at runtime are termed as monkey patching in Python. Most of the time it's a pretty terrible idea - it is usually best if things act in a well-defined way. One reason to monkey patch would be in testing. The mock package is very useful to this end.
 
 ```python
 class Victim:
