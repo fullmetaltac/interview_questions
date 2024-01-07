@@ -15,7 +15,7 @@ Python Enhancement Proposal or `PEP 8` is a set of rules that specify how to for
 
 --- 
 
->🔹***What is `PYTHONPATH?***
+>🔹***What is PYTHONPATH?***
 
 `PYTHONPATH` is a special environment variable that provides guidance to the Python interpreter about where to find various libraries and applications.
 
@@ -23,11 +23,11 @@ Python Enhancement Proposal or `PEP 8` is a set of rules that specify how to for
 
 >🔹***What's the difference between a Python module and a Python package?***
 
-*Module*
+- *Module:*
 The module is a Python file that contains collections of functions and global variables and with having a .py extension file.
 
-*Package*
-The package is a directory having collections of modules. This directory contains Python modules and also having init.py file by which the interpreter interprets it as a Package.
+- *Package:*
+The package is a directory having collections of modules. This directory contains Python modules and also having `__init.py__` file by which the interpreter interprets it as a Package.
 
 ---
 
@@ -241,7 +241,7 @@ if __name__ == "__main__":
 
 ---
 
->🔹***Explain Python `*args` and `**kwargs`?***
+>🔹***Explain Python args and kwargs?***
 
 - Use `*args` when we aren't sure how many arguments are going to be passed to a function, or if we want to pass a stored list or tuple of arguments to a function.
 
@@ -647,14 +647,14 @@ if __name__ == "__main__":
 
 ---
 
->🔹***Differentiate between list and tuple?***
+>🔹***What are differences between list and tuple?***
 
 1. The literal syntax of tuples is shown by parentheses `()` whereas the literal syntax of lists is shown by square brackets `[]` .
 2. Lists has variable length, tuple has fixed length.
 3. List has mutable nature, tuple has immutable nature.
 4. List has more functionality than the tuple.
 
-*Mutable List vs Immutable Tuples:*
+- *Mutable List vs Immutable Tuples:*
 
 List has mutable nature i.e., list can be changed or modified after its creation according to needs whereas tuple has immutable nature i.e., tuple can’t be changed or modified after its creation.
 
@@ -681,7 +681,7 @@ if __name__ == "__main__":
 
 ```
 
-*Size Comparison:*
+- *Size Comparison:*
 
 Tuples operation has smaller size than that of list, which makes it a bit faster but not that much to mention about until you have a huge number of elements.
 
@@ -705,7 +705,7 @@ if __name__ == "__main__":
 ```
 ---
 
-* ***Difference between an array and list***
+>🔹***Difference between an array and list***
 
 
 |                       List                        |                             Array                              |
@@ -719,7 +719,7 @@ if __name__ == "__main__":
 
 ## OOP
 
->🔹***What is MRO in Python? How does it work?***
+>🔹***What is MRO in Python?***
 ```python
 class A:
     def process(self):
@@ -746,7 +746,7 @@ Note: a class can't be called before its superclass in resolving MRO. Super Clas
 
 | Parameter |                 Class Method                  |            Static Method            |
 | :-------: | :-------------------------------------------: | :---------------------------------: |
-| Decorator |                 @classmethod                  |            @staticmethod            |
+| Decorator |                `@classmethod`                 |           `@staticmethod`           |
 | Use Case  | More widely used as a factory method to class |      Acts as utility functions      |
 |   Scope   |      Bound to the class and not objects       | Also bound to class and not objects |
 | Behaviour |       Can modify the state of the class       |      Can't access class state       |
@@ -767,6 +767,48 @@ class Circle:
     @classmethod
     def getCircleCount(cls):
         return cls.no_of_circles
+```
+
+---
+
+>🔹***Difference between a class variable and instance variable.***
+
+|  Parameter  |                       Class Variable                        |        Instance Variable         |
+| :---------: | :---------------------------------------------------------: | :------------------------------: |
+| Declaration | Inside class definition but outside of any instance methods |     Inside `__init__` method     |
+|    Scope    |                  Shared across all objects                  |   Tied to the object instance    |
+|  Behaviour  |        Any change is reflected across all instances         | Change limited to instances only |
+|   Access    |                     `cls.variable_name`                     |       `self.variable_name`       |
+
+
+```python
+class Car:
+    total_cars, wheels = 0, 4
+
+    def __init__(self, engine_power):
+        self.engine_power = engine_power
+        Car.total_cars += 1
+
+
+car = Car(120)
+
+
+def main():
+    """
+    >>> Car.total_cars
+    1
+    >>> car.wheels += 1
+    >>> Car.wheels += 2
+    >>> car.wheels
+    5
+    >>> Car.wheels
+    6
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -803,7 +845,7 @@ if __name__ == "__main__":
 
 In Python everything is an object, even a class is an object. As a result, a class also must have a type. All classes in Python are of 'type' type. Even the class of 'type' is 'type'. So 'type' is the meta class in Python and to create custom meta class, you would need to inherit from 'type'.
 
-*Use Case of Meta Class*
+- *Use Case of Meta Class:*
 
 A meta class is the class of a class. A class is an instance of a metaclass. A metaclass is most commonly used as a class-factory. When you create an object by calling the class, Python creates a new class (when it executes the 'class' statement) by calling the metaclass.
 
@@ -826,7 +868,7 @@ if __name__ == "__main__":
     doctest.testmod()
 
 ```
-*Meta Class call*
+- *Meta Class call:*
 
 The metaclass is called with the
 - name: name of the class,
@@ -855,12 +897,12 @@ if __name__ == "__main__":
 ```
 ---
 
->🔹 ***Explain object creation process in detail. Which method is called first?***
+>🔹 ***Explain object creation process. Which method is called first?***
 
-When an object of a class is created or a class is instantiated, the `__new__()` method of class is called. This particular method is resposible for returning a new class object. It can be overriden to implement object creational restrictions on class.
+When an object of a class is created or a class is instantiated, the `__new__()` method of class is called. This particular method is responsible for returning a new class object. It can be overriden to implement object creational restrictions on class.
 
 1. The constructor of the class is `__new__()`
-1. The initializer of the class is `__init__()`.
+2. The initializer of the class is `__init__()`.
 
 Initializer is called right after the constructor, if the constructor has not returned a class object, the initializer call is useless.
 
@@ -868,51 +910,9 @@ Initializer is called right after the constructor, if the constructor has not re
 
 ---
 
->🔹***Difference between a class variable and instance variable.***
-
-|  Parameter  |                       Class Variable                        |        Instance Variable         |
-| :---------: | :---------------------------------------------------------: | :------------------------------: |
-| Declaration | Inside class definition but outside of any instance methods |     Inside `__init__` method     |
-|    Scope    |                  Shared across all objects                  |   Tied to the object instance    |
-|  Behaviour  |        Any change is reflected across all instances         | Change limited to instances only |
-|   Access    |                      cls.variable_name                      |        self.variable_name        |
-
-
-```python
-class Car:
-    total_cars, wheels = 0, 4
-
-    def __init__(self, engine_power):
-        self.engine_power = engine_power
-        Car.total_cars += 1
-
-
-car = Car(120)
-
-
-def main():
-    """
-    >>> Car.total_cars
-    1
-    >>> car.wheels += 1
-    >>> Car.wheels += 2
-    >>> car.wheels
-    5
-    >>> Car.wheels
-    6
-    """
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-```
-
----
-
 ## Concurrency
 
-*🔹***Difference between multiprocessing and multithreading***
+>🔹 ***Explain difference between multiprocessing and multithreading.***
 
 The threading module uses threads, the multiprocessing module uses processes. The difference is that threads run in the same memory space, while processes have separate memory. This makes it a bit harder to share objects between processes with multiprocessing. Since threads use the same memory, precautions have to be taken or two threads will write to the same memory at the same time.
 
