@@ -21,6 +21,37 @@ Python Enhancement Proposal or `PEP 8` is a set of rules that specify how to for
 
 ---
 
+>🔹***What are .pyc files in Python?***
+
+When you write a Python program and run it, the Python interpreter first compiles the source code into bytecodes and then executes the bytecodes to produce the desired output.
+
+But when you go to make the soda, you don't actually follow the recipe in English. You translate it into a series of instructions that your soda machine can understand – these instructions are the "bytecodes".
+
+In Python, bytecodes are a lower-level representation of the source code of a Python program.
+
+They are typically stored in files with an `.pyc` extension, which stands for "Python compiled code". These files are created automatically by the Python interpreter when it encounters a `.py` file that it needs to execute.
+
+They are used to speed up the execution of Python programs by avoiding the need to recompile the source code each time the program is run.
+
+---
+
+>🔹***What are virtualenvs in Python?***
+
+In a nutshell, Python virtual environments help decouple and isolate Python installs and associated pip packages. This allows end-users to install and manage their own set of packages that are independent of those provided by the system or used by other projects.
+
+- *Install it:*
+``` shell
+$ python3 -m venv venv
+```
+- *Activate it:*
+``` shell
+$ source venv/bin/activate
+```
+- *Install Packages Into It:*
+``` shell
+(venv) $ python -m pip install <package-name>
+```
+
 >🔹***What's the difference between a Python module and a Python package?***
 
 - *Module:*
@@ -39,7 +70,7 @@ A naming system used to make sure that names are unique to avoid naming conflict
 
 >🔹***Explain how memory is managed in Python.***
 
-Unlike other programming languages, python stores references to an object after it is created. For example, an `uuid4` object might have two names(variables are called names in python) a and b. The memory manager in python keeps track of the reference count of each object, this would be 2 for `uuid4` object. Once the object reference count reaches 0, object is removed from memory.
+Unlike other programming languages, python stores references to an object after it is created. For example, an `[]` object might have two references a and b. The memory manager in python keeps track of the reference count of each object, this would be 2 for `[]` object. Once the object reference count reaches 0, object is removed from memory.
 
 The reference count:
 - increases if an object is assigned a new name or is placed in a container, like tuple or dictionary.
@@ -47,12 +78,10 @@ The reference count:
 
 ```python
 import sys
-import uuid
-
 
 def main():
     """
-    >>> a = uuid.uuid4()
+    >>> a = []
     >>> sys.getrefcount(a)
     2
     >>> b = a
@@ -912,7 +941,7 @@ Initializer is called right after the constructor, if the constructor has not re
 
 ## Concurrency
 
->🔹 ***Explain difference between multiprocessing and multithreading.***
+>🔹***Explain difference between multiprocessing and multithreading.***
 
 The threading module uses threads, the multiprocessing module uses processes. The difference is that threads run in the same memory space, while processes have separate memory. This makes it a bit harder to share objects between processes with multiprocessing. Since threads use the same memory, precautions have to be taken or two threads will write to the same memory at the same time.
 
@@ -921,7 +950,73 @@ The threading module uses threads, the multiprocessing module uses processes. Th
 
 ---
 
+>🔹***What is GIL?***
+
+The Python Global Interpreter Lock or GIL, in simple words, is a mutex (or a lock) that allows only one thread to hold the control of the Python interpreter.
+
+This means that only one thread can be in a state of execution at any point in time. The impact of the GIL isn’t visible to developers who execute single-threaded programs, but it can be a performance bottleneck in CPU-bound and multi-threaded code.
+
+Since the GIL allows only one thread to execute at a time even in a multi-threaded architecture with more than one CPU core, the GIL has gained a reputation as an “infamous” feature of Python.
+
+```python
+import time
+from threading import Thread
+from multiprocessing import Pool
+
+COUNT = 50000000
+
+
+def countdown(n):
+    while n > 0:
+        n -= 1
+
+
+if __name__ == "__main__":
+    # single thread
+    start = time.time()
+    countdown(COUNT)
+    end = time.time()
+
+    print(f'{round(end - start, 3)} - single thread')
+
+    # multi thread
+    t1 = Thread(target=countdown, args=(COUNT//2,))
+    t2 = Thread(target=countdown, args=(COUNT//2,))
+
+    start = time.time()
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
+    end = time.time()
+
+    print(f'{round(end - start, 3)} - multi thread')
+
+    # multi process
+    pool = Pool(processes=2)
+    start = time.time()
+    r1 = pool.apply_async(countdown, [COUNT//2])
+    r2 = pool.apply_async(countdown, [COUNT//2])
+    pool.close()
+    pool.join()
+    end = time.time()
+
+    print(f'{round(end - start, 3)} - multi process')
+```
+
+```python
+# Output
+2.899 - single thread
+2.876 - multi thread
+1.582 - multi process
+```
+
+Multiprocessing might be a solution, but multiple processes are heavier than multiple threads, so, keep in mind that this could become a scaling bottleneck.
+
+---
+
 ## References
 - [Python_Theoretical_Interview_Questions](https://github.com/Tanu-N-Prabhu/Python/blob/master/Python%20Coding%20Interview%20Prep/Python_Theoritical_Interview_Questions.md)
 - [Python Coding Interview Questions (Beginner to Advanced)](https://github.com/Tanu-N-Prabhu/Python/blob/master/Python%20Coding%20Interview%20Prep/Python%20Coding%20Interview%20Questions%20(Beginner%20to%20Advanced).md)
 - [Python-Interview-Preparation](https://github.com/baliyanvinay/Python-Interview-Preparation)
+- [python-interview-questions](https://github.com/Devinterview-io/python-interview-questions)
