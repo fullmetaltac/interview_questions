@@ -4,7 +4,7 @@
   - [Functions](#functions)
   - [Collections](#collections)
   - [OOP](#oop)
-  - [Concurrency](#concurrency)
+  - [Async and concurrency](#async-and-concurrency)
   - [References](#references)
 
 ## Basics
@@ -410,7 +410,7 @@ if __name__ == "__main__":
 
 ```
 
-*Decorating Functions with Parameters*
+*Decorating functions with parameters*
 
 ```python
 def smart_divide(func):
@@ -447,7 +447,7 @@ if __name__ == "__main__":
 
 ```
 
-*Chaining Decorators in Python*
+*Chaining decorators in Python*
 
 ```python
 def star(func):
@@ -939,7 +939,7 @@ Initializer is called right after the constructor, if the constructor has not re
 
 ---
 
-## Concurrency
+## Async and concurrency
 
 >🔹***Explain difference between multiprocessing and multithreading.***
 
@@ -1020,3 +1020,4 @@ Multiprocessing might be a solution, but multiple processes are heavier than mul
 - [Python Coding Interview Questions (Beginner to Advanced)](https://github.com/Tanu-N-Prabhu/Python/blob/master/Python%20Coding%20Interview%20Prep/Python%20Coding%20Interview%20Questions%20(Beginner%20to%20Advanced).md)
 - [Python-Interview-Preparation](https://github.com/baliyanvinay/Python-Interview-Preparation)
 - [python-interview-questions](https://github.com/Devinterview-io/python-interview-questions)
+- [Python-Interview-Questions-2023](https://github.com/Berupor/Python-Interview-Questions-2023)

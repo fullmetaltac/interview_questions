@@ -4,9 +4,9 @@
 - [SOLID](solid.md)
 - [Design patterns](design_patterns.md)
 - [Data structures](data_structures.md)
-- [SQL #TODO](sql.md)
+- [SQL](sql/sql.md)
+- [Scripting](scripting.md)
 - [Networking #TODO](networking.md)
-- [Scripting #TODO](scripting.md)
 - [Testing #TODO](tesing.md) 
 
 **References**
