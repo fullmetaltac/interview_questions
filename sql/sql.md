@@ -23,7 +23,7 @@ docker exec -i pg psql -h localhost -U postgres -d dvdrental \
 ```
 
 ```shell
-# output should be
+# output
  first_name | last_name
 ------------+-----------
  Jared      | Ely

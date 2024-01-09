@@ -495,19 +495,23 @@ if __name__ == "__main__":
 In Python, a generator is a function that returns an iterator that produces a sequence of values when iterated over.
 
 ```python
-def my_generator(n):
-    value = 0
-    while value < n:
-        yield value
-        value += 1
+def fibonacci():
+    x, y = 0, 1
+    while True:
+        yield x
+        x, y = y, x + y
 
 
 def main():
     """
-    >>> for value in my_generator(3):
-    ...     print(value)
+    >>> gen = fibonacci()
+    >>> next(gen)
     0
+    >>> next(gen)
     1
+    >>> next(gen)
+    1
+    >>> next(gen)
     2
     >>> # generator expression
     >>> squares_generator = (i * i for i in range(4))
@@ -941,16 +945,20 @@ Initializer is called right after the constructor, if the constructor has not re
 
 ## Async and concurrency
 
->🔹***Explain difference between multiprocessing and multithreading.***
+>🔹***How is a thread different from a process?***
 
-The threading module uses threads, the multiprocessing module uses processes. The difference is that threads run in the same memory space, while processes have separate memory. This makes it a bit harder to share objects between processes with multiprocessing. Since threads use the same memory, precautions have to be taken or two threads will write to the same memory at the same time.
-
-- Multithreading is concurrent and is used for IO-bound tasks
-- Multiprocessing achieves true parallelism and is used for CPU-bound tasks Use Multithreading if most of your task involves waiting on API-calls, because why not start up another request in another thread while you wait, rather than have your CPU sit idly by.
+A thread is a lightweight, independent unit of execution that can run within a process. Threads within a process share the same memory space, making it easy for them to share data and communicate with each other. A process, on the other hand, is a self-contained execution environment that has its own memory space and resources.   
 
 ---
 
->🔹***What is GIL?***
+>🔹***What’s the difference between CPU-bound and I/O-bound tasks?***
+
+- A CPU-bound task spends most of its time doing heavy calculations with the CPUs.
+- An I/O-bound task spends most of its time waiting for I/O responses, which can be responses from web pages, databases or disks.
+
+---
+
+>🔹***What is GIL? Pros and cons.***
 
 The Python Global Interpreter Lock or GIL, in simple words, is a mutex (or a lock) that allows only one thread to hold the control of the Python interpreter.
 
@@ -1013,6 +1021,271 @@ if __name__ == "__main__":
 
 Multiprocessing might be a solution, but multiple processes are heavier than multiple threads, so, keep in mind that this could become a scaling bottleneck.
 
+> ***What is race condition?***
+
+A race condition occurs when multiple threads access shared data or resources simultaneously, and the outcome of the program depends on the order in which the threads execute. Thread safety is the property of an application or library that it can handle multiple threads accessing shared data or resources without introducing race conditions.
+
+```python
+from threading import Thread
+
+x = 1
+
+
+def fibonacci(n):
+    if n <= 2:
+        return 1
+    return fibonacci(n-1) + fibonacci(n-2)
+
+
+def example():
+    global x
+    while x <= 10:
+        print(fibonacci(x))
+        x += 1
+
+
+t1 = Thread(target=example)
+t2 = Thread(target=example)
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+
+```
+```python
+# cause an issue with the calculation
+1
+1
+2
+1
+5
+8
+3
+21
+13
+34
+55
+```
+
+Some mechanisms for synchronizing access to shared resources include:
+
+- **Locks**: a mechanism that allows only one thread to execute a critical section of code at a time.
+- **Semaphores**: a mechanism that allows multiple threads to access a shared resource, but with a limit on the number of threads that can access the resource at the same time.
+- **Monitors**: a mechanism that allows only one thread to execute a critical section of code at a time, and also provides a mechanism for threads to wait for specific conditions to be met before continuing execution.
+
+```python
+from threading import Thread, Lock, Semaphore
+
+x, y = 1, 1
+lock = Lock()
+semaphore = Semaphore(1)
+
+
+def fibonacci(n):
+    if n <= 2:
+        return 1
+    return fibonacci(n-1) + fibonacci(n-2)
+
+
+def example_lock():
+    global x
+    with lock:
+        while x <= 10:
+            print(fibonacci(x))
+            x += 1
+
+
+def example_semaphore():
+    global y
+    semaphore.acquire()
+    while y <= 10:
+        print(fibonacci(y))
+        y += 1
+    semaphore.release()
+
+
+def test_lock():
+    t1, t2 = Thread(target=example_lock), Thread(target=example_lock)
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
+
+
+def test_semaphore():
+    t1, t2 = Thread(target=example_semaphore), Thread(target=example_semaphore)
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
+
+
+def main():
+    """
+    >>> test_lock()
+    1
+    1
+    2
+    3
+    5
+    8
+    13
+    21
+    34
+    55
+    >>> test_semaphore()
+    1
+    1
+    2
+    3
+    5
+    8
+    13
+    21
+    34
+    55
+    """
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
+
+```
+
+```python
+# output is correct 
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+```
+
+
+---
+
+>🔹***What is asyncio in Python.***
+
+Asyncio is a Python library for asynchronous programming, which provides the infrastructure for writing single-threaded concurrent code using coroutines, event loops, and non-blocking I/O. 
+
+```python
+import asyncio
+
+
+async def async_func(id):
+    print(f'[{id}] Hello ...')
+    await asyncio.sleep(1)
+    print(f'[{id}] ... World!')
+
+
+async def example(id):
+    # Coroutines are generally used for cooperative tasks and behave like Python generators
+    await async_func(id)
+
+
+async def example_with_task(id):
+    # Tasks are used to schedule coroutines concurrently
+    await asyncio.create_task(async_func(id))
+
+
+async def example_with_even_loop():
+    # An event loop manages and distributes the execution of different tasks.
+    # It registers them and handles distributing the flow of control between them.
+    tasks = [loop.create_task(async_func(x + 2)) for x in range(2)]
+    await asyncio.wait(tasks)
+
+
+def main():
+    """
+    >>> asyncio.run(example(0))
+    [0] Hello ...
+    [0] ... World!
+    >>> asyncio.run(example_with_task(1))
+    [1] Hello ...
+    [1] ... World!
+    >>> loop.run_until_complete(example_with_even_loop())
+    [2] Hello ...
+    [3] Hello ...
+    [2] ... World!
+    [3] ... World!
+    """
+
+if __name__ == "__main__":
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    import doctest
+    doctest.testmod()
+
+    loop.close()
+```
+
+>🔹***Explain Async ContextManager.***
+
+The async with statement is used for managing resources in an asynchronous context, similar to the regular with statement for synchronous code. It's commonly used for working with asynchronous I/O resources that need to be acquired and released safely.
+
+```python
+import asyncio
+
+
+class MyAsyncContextManager:
+    async def __aenter__(self):
+        print("ENTER async with")
+
+    async def __aexit__(self, *args):
+        print("EXIT async with")
+
+
+async def demo():
+    async with MyAsyncContextManager() as cm:
+        print("BODY async with")
+
+
+def main():
+    """
+    >>> asyncio.run(demo())
+    ENTER async with
+    BODY async with
+    EXIT async with
+    """
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
+
+```
+
+---
+>🔹***What is Future object?***
+
+The Future class encapsulates the asynchronous execution of a callable. Future instances are created by `Executor.submit()`.
+
+```python
+from concurrent.futures import ThreadPoolExecutor
+
+
+def main():
+    """
+    >>> with ThreadPoolExecutor(max_workers=1) as executor:
+    ...     future = executor.submit(pow, 2, 10)
+    ...     print(future.result())
+    1024
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+```
+
 ---
 
 ## References
@@ -1021,3 +1294,5 @@ Multiprocessing might be a solution, but multiple processes are heavier than mul
 - [Python-Interview-Preparation](https://github.com/baliyanvinay/Python-Interview-Preparation)
 - [python-interview-questions](https://github.com/Devinterview-io/python-interview-questions)
 - [Python-Interview-Questions-2023](https://github.com/Berupor/Python-Interview-Questions-2023)
+- [async-features-in-python](https://www.velotio.com/engineering-blog/async-features-in-python)
+- [concurrent.futures](https://docs.python.org/3/library/concurrent.futures.html)
