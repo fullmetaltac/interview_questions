@@ -52,6 +52,8 @@ $ source venv/bin/activate
 (venv) $ python -m pip install <package-name>
 ```
 
+---
+
 >🔹***What's the difference between a Python module and a Python package?***
 
 - *Module:*
@@ -133,6 +135,8 @@ if __name__ == "__main__":
     doctest.testmod()
 ```
 
+---
+
 >🔹***What is RegEx in Python?***
 
 A **Reg**ular **Ex**pression (RegEx) is a sequence of characters that defines a search pattern.
@@ -212,7 +216,7 @@ if __name__ == "__main__":
 
 ---
 
->🔹***What is the python “with” statement designed for?***
+>🔹***What is the python “with” statement (a.k.a. ContextManager) designed for?***
 
 The `with` statement simplifies exception handling by encapsulating common preparation and cleanup tasks in so-called context managers.
 
@@ -378,7 +382,7 @@ if __name__ == "__main__":
 
 A decorator is a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure.
 
-*Simple decorator*
+:bulb: *Simple decorator*
 
 ```python
 def make_pretty(func):
@@ -410,7 +414,7 @@ if __name__ == "__main__":
 
 ```
 
-*Decorating functions with parameters*
+:bulb: *Decorating functions with parameters*
 
 ```python
 def smart_divide(func):
@@ -447,7 +451,7 @@ if __name__ == "__main__":
 
 ```
 
-*Chaining decorators in Python*
+:bulb: *Chaining decorators in Python*
 
 ```python
 def star(func):
@@ -485,6 +489,45 @@ def main():
 
 if __name__ == "__main__":
     import doctest
+    doctest.testmod()
+```
+:bulb: *Decorators with parameters*
+
+```python
+user = {"username": "Anna", "access_level": "user"}
+
+
+def make_secure(access_level):
+    def decorator(func):
+        def secure_function(*args, **kwargs):
+            if user["access_level"] == access_level:
+                return func(*args, **kwargs)
+            else:
+                return f"No {access_level} permissions for {user['username']}."
+
+        return secure_function
+
+    return decorator
+
+
+@make_secure('admin')
+def get_root():
+    return "root:root"
+
+
+def main():
+    """
+    >>> get_root()
+    'No admin permissions for Anna.'
+    >>> user |= {"access_level": "admin"}
+    >>> get_root()
+    'root:root'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+
     doctest.testmod()
 ```
 
@@ -620,7 +663,7 @@ if __name__ == "__main__":
 
 ---
 
->🔹***Three different ways to fetch every 3rd item of a list***
+>🔹***Three different ways to fetch every 3rd item of a list.***
 
 ```python
 example_list = [0,1,2,3,4,5,6]
@@ -1013,13 +1056,15 @@ if __name__ == "__main__":
 ```
 
 ```python
-# Output
+# output
 2.899 - single thread
 2.876 - multi thread
 1.582 - multi process
 ```
 
 Multiprocessing might be a solution, but multiple processes are heavier than multiple threads, so, keep in mind that this could become a scaling bottleneck.
+
+---
 
 > ***What is race condition?***
 
@@ -1226,7 +1271,9 @@ if __name__ == "__main__":
     loop.close()
 ```
 
->🔹***Explain Async ContextManager.***
+---
+
+>🔹***Whats is AsyncContextManager.***
 
 The async with statement is used for managing resources in an asynchronous context, similar to the regular with statement for synchronous code. It's commonly used for working with asynchronous I/O resources that need to be acquired and released safely.
 
