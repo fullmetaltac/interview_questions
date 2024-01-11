@@ -35,6 +35,23 @@ They are used to speed up the execution of Python programs by avoiding the need 
 
 ---
 
+>🔹***What are Flake8 and Black?***
+
+`Flake8` is a linter tool that checks your code for style and syntax errors, while `Black` is a code formatter that automatically formats your code according to a set of predefined rules. By using `Flake8` and `Black`, you can ensure the good quality of your Python code.
+
+```shell
+# flake8
+pip install flake8
+flake8 .
+
+
+# black
+pip install black
+black .
+```
+
+---
+
 >🔹***What are virtualenvs in Python?***
 
 In a nutshell, Python virtual environments help decouple and isolate Python installs and associated pip packages. This allows end-users to install and manage their own set of packages that are independent of those provided by the system or used by other projects.
@@ -222,9 +239,9 @@ The `with` statement simplifies exception handling by encapsulating common prepa
 
 For instance, the `open` statement is a context manager in itself, which lets you open a file, keep it open as long as the execution is in the context of the `with` statement where you used it, and close it as soon as you leave the context, no matter whether you have left it because of an exception or during regular control flow.
 
-```python
-# file CRUD
+:memo: *File CRUD:*
 
+```python
 from os import remove
 from os.path import isfile
 
@@ -264,6 +281,65 @@ def main():
     >>> delete(file_name)
     >>> isfile(file_name)
     False
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+:memo: *Custom ContextManager*
+
+Context managers need a `__enter__` method and a `__exit__` method, and the `__exit__` method should accept three positional arguments. The `as` keyword will point a given variable name to the return value from the `__enter__` method.
+
+
+```python
+import time
+
+class Timer:
+    def __enter__(self):
+        self.start = time.perf_counter()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.stop = time.perf_counter()
+        self.elapsed = self.stop - self.start
+
+def main():
+    """
+    >>> with Timer() as t:
+    ...     result = sum(range(10_000_000))
+    >>> t.elapsed > 0
+    True
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+:memo: It is also possible to write a context manager using generator syntax thanks to the `contextlib.contextmanager` decorator
+
+```python
+from contextlib import contextmanager
+
+
+@contextmanager
+def context_manager(num):
+    print('Enter')
+    yield num + 1
+    print('Exit')
+
+
+def main():
+    """
+    >>> with context_manager(2) as cm:
+    ...     print(cm)
+    Enter
+    3
+    Exit
     """
 
 
@@ -333,8 +409,240 @@ def ordering(arg_1, arg_2, *args, kw_1="shark", kw_2="blobfish", **kwargs):
 
 ---
 
+>🔹***What are Python Dataclasses?***
+
+`Dataclasses` are python classes, but are suited for storing data objects. This module provides a decorator and functions for automatically adding generated special methods such as `__init__()` and `__repr__()` to user-defined classes.
+
+```python
+from dataclasses import dataclass, field
+
+
+@dataclass(frozen=True)
+class Position:
+    name: str = 'Kyiv'
+    lon: float = 30.31
+    lat: float = 50.27
+
+    def __repr__(self):
+        return f"name={self.name};lon={self.lon};lat={self.lat};"
+
+
+@dataclass(frozen=True)
+class Capital(Position):
+    country: str = 'Ukraine'
+    time_zones: list[str] = field(default_factory=['UTC+2', 'UTC+3'])
+
+    def __repr__(self):
+        return f"{super().__repr__()};country={self.country};time_zones={self.time_zones};"
+
+
+def main():
+    """
+    >>> capital = Capital('Oslo', 10.44, 59.54, 'Norway', ['UTC+1', 'UTC+2'])
+    >>> print(capital)
+    name=Oslo;lon=10.44;lat=59.54;;country=Norway;time_zones=['UTC+1', 'UTC+2'];
+    >>> capital.name = 'Bergen'
+    Traceback (most recent call last):
+    ...
+    dataclasses.FrozenInstanceError: cannot assign to field 'name'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(optionflags=doctest.ELLIPSIS)
+
+```
+
+---
+
+>🔹***What is the difference between Shallow  and Deep copy?***
+
+:bulb: The difference between shallow and deep copying is only relevant for compound objects (objects that contain other objects, like lists or class instances):
+
+  - A shallow copy constructs a new compound object and then (to the extent possible) inserts references into it to the objects found in the original.
+
+  - A deep copy constructs a new compound object and then, recursively, inserts copies into it of the objects found in the original.
+
+```python
+import copy
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+c = [a, b]
+
+
+def main():
+    """
+    >>> # using assignment operator to copy
+    >>> d = c
+    >>> id(c) == id(d)          # d is the same object as c
+    True
+    >>> id(c[0]) == id(d[0])    # d[0] is the same object as c[0]
+    True
+
+    >>> # using a shallow copy
+    >>> d = copy.copy(c)
+    >>> id(c) == id(d)          # d is now a new object
+    False
+    >>> id(c[0]) == id(d[0])    # d[0] is the same object as c[0]
+    True
+
+    >>> # using a deep copy
+    >>> d = copy.deepcopy(c)
+    >>> id(c) == id(d)          # d is now a new object
+    False
+    >>> id(c[0]) == id(d[0])    # d[0] is now a new object
+    False
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+---
+
 ## Functions
 
+>🔹***What is closure in Python?***
+
+Python closure is a nested function that allows us to access variables of the outer function even after the outer function is closed.
+
+```python
+def greet():
+    name = "John"
+    return lambda: "Hi " + name
+
+
+def main():
+    """
+    >>> greet()()
+    'Hi John'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
+
+>🔹***Explain Python global local and nonlocal variables.***
+
+
+:bulb: *global:*
+
+In Python, the `global` keyword allows us to modify the variable outside of the current scope. 
+It is used to create a global variable and make changes to the variable in a local context.
+
+```python 
+foo = 0  # <- 〇
+
+
+def outer():
+    foo = 5  # <- ✖
+
+    def middle():
+        foo = 10  # <- ✖
+
+        def inner():
+            global foo  # Here
+            foo += 1
+            print(foo)  # 1
+        inner()
+    middle()
+
+
+def main():
+    """
+    >>> outer()
+    1
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+:bulb: *nonlocal*
+
+The `nonlocal` statement causes the listed identifiers to refer to previously bound variables in the nearest enclosing scope. This is important because the default behavior for binding is to search the local namespace first. The statement allows encapsulated code to rebind variables outside of the local scope besides the global (module) scope.
+
+```python
+foo = 0  # <- ✖
+
+
+def outer():
+    foo = 5  # <- ✖
+
+    def middle():
+        foo = 10  # <- 〇
+
+        def inner():
+            nonlocal foo  # Here
+            foo += 1
+            print(foo)  # 11
+        inner()
+    middle()
+
+
+def main():
+    """
+    >>> outer()
+    11
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
+
+> ***What are First-class functions and Higher-order functions in Python.***
+
+- In Python, the term `first-class function` refers to a function’s ability to be treated as an object that can be assigned to a variable, used as an argument for other functions, and returned as a value. As a result, functions in Python are identical to other objects like `strings`, `integers`, and `lists`.
+
+- `Higher-order functions` are those that accept arguments from other functions or return values that are themselves other functions. The idea of `first-class functions` in Python makes `higher-order functions` possible.
+
+```python
+def square(x):  # first-order function
+    return x ** 2
+
+
+def apply_func(func, lst):  # high-order function
+    return [func(x) for x in lst]
+
+
+def make_adder(n):  # high-order function
+    def adder(x):
+        return x + n
+    return adder
+
+
+def main():
+    """
+    >>> my_func = square
+    >>> my_func(3)
+    9
+    >>> numbers = [1, 2, 3, 4, 5]
+    >>> apply_func(square, numbers)
+    [1, 4, 9, 16, 25]
+    >>> make_adder(5)(10)
+    15
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
 
 >🔹***What are the Dunder/Magic/Special methods in Python?***
 
@@ -527,7 +835,6 @@ def main():
 
 if __name__ == "__main__":
     import doctest
-
     doctest.testmod()
 ```
 
@@ -622,6 +929,27 @@ if __name__ == "__main__":
     doctest.testmod()
 
 
+```
+
+---
+
+>🔹***What is the reduce() function used for in Python?***
+
+Python's `reduce()` function applies a pre-defined function to each element of an iterable (such as a list, tuple, dictionary, etc.) and generates a single-valued result.
+
+```python
+def main():
+    """
+    >>> from functools import reduce
+    >>> nums = [1, 2, 3, 4]
+    >>> reduce(lambda x, y: x + y, nums)
+    10
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -820,13 +1148,13 @@ Note: a class can't be called before its superclass in resolving MRO. Super Clas
 ---
 >🔹***What is the difference between staticmethod and classmethod?***
 
-| Parameter |                 Class Method                  |            Static Method            |
+|  :memo:   |                 Class Method                  |            Static Method            |
 | :-------: | :-------------------------------------------: | :---------------------------------: |
 | Decorator |                `@classmethod`                 |           `@staticmethod`           |
 | Use Case  | More widely used as a factory method to class |      Acts as utility functions      |
 |   Scope   |      Bound to the class and not objects       | Also bound to class and not objects |
 | Behaviour |       Can modify the state of the class       |      Can't access class state       |
-| Parameter |         Takes cls as first parameter          |        No specific parameter        |
+| Parameter |        Takes `cls` as first parameter         |        No specific parameter        |
 
 
 ```python
@@ -973,7 +1301,7 @@ if __name__ == "__main__":
 ```
 ---
 
->🔹 ***Explain object creation process. Which method is called first?***
+>🔹***Explain object creation process. Which method is called first?***
 
 When an object of a class is created or a class is instantiated, the `__new__()` method of class is called. This particular method is responsible for returning a new class object. It can be overriden to implement object creational restrictions on class.
 
@@ -983,6 +1311,52 @@ When an object of a class is created or a class is instantiated, the `__new__()`
 Initializer is called right after the constructor, if the constructor has not returned a class object, the initializer call is useless.
 
 **Note**: that the reason `__init__()` could use class object(self) to initialize is because when the code flow reaches `__init__()` the object of the class is already created.
+
+---
+
+>🔹***Explain Type hinting in Python.***
+
+Type checkers help ensure that you're using variables and functions in your code correctly.
+
+```python
+
+from typing import Dict, Generic, TypeVar
+
+T = TypeVar("T", str, int)
+
+class Registry(Generic[T]):
+    def __init__(self) -> None:
+        self._store: Dict[str, T] = {}
+
+    def set_item(self, k: str, v: T) -> None:
+        self._store[k] = v
+
+    def get_item(self, k: str) -> T:
+        return self._store[k]
+
+
+def main():
+    """
+    >>> family_name_reg = Registry[str]()
+    >>> family_age_reg = Registry[int]()
+    >>> family_name_reg.set_item("dad", "John")
+    >>> family_age_reg.set_item("John", 30)
+    >>> family_name_reg.get_item("dad")
+    'John'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+A type checker like `mypy` or`pyright` is a tool used to enforce type hinting in Python. 
+
+```shell
+pip install pyright    
+pyright my_file.py
+```
 
 ---
 
