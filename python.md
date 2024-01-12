@@ -130,6 +130,12 @@ if __name__ == "__main__":
 | Set        |       set, frozeenset        |   hold collection of unique items |
 | Binary     | bytes, bytearray, memoryview |       hold collection binary data |
 
+- Tuples and strings are the only fundamental collection in Python which is immutable.
+- Lists, sets, dictionaries are all mutable.
+- Integers, floats, and booleans are all immutable.
+
+Most things are mutable in Python. If you want to keep one of your classes immutable, don't add any methods that change the object's properties.
+
 ---
 
 >🔹***What is the split function used for?***
@@ -532,7 +538,7 @@ if __name__ == "__main__":
 >🔹***Explain Python global local and nonlocal variables.***
 
 
-:bulb: *global:*
+:bulb: *global*
 
 In Python, the `global` keyword allows us to modify the variable outside of the current scope. 
 It is used to create a global variable and make changes to the variable in a local context.
@@ -991,6 +997,97 @@ if __name__ == "__main__":
 
 ---
 
+>🔹***What are comprehensions in Python?***
+
+List comprehension in Python is a concise way of creating lists from the ones that already exist. It provides a shorter syntax to create new lists from existing lists and their values. 
+
+```python
+def main():
+    """
+    >>> [ x for x in range(20) if x % 2 == 0]
+    [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+    >>> [y for y in range(100) if y % 2 == 0 if y % 5 == 0]
+    [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
+    >>> ["Even" if i % 2 == 0 else "Odd" for i in range(6)]
+    ['Even', 'Odd', 'Even', 'Odd', 'Even', 'Odd']
+    >>> matrix = [[1, 2], [3,4], [5,6], [7,8]]
+    >>> [[row[i] for row in matrix] for i in range(2)]
+    [[1, 3, 5, 7], [2, 4, 6, 8]]
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+:bulb: *Dictionary comprehensions*
+
+```python
+def main():
+    """
+    >>> {str(num): num*num for num in range(1, 6)}
+    {'1': 1, '2': 4, '3': 9, '4': 16, '5': 25}
+    >>> persons = {'Jack': 38, 'Michael': 48, 'Guido': 57, 'John': 33}
+    >>> {k: v for (k, v) in persons.items() if v % 2 != 0 if v < 40}
+    {'John': 33}
+    >>> {k1: {k2: k1 * k2 for k2 in range(1, 4)} for k1 in range(2, 4)}
+    {2: {1: 2, 2: 4, 3: 6}, 3: {1: 3, 2: 6, 3: 9}
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+
+:bulb: *Set comprehensions*
+
+```python
+def main():
+    """
+    >>> # primes
+    >>> {x for x in range(2, 30) if all(x % y for y in range(2, min(x, 11)))}
+    {2, 3, 5, 7, 11, 13, 17, 19, 23, 29}
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+:bulb: *Generator comprehensions*
+
+There are no tuple comprehensions, but the generator expression might 
+be converted to a tuple if it's required.
+
+
+```python
+def main():
+    """
+    >>> evens = ( number for number in range(1,11) if number % 2 == 0 )
+    >>> type(evens).__name__
+    'generator'
+    >>> next(evens)
+    2
+    >>> next(evens)
+    4
+    >>> tuple(evens)   
+    (6, 8, 10)
+    >>> list(evens)
+    []
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+```
+---
+
 >🔹***Three different ways to fetch every 3rd item of a list.***
 
 ```python
@@ -1146,6 +1243,47 @@ obj.process()
 Note: a class can't be called before its superclass in resolving MRO. Super Class has to be called after derived class
 
 ---
+
+>🔹***Explain Inheritance and Composition in Python.***
+
+*Inheritance* and *composition* are quite different concepts and they respond to different relationship between classes. If classes have a **is-a** relationship then *inheritance* is the right choice, if they have a **has-a** relationship then it’s a *composition*.
+
+:bulb: *Inheritance*
+
+```python
+class Animal:
+    def eat(self):
+        pass
+
+    def sleep(self):
+        pass
+
+
+class Bird(Animal):
+    def fly(self):
+        pass
+
+    def sing(self):
+        pass
+```
+
+:bulb: *Composition*
+
+```python
+class Salary:
+    pass
+
+
+class Employee:
+    def __init__(self, salary):
+        self.salary = salary
+
+
+Employee(salary=Salary())
+```
+
+---
+
 >🔹***What is the difference between staticmethod and classmethod?***
 
 |  :memo:   |                 Class Method                  |            Static Method            |
@@ -1177,7 +1315,7 @@ class Circle:
 
 >🔹***Difference between a class variable and instance variable.***
 
-|  Parameter  |                       Class Variable                        |        Instance Variable         |
+|   :memo:    |                       Class Variable                        |        Instance Variable         |
 | :---------: | :---------------------------------------------------------: | :------------------------------: |
 | Declaration | Inside class definition but outside of any instance methods |     Inside `__init__` method     |
 |    Scope    |                  Shared across all objects                  |   Tied to the object instance    |
@@ -1207,6 +1345,59 @@ def main():
     5
     >>> Car.wheels
     6
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
+
+>🔹***What problem might cause mutable default parameters?***
+
+The function parameters evaluate when the function is defined, not when it runs.
+
+```python
+from typing import List
+
+
+class Student_v1:
+    def __init__(self, name: str, grades: List[int] = []):  # this is bad!
+        self.name = name
+        self.grades = grades
+
+    def take_exam(self, result):
+        self.grades.append(result)
+
+
+class Student_v2:
+    def __init__(self, name: str, grades: List[int] = None):
+        self.name = name
+        self.grades = grades or []  # new list created if one isn't passed
+
+    def take_exam(self, result):
+        self.grades.append(result)
+
+
+def main():
+    """
+    >>> bob = Student_v1("Bob")
+    >>> rolf = Student_v1("Rolf")
+    >>> bob.take_exam(90)
+    >>> bob.grades
+    [90]
+    >>> # should be [], but it's [90]
+    >>> rolf.grades 
+    [90]
+    >>> bob = Student_v2("Bob")
+    >>> rolf = Student_v2("Rolf")
+    >>> bob.take_exam(90)
+    >>> bob.grades
+    [90]
+    >>> rolf.grades
+    []
     """
 
 
@@ -1351,7 +1542,7 @@ if __name__ == "__main__":
     doctest.testmod()
 ```
 
-A type checker like `mypy` or`pyright` is a tool used to enforce type hinting in Python. 
+:bulb: A type checker like `mypy` or`pyright` is a tool used to enforce type hinting in Python. 
 
 ```shell
 pip install pyright    
@@ -1571,21 +1762,6 @@ if __name__ == '__main__':
     doctest.testmod()
 
 ```
-
-```python
-# output is correct 
-1
-1
-2
-3
-5
-8
-13
-21
-34
-55
-```
-
 
 ---
 
