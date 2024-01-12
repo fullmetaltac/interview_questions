@@ -34,7 +34,7 @@
         - [🔹What are comprehensions in Python?](#what-are-comprehensions-in-python)
         - [🔹Three different ways to fetch every 3rd item of a list.](#three-different-ways-to-fetch-every-3rd-item-of-a-list)
         - [🔹Explain dictionaries merge and update?](#explain-dictionaries-merge-and-update)
-        - [🔹What are differences between list and tuple?](#what-are-differences-between-list-and-tuple)
+        - [🔹What are the differences between a list and a tuple?](#what-are-differences-between-list-and-tuple)
         - [🔹What is the difference between an array and a list?](#what-is-the-difference-between-an-array-and-a-list)
   - [🔶 OOP](#-oop)
         - [🔹What is a class in Python?](#what-is-a-class-in-python)
@@ -44,7 +44,7 @@
         - [🔹How can you prevent method overriding in Python?](#how-can-you-prevent-method-overriding-in-python)
         - [🔹What is the purpose of the @property decorator?](#what-is-the-purpose-of-the-property-decorator)
         - [🔹What is meta class in Python.](#what-is-meta-class-in-python)
-        - [🔹Explain object creation process. Which method is called first?](#explain-object-creation-process-which-method-is-called-first)
+        - [🔹Explain the object creation process. Which method is called first?](#explain-object-creation-process-which-method-is-called-first)
         - [🔹What is Encapsulation in Python?](#what-is-encapsulation-in-python)
         - [🔹What is Inheritance in Python?](#what-is-inheritance-in-python)
         - [🔹What is Polymorphism in Python?](#what-is-polymorphism-in-python)
@@ -62,18 +62,18 @@
         - [🔹Exaplin pros and cons of GIL.](#exaplin-pros-and-cons-of-gil)
         - [🔹What is race condition?](#what-is-race-condition)
         - [🔹What is asyncio in Python?](#what-is-asyncio-in-python)
-        - [🔹Whats is async context manager?](#whats-is-async-context-manager)
+        - [🔹What is async context manager?](#whats-is-async-context-manager)
         - [🔹What is Future object?](#what-is-future-object)
 
 ## 🔶 Basics
 
-##### 🔹What is PEP 8?
+### 🔹What is PEP 8?
 
 Python Enhancement Proposal or `PEP 8` is a set of rules that specify how to format Python code for maximum readability.
 
 --- 
 
-##### 🔹What is PYTHONPATH?
+### 🔹What is PYTHONPATH?
 
 `PYTHONPATH` is a special environment variable that provides guidance to the Python interpreter about where to find various libraries and applications.
 
