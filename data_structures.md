@@ -26,7 +26,6 @@
     - [Heap queue](#heap-queue)
     - [Binary Tree](#binary-tree)
     - [Graph](#graph)
-  - [References](#references)
 
 
 Data Structures are a way of organizing data so that it can be accessed more efficiently depending upon the situation. Data Structures are fundamentals of any programming language around which a program is built. Python helps to learn the fundamental of these data structures in a simpler way as compared to other programming languages.
@@ -1884,7 +1883,3 @@ Following is DFS from (starting from vertex 2)
 2 0 1 3 
 ```
 Time complexity: `O(V + E)`, where `V` is the number of vertices and `E` is the number of edges in the graph.
-
-
-## References
-- https://www.geeksforgeeks.org/python-data-structures/

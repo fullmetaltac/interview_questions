@@ -5,7 +5,6 @@
   - [Collections](#collections)
   - [OOP](#oop)
   - [Async and concurrency](#async-and-concurrency)
-  - [References](#references)
 
 ## Basics
 
@@ -48,6 +47,36 @@ flake8 .
 # black
 pip install black
 black .
+```
+
+---
+
+>🔹***What is setup.py in Python?***
+
+In Python, setup.py is a module used to build and distribute Python packages. It typically contains information about the package, such as its name, version, and dependencies, as well as instructions for building and installing the package.
+
+```python
+
+from setuptools import setup
+
+setup(
+    name='my_package',
+    version='0.1',
+    description='A sample Python package',
+    author='John Doe',
+    author_email='jdoe@example.com',
+    packages=['my_package'],
+    install_requires=[
+        'numpy',
+        'pandas',
+    ],
+)
+```
+
+```shell
+pip install setuptools 
+python setup.py sdist bdist_wheel 
+pip install my_package 
 ```
 
 ---
@@ -1220,25 +1249,410 @@ if __name__ == "__main__":
 
 ## OOP
 
+>🔹***What is a class in Python?***
+
+A class in Python is like a blueprint for creating objects. A class defines properties and methods that are common to all objects created from it. 
+
+In Python, you use the `class` keyword to define a class. 
+
+Classes help organize code by grouping related attributes and functions, promoting reusability and modularity.
+
+---
+
+>🔹***What is an object in Python?***
+
+An object in Python is an instance of a class. You can think of it as a specific realization of the blueprint provided by the class. 
+
+An object contains data in the form of attributes and code in the form of methods. When you create an object, you are essentially creating a variable that has all the properties and behaviors defined in the class.
+
+---
+
+>🔹***What is the self keyword in Python?***
+
+The `self` keyword in Python is used within a class to refer to the instance of the object itself. When you define a method inside a class, the first parameter is usually named `self`. It helps you access the attributes and methods of the class within the current object’s context. 
+
+```python
+class MyNum:
+    def __init__(self, value):
+        self.value = value
+
+    def get_value(self):
+        return self.value
+
+
+def main():
+    """
+    >>> MyNum('infinity').get_value()
+    'infinity'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
+
+>🔹***What is the super() function in Python?***
+
+Python’s `super()` function is used within a class to call a method from a parent class, often within the context of method overriding. 
+
+```python
+class Employee:
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
+
+    def __repr__(self) -> str:
+        return f'id={self.id};name={self.name};'
+
+
+class Freelance(Employee):
+    def __init__(self, id, name, email):
+        super().__init__(id, name)
+        self.email = email
+
+    def __repr__(self) -> str:
+        return super().__repr__() + f'email={self.email}'
+
+
+def main():
+    """
+    >>> john = Freelance(1, 'John', 'john@example.com')
+    >>> str(john)
+    'id=1;name=John;email=john@example.com'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
+
+>🔹***How can you prevent method overriding in Python?***
+
+By prefixing the method’s name with a double underscore `__`, you make it private to the class, and it cannot be overridden in a subclass. 
+
+---
+
+>🔹***What is the purpose of the @property decorator?***
+
+In Python, the `@property` decorator allows you to treat a method as a property of the class. By using this, you can create a “getter” method, which enables you to access a class method as though it’s an attribute without needing to write parentheses when you call it. This means you can control how the attribute is accessed without directly exposing it. The `@property` decorator provides a way to implement encapsulation.
+
+```python
+class Celsius:
+    def __init__(self, temperature=0):
+        self.temperature = temperature
+
+    def to_fahrenheit(self):
+        return (self.temperature * 1.8) + 32
+
+    @property
+    def temperature(self):
+        return self._temperature
+
+    @temperature.setter
+    def temperature(self, value):
+        if value < -273:
+            raise ValueError("Temperature below -273 isn't possible")
+        self._temperature = value
+
+
+def main():
+    """
+    >>> temp = Celsius(36.6)
+    >>> temp.temperature
+    36.6
+    >>> temp.temperature = 40
+    >>> temp.temperature
+    40
+    >>> coldest_thing = Celsius(-300)
+    Traceback (most recent call last):
+    ...
+    ValueError: Temperature below -273 isn't possible
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(optionflags=doctest.ELLIPSIS)
+```
+
+---
+
+>🔹***What is meta class in Python.***
+
+In Python everything is an object, even a class is an object. As a result, a class also must have a type. All classes in Python are of 'type' type. Even the class of 'type' is 'type'. So 'type' is the meta class in Python and to create custom meta class, you would need to inherit from 'type'.
+
+- *Use Case of Meta Class:*
+
+A meta class is the class of a class. A class is an instance of a metaclass. A metaclass is most commonly used as a class-factory. When you create an object by calling the class, Python creates a new class (when it executes the 'class' statement) by calling the metaclass.
+
+```python
+def main():
+    """
+    >>> type(17)
+    <class 'int'>
+    >>> type(int)
+    <class 'type'>
+    >>> str.__class__
+    <class 'type'>
+    >>> type.__class__
+    <class 'type'>
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
+```
+- *Meta Class call:*
+
+The metaclass is called with the
+- name: name of the class,
+- bases: tuple of the parent class (for inheritance, can be empty) and
+- attributes: dictionary containing attributes names and values.
+
+```python
+def init(self, make):
+    self.make = make
+
+# type(name, bases, attrs) 
+Car = type('Car', (object,), {'__init__': init, '__repr__': lambda self: self.make,  'wheels': 4})
+car = Car('Kia')
+
+
+def main():
+    """
+    >>> car
+    Kia
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+---
+
+>🔹***Explain object creation process. Which method is called first?***
+
+When an object of a class is created or a class is instantiated, the `__new__()` method of class is called. This particular method is responsible for returning a new class object. It can be overriden to implement object creational restrictions on class.
+
+1. The constructor of the class is `__new__()`
+2. The initializer of the class is `__init__()`.
+
+Initializer is called right after the constructor, if the constructor has not returned a class object, the initializer call is useless.
+
+**Note**: that the reason `__init__()` could use class object(self) to initialize is because when the code flow reaches `__init__()` the object of the class is already created.
+
+---
+
+>🔹***What is Encapsulation in Python?***
+
+*Encapsulation* is an important concept in object-oriented programming that helps to protect the implementation details of an object. In Python, we can achieve encapsulation by using underscore prefixes to indicate the access level.
+
+```python
+class MyClass:
+
+    def __init__(self):
+        self._protected_var = 10
+        self.__private_var = 20
+
+
+def main():
+    """
+    >>> obj = MyClass()
+    >>> obj._protected_var
+    10
+    >>> obj.__private_var
+    Traceback (most recent call last):
+    ...
+    AttributeError: 'MyClass' object has no attribute '__private_var'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(optionflags=doctest.ELLIPSIS)
+```
+
+---
+
+>🔹***What is Inheritance in Python?***
+
+*Inheritance* promotes code reuse and allows you to create a hierarchy of classes that share common attributes and methods. It helps in creating clean and organized code by keeping related functionality in one place and promoting the concept of modularity. The base class from which a new class is derived is also known as a parent class, and the new class is known as the child class or subclass.
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def eat(self):
+        return 'om nom nom'
+
+
+class Dog(Animal):
+    def speak(self):
+        return 'woof'
+
+
+class Cat(Animal):
+    def speak(self):
+        return 'meow'
+
+
+def main():
+    """
+    >>> dog = Dog("Husky")
+    >>> cat = Cat("Cheshire ")
+    >>> dog.eat() == cat.eat()
+    True
+    >>> dog.speak()
+    'woof'
+    >>> cat.speak() 
+    'meow'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+:memo: *Different types of inheritance*
+
+- *Single Inheritance* – A single derived class acquires from on single superclass.
+- *Multi-Level Inheritance* – At least 2 different derived classes acquire from two distinct base classes.
+- *Hierarchical Inheritance* – A number of child classes acquire from one superclass
+- *Multiple Inheritance* – A derived class acquires from several superclasses.
+
+---
+
+>🔹***What is Polymorphism in Python?***
+
+Polymorphism is an important concept in object-oriented programming that allows you to write code that can work with objects of different classes in a uniform way. In Python, polymorphism is achieved by using method overriding or method overloading.
+
+Method overriding is when a subclass provides its own implementation of a method that is already defined in its parent class. This allows the subclass to modify the behavior of the method without changing its name or signature.
+
+Method overloading is when multiple methods have the same name but different parameters. Python does not support method overloading directly, but it can be achieved using default arguments or variable-length arguments.
+
+```python
+class Shape:
+    def area(self):
+        pass
+
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius ** 2
+
+
+def main():
+    """
+    >>> [shape.area() for shape in [Rectangle(4, 5), Circle(7)]]
+    [20, 153.86]
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+---
+
+>🔹***What is Abstraction in Python?***
+
+Abstraction is an important concept in object-oriented programming (OOP) because it allows you to focus on the essential features of an object or system while ignoring the details that aren’t relevant to the current context. By reducing complexity and hiding unnecessary details, abstraction can make code more modular, easier to read, and easier to maintain.
+
+```python
+from abc import ABC, abstractmethod
+
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+
+def main():
+    """
+    >>> [shape.area() for shape in [Rectangle(4, 5), Circle(7)]]
+    Traceback (most recent call last):
+    ...
+    TypeError: Can't instantiate abstract class Circle without an implementation for abstract method 'area'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(optionflags=doctest.ELLIPSIS)
+```
+
+---
+
 >🔹***What is MRO in Python?***
+
 ```python
 class A:
     def process(self):
         print('A')
-        
+
+
 class B(A):
     pass
-    
+
+
 class C(A):
     def process(self):
         print('C')
 
-class D(B,C):
+
+class D(B, C):
     pass
-    
-obj = D()
-obj.process()
-# D -> B -> C -> A -> object 
+
+
+def main():
+    """
+    >>> D.__mro__
+    (<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>)
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 Note: a class can't be called before its superclass in resolving MRO. Super Class has to be called after derived class
 
@@ -1433,75 +1847,6 @@ if __name__ == "__main__":
     doctest.testmod()
 
 ```
-
----
-
->🔹***Explain Meta Classes in Python.***
-
-In Python everything is an object, even a class is an object. As a result, a class also must have a type. All classes in Python are of 'type' type. Even the class of 'type' is 'type'. So 'type' is the meta class in Python and to create custom meta class, you would need to inherit from 'type'.
-
-- *Use Case of Meta Class:*
-
-A meta class is the class of a class. A class is an instance of a metaclass. A metaclass is most commonly used as a class-factory. When you create an object by calling the class, Python creates a new class (when it executes the 'class' statement) by calling the metaclass.
-
-```python
-def main():
-    """
-    >>> type(17)
-    <class 'int'>
-    >>> type(int)
-    <class 'type'>
-    >>> str.__class__
-    <class 'type'>
-    >>> type.__class__
-    <class 'type'>
-    """
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-
-```
-- *Meta Class call:*
-
-The metaclass is called with the
-- name: name of the class,
-- bases: tuple of the parent class (for inheritance, can be empty) and
-- attributes: dictionary containing attributes names and values.
-
-```python
-def init(self, make):
-    self.make = make
-
-# type(name, bases, attrs) 
-Car = type('Car', (object,), {'__init__': init, '__repr__': lambda self: self.make,  'wheels': 4})
-car = Car('Kia')
-
-
-def main():
-    """
-    >>> car
-    Kia
-    """
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-```
----
-
->🔹***Explain object creation process. Which method is called first?***
-
-When an object of a class is created or a class is instantiated, the `__new__()` method of class is called. This particular method is responsible for returning a new class object. It can be overriden to implement object creational restrictions on class.
-
-1. The constructor of the class is `__new__()`
-2. The initializer of the class is `__init__()`.
-
-Initializer is called right after the constructor, if the constructor has not returned a class object, the initializer call is useless.
-
-**Note**: that the reason `__init__()` could use class object(self) to initialize is because when the code flow reaches `__init__()` the object of the class is already created.
 
 ---
 
@@ -1884,12 +2229,3 @@ if __name__ == "__main__":
 ```
 
 ---
-
-## References
-- [Python_Theoretical_Interview_Questions](https://github.com/Tanu-N-Prabhu/Python/blob/master/Python%20Coding%20Interview%20Prep/Python_Theoritical_Interview_Questions.md)
-- [Python Coding Interview Questions (Beginner to Advanced)](https://github.com/Tanu-N-Prabhu/Python/blob/master/Python%20Coding%20Interview%20Prep/Python%20Coding%20Interview%20Questions%20(Beginner%20to%20Advanced).md)
-- [Python-Interview-Preparation](https://github.com/baliyanvinay/Python-Interview-Preparation)
-- [python-interview-questions](https://github.com/Devinterview-io/python-interview-questions)
-- [Python-Interview-Questions-2023](https://github.com/Berupor/Python-Interview-Questions-2023)
-- [async-features-in-python](https://www.velotio.com/engineering-blog/async-features-in-python)
-- [concurrent.futures](https://docs.python.org/3/library/concurrent.futures.html)

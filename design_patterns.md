@@ -2387,4 +2387,3 @@ if __name__ == "__main__":
 ---
 ## References
  - https://github.com/faif/python-patterns
- - https://www.geeksforgeeks.org/python-design-patterns/
