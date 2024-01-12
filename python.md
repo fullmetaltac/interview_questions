@@ -1,6 +1,6 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
-  - [Basics](#basics)
+  - [🔸Basics](#basics)
     - [🔹What is PEP 8?](#what-is-pep-8)
     - [🔹What is PYTHONPATH?](#what-is-pythonpath)
     - [🔹What are .pyc files in Python?](#what-are-pyc-files-in-python)
@@ -18,7 +18,7 @@
     - [🔹What are args and kwargs in Python?](#what-are-args-and-kwargs-in-python)
     - [🔹What are dataclasses in Python?](#what-are-dataclasses-in-python)
     - [🔹What is the difference between a shallow and a deep copy?](#what-is-the-difference-between-a-shallow-and-a-deep-copy)
-  - [Functions](#functions)
+  - [🔸Functions](#functions)
     - [🔹What is closure in Python?](#what-is-closure-in-python)
     - [🔹Explain Python global local and nonlocal variables.](#explain-python-global-local-and-nonlocal-variables)
     - [🔹What are First-class functions and Higher-order functions in Python](#what-are-first-class-functions-and-higher-order-functions-in-python)
@@ -29,14 +29,14 @@
     - [🔹What is the map() function used for in Python?](#what-is-the-map-function-used-for-in-python)
     - [🔹What is the filter() function used for in Python?](#what-is-the-filter-function-used-for-in-python)
     - [🔹What is the reduce() function used for in Python?](#what-is-the-reduce-function-used-for-in-python)
-  - [Collections](#collections)
+  - [🔸Collections](#collections)
     - [🔹What is slicing in Python?](#what-is-slicing-in-python)
     - [🔹What are comprehensions in Python?](#what-are-comprehensions-in-python)
     - [🔹Three different ways to fetch every 3rd item of a list.](#three-different-ways-to-fetch-every-3rd-item-of-a-list)
     - [🔹Explain dictionaries merge and update?](#explain-dictionaries-merge-and-update)
     - [🔹What are differences between list and tuple?](#what-are-differences-between-list-and-tuple)
     - [🔹What is the difference between an array and a list?](#what-is-the-difference-between-an-array-and-a-list)
-  - [OOP](#oop)
+  - [🔸OOP](#oop)
     - [🔹What is a class in Python?](#what-is-a-class-in-python)
     - [🔹What is an object in Python?](#what-is-an-object-in-python)
     - [🔹What is the self keyword in Python?](#what-is-the-self-keyword-in-python)
@@ -56,7 +56,7 @@
     - [🔹What problem might cause mutable default parameters?](#what-problem-might-cause-mutable-default-parameters)
     - [🔹What is monkey patching in Python?](#what-is-monkey-patching-in-python)
     - [🔹Explain Type hinting in Python.](#explain-type-hinting-in-python)
-  - [Async and concurrency](#async-and-concurrency)
+  - [🔸Async and concurrency](#async-and-concurrency)
     - [🔹How is a thread different from a process?](#how-is-a-thread-different-from-a-process)
     - [🔹What’s the difference between CPU-bound and I/O-bound tasks?](#whats-the-difference-between-cpu-bound-and-io-bound-tasks)
     - [🔹Exaplin pros and cons of GIL.](#exaplin-pros-and-cons-of-gil)
@@ -65,7 +65,7 @@
     - [🔹Whats is async context manager?](#whats-is-async-context-manager)
     - [🔹What is Future object?](#what-is-future-object)
 
-##  Basics
+##  🔸Basics
 
 ### 🔹What is PEP 8?
 
@@ -597,7 +597,7 @@ if __name__ == "__main__":
 ```
 ---
 
-##  Functions
+##  🔸Functions
 
 ### 🔹What is closure in Python?
 
@@ -1048,7 +1048,7 @@ if __name__ == "__main__":
 
 ---
 
-##  Collections
+##  🔸Collections
 
 ### 🔹What is slicing in Python?
 
@@ -1306,7 +1306,7 @@ if __name__ == "__main__":
 
 ---
 
-##  OOP
+##  🔸OOP
 
 ### 🔹What is a class in Python?
 
@@ -1955,7 +1955,7 @@ pyright my_file.py
 
 ---
 
-##  Async and concurrency
+##  🔸Async and concurrency
 
 ### 🔹How is a thread different from a process?
 
