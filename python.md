@@ -3,67 +3,67 @@
   - [Basics](#basics)
     - [🔹What is PEP 8?](#what-is-pep-8)
     - [🔹What is PYTHONPATH?](#what-is-pythonpath)
-        - [🔹What are .pyc files in Python?](#what-are-pyc-files-in-python)
-        - [🔹What are Flake8 and Black?](#what-are-flake8-and-black)
-        - [🔹What is setup.py in Python?](#what-is-setuppy-in-python)
-        - [🔹What are virtualenvs in Python?](#what-are-virtualenvs-in-python)
-        - [🔹What's the difference between a module and a package?](#whats-the-difference-between-a-module-and-a-package)
-        - [🔹What is namespace in Python?](#what-is-namespace-in-python)
-        - [🔹How memory is managed in Python?](#how-memory-is-managed-in-python)
-        - [🔹What are the Python built-in data types?](#what-are-the-python-built-in-data-types)
-        - [🔹What is the split function used for?](#what-is-the-split-function-used-for)
-        - [🔹What is RegEx in Python?](#what-is-regex-in-python)
-        - [🔹Explain exception handling in Python.](#explain-exception-handling-in-python)
-        - [🔹What is the context manager in Python?](#what-is-the-context-manager-in-python)
-        - [🔹What are args and kwargs in Python?](#what-are-args-and-kwargs-in-python)
-        - [🔹What are dataclasses in Python?](#what-are-dataclasses-in-python)
-        - [🔹What is the difference between a shallow and a deep copy?](#what-is-the-difference-between-a-shallow-and-a-deep-copy)
+    - [🔹What are .pyc files in Python?](#what-are-pyc-files-in-python)
+    - [🔹What are Flake8 and Black?](#what-are-flake8-and-black)
+    - [🔹What is setup.py in Python?](#what-is-setuppy-in-python)
+    - [🔹What are virtualenvs in Python?](#what-are-virtualenvs-in-python)
+    - [🔹What's the difference between a module and a package?](#whats-the-difference-between-a-module-and-a-package)
+    - [🔹What is namespace in Python?](#what-is-namespace-in-python)
+    - [🔹How memory is managed in Python?](#how-memory-is-managed-in-python)
+    - [🔹What are the Python built-in data types?](#what-are-the-python-built-in-data-types)
+    - [🔹What is the split function used for?](#what-is-the-split-function-used-for)
+    - [🔹What is RegEx in Python?](#what-is-regex-in-python)
+    - [🔹Explain exception handling in Python.](#explain-exception-handling-in-python)
+    - [🔹What is the context manager in Python?](#what-is-the-context-manager-in-python)
+    - [🔹What are args and kwargs in Python?](#what-are-args-and-kwargs-in-python)
+    - [🔹What are dataclasses in Python?](#what-are-dataclasses-in-python)
+    - [🔹What is the difference between a shallow and a deep copy?](#what-is-the-difference-between-a-shallow-and-a-deep-copy)
   - [Functions](#functions)
-        - [🔹What is closure in Python?](#what-is-closure-in-python)
-        - [🔹Explain Python global local and nonlocal variables.](#explain-python-global-local-and-nonlocal-variables)
-        - [🔹What are First-class functions and Higher-order functions in Python](#what-are-first-class-functions-and-higher-order-functions-in-python)
-        - [🔹What are the Dunder/Magic/Special methods in Python?](#what-are-the-dundermagicspecial-methods-in-python)
-        - [🔹What is the lambda function?](#what-is-the-lambda-function)
-        - [🔹What are Python decorators?](#what-are-python-decorators)
-        - [🔹What is generator function in Python?](#what-is-generator-function-in-python)
-        - [🔹What is the map() function used for in Python?](#what-is-the-map-function-used-for-in-python)
-        - [🔹What is the filter() function used for in Python?](#what-is-the-filter-function-used-for-in-python)
-        - [🔹What is the reduce() function used for in Python?](#what-is-the-reduce-function-used-for-in-python)
+    - [🔹What is closure in Python?](#what-is-closure-in-python)
+    - [🔹Explain Python global local and nonlocal variables.](#explain-python-global-local-and-nonlocal-variables)
+    - [🔹What are First-class functions and Higher-order functions in Python](#what-are-first-class-functions-and-higher-order-functions-in-python)
+    - [🔹What are the Dunder/Magic/Special methods in Python?](#what-are-the-dundermagicspecial-methods-in-python)
+    - [🔹What is the lambda function?](#what-is-the-lambda-function)
+    - [🔹What are Python decorators?](#what-are-python-decorators)
+    - [🔹What is generator function in Python?](#what-is-generator-function-in-python)
+    - [🔹What is the map() function used for in Python?](#what-is-the-map-function-used-for-in-python)
+    - [🔹What is the filter() function used for in Python?](#what-is-the-filter-function-used-for-in-python)
+    - [🔹What is the reduce() function used for in Python?](#what-is-the-reduce-function-used-for-in-python)
   - [Collections](#collections)
-        - [🔹What is slicing in Python?](#what-is-slicing-in-python)
-        - [🔹What are comprehensions in Python?](#what-are-comprehensions-in-python)
-        - [🔹Three different ways to fetch every 3rd item of a list.](#three-different-ways-to-fetch-every-3rd-item-of-a-list)
-        - [🔹Explain dictionaries merge and update?](#explain-dictionaries-merge-and-update)
-        - [🔹What are differences between list and tuple?](#what-are-differences-between-list-and-tuple)
-        - [🔹What is the difference between an array and a list?](#what-is-the-difference-between-an-array-and-a-list)
+    - [🔹What is slicing in Python?](#what-is-slicing-in-python)
+    - [🔹What are comprehensions in Python?](#what-are-comprehensions-in-python)
+    - [🔹Three different ways to fetch every 3rd item of a list.](#three-different-ways-to-fetch-every-3rd-item-of-a-list)
+    - [🔹Explain dictionaries merge and update?](#explain-dictionaries-merge-and-update)
+    - [🔹What are differences between list and tuple?](#what-are-differences-between-list-and-tuple)
+    - [🔹What is the difference between an array and a list?](#what-is-the-difference-between-an-array-and-a-list)
   - [OOP](#oop)
-        - [🔹What is a class in Python?](#what-is-a-class-in-python)
-        - [🔹What is an object in Python?](#what-is-an-object-in-python)
-        - [🔹What is the self keyword in Python?](#what-is-the-self-keyword-in-python)
-        - [🔹What is the super() function in Python?](#what-is-the-super-function-in-python)
-        - [🔹How can you prevent method overriding in Python?](#how-can-you-prevent-method-overriding-in-python)
-        - [🔹What is the purpose of the @property decorator?](#what-is-the-purpose-of-the-property-decorator)
-        - [🔹What is meta class in Python.](#what-is-meta-class-in-python)
-        - [🔹Explain object creation process. Which method is called first?](#explain-object-creation-process-which-method-is-called-first)
-        - [🔹What is Encapsulation in Python?](#what-is-encapsulation-in-python)
-        - [🔹What is Inheritance in Python?](#what-is-inheritance-in-python)
-        - [🔹What is Polymorphism in Python?](#what-is-polymorphism-in-python)
-        - [🔹What is Abstraction in Python?](#what-is-abstraction-in-python)
-        - [🔹What is MRO in Python?](#what-is-mro-in-python)
-        - [🔹Explain Inheritance and Composition in Python.](#explain-inheritance-and-composition-in-python)
-        - [🔹What is the difference between staticmethod and classmethod?](#what-is-the-difference-between-staticmethod-and-classmethod)
-        - [🔹Explain the difference between a class variable and an instance variable.](#explain-the-difference-between-a-class-variable-and-an-instance-variable)
-        - [🔹What problem might cause mutable default parameters?](#what-problem-might-cause-mutable-default-parameters)
-        - [🔹What is monkey patching in Python?](#what-is-monkey-patching-in-python)
-        - [🔹Explain Type hinting in Python.](#explain-type-hinting-in-python)
+    - [🔹What is a class in Python?](#what-is-a-class-in-python)
+    - [🔹What is an object in Python?](#what-is-an-object-in-python)
+    - [🔹What is the self keyword in Python?](#what-is-the-self-keyword-in-python)
+    - [🔹What is the super() function in Python?](#what-is-the-super-function-in-python)
+    - [🔹How can you prevent method overriding in Python?](#how-can-you-prevent-method-overriding-in-python)
+    - [🔹What is the purpose of the @property decorator?](#what-is-the-purpose-of-the-property-decorator)
+    - [🔹What is meta class in Python.](#what-is-meta-class-in-python)
+    - [🔹Explain object creation process. Which method is called first?](#explain-object-creation-process-which-method-is-called-first)
+    - [🔹What is Encapsulation in Python?](#what-is-encapsulation-in-python)
+    - [🔹What is Inheritance in Python?](#what-is-inheritance-in-python)
+    - [🔹What is Polymorphism in Python?](#what-is-polymorphism-in-python)
+    - [🔹What is Abstraction in Python?](#what-is-abstraction-in-python)
+    - [🔹What is MRO in Python?](#what-is-mro-in-python)
+    - [🔹Explain Inheritance and Composition in Python.](#explain-inheritance-and-composition-in-python)
+    - [🔹What is the difference between staticmethod and classmethod?](#what-is-the-difference-between-staticmethod-and-classmethod)
+    - [🔹Explain the difference between a class variable and an instance variable.](#explain-the-difference-between-a-class-variable-and-an-instance-variable)
+    - [🔹What problem might cause mutable default parameters?](#what-problem-might-cause-mutable-default-parameters)
+    - [🔹What is monkey patching in Python?](#what-is-monkey-patching-in-python)
+    - [🔹Explain Type hinting in Python.](#explain-type-hinting-in-python)
   - [Async and concurrency](#async-and-concurrency)
-        - [🔹How is a thread different from a process?](#how-is-a-thread-different-from-a-process)
-        - [🔹What’s the difference between CPU-bound and I/O-bound tasks?](#whats-the-difference-between-cpu-bound-and-io-bound-tasks)
-        - [🔹Exaplin pros and cons of GIL.](#exaplin-pros-and-cons-of-gil)
-        - [🔹What is race condition?](#what-is-race-condition)
-        - [🔹What is asyncio in Python?](#what-is-asyncio-in-python)
-        - [🔹Whats is async context manager?](#whats-is-async-context-manager)
-        - [🔹What is Future object?](#what-is-future-object)
+    - [🔹How is a thread different from a process?](#how-is-a-thread-different-from-a-process)
+    - [🔹What’s the difference between CPU-bound and I/O-bound tasks?](#whats-the-difference-between-cpu-bound-and-io-bound-tasks)
+    - [🔹Exaplin pros and cons of GIL.](#exaplin-pros-and-cons-of-gil)
+    - [🔹What is race condition?](#what-is-race-condition)
+    - [🔹What is asyncio in Python?](#what-is-asyncio-in-python)
+    - [🔹Whats is async context manager?](#whats-is-async-context-manager)
+    - [🔹What is Future object?](#what-is-future-object)
 
 ##  Basics
 
@@ -79,7 +79,7 @@ Python Enhancement Proposal or `PEP 8` is a set of rules that specify how to for
 
 ---
 
-##### 🔹What are .pyc files in Python?
+### 🔹What are .pyc files in Python?
 
 When you write a Python program and run it, the Python interpreter first compiles the source code into bytecodes and then executes the bytecodes to produce the desired output.
 
@@ -93,7 +93,7 @@ They are used to speed up the execution of Python programs by avoiding the need 
 
 ---
 
-##### 🔹What are Flake8 and Black?
+### 🔹What are Flake8 and Black?
 
 `Flake8` is a linter tool that checks your code for style and syntax errors, while `Black` is a code formatter that automatically formats your code according to a set of predefined rules. By using `Flake8` and `Black`, you can ensure the good quality of your Python code.
 
@@ -110,7 +110,7 @@ black .
 
 ---
 
-##### 🔹What is setup.py in Python?
+### 🔹What is setup.py in Python?
 
 In Python, setup.py is a module used to build and distribute Python packages. It typically contains information about the package, such as its name, version, and dependencies, as well as instructions for building and installing the package.
 
@@ -140,7 +140,7 @@ pip install my_package
 
 ---
 
-##### 🔹What are virtualenvs in Python?
+### 🔹What are virtualenvs in Python?
 
 In a nutshell, Python virtual environments help decouple and isolate Python installs and associated pip packages. This allows end-users to install and manage their own set of packages that are independent of those provided by the system or used by other projects.
 
@@ -159,7 +159,7 @@ $ source venv/bin/activate
 
 ---
 
-##### 🔹What's the difference between a module and a package?
+### 🔹What's the difference between a module and a package?
 
 - *Module:*
 The module is a Python file that contains collections of functions and global variables and with having a .py extension file.
@@ -169,13 +169,13 @@ The package is a directory having collections of modules. This directory contain
 
 ---
 
-##### 🔹What is namespace in Python?
+### 🔹What is namespace in Python?
 
 A naming system used to make sure that names are unique to avoid naming conflicts refers to as Namespace.
 
 ---
 
-##### 🔹How memory is managed in Python?
+### 🔹How memory is managed in Python?
 
 Unlike other programming languages, python stores references to an object after it is created. For example, an `[]` object might have two references a and b. The memory manager in python keeps track of the reference count of each object, this would be 2 for `[]` object. Once the object reference count reaches 0, object is removed from memory.
 
@@ -206,7 +206,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What are the Python built-in data types?
+### 🔹What are the Python built-in data types?
 
 | Data Types |           Classes            |                       Description |
 | ---------- | :--------------------------: | --------------------------------: |
@@ -226,7 +226,7 @@ Most things are mutable in Python. If you want to keep one of your classes immut
 
 ---
 
-##### 🔹What is the split function used for?
+### 🔹What is the split function used for?
 
 The split function breaks the string into shorter strings using the defined separator. It returns the list of all the words present in the string.
 
@@ -248,7 +248,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is RegEx in Python?
+### 🔹What is RegEx in Python?
 
 A **Reg**ular **Ex**pression (RegEx) is a sequence of characters that defines a search pattern.
 
@@ -277,7 +277,7 @@ if __name__ == "__main__":
 ```
 ---
 
-##### 🔹Explain exception handling in Python.
+### 🔹Explain exception handling in Python.
 
 Exception handling is the way by which a programmer can control an error within the program without breaking out the flow of execution.
 
@@ -327,7 +327,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is the context manager in Python?
+### 🔹What is the context manager in Python?
 
 The `with` statement simplifies exception handling by encapsulating common preparation and cleanup tasks in so-called context managers.
 
@@ -444,7 +444,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What are args and kwargs in Python?
+### 🔹What are args and kwargs in Python?
 
 - Use `*args` when we aren't sure how many arguments are going to be passed to a function, or if we want to pass a stored list or tuple of arguments to a function.
 
@@ -503,7 +503,7 @@ def ordering(arg_1, arg_2, *args, kw_1="shark", kw_2="blobfish", **kwargs):
 
 ---
 
-##### 🔹What are dataclasses in Python?
+### 🔹What are dataclasses in Python?
 
 `Dataclasses` are python classes, but are suited for storing data objects. This module provides a decorator and functions for automatically adding generated special methods such as `__init__()` and `__repr__()` to user-defined classes.
 
@@ -550,7 +550,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is the difference between a shallow and a deep copy?
+### 🔹What is the difference between a shallow and a deep copy?
 
 :bulb: The difference between shallow and deep copying is only relevant for compound objects (objects that contain other objects, like lists or class instances):
 
@@ -599,7 +599,7 @@ if __name__ == "__main__":
 
 ##  Functions
 
-##### 🔹What is closure in Python?
+### 🔹What is closure in Python?
 
 Python closure is a nested function that allows us to access variables of the outer function even after the outer function is closed.
 
@@ -623,7 +623,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹Explain Python global local and nonlocal variables.
+### 🔹Explain Python global local and nonlocal variables.
 
 
 :bulb: *global*
@@ -697,7 +697,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What are First-class functions and Higher-order functions in Python
+### 🔹What are First-class functions and Higher-order functions in Python
 
 - In Python, the term `first-class function` refers to a function’s ability to be treated as an object that can be assigned to a variable, used as an argument for other functions, and returned as a value. As a result, functions in Python are identical to other objects like `strings`, `integers`, and `lists`.
 
@@ -738,7 +738,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What are the Dunder/Magic/Special methods in Python?
+### 🔹What are the Dunder/Magic/Special methods in Python?
 
 Dunder (**Double Underscores**) methods are special/magic predefined methods in Python, with names that start and end with a double underscore. They are defined by built-in classes in Python.
 
@@ -757,7 +757,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is the lambda function?
+### 🔹What is the lambda function?
 
 An anonymous function is known as a lambda function. This function can have only one statement but can have any number of parameters.
 
@@ -780,7 +780,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What are Python decorators?
+### 🔹What are Python decorators?
 
 A decorator is a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure.
 
@@ -934,7 +934,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is generator function in Python?
+### 🔹What is generator function in Python?
 
 In Python, a generator is a function that returns an iterator that produces a sequence of values when iterated over.
 
@@ -975,7 +975,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is the map() function used for in Python?
+### 🔹What is the map() function used for in Python?
 
 The `map()` function applies a given function to each element of an iterable (`list`, `tuple` etc.) and returns an iterator containing the results.
 
@@ -1000,7 +1000,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is the filter() function used for in Python?
+### 🔹What is the filter() function used for in Python?
 
 The `filter()` function selects elements from an iterable (`list`, `tuple` etc.) based on the output of a function.
 The function is applied to each element of the iterable and if it returns True, the element is selected by the `filter()` function.
@@ -1027,7 +1027,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is the reduce() function used for in Python?
+### 🔹What is the reduce() function used for in Python?
 
 Python's `reduce()` function applies a pre-defined function to each element of an iterable (such as a list, tuple, dictionary, etc.) and generates a single-valued result.
 
@@ -1050,7 +1050,7 @@ if __name__ == "__main__":
 
 ##  Collections
 
-##### 🔹What is slicing in Python?
+### 🔹What is slicing in Python?
 
 Slicing refers to the mechanism to select the range of items from sequence types like lists, tuples, strings
 
@@ -1085,7 +1085,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What are comprehensions in Python?
+### 🔹What are comprehensions in Python?
 
 List comprehension in Python is a concise way of creating lists from the ones that already exist. It provides a shorter syntax to create new lists from existing lists and their values. 
 
@@ -1176,7 +1176,7 @@ if __name__ == "__main__":
 ```
 ---
 
-##### 🔹Three different ways to fetch every 3rd item of a list.
+### 🔹Three different ways to fetch every 3rd item of a list.
 
 ```python
 example_list = [0,1,2,3,4,5,6]
@@ -1207,7 +1207,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹Explain dictionaries merge and update?
+### 🔹Explain dictionaries merge and update?
 
 ```python
 x = {"key1": "value1 from x", "key2": "value2 from x"}
@@ -1236,7 +1236,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What are differences between list and tuple?
+### 🔹What are differences between list and tuple?
 
 1. The literal syntax of tuples is shown by parentheses `()` whereas the literal syntax of lists is shown by square brackets `[]` .
 2. Lists has variable length, tuple has fixed length.
@@ -1294,7 +1294,7 @@ if __name__ == "__main__":
 ```
 ---
 
-##### 🔹What is the difference between an array and a list?
+### 🔹What is the difference between an array and a list?
 
 
 |                       List                        |                             Array                              |
@@ -1308,7 +1308,7 @@ if __name__ == "__main__":
 
 ##  OOP
 
-##### 🔹What is a class in Python?
+### 🔹What is a class in Python?
 
 A class in Python is like a blueprint for creating objects. A class defines properties and methods that are common to all objects created from it. 
 
@@ -1318,7 +1318,7 @@ Classes help organize code by grouping related attributes and functions, promoti
 
 ---
 
-##### 🔹What is an object in Python?
+### 🔹What is an object in Python?
 
 An object in Python is an instance of a class. You can think of it as a specific realization of the blueprint provided by the class. 
 
@@ -1326,7 +1326,7 @@ An object contains data in the form of attributes and code in the form of method
 
 ---
 
-##### 🔹What is the self keyword in Python?
+### 🔹What is the self keyword in Python?
 
 The `self` keyword in Python is used within a class to refer to the instance of the object itself. When you define a method inside a class, the first parameter is usually named `self`. It helps you access the attributes and methods of the class within the current object’s context. 
 
@@ -1353,7 +1353,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is the super() function in Python?
+### 🔹What is the super() function in Python?
 
 Python’s `super()` function is used within a class to call a method from a parent class, often within the context of method overriding. 
 
@@ -1391,13 +1391,13 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹How can you prevent method overriding in Python?
+### 🔹How can you prevent method overriding in Python?
 
 By prefixing the method’s name with a double underscore `__`, you make it private to the class, and it cannot be overridden in a subclass. 
 
 ---
 
-##### 🔹What is the purpose of the @property decorator?
+### 🔹What is the purpose of the @property decorator?
 
 In Python, the `@property` decorator allows you to treat a method as a property of the class. By using this, you can create a “getter” method, which enables you to access a class method as though it’s an attribute without needing to write parentheses when you call it. This means you can control how the attribute is accessed without directly exposing it. The `@property` decorator provides a way to implement encapsulation.
 
@@ -1442,7 +1442,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is meta class in Python.
+### 🔹What is meta class in Python.
 
 In Python everything is an object, even a class is an object. As a result, a class also must have a type. All classes in Python are of 'type' type. Even the class of 'type' is 'type'. So 'type' is the meta class in Python and to create custom meta class, you would need to inherit from 'type'.
 
@@ -1498,7 +1498,7 @@ if __name__ == "__main__":
 ```
 ---
 
-##### 🔹Explain object creation process. Which method is called first?
+### 🔹Explain object creation process. Which method is called first?
 
 When an object of a class is created or a class is instantiated, the `__new__()` method of class is called. This particular method is responsible for returning a new class object. It can be overriden to implement object creational restrictions on class.
 
@@ -1511,7 +1511,7 @@ Initializer is called right after the constructor, if the constructor has not re
 
 ---
 
-##### 🔹What is Encapsulation in Python?
+### 🔹What is Encapsulation in Python?
 
 *Encapsulation* is an important concept in object-oriented programming that helps to protect the implementation details of an object. In Python, we can achieve encapsulation by using underscore prefixes to indicate the access level.
 
@@ -1542,7 +1542,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is Inheritance in Python?
+### 🔹What is Inheritance in Python?
 
 *Inheritance* promotes code reuse and allows you to create a hierarchy of classes that share common attributes and methods. It helps in creating clean and organized code by keeping related functionality in one place and promoting the concept of modularity. The base class from which a new class is derived is also known as a parent class, and the new class is known as the child class or subclass.
 
@@ -1592,7 +1592,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is Polymorphism in Python?
+### 🔹What is Polymorphism in Python?
 
 Polymorphism is an important concept in object-oriented programming that allows you to write code that can work with objects of different classes in a uniform way. In Python, polymorphism is achieved by using method overriding or method overloading.
 
@@ -1637,7 +1637,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is Abstraction in Python?
+### 🔹What is Abstraction in Python?
 
 Abstraction is an important concept in object-oriented programming (OOP) because it allows you to focus on the essential features of an object or system while ignoring the details that aren’t relevant to the current context. By reducing complexity and hiding unnecessary details, abstraction can make code more modular, easier to read, and easier to maintain.
 
@@ -1681,7 +1681,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is MRO in Python?
+### 🔹What is MRO in Python?
 
 ```python
 class A:
@@ -1717,7 +1717,7 @@ Note: a class can't be called before its superclass in resolving MRO. Super Clas
 
 ---
 
-##### 🔹Explain Inheritance and Composition in Python.
+### 🔹Explain Inheritance and Composition in Python.
 
 *Inheritance* and *composition* are quite different concepts and they respond to different relationship between classes. If classes have a **is-a** relationship then *inheritance* is the right choice, if they have a **has-a** relationship then it’s a *composition*.
 
@@ -1757,7 +1757,7 @@ Employee(salary=Salary())
 
 ---
 
-##### 🔹What is the difference between staticmethod and classmethod?
+### 🔹What is the difference between staticmethod and classmethod?
 
 |  :memo:   |                 Class Method                  |            Static Method            |
 | :-------: | :-------------------------------------------: | :---------------------------------: |
@@ -1786,7 +1786,7 @@ class Circle:
 
 ---
 
-##### 🔹Explain the difference between a class variable and an instance variable.
+### 🔹Explain the difference between a class variable and an instance variable.
 
 |   :memo:    |                       Class Variable                        |        Instance Variable         |
 | :---------: | :---------------------------------------------------------: | :------------------------------: |
@@ -1828,7 +1828,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What problem might cause mutable default parameters?
+### 🔹What problem might cause mutable default parameters?
 
 The function parameters evaluate when the function is defined, not when it runs.
 
@@ -1881,7 +1881,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹What is monkey patching in Python?
+### 🔹What is monkey patching in Python?
 
 The dynamic modifications made to a class or module at runtime are termed as monkey patching in Python. Most of the time it's a pretty terrible idea - it is usually best if things act in a well-defined way. One reason to monkey patch would be in testing. The mock package is very useful to this end.
 
@@ -1909,7 +1909,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹Explain Type hinting in Python.
+### 🔹Explain Type hinting in Python.
 
 Type checkers help ensure that you're using variables and functions in your code correctly.
 
@@ -1957,20 +1957,20 @@ pyright my_file.py
 
 ##  Async and concurrency
 
-##### 🔹How is a thread different from a process?
+### 🔹How is a thread different from a process?
 
 A thread is a lightweight, independent unit of execution that can run within a process. Threads within a process share the same memory space, making it easy for them to share data and communicate with each other. A process, on the other hand, is a self-contained execution environment that has its own memory space and resources.   
 
 ---
 
-##### 🔹What’s the difference between CPU-bound and I/O-bound tasks?
+### 🔹What’s the difference between CPU-bound and I/O-bound tasks?
 
 - A CPU-bound task spends most of its time doing heavy calculations with the CPUs.
 - An I/O-bound task spends most of its time waiting for I/O responses, which can be responses from web pages, databases or disks.
 
 ---
 
-##### 🔹Exaplin pros and cons of GIL.
+### 🔹Exaplin pros and cons of GIL.
 
 The Python Global Interpreter Lock or GIL, in simple words, is a mutex (or a lock) that allows only one thread to hold the control of the Python interpreter.
 
@@ -2035,7 +2035,7 @@ Multiprocessing might be a solution, but multiple processes are heavier than mul
 
 ---
 
-##### 🔹What is race condition?
+### 🔹What is race condition?
 
 A race condition occurs when multiple threads access shared data or resources simultaneously, and the outcome of the program depends on the order in which the threads execute. Thread safety is the property of an application or library that it can handle multiple threads accessing shared data or resources without introducing race conditions.
 
@@ -2169,7 +2169,7 @@ if __name__ == '__main__':
 
 ---
 
-##### 🔹What is asyncio in Python?
+### 🔹What is asyncio in Python?
 
 Asyncio is a Python library for asynchronous programming, which provides the infrastructure for writing single-threaded concurrent code using coroutines, event loops, and non-blocking I/O. 
 
@@ -2227,7 +2227,7 @@ if __name__ == "__main__":
 
 ---
 
-##### 🔹Whats is async context manager? 
+### 🔹Whats is async context manager? 
 
 The async with statement is used for managing resources in an asynchronous context, similar to the regular with statement for synchronous code. It's commonly used for working with asynchronous I/O resources that need to be acquired and released safely.
 
@@ -2264,7 +2264,7 @@ if __name__ == '__main__':
 ```
 
 ---
-##### 🔹What is Future object?
+### 🔹What is Future object?
 
 The Future class encapsulates the asynchronous execution of a callable. Future instances are created by `Executor.submit()`.
 
