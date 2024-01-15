@@ -14,7 +14,7 @@
     - [What is an Index? Explain its different types.](#what-is-an-index-explain-its-different-types)
     - [What is the difference between Clustered and Non-clustered index?](#what-is-the-difference-between-clustered-and-non-clustered-index)
     - [What is Cursor? How to use a Cursor?](#what-is-cursor-how-to-use-a-cursor)
-    - [What is PL/pgSQL?](#what-is-plpgsql)
+    - [What is a Function?](#what-is-a-function)
     - [What is a Stored Procedure?](#what-is-a-stored-procedure)
   - [References](#references)
 
@@ -613,7 +613,7 @@ COMMIT;
 
 ---
 
-### What is PL/pgSQL?
+### What is a Function?
 
 PL/pgSQL is a procedural programming language for the PostgreSQL database system.
 
@@ -624,19 +624,27 @@ PL/pgSQL was designed to :
   - Inherit all user-defined functions, operators, and types.
 
 ```sql
-do 
-'declare
-   film_count integer;
-begin 
-   select count(*) into film_count
-   from film;
-   raise notice ''The number of films: %'', film_count;
-end;';
+CREATE OR REPLACE FUNCTION film_count()
+RETURNS integer AS $total$
+declare
+	total integer;
+BEGIN
+   SELECT count(*) into total FROM film;
+   RETURN total;
+END;
+$total$ LANGUAGE plpgsql;
+```
+
+```sql
+select film_count();
 ```
 
 ```shell
 # output
-NOTICE:  The number of films: 1000
+ film_count
+------------
+       1000
+(1 row)
 ```
 
 ---

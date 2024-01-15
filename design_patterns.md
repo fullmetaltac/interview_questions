@@ -27,6 +27,9 @@
     - [Strategy Method](#strategy-method)
     - [Template Method](#template-method)
     - [Visitor Method](#visitor-method)
+  - [Others](#others)
+    - [Dependency Injection](#dependency-injection)
+    - [Page object](#page-object)
   - [References](#references)
 
 Design Patterns is the most essential part of Software Engineering, as they provide the general repeatable solution to a commonly occurring problem in software design. They usually represent some of the best practices adopted by experienced object-oriented software developers. We can not consider the Design Patterns as the finished design that can be directly converted into code. They are only templates that describe how to solve a particular problem with great efficiency.
@@ -2384,5 +2387,181 @@ if __name__ == "__main__":
 ```
 
 ---
+
+## Others
+
+### Dependency Injection
+
+"""
+Dependency Injection (DI) is a technique whereby one object supplies the dependencies (services)
+to another object (client).
+It allows to decouple objects: no need to change client code simply because an object it depends on
+needs to be changed to a different one. (Open/Closed principle)
+
+In the following example `time_provider` (service) is embedded into TimeDisplay (client).
+If such service performed an expensive operation you would like to substitute or mock it in tests.
+
+```python
+class TimeDisplay(object):
+
+    def __init__(self):
+        self.time_provider = datetime.datetime.now
+
+    def get_current_time_as_html_fragment(self):
+        current_time = self.time_provider()
+        current_time_as_html_fragment = "<span class=\"tinyBoldText\">{}</span>".format(current_time)
+        return current_time_as_html_fragment
+
+```
+
+```python
+import datetime
+from typing import Callable
+
+
+class ConstructorInjection:
+    def __init__(self, time_provider: Callable) -> None:
+        self.time_provider = time_provider
+
+    def get_current_time_as_html_fragment(self) -> str:
+        current_time = self.time_provider()
+        current_time_as_html_fragment = '<span class="tinyBoldText">{}</span>'.format(
+            current_time
+        )
+        return current_time_as_html_fragment
+
+
+class ParameterInjection:
+    def __init__(self) -> None:
+        pass
+
+    def get_current_time_as_html_fragment(self, time_provider: Callable) -> str:
+        current_time = time_provider()
+        current_time_as_html_fragment = '<span class="tinyBoldText">{}</span>'.format(
+            current_time
+        )
+        return current_time_as_html_fragment
+
+
+class SetterInjection:
+    """Setter Injection"""
+
+    def __init__(self):
+        pass
+
+    def set_time_provider(self, time_provider: Callable):
+        self.time_provider = time_provider
+
+    def get_current_time_as_html_fragment(self):
+        current_time = self.time_provider()
+        current_time_as_html_fragment = '<span class="tinyBoldText">{}</span>'.format(
+            current_time
+        )
+        return current_time_as_html_fragment
+
+
+def production_code_time_provider() -> str:
+    """
+    Production code version of the time provider (just a wrapper for formatting
+    datetime for this example).
+    """
+    current_time = datetime.datetime.now()
+    current_time_formatted = f"{current_time.hour}:{current_time.minute}"
+    return current_time_formatted
+
+
+def midnight_time_provider() -> str:
+    """Hard-coded stub"""
+    return "24:01"
+
+
+def main():
+    """
+    >>> time_with_ci1 = ConstructorInjection(midnight_time_provider)
+    >>> time_with_ci1.get_current_time_as_html_fragment()
+    '<span class="tinyBoldText">24:01</span>'
+
+    >>> time_with_ci2 = ConstructorInjection(production_code_time_provider)
+    >>> time_with_ci2.get_current_time_as_html_fragment()
+    '<span class="tinyBoldText">...</span>'
+
+    >>> time_with_pi = ParameterInjection()
+    >>> time_with_pi.get_current_time_as_html_fragment(midnight_time_provider)
+    '<span class="tinyBoldText">24:01</span>'
+
+    >>> time_with_si = SetterInjection()
+
+    >>> time_with_si.get_current_time_as_html_fragment()
+    Traceback (most recent call last):
+    ...
+    AttributeError: 'SetterInjection' object has no attribute 'time_provider'
+
+    >>> time_with_si.set_time_provider(midnight_time_provider)
+    >>> time_with_si.get_current_time_as_html_fragment()
+    '<span class="tinyBoldText">24:01</span>'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod(optionflags=doctest.ELLIPSIS)
+```
+
+---
+
+### Page object
+
+The page object pattern intends to create an object for each part of a web page. This technique helps build a separation between the test code and the actual code that interacts with the web page.
+
+```python
+from element import BasePageElement
+from locators import MainPageLocators
+
+class SearchTextElement(BasePageElement):
+    """This class gets the search text from the specified locator"""
+
+    #The locator for search box where search string is entered
+    locator = 'q'
+
+
+class BasePage(object):
+    """Base class to initialize the base page that will be called from all
+    pages"""
+
+    def __init__(self, driver):
+        self.driver = driver
+
+
+class MainPage(BasePage):
+    """Home page action methods come here. I.e. Python.org"""
+
+    #Declares a variable that will contain the retrieved text
+    search_text_element = SearchTextElement()
+
+    def is_title_matches(self):
+        """Verifies that the hardcoded text "Python" appears in page title"""
+
+        return "Python" in self.driver.title
+
+    def click_go_button(self):
+        """Triggers the search"""
+
+        element = self.driver.find_element(*MainPageLocators.GO_BUTTON)
+        element.click()
+
+
+class SearchResultsPage(BasePage):
+    """Search results page action methods come here"""
+
+    def is_results_found(self):
+        # Probably should search for this text in the specific page
+        # element, but as for now it works fine
+        return "No results found." not in self.driver.page_source
+```
+
+---
+
 ## References
  - https://github.com/faif/python-patterns
+ - https://selenium-python.readthedocs.io/page-objects.html
