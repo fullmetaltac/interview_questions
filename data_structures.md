@@ -29,8 +29,6 @@ Data Structures are a way of organizing data so that it can be accessed more eff
 
 ## Built-in Data Structures
 
----
-
 ### String
 
 A string is a sequence of one or more characters (letters, numbers, symbols) that can be either a constant or a variable. Made up of Unicode, strings are immutable sequences, meaning they are unchanging.
@@ -204,8 +202,6 @@ if __name__ == "__main__":
 ----
 
 ## Collections Module
-
----
 
 ### Counters
 
