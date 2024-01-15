@@ -49,6 +49,7 @@
     - [What is Inheritance in Python?](#what-is-inheritance-in-python)
     - [What is Polymorphism in Python?](#what-is-polymorphism-in-python)
     - [What is Abstraction in Python?](#what-is-abstraction-in-python)
+    - [What is a Class diagram?](#what-is-a-class-diagram)
     - [What is MRO in Python?](#what-is-mro-in-python)
     - [Explain Inheritance and Composition in Python.](#explain-inheritance-and-composition-in-python)
     - [What is the difference between staticmethod and classmethod?](#what-is-the-difference-between-staticmethod-and-classmethod)
@@ -1678,6 +1679,14 @@ if __name__ == "__main__":
     import doctest
     doctest.testmod(optionflags=doctest.ELLIPSIS)
 ```
+
+---
+
+### What is a Class diagram?
+
+In software engineering, a class diagram in the Unified Modeling Language (UML) is a type of static structure diagram that describes the structure of a system by showing the system's classes, their attributes, operations (or methods), and the relationships among objects.
+
+![https://en.m.wikipedia.org/wiki/Class_diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Uml_classes_en.svg/512px-Uml_classes_en.svg.png)
 
 ---
 
