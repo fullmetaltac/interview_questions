@@ -67,6 +67,8 @@
 
 ##  Basics
 
+---
+
 ### What is PEP 8?
 
 Python Enhancement Proposal or `PEP 8` is a set of rules that specify how to format Python code for maximum readability.
@@ -599,6 +601,8 @@ if __name__ == "__main__":
 
 ##  Functions
 
+---
+
 ### What is closure in Python?
 
 Python closure is a nested function that allows us to access variables of the outer function even after the outer function is closed.
@@ -1050,6 +1054,8 @@ if __name__ == "__main__":
 
 ##  Collections
 
+---
+
 ### What is slicing in Python?
 
 Slicing refers to the mechanism to select the range of items from sequence types like lists, tuples, strings
@@ -1307,6 +1313,8 @@ if __name__ == "__main__":
 ---
 
 ##  OOP
+
+---
 
 ### What is a class in Python?
 
@@ -1956,6 +1964,8 @@ pyright my_file.py
 ---
 
 ##  Async and concurrency
+
+---
 
 ### How is a thread different from a process?
 
