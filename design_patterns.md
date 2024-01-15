@@ -86,7 +86,6 @@ class EnglishLocalizer:
 
 
 def get_localizer(language: str = "English") -> Localizer:
-
     """Factory"""
     localizers: Dict[str, Type[Localizer]] = {
         "English": EnglishLocalizer,
@@ -113,8 +112,8 @@ def main():
 
 if __name__ == "__main__":
     import doctest
-
     doctest.testmod()
+
 ```
 
 ### Abstract Factory Method 
