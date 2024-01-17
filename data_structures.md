@@ -571,7 +571,9 @@ if __name__ == "__main__":
 ### Graph
 A `Graph` is a nonlinear data structure consisting of **nodes** and **edges**. The **nodes** are sometimes also referred to as vertices and the **edges** are lines or arcs that connect any two **nodes** in the `Graph`. More formally a `Graph` can be defined as a finite set of vertices(or nodes) and a set of edges that connect a pair of nodes.
 
-![graph](https://github.com/fullmetaltac/interview_questions/assets/5435980/e76f0322-36e4-4289-b681-2cf5473ef060)
+<p align="center" width="100%">
+    <img width="40%" src="https://github.com/fullmetaltac/interview_questions/assets/5435980/e76f0322-36e4-4289-b681-2cf5473ef060"> 
+</p>
 
 ```python
 from collections import defaultdict

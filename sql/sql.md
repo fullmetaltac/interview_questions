@@ -353,7 +353,9 @@ PostgreSQL join is used to combine columns from one (self-join) or more tables b
 
 PostgreSQL supports inner join, left join, right join, full outer join, cross join, natural join, and a special kind of join called self-join.
 
-![joins](https://www.postgresqltutorial.com/wp-content/uploads/2018/12/PostgreSQL-Joins.png)
+<p align="center" width="100%">
+    <img width="80%" src="https://www.postgresqltutorial.com/wp-content/uploads/2018/12/PostgreSQL-Joins.png"> 
+</p>
 
 :bulb: *Example*
 
@@ -414,7 +416,9 @@ LIMIT 2;
 
 A `CROSS JOIN` clause allows you to produce a Cartesian Product of rows in two or more tables.
 
-![cross join](https://www.postgresqltutorial.com/wp-content/uploads/2016/06/PostgreSQL-CROSS-JOIN-illustration.png)
+<p align="center" width="100%">
+    <img width="33%" src="https://www.postgresqltutorial.com/wp-content/uploads/2016/06/PostgreSQL-CROSS-JOIN-illustration.png"> 
+</p>
 
 :bulb: *Example*
 

@@ -4,3 +4,4 @@
 - [SOLID](solid.md)
 - [Design patterns](design_patterns.md)
 - [SQL](sql/sql.md)
+- [QA](qa.md)

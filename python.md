@@ -44,7 +44,7 @@
     - [How can you prevent method overriding in Python?](#how-can-you-prevent-method-overriding-in-python)
     - [What is the purpose of the @property decorator?](#what-is-the-purpose-of-the-property-decorator)
     - [What is meta class in Python.](#what-is-meta-class-in-python)
-    - [Explain object creation process. Which method is called first?](#explain-object-creation-process-which-method-is-called-first)
+    - [Explain object creation process?](#explain-object-creation-process)
     - [What is Encapsulation in Python?](#what-is-encapsulation-in-python)
     - [What is Inheritance in Python?](#what-is-inheritance-in-python)
     - [What is Polymorphism in Python?](#what-is-polymorphism-in-python)
@@ -1499,7 +1499,7 @@ if __name__ == "__main__":
 ```
 ---
 
-### Explain object creation process. Which method is called first?
+### Explain object creation process?
 
 When an object of a class is created or a class is instantiated, the `__new__()` method of class is called. This particular method is responsible for returning a new class object. It can be overriden to implement object creational restrictions on class.
 
@@ -1686,7 +1686,9 @@ if __name__ == "__main__":
 
 In software engineering, a class diagram in the Unified Modeling Language (UML) is a type of static structure diagram that describes the structure of a system by showing the system's classes, their attributes, operations (or methods), and the relationships among objects.
 
-![https://en.m.wikipedia.org/wiki/Class_diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Uml_classes_en.svg/512px-Uml_classes_en.svg.png)
+<p align="center" width="100%">
+    <img width="33%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Uml_classes_en.svg/512px-Uml_classes_en.svg.png"> 
+</p>
 
 ---
 
