@@ -50,6 +50,8 @@ docker exec -i pg psql -h localhost -U postgres -d dvdrental \
 docker exec -it pg psql -h localhost -U postgres -d dvdrental
 ```
 
+![dvd-rental-sample-database-diagram](https://github.com/fullmetaltac/interview_questions/assets/5435980/25cdc505-ce86-4bcd-9c9b-db80392cbb39)
+
 ---
 
 ## SQL
