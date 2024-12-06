@@ -331,5 +331,9 @@ want to modify the renderer's material, use material instead.
 
 ---
 ## References
+ - https://gamedevbeginner.com/unity/
+ - https://github.com/rcallaby/CSharp-Interview-Questions
  - https://github.com/GuardianOfGods/unity-interview-questions
- - https://gamedevbeginner.com/singletons-in-unity-the-right-way/
+ - https://github.com/Unity-Technologies/game-programming-patterns-demo/
+ - https://docs.unity3d.com/6000.0/Documentation/Manual/execution-order.html
+  
