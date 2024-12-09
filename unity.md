@@ -21,6 +21,7 @@
     - [What is the difference between `GetComponent<T>()` and `FindObjectOfType<T>()`?](#what-is-the-difference-between-getcomponentt-and-findobjectoftypet)
     - [Why is using object pooling important? How does it work in Unity?](#why-is-using-object-pooling-important-how-does-it-work-in-unity)
     - [How to save local data?](#how-to-save-local-data)
+    - [Describe delegate use cases in unity.](#describe-delegate-use-cases-in-unity)
   - [Graphics](#graphics)
     - [What is LOD and what are its advantages and disadvantages?](#what-is-lod-and-what-are-its-advantages-and-disadvantages)
     - [What is the use of Occlusion Culling?](#what-is-the-use-of-occlusion-culling)
@@ -263,6 +264,97 @@ etc. and displaying it again when used. This helps increase game performance sig
 
 ---
 
+### Describe delegate use cases in unity.
+
+Delegates in Unity game development have a variety of use cases. Delegates are a powerful feature in C# that allow you to define callbacks and event-driven behavior, which is particularly useful in game development for maintaining clean, modular, and decoupled code.
+
+```cs
+// Custom Event Systems:
+public class Player : MonoBehaviour
+{
+    public delegate void HealthChanged(int currentHealth);
+    public static event HealthChanged OnHealthChanged;
+
+    private int health = 100;
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        OnHealthChanged?.Invoke(health); // Notify listeners
+    }
+}
+
+public class UIManager : MonoBehaviour
+{
+    private void OnEnable() => Player.OnHealthChanged += UpdateHealthUI;
+    private void OnDisable() => Player.OnHealthChanged -= UpdateHealthUI;
+
+    private void UpdateHealthUI(int health)
+    {
+        Debug.Log($"Health Updated: {health}");
+        // Update UI elements here
+    }
+}
+```
+
+```cs
+// Input Handling:
+public class InputManager : MonoBehaviour
+{
+    public delegate void JumpAction();
+    public static event JumpAction OnJump;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnJump?.Invoke(); // Notify listeners of jump action
+        }
+    }
+}
+
+public class PlayerMovement : MonoBehaviour
+{
+    private void OnEnable() => InputManager.OnJump += Jump;
+
+    private void OnDisable() => InputManager.OnJump -= Jump;
+
+    private void Jump()
+    {
+        Debug.Log("Player Jumped!");
+        // Add jump logic here
+    }
+}
+```
+
+```cs
+// AI or NPC Behavior:
+public delegate void AlertAction(Vector3 playerPosition);
+public class Enemy : MonoBehaviour
+{
+    public static event AlertAction OnPlayerDetected;
+
+    void DetectPlayer(Vector3 playerPosition)
+    {
+        OnPlayerDetected?.Invoke(playerPosition);
+    }
+}
+
+public class Guard : MonoBehaviour
+{
+    private void OnEnable() => Enemy.OnPlayerDetected += ReactToAlert;
+    private void OnDisable() => Enemy.OnPlayerDetected -= ReactToAlert;
+
+    private void ReactToAlert(Vector3 playerPosition)
+    {
+        Debug.Log($"Guard reacting to player at {playerPosition}");
+        // Move toward player position or change state
+    }
+}
+```
+
+---
+
 
 
 
@@ -326,13 +418,10 @@ want to modify the renderer's material, use material instead.
   * Used for calculating reflections and lighting for reflective surfaces.
 * **Real-time Global Illumination (GI)**:
   * Unity also provides a real-time global illumination system that allows dynamic lighting changes to affect the scene's lighting in real-time.
-
 ---
 
----
 ## References
  - https://gamedevbeginner.com/unity/
- - https://github.com/rcallaby/CSharp-Interview-Questions
  - https://github.com/GuardianOfGods/unity-interview-questions
  - https://github.com/Unity-Technologies/game-programming-patterns-demo/
  - https://docs.unity3d.com/6000.0/Documentation/Manual/execution-order.html
