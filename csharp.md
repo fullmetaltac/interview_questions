@@ -14,6 +14,16 @@
     - [What is an event in C# and how is it different from a delegate?](#what-is-an-event-in-c-and-how-is-it-different-from-a-delegate)
     - [What is an anonymous method in C# and how is it used?](#what-is-an-anonymous-method-in-c-and-how-is-it-used)
     - [Can you explain the difference between a static and an instance method in C#?](#can-you-explain-the-difference-between-a-static-and-an-instance-method-in-c)
+    - [What is a generic type in C# and why is it used?](#what-is-a-generic-type-in-c-and-why-is-it-used)
+    - [What is an extension method in C# and how is it implemented?](#what-is-an-extension-method-in-c-and-how-is-it-implemented)
+    - [Can you explain the difference between a method and an operator in C#?](#can-you-explain-the-difference-between-a-method-and-an-operator-in-c)
+    - [Can you explain the difference between lazy and eager evaluation in C#?](#can-you-explain-the-difference-between-lazy-and-eager-evaluation-in-c)
+    - [Explain the use of reflection in C#?](#explain-the-use-of-reflection-in-c)
+    - [Explain the ?? operator and what is the correct way to use it in your code?](#explain-the--operator-and-what-is-the-correct-way-to-use-it-in-your-code)
+    - [Can you please explain the use of the as operator in C# and the best way to use it?](#can-you-please-explain-the-use-of-the-as-operator-in-c-and-the-best-way-to-use-it)
+    - [Can you please demonstrate how you would use a bitwise operator in C#?](#can-you-please-demonstrate-how-you-would-use-a-bitwise-operator-in-c)
+  - [LINQ](#linq)
+    - [What is LINQ in C# and what is its purpose?](#what-is-linq-in-c-and-what-is-its-purpose)
   - [References](#references)
 
 
@@ -614,8 +624,263 @@ Anonymous methods are commonly used in event handling and LINQ queries, among ot
 
 ### Can you explain the difference between a static and an instance method in C#?
 
+There are two types of methods in C#: static and instance methods.
+
+* **Static Methods**: A static method is a method that is associated with the class rather than an instance of the class. It can be called without creating an instance of the class. In other words, it's a method that belongs to the type itself and not to an instance of the type.
+```cs
+public static int Add(int num1, int num2)
+{
+    return num1 + num2;
+}
+```
+```cs
+int sum = MyClass.Add(5, 10);
+```
+* **Instance Methods**: An instance method is a method that is associated with an instance of a class. It can only be called on an instance of the class, after an object of the class has been created.
+```cs
+public void DisplayMessage(string message)
+{
+    Console.WriteLine(message);
+}
+```
+```cs
+MyClass obj = new MyClass();
+obj.DisplayMessage("Hello, world!");
+```
 ---
 
+### What is a generic type in C# and why is it used?
+
+In C#, generic types are a feature that allows developers to define classes, interfaces, methods, or delegates with a placeholder for data types. Instead of specifying a concrete type, generics enable you to create more flexible, reusable, and type-safe code.
+
+```cs
+class Inventory<T> {
+    private List<T> _items = new List<T>();
+
+    public void AddItem(T item) {
+        _items.Add(item);
+    }
+
+    public T GetItem(int index) {
+        return _items[index];
+    }
+}
+```
+---
+
+### What is an extension method in C# and how is it implemented?
+
+An extension method in C# is a static method that allows you to extend the functionality of an existing type without modifying the type's original source code.
+
+```cs
+public static class StringExtensions
+{
+    public static string Reverse(this string str)
+    {
+        char[] charArray = str.ToCharArray();
+        Array.Reverse(charArray);
+        return new string(charArray);
+    }
+}
+```
+```cs
+using ExtensionMethods;
+
+string original = "Hello, world!";
+string reversed = original.Reverse();
+
+Console.WriteLine(reversed); // Outputs: "!dlrow ,olleH"
+```
+---
+
+### Can you explain the difference between a method and an operator in C#?
+
+In C#, both methods and operators are used to perform operations on data, but they differ in how they are defined and used.
+
+* A method is a block of code that can be called by its name to perform a specific task. It can take input parameters, perform operations, and return a result. Methods are defined as part of a class, and they can be called on instances of that class or on the class itself.
+
+```cs
+public int Add(int a, int b)
+{
+    return a + b;
+}
+```
+```cs
+int result = Add(5, 10); // result will be 15
+```
+
+* An operator, on the other hand, is a special symbol or keyword that performs a specific operation on one or more operands. Operators are predefined in C# and can be used with built-in types, user-defined types, and enumerations.
+```cs
+int result = 5 + 10; // result will be 15
+``` 
+
+* Operators can also be overloaded, which means that you can define new behavior for an existing operator when it is used with your own types.
+```cs
+public static Vector operator +(Vector a, Vector b)
+{
+    return new Vector(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+}
+```
+```cs
+Vector result = vector1 + vector2;
+```
+---
+
+### Can you explain the difference between lazy and eager evaluation in C#?
+
+In C#, lazy evaluation and eager evaluation refer to two different approaches for evaluating expressions and handling computations.
+
+* **Lazy evaluation**, also known as delayed evaluation, is an evaluation strategy where expressions are not evaluated until they are actually needed. This means that the computation is deferred until it is absolutely necessary, usually to avoid unnecessary calculations or to save resources. In C#, lazy evaluation is often implemented using a technique called "lazy loading," where the value of an expression is only computed the first time it is needed, and then cached for later use. Lazy evaluation can be useful when working with complex, resource-intensive calculations or when working with large data sets that may not all be needed at once.
+```cs
+Func<int> lazySum = () => x + y; // lazy evaluation, sum is not computed yet
+int result = lazySum(); // the expression is evaluated when it is needed
+```
+
+* On the other hand, **eager evaluation**, also known as immediate evaluation, is the default evaluation strategy in C#. This means that expressions are evaluated as soon as they are encountered in the code, without any delay. This can be useful for simple or short-lived computations where the result is needed immediately, but it can also lead to unnecessary computation or resource consumption if the expressions are not carefully designed.
+```cs
+int x = 5;
+int y = 10;
+int sum = x + y; // eager evaluation, sum is computed immediately
+```
+---
+
+### Explain the use of reflection in C#?
+
+Reflection in C# is a powerful feature that allows you to inspect and interact with the metadata of types (classes, interfaces, etc.) at runtime. It provides a way to examine and manipulate the structure, behavior, and attributes of types, including accessing fields, properties, methods, and events dynamically.
+
+
+**Common Use Cases of Reflection**:  
+
+* **Dynamic Loading and Instantiation**: Reflection is often used when you need to dynamically load and instantiate types at runtime. For example, you might have a configuration file specifying a class name, and you want to create an instance of that class without knowing it at compile time.
+```cs
+string typeName = "Namespace.ClassName";
+Type type = Type.GetType(typeName);
+object instance = Activator.CreateInstance(type);
+```
+
+* **Accessing Members Dynamically**: Reflection allows you to access and invoke members (fields, properties, methods) of a type dynamically. This is useful when dealing with objects of unknown types.
+
+```cs
+Type type = typeof(MyClass);
+PropertyInfo property = type.GetProperty("MyProperty");
+object value = property.GetValue(myObject);
+```
+
+* **Attribute Inspection**: Reflection is commonly used for inspecting custom attributes applied to types or members. This can be useful in scenarios like custom serialization or validation.
+```cs
+Type type = typeof(MyClass);
+var attributes = type.GetCustomAttributes(typeof(MyCustomAttribute), true);
+```
+
+**Appropriate Times to Use Reflection**:  
+
+* **When Dealing with Unknown Types**: Use reflection when you need to work with types that are not known at compile time, such as loading plugins or implementing generic frameworks.
+
+* **Metadata Inspection**: Use reflection when you need to inspect metadata, like attributes, or when building tools that analyze code.
+
+* **Serialization and Deserialization**: Reflection is often used in serialization frameworks to dynamically inspect and manipulate object structures.
+
+**Inappropriate Times to Use Reflection**:  
+
+* **Performance-Critical Code**: Reflection can be slower compared to direct, compile-time code. Avoid using reflection in performance-critical sections of your application.
+
+* **Security-Sensitive Scenarios**: Reflection can be a security risk, especially if it's used to access or modify private members of a type. It's important to validate and secure the use of reflection, especially in scenarios where security is crucial.
+
+* **Code Maintainability**: Excessive use of reflection can make code less maintainable, as it may lead to hard-to-read and error-prone code. Favor strongly-typed code whenever possible.
+
+---
+
+### Explain the ?? operator and what is the correct way to use it in your code?
+
+In C#, the `??` operator is called the null-coalescing operator. It is used for handling null values in expressions and provides a concise way to return a default value when a nullable type is null. The syntax is as follows:
+
+```cs
+result = expression1 ?? expression2;
+```
+```cs
+// Example 1: Using ?? with nullable types
+int? nullableValue = GetNullableValue(); // some method returning a nullable int
+
+// If nullableValue is not null, result will be nullableValue; otherwise, it will be 10.
+int result = nullableValue ?? 10;
+
+// Example 2: Using ?? with reference types
+string nullableString = GetString(); // some method returning a string or null
+
+// If nullableString is not null, result will be nullableString; otherwise, it will be "Default".
+string resultString = nullableString ?? "Default";
+```
+---
+
+### Can you please explain the use of the as operator in C# and the best way to use it?
+
+In C#, the as operator is used for casting or converting a variable to a different type, but with a safer approach than some other casting operators. The as operator is particularly useful when you want to perform a cast, but you're not sure if the cast is valid. If the cast is not valid, the as operator returns null instead of throwing an exception.
+
+```cs
+object myObject = "Hello, World!";
+
+// Attempt to cast using the as operator
+string myString = myObject as string;
+
+if (myString != null)
+{
+    Console.WriteLine("Casting successful: " + myString);
+}
+else
+{
+    Console.WriteLine("Casting failed");
+}
+```
+---
+
+### Can you please demonstrate how you would use a bitwise operator in C#?
+
+Bitwise operators manipulate individual bits within integral data types like integers (int), longs (long), bytes (byte), etc. They are primarily used in scenarios where you need to perform low-level bit manipulation or optimize storage.
+
+```cs
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int num1 = 10;  // Binary: 1010
+        int num2 = 6;   // Binary: 0110
+
+        // Bitwise AND
+        int resultAnd = num1 & num2;  // Binary: 0010 (2 in decimal)
+        Console.WriteLine("Bitwise AND result: " + resultAnd);
+
+        // Bitwise OR
+        int resultOr = num1 | num2;   // Binary: 1110 (14 in decimal)
+        Console.WriteLine("Bitwise OR result: " + resultOr);
+
+        // Bitwise XOR
+        int resultXor = num1 ^ num2;  // Binary: 1100 (12 in decimal)
+        Console.WriteLine("Bitwise XOR result: " + resultXor);
+
+        // Bitwise NOT (Unary)
+        int resultNot = ~num1;        // Binary: 0101 (in two's complement)
+        Console.WriteLine("Bitwise NOT result: " + resultNot);
+
+        // Bitwise Left Shift
+        int resultLeftShift = num1 << 1;  // Binary: 10100 (20 in decimal)
+        Console.WriteLine("Bitwise Left Shift result: " + resultLeftShift);
+
+        // Bitwise Right Shift
+        int resultRightShift = num1 >> 1; // Binary: 0101 (5 in decimal)
+        Console.WriteLine("Bitwise Right Shift result: " + resultRightShift);
+    }
+}
+```
+
+---
+
+## LINQ
+
+### What is LINQ in C# and what is its purpose?
+
+LINQ (Language Integrated Query) is a feature of the C# programming language that provides a unified syntax for querying and manipulating data from various data sources such as collections, databases, XML documents, and more. LINQ allows developers to write queries using a familiar syntax that is similar to SQL, and it can be used with any data source that implements the IEnumerable or IQueryable interfaces.
 
 ---
   ## References
