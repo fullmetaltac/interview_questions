@@ -53,8 +53,7 @@ game assets in a directory for all models, scripts, and prefabs.
 
 ### What is a GameObject in Unity?
 
-`GameObjects` are the fundamental objects in Unity that represent characters, props and scenery. They do not accomplish  
- much in themselves but they act as containers for Components, which implement the real functionality.
+`GameObjects` serve as fundamental containers for Components that define their functionality, representing characters, props, and scenery in Unity.
 
 ---
 
@@ -127,9 +126,6 @@ built-in Text component.
 * **Cinemachine**:
 Purpose: Cinemachine is a powerful and customizable camera system for Unity. It simplifies the process of creating   
 dynamic and cinematic camera movements in games.
-* Post Processing Stack:
-Purpose: This package enhances the visual quality of your Unity project by adding post-processing effects like ambient   
-occlusion, bloom, color grading, and more.
 * **DOTween**:
 Purpose: DOTween is a fast, efficient, and easy-to-use animation engine for Unity. It allows developers to create   
 smooth and complex animations with a simple syntax.
@@ -162,7 +158,9 @@ loading game data, including player preferences and game progress.
 
 ### What is the order in which `OnEnable`, `Awake`, and `Start` occur during runtime?
 
-`Awake()` –> `OnEnable()` -> `Start()`. `OnEnable()` can occur repeatedly in the same cycle!
+`Awake()` –> `OnEnable()` -> `Start()`. 
+`OnEnable()` can occur multiple times during runtime depending on the object's activation state.
+
 
 ---
 
@@ -173,7 +171,7 @@ Good for Movement, InputControl etc. (most of the time you'll use Update)
 Usually you will use Time.DeltaTime to take pastime into account (e.g. for GameObject Translations)
 * `LateUpdate()` is called after all Update() methods are processed
 So e.g. for the camera that follows your character, it's good to Update after it has moved
-* `FixedUpdate()` is called by the physics engine at fixed intervals (that can beset in the Options)
+* `FixedUpdate()` is typically used for physics calculations, such as applying forces to Rigidbodies.
 
 ---
 
@@ -188,9 +186,8 @@ void Awake()
 
 ### Describe the role of quaternions.
 
-**Quaternions** are used to represent rotations. The advantages of relative **Euler angles**: it can perform   
-incremental rotation, avoid universal lock, and have two ways of expressing a given orientation that are mutually   
-negative (Euler angles have countless ways of expression)
+`Quaternions` are used to represent rotations, avoiding issues like gimbal lock that occur with Euler angles. They are   
+also computationally efficient for interpolations and rotations in 3D space
 
 ---
 
@@ -334,6 +331,8 @@ public class ItemUser : MonoBehaviour
 
 * `GetComponent<T>()` fetches a component attached to the same GameObject.
 * `FindObjectOfType<T>()` searches the scene for the first active instance of the specified type.
+
+> `FindObjectOfType<T>()` is slower as it searches the entire scene hierarchy.
 
 ---
 
