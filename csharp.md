@@ -2,16 +2,8 @@
 - [Table of Contents](#table-of-contents)
   - [General](#general)
     - [What is the difference between a method and a function in C#?](#what-is-the-difference-between-a-method-and-a-function-in-c)
-    - [What is object-oriented programming?](#what-is-object-oriented-programming)
-    - [What is an abstract class in C# and when is it used?](#what-is-an-abstract-class-in-c-and-when-is-it-used)
-    - [What is an interface in C# and what is its purpose?](#what-is-an-interface-in-c-and-what-is-its-purpose)
-    - [Can you explain the difference between an abstract class and an interface in C#?](#can-you-explain-the-difference-between-an-abstract-class-and-an-interface-in-c)
-    - [What is a constructor in C# and what are its different types?](#what-is-a-constructor-in-c-and-what-are-its-different-types)
-    - [What is a sealed class in C# and why is it used?](#what-is-a-sealed-class-in-c-and-why-is-it-used)
     - [What is the difference between a value type and a reference type in C#?](#what-is-the-difference-between-a-value-type-and-a-reference-type-in-c)
     - [Can you explain the use of the "this" keyword in C#?](#can-you-explain-the-use-of-the-this-keyword-in-c)
-    - [What is a delegate in C# and how is it used?](#what-is-a-delegate-in-c-and-how-is-it-used)
-    - [What is an event in C# and how is it different from a delegate?](#what-is-an-event-in-c-and-how-is-it-different-from-a-delegate)
     - [What is an anonymous method in C# and how is it used?](#what-is-an-anonymous-method-in-c-and-how-is-it-used)
     - [Can you explain the difference between a static and an instance method in C#?](#can-you-explain-the-difference-between-a-static-and-an-instance-method-in-c)
     - [What is a generic type in C# and why is it used?](#what-is-a-generic-type-in-c-and-why-is-it-used)
@@ -20,16 +12,28 @@
     - [Can you explain the difference between lazy and eager evaluation in C#?](#can-you-explain-the-difference-between-lazy-and-eager-evaluation-in-c)
     - [Explain the use of reflection in C#?](#explain-the-use-of-reflection-in-c)
     - [Explain the ?? operator and what is the correct way to use it in your code?](#explain-the--operator-and-what-is-the-correct-way-to-use-it-in-your-code)
-    - [Can you please explain the use of the as operator in C# and the best way to use it?](#can-you-please-explain-the-use-of-the-as-operator-in-c-and-the-best-way-to-use-it)
-    - [Can you please demonstrate how you would use a bitwise operator in C#?](#can-you-please-demonstrate-how-you-would-use-a-bitwise-operator-in-c)
-  - [Events](#events)
-    - [What is an event in C# and how does it work?](#what-is-an-event-in-c-and-how-does-it-work)
-    - [Can you give an example of how to declare and raise an event in C#?](#can-you-give-an-example-of-how-to-declare-and-raise-an-event-in-c)
-    - [What is a delegate in C# and how is it related to events?](#what-is-a-delegate-in-c-and-how-is-it-related-to-events)
-    - [How can you subscribe and unsubscribe to an event in C#?](#how-can-you-subscribe-and-unsubscribe-to-an-event-in-c)
-    - [Can you explain the difference between an event and a delegate in C#?](#can-you-explain-the-difference-between-an-event-and-a-delegate-in-c)
+    - [Can you explain the use of the as operator in C# and the best way to use it?](#can-you-explain-the-use-of-the-as-operator-in-c-and-the-best-way-to-use-it)
+    - [Can you demonstrate how you would use a bitwise operator in C#?](#can-you-demonstrate-how-you-would-use-a-bitwise-operator-in-c)
+  - [Object oriented programming](#object-oriented-programming)
+    - [What is object-oriented programming?](#what-is-object-oriented-programming)
+    - [What is a sealed class in C# and why is it used?](#what-is-a-sealed-class-in-c-and-why-is-it-used)
+    - [What is an abstract class in C# and when is it used?](#what-is-an-abstract-class-in-c-and-when-is-it-used)
+    - [What is an interface in C# and what is its purpose?](#what-is-an-interface-in-c-and-what-is-its-purpose)
+    - [What is an abstract class in C# and how does it differ from a regular class?](#what-is-an-abstract-class-in-c-and-how-does-it-differ-from-a-regular-class)
+    - [Can you explain the difference between an abstract class and an interface in C#?](#can-you-explain-the-difference-between-an-abstract-class-and-an-interface-in-c)
+    - [What is a constructor in C# and what are its different types?](#what-is-a-constructor-in-c-and-what-are-its-different-types)
+    - [What is the purpose of the base keyword in C#?](#what-is-the-purpose-of-the-base-keyword-in-c)
+    - [How can you use the "base" keyword in C# to call the base class constructor?](#how-can-you-use-the-base-keyword-in-c-to-call-the-base-class-constructor)
+    - [Can you discuss the differences between virtual methods and abstract methods in C#](#can-you-discuss-the-differences-between-virtual-methods-and-abstract-methods-in-c)
+    - [How can you use inheritance and polymorphism together to achieve dynamic dispatch in C#?](#how-can-you-use-inheritance-and-polymorphism-together-to-achieve-dynamic-dispatch-in-c)
   - [LINQ](#linq)
     - [What is LINQ in C# and what is its purpose?](#what-is-linq-in-c-and-what-is-its-purpose)
+    - [Can you explain the difference between a query expression and a method chain in LINQ?](#can-you-explain-the-difference-between-a-query-expression-and-a-method-chain-in-linq)
+    - [How can LINQ be used to perform grouping and aggregation operations on data?](#how-can-linq-be-used-to-perform-grouping-and-aggregation-operations-on-data)
+  - [Events](#events)
+    - [What is a delegate in C# and how is it used?](#what-is-a-delegate-in-c-and-how-is-it-used)
+    - [What is an event in C# and how is it different from a delegate?](#what-is-an-event-in-c-and-how-is-it-different-from-a-delegate)
+    - [How can you subscribe and unsubscribe to an event in C#?](#how-can-you-subscribe-and-unsubscribe-to-an-event-in-c)
   - [References](#references)
 
 
@@ -62,316 +66,6 @@ class Program
 ```
 
 * **Function**: In C#, the term "function" is commonly used interchangeably with "method." However, in a broader context, a function is a self-contained block of code that performs a specific task and can return a value. This term is often used in languages that support both procedural programming and object-oriented programming. Since C# is primarily an object-oriented language, the concept of "function" is usually referred to as "method."
----
-
-### What is object-oriented programming?
-
-Object-Oriented Programming (OOP) is a programming paradigm that focuses on organizing code into objects, which are instances of classes. It promotes the idea of encapsulating data (attributes) and behavior (methods) related to a specific entity into a single unit. C# is a language that fully supports OOP concepts.
-
-In C#, classes serve as blueprints for creating objects.
-
-* **Class and Object Creation**: A class is a template that defines the structure and behavior of objects. An object is an instance of a class.
- 
-```cs
-class Person
-{
-    public int Age;
-    public string Name;
-
-    public void Introduce()
-    {
-        Console.WriteLine($"Hi, I'm {Name} and I'm {Age} years old.");
-    }
-}
-
-class Program
-{
-    static void Main()
-    {
-        Person person1 = new Person();
-        person1.Name = "Alice";
-        person1.Age = 30;
-        person1.Introduce(); // Output: Hi, I'm Alice and I'm 30 years old.
-    }
-}
-```
-
-* **Encapsulation**: Encapsulation ensures that the internal details of an object are hidden from the outside world. It helps maintain data integrity and allows controlled access to data through methods.
-
-```cs
-class BankAccount
-{
-    private double balance;
-
-    public void Deposit(double amount)
-    {
-        if (amount > 0)
-            balance += amount;
-    }
-
-    public void Withdraw(double amount)
-    {
-        if (amount > 0 && amount <= balance)
-            balance -= amount;
-    }
-
-    public double GetBalance()
-    {
-        return balance;
-    }
-}
-```
-* **Inheritance**: Inheritance allows you to create a new class based on an existing class, inheriting its attributes and methods. It promotes code reusability and hierarchy.
-
-```cs
-class Animal
-{
-    public string Species;
-
-    public void MakeSound()
-    {
-        Console.WriteLine("Animal makes a sound.");
-    }
-}
-
-class Dog : Animal
-{
-    public void Bark()
-    {
-        Console.WriteLine("Woof woof!");
-    }
-}
-```
-
-* **Polymorphism**: Polymorphism allows objects of different classes to be treated as objects of a common base class through inheritance. It enables dynamic method binding and flexibility in handling different object types.
-
-```cs
-class Shape
-{
-    public virtual void Draw()
-    {
-        Console.WriteLine("Drawing a shape.");
-    }
-}
-
-class Circle : Shape
-{
-    public override void Draw()
-    {
-        Console.WriteLine("Drawing a circle.");
-    }
-}
-
-class Square : Shape
-{
-    public override void Draw()
-    {
-        Console.WriteLine("Drawing a square.");
-    }
-}
-```
-
-### What is an abstract class in C# and when is it used?
-In C#, an abstract class is a class that cannot be instantiated directly and must be inherited by a subclass. It is a way to provide a common interface and shared implementation for a group of related classes, while also allowing for individual implementation in each subclass.
-
-An abstract class is defined using the abstract keyword before the class keyword. It can have abstract methods, which are declared without implementation, as well as non-abstract methods with implementation. Subclasses that inherit from the abstract class must implement all abstract methods or else they will also be abstract.
-
-```cs
-public abstract class Shape
-{
-    public abstract double GetArea();
-    public abstract double GetPerimeter();
-}
-
-public class Rectangle : Shape
-{
-    private double length;
-    private double width;
-    
-    public Rectangle(double length, double width)
-    {
-        this.length = length;
-        this.width = width;
-    }
-    
-    public override double GetArea()
-    {
-        return length * width;
-    }
-    
-    public override double GetPerimeter()
-    {
-        return 2 * (length + width);
-    }
-}
-```
----
-
-### What is an interface in C# and what is its purpose?
-In C#, an interface is a contract that defines a set of methods, properties, events, or indexers without implementing them. An interface does not contain any code for the behavior; it only specifies what can be done, not how it is done. Classes or structs that implement an interface are responsible for providing the concrete implementation for each member defined in the interface.
-
-**Purpose of Interfaces in C#**  
-
-The primary purpose of interfaces is to achieve abstraction and separation of concerns. Interfaces help in:
-
-* **Defining a contract**: They force implementing classes to follow a certain structure, ensuring consistency across multiple types.
-* **Loose coupling**: By depending on interfaces rather than concrete implementations, we reduce dependencies between parts of the code. This promotes better maintainability and flexibility.
-* **Multiple inheritance**: C# does not support multiple class inheritance but allows a class to implement multiple interfaces.
-* **Testability**: Interfaces make unit testing easier because they allow us to substitute real implementations with mock objects.
-
-Let’s consider a scenario where we are designing a payment system for an e-commerce platform. The system needs to support multiple payment methods such as Credit Card, PayPal, and Bank Transfer.
-
-```cs
-public interface IPaymentProcessor
-{
-    void ProcessPayment(decimal amount);
-    bool ValidatePaymentDetails();
-}
-```
-
-```cs
-public class CreditCardPaymentProcessor : IPaymentProcessor
-{
-    public void ProcessPayment(decimal amount)
-    {
-        Console.WriteLine($"Processing credit card payment of {amount}...");
-        // Logic to process credit card payment
-    }
-
-    public bool ValidatePaymentDetails()
-    {
-        Console.WriteLine("Validating credit card details...");
-        // Logic to validate credit card information
-        return true;
-    }
-}
-```
-```cs
-public class PayPalPaymentProcessor : IPaymentProcessor
-{
-    public void ProcessPayment(decimal amount)
-    {
-        Console.WriteLine($"Processing PayPal payment of {amount}...");
-        // Logic to process PayPal payment
-    }
-
-    public bool ValidatePaymentDetails()
-    {
-        Console.WriteLine("Validating PayPal account...");
-        // Logic to validate PayPal account
-        return true;
-    }
-}
-```
----
-
-### Can you explain the difference between an abstract class and an interface in C#?
-
-**Abstract Class:**  
-
-An abstract class is a blueprint for other classes. It can contain both abstract members (without implementation) and concrete members (with implementation). Abstract classes serve as base classes and are used to provide common functionality to derived classes.
-
-**Key Features:**  
-
-* **Inheritance**: Supports single inheritance; a class can inherit from only one abstract class.
-* **Members**: Can include fields, properties, methods, events, and constructors. Both abstract and concrete members are allowed.
-* **Access Modifiers**: Members can have access modifiers (e.g., `public`, `protected`, `private`).
-* **Purpose**: Used when there is a "is-a" relationship and shared implementation logic.
-
-```cs
-public abstract class Animal
-{
-    public abstract void MakeSound();
-
-    public void Sleep()
-    {
-        Console.WriteLine("Sleeping...");
-    }
-}
-```
-
-
-**Interface:**  
-
-An interface defines a contract for classes to implement. It contains only the signatures of methods, properties, events, or indexers without any implementation.
-
-**Key Features:**  
-
-* **Multiple Inheritance**: A class can implement multiple interfaces.
-* **Members**: Cannot include fields or concrete members; all members are implicitly public and abstract.
-* **Access Modifiers**: Members cannot have access modifiers; they are always public.
-* **Purpose**: Used when there is a "can-do" relationship or when you want to define a strict contract.
-
-```cs
-public interface IAnimal
-{
-    void MakeSound();
-    void Sleep();
-}
-```
-
-**Key Differences**
-
-| Feature                   | Abstract Class                          | Interface                         |
-|---------------------------|-----------------------------------------|-----------------------------------|
-| **Implementation**         | Can include concrete methods and fields. | Cannot include concrete methods or fields. |
-| **Inheritance**            | Single inheritance allowed.            | Multiple inheritance allowed.     |
-| **Access Modifiers**       | Members can have any access modifier.   | All members are implicitly `public`. |
-| **Constructors**           | Can have constructors.                 | Cannot have constructors.         |
-| **Usage Scenario**         | Use for shared behavior or base class.  | Use for defining a contract.      |
-
----
-
-### What is a constructor in C# and what are its different types?
-
-In C#, a constructor is a special method that is called when an object of a class is created. The purpose of a constructor is to initialize the state of an object with some initial values.
-
-C# supports two types of constructors:
-
-* **Instance Constructors**: An instance constructor is used to initialize the instance variables of a class. It is called when an object of the class is created using the new keyword. An instance constructor has the same name as the class and does not have a return type. Here is an example of an instance constructor:
-
-```cs
-public class MyClass {
-    public int x;
-    public int y;
-
-    public MyClass(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
-```
-
-* **Static Constructors**: A static constructor is used to initialize the static variables of a class. It is called only once, when the class is first used. A static constructor has the same name as the class and does not have any parameters. Here is an example of a static constructor:
-
-```cs
-public class MyClass {
-    public static int x;
-    public static int y;
-
-    static MyClass() {
-        x = 10;
-        y = 20;
-    }
-}
-```
-
- > Note that a class can have multiple constructors, but they must have different signatures (i.e., different parameter lists). This is known as constructor overloading.
-
----
-
-### What is a sealed class in C# and why is it used?
-
-In C#, a sealed class is a class that cannot be inherited by other classes. When a class is marked as sealed, it means that it is complete and cannot be extended further.
-
-The main reason to use a sealed class is to prevent the class from being modified or extended by other developers. This is useful when you want to ensure that the class works as intended and cannot be altered in unexpected ways. Sealed classes are also useful for performance reasons, as they can be optimized more effectively by the compiler.
-
-```cs
-sealed class MySealedClass
-{
-    // class members
-}
-```
 ---
 
 ### What is the difference between a value type and a reference type in C#?
@@ -475,130 +169,6 @@ class MyClass {
       // do something else
       return this; // return the current object
    }
-}
-```
-
----
-
-### What is a delegate in C# and how is it used?
-
-In C#, a delegate is a type that represents a method with a specific signature. It can be used to reference a method and invoke it indirectly, which provides a flexible way of decoupling the caller from the callee.
-
-A delegate declaration defines the signature of the method that it can reference. For example, the following delegate declaration defines a delegate type named MyDelegate that can reference a method that takes two integers as parameters and returns an integer:
-
-```cs
-delegate int MyDelegate(int x, int y);
-```
-
-A delegate object can be created by instantiating a delegate type with a method name or a lambda expression that matches the signature of the delegate type. For example, the following code creates a delegate object that references a method named Add
-```cs
-MyDelegate myDelegate = Add;
-```
-or with a lambda expression:
-```cs
-MyDelegate myDelegate = (x, y) => x + y;
-```
-Once a delegate object is created, it can be invoked like a method. The following code invokes the delegate object created above:
-```cs
-int result = myDelegate(1, 2); // result == 3
-```
-
-Delegates can also be used as event handlers in C# programs. When an event occurs, the delegate associated with the event is invoked, which can trigger the corresponding event handling code.
-
----
-
-### What is an event in C# and how is it different from a delegate?
-
->**Delegates in C#**:  
-  
-A delegate is essentially a type-safe function pointer. It holds references to methods with a specific signature and return type, allowing methods to be passed as arguments or assigned to variables. Delegates enable dynamic method invocation, meaning that the methods they point to can be changed at runtime.
-
-**Key Features of Delegates**:  
-
-* **Type-Safety**: Delegates ensure that the methods they reference have the correct signature (input parameters and return type).
-* **Multicasting**: A single delegate can reference multiple methods. When invoked, it calls each method in the order they were added.
-* **Flexibility**: Delegates allow methods to be passed as parameters, useful for callback implementations, and facilitate decoupling of method logic from the caller.
-
-```cs
-public delegate void ProcessEvent(string message);
-
-public class EventProcessor
-{
-    public void ProcessLog(string message)
-    {
-        Console.WriteLine($"Logging: {message}");
-    }
-
-    public void ProcessAlert(string message)
-    {
-        Console.WriteLine($"Alert: {message}");
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        EventProcessor processor = new EventProcessor();
-        
-        // Instantiate the delegate
-        ProcessEvent processDelegate = processor.ProcessLog;
-        
-        // Multicast - add another method
-        processDelegate += processor.ProcessAlert;
-
-        // Invoke the delegate
-        processDelegate("Critical system error");
-    }
-}
-```
-
-> Events in C#
-
-An event is a specialized form of a delegate designed to enable safe and structured communication between objects, adhering to the publish-subscribe pattern. Events are used when one or more subscribers are interested in being notified when something occurs within a class.
-
-**Key Features of Events**:
-
-* **Encapsulation**: Unlike delegates, events add an additional layer of security by restricting the invocation of the event to the declaring class. Subscribers can only register or unregister from the event but cannot invoke it.
-* **Publish-Subscribe Model**: Events allow objects to subscribe to specific events (e.g., when a button is clicked), and the event is raised when the triggering condition occurs.
-* **Loose Coupling**: Events decouple the sender of the event from its subscribers. This means the class raising the event doesn’t need to know which specific methods will handle the event, which promotes a modular and maintainable design.
-
-```cs
-public delegate void Notify(string message);
-
-public class Publisher
-{
-    // Declare the event using the delegate
-    public event Notify OnPublishEvent;
-
-    public void Publish(string message)
-    {
-        // Raise the event if there are subscribers
-        OnPublishEvent?.Invoke(message);
-    }
-}
-
-public class Subscriber
-{
-    public void HandleEvent(string message)
-    {
-        Console.WriteLine($"Subscriber received: {message}");
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Publisher publisher = new Publisher();
-        Subscriber subscriber = new Subscriber();
-
-        // Subscribe to the event
-        publisher.OnPublishEvent += subscriber.HandleEvent;
-
-        // Trigger the event
-        publisher.Publish("New event occurred!");
-    }
 }
 ```
 ---
@@ -818,7 +388,7 @@ string resultString = nullableString ?? "Default";
 ```
 ---
 
-### Can you please explain the use of the as operator in C# and the best way to use it?
+### Can you explain the use of the as operator in C# and the best way to use it?
 
 In C#, the as operator is used for casting or converting a variable to a different type, but with a safer approach than some other casting operators. The as operator is particularly useful when you want to perform a cast, but you're not sure if the cast is valid. If the cast is not valid, the as operator returns null instead of throwing an exception.
 
@@ -839,7 +409,7 @@ else
 ```
 ---
 
-### Can you please demonstrate how you would use a bitwise operator in C#?
+### Can you demonstrate how you would use a bitwise operator in C#?
 
 Bitwise operators manipulate individual bits within integral data types like integers (int), longs (long), bytes (byte), etc. They are primarily used in scenarios where you need to perform low-level bit manipulation or optimize storage.
 
@@ -886,69 +456,634 @@ class Program
 
 
 
+## Object oriented programming 
 
-## Events 
+### What is object-oriented programming?
 
-### What is an event in C# and how does it work?
+Object-Oriented Programming (OOP) is a programming paradigm that focuses on organizing code into objects, which are instances of classes. It promotes the idea of encapsulating data (attributes) and behavior (methods) related to a specific entity into a single unit. C# is a language that fully supports OOP concepts.
 
-In C#, an event is a mechanism that enables objects to communicate with each other by signaling that an action has occurred. Essentially, an event is a notification that something has happened that other parts of the program may be interested in.
+In C#, classes serve as blueprints for creating objects.
 
----
-
-### Can you give an example of how to declare and raise an event in C#?
+* **Class and Object Creation**: A class is a template that defines the structure and behavior of objects. An object is an instance of a class.
+ 
 ```cs
-using System;
+class Person
+{
+    public int Age;
+    public string Name;
+
+    public void Introduce()
+    {
+        Console.WriteLine($"Hi, I'm {Name} and I'm {Age} years old.");
+    }
+}
 
 class Program
 {
-    // Declare the delegate (if using non-generic pattern).
-    public delegate void MyEventHandler(object sender, EventArgs e);
-
-    // Declare the event using the delegate.
-    public event MyEventHandler MyEvent;
-
-    // This will raise the event.
-    protected virtual void OnMyEvent(EventArgs e)
-    {
-        MyEventHandler handler = MyEvent;
-        if (handler != null)
-        {
-            handler(this, e);
-        }
-    }
-
     static void Main()
     {
-        Program p = new Program();
+        Person person1 = new Person();
+        person1.Name = "Alice";
+        person1.Age = 30;
+        person1.Introduce(); // Output: Hi, I'm Alice and I'm 30 years old.
+    }
+}
+```
 
-        // Add the event handler.
-        p.MyEvent += new MyEventHandler(p_MyEvent);
+* **Encapsulation**: Encapsulation ensures that the internal details of an object are hidden from the outside world. It helps maintain data integrity and allows controlled access to data through methods.
 
-        // Call the method that raises the event.
-        p.RaiseMyEvent();
+```cs
+class BankAccount
+{
+    private double balance;
+
+    public void Deposit(double amount)
+    {
+        if (amount > 0)
+            balance += amount;
     }
 
-    // The event handler.
-    static void p_MyEvent(object sender, EventArgs e)
+    public void Withdraw(double amount)
     {
-        Console.WriteLine("MyEvent is raised by: " + sender.ToString());
+        if (amount > 0 && amount <= balance)
+            balance -= amount;
     }
 
-    // This method raises the event.
-    public void RaiseMyEvent()
+    public double GetBalance()
     {
-        OnMyEvent(EventArgs.Empty);
+        return balance;
+    }
+}
+```
+* **Inheritance**: Inheritance allows you to create a new class based on an existing class, inheriting its attributes and methods. It promotes code reusability and hierarchy.
+
+```cs
+class Animal
+{
+    public string Species;
+
+    public void MakeSound()
+    {
+        Console.WriteLine("Animal makes a sound.");
+    }
+}
+
+class Dog : Animal
+{
+    public void Bark()
+    {
+        Console.WriteLine("Woof woof!");
+    }
+}
+```
+
+* **Polymorphism**: Polymorphism allows objects of different classes to be treated as objects of a common base class through inheritance. It enables dynamic method binding and flexibility in handling different object types.
+
+```cs
+class Shape
+{
+    public virtual void Draw()
+    {
+        Console.WriteLine("Drawing a shape.");
+    }
+}
+
+class Circle : Shape
+{
+    public override void Draw()
+    {
+        Console.WriteLine("Drawing a circle.");
+    }
+}
+
+class Square : Shape
+{
+    public override void Draw()
+    {
+        Console.WriteLine("Drawing a square.");
+    }
+}
+```
+
+### What is a sealed class in C# and why is it used?
+
+In C#, a sealed class is a class that cannot be inherited by other classes. When a class is marked as sealed, it means that it is complete and cannot be extended further.
+
+The main reason to use a sealed class is to prevent the class from being modified or extended by other developers. This is useful when you want to ensure that the class works as intended and cannot be altered in unexpected ways. Sealed classes are also useful for performance reasons, as they can be optimized more effectively by the compiler.
+
+```cs
+sealed class MySealedClass
+{
+    // class members
+}
+```
+---
+
+### What is an abstract class in C# and when is it used?
+In C#, an abstract class is a class that cannot be instantiated directly and must be inherited by a subclass. It is a way to provide a common interface and shared implementation for a group of related classes, while also allowing for individual implementation in each subclass.
+
+An abstract class is defined using the abstract keyword before the class keyword. It can have abstract methods, which are declared without implementation, as well as non-abstract methods with implementation. Subclasses that inherit from the abstract class must implement all abstract methods or else they will also be abstract.
+
+```cs
+public abstract class Shape
+{
+    public abstract double GetArea();
+    public abstract double GetPerimeter();
+}
+
+public class Rectangle : Shape
+{
+    private double length;
+    private double width;
+    
+    public Rectangle(double length, double width)
+    {
+        this.length = length;
+        this.width = width;
+    }
+    
+    public override double GetArea()
+    {
+        return length * width;
+    }
+    
+    public override double GetPerimeter()
+    {
+        return 2 * (length + width);
+    }
+}
+```
+---
+
+### What is an interface in C# and what is its purpose?
+In C#, an interface is a contract that defines a set of methods, properties, events, or indexers without implementing them. An interface does not contain any code for the behavior; it only specifies what can be done, not how it is done. Classes or structs that implement an interface are responsible for providing the concrete implementation for each member defined in the interface.
+
+**Purpose of Interfaces in C#**  
+
+The primary purpose of interfaces is to achieve abstraction and separation of concerns. Interfaces help in:
+
+* **Defining a contract**: They force implementing classes to follow a certain structure, ensuring consistency across multiple types.
+* **Loose coupling**: By depending on interfaces rather than concrete implementations, we reduce dependencies between parts of the code. This promotes better maintainability and flexibility.
+* **Multiple inheritance**: C# does not support multiple class inheritance but allows a class to implement multiple interfaces.
+* **Testability**: Interfaces make unit testing easier because they allow us to substitute real implementations with mock objects.
+
+Let’s consider a scenario where we are designing a payment system for an e-commerce platform. The system needs to support multiple payment methods such as Credit Card, PayPal, and Bank Transfer.
+
+```cs
+public interface IPaymentProcessor
+{
+    void ProcessPayment(decimal amount);
+    bool ValidatePaymentDetails();
+}
+```
+
+```cs
+public class CreditCardPaymentProcessor : IPaymentProcessor
+{
+    public void ProcessPayment(decimal amount)
+    {
+        Console.WriteLine($"Processing credit card payment of {amount}...");
+        // Logic to process credit card payment
+    }
+
+    public bool ValidatePaymentDetails()
+    {
+        Console.WriteLine("Validating credit card details...");
+        // Logic to validate credit card information
+        return true;
+    }
+}
+```
+```cs
+public class PayPalPaymentProcessor : IPaymentProcessor
+{
+    public void ProcessPayment(decimal amount)
+    {
+        Console.WriteLine($"Processing PayPal payment of {amount}...");
+        // Logic to process PayPal payment
+    }
+
+    public bool ValidatePaymentDetails()
+    {
+        Console.WriteLine("Validating PayPal account...");
+        // Logic to validate PayPal account
+        return true;
+    }
+}
+```
+---
+
+### What is an abstract class in C# and how does it differ from a regular class?
+
+In C#, an abstract class is a class that cannot be instantiated directly and is designed to serve as a base or parent class for other classes. The main difference between an abstract class and a regular class is that an abstract class cannot be used to create objects directly. Instead, it is meant to be subclassed or derived from by other classes.
+
+---
+
+### Can you explain the difference between an abstract class and an interface in C#?
+
+**Abstract Class:**  
+
+An abstract class is a blueprint for other classes. It can contain both abstract members (without implementation) and concrete members (with implementation). Abstract classes serve as base classes and are used to provide common functionality to derived classes.
+
+**Key Features:**  
+
+* **Inheritance**: Supports single inheritance; a class can inherit from only one abstract class.
+* **Members**: Can include fields, properties, methods, events, and constructors. Both abstract and concrete members are allowed.
+* **Access Modifiers**: Members can have access modifiers (e.g., `public`, `protected`, `private`).
+* **Purpose**: Used when there is a "is-a" relationship and shared implementation logic.
+
+```cs
+public abstract class Animal
+{
+    public abstract void MakeSound();
+
+    public void Sleep()
+    {
+        Console.WriteLine("Sleeping...");
+    }
+}
+```
+
+
+**Interface:**  
+
+An interface defines a contract for classes to implement. It contains only the signatures of methods, properties, events, or indexers without any implementation.
+
+**Key Features:**  
+
+* **Multiple Inheritance**: A class can implement multiple interfaces.
+* **Members**: Cannot include fields or concrete members; all members are implicitly public and abstract.
+* **Access Modifiers**: Members cannot have access modifiers; they are always public.
+* **Purpose**: Used when there is a "can-do" relationship or when you want to define a strict contract.
+
+```cs
+public interface IAnimal
+{
+    void MakeSound();
+    void Sleep();
+}
+```
+
+**Key Differences**
+
+| Feature                   | Abstract Class                          | Interface                         |
+|---------------------------|-----------------------------------------|-----------------------------------|
+| **Implementation**         | Can include concrete methods and fields. | Cannot include concrete methods or fields. |
+| **Inheritance**            | Single inheritance allowed.            | Multiple inheritance allowed.     |
+| **Access Modifiers**       | Members can have any access modifier.   | All members are implicitly `public`. |
+| **Constructors**           | Can have constructors.                 | Cannot have constructors.         |
+| **Usage Scenario**         | Use for shared behavior or base class.  | Use for defining a contract.      |
+
+---
+
+### What is a constructor in C# and what are its different types?
+
+In C#, a constructor is a special method that is called when an object of a class is created. The purpose of a constructor is to initialize the state of an object with some initial values.
+
+C# supports two types of constructors:
+
+* **Instance Constructors**: An instance constructor is used to initialize the instance variables of a class. It is called when an object of the class is created using the new keyword. An instance constructor has the same name as the class and does not have a return type. Here is an example of an instance constructor:
+
+```cs
+public class MyClass {
+    public int x;
+    public int y;
+
+    public MyClass(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+```
+
+* **Static Constructors**: A static constructor is used to initialize the static variables of a class. It is called only once, when the class is first used. A static constructor has the same name as the class and does not have any parameters. Here is an example of a static constructor:
+
+```cs
+public class MyClass {
+    public static int x;
+    public static int y;
+
+    static MyClass() {
+        x = 10;
+        y = 20;
+    }
+}
+```
+
+ > Note that a class can have multiple constructors, but they must have different signatures (i.e., different parameter lists). This is known as constructor overloading.
+
+---
+
+### What is the purpose of the base keyword in C#?
+
+In C#, the base keyword is used to refer to the base class of the current class. It is used to access members of the base class, such as methods, properties, and fields.
+
+```cs
+public class Vehicle
+{
+    public int NumWheels { get; set; }
+
+    public Vehicle(int numWheels)
+    {
+        NumWheels = numWheels;
+    }
+}
+
+public class Car : Vehicle
+{
+    public string Make { get; set; }
+
+    public Car(int numWheels, string make) : base(numWheels)
+    {
+        Make = make;
     }
 }
 ```
 
 ---
 
-### What is a delegate in C# and how is it related to events?
+### How can you use the "base" keyword in C# to call the base class constructor?
 
-In the context of events, a delegate is used to define the contract between an event publisher and its subscribers. An event publisher is an object that raises events, while an event subscriber is an object that listens to those events and responds to them. The delegate is used to define the signature of the event handler method, which is the method that will be called by the event publisher when the event is raised.
+```cs
+public class DerivedClass : BaseClass
+{
+    public DerivedClass(args)
+    {
+        base.MethodInBaseClass();
+        int value = base.PropertyInBaseClass;
+    }
+}
+```
 
 ---
+
+### Can you discuss the differences between virtual methods and abstract methods in C#
+
+* **Virtual Methods**: A virtual method is a method that can be overridden in a derived class. It provides a default implementation of a method that can be replaced with a derived class-specific implementation.
+```cs
+public class MyBaseClass
+{
+   public virtual void MyVirtualMethod()
+   {
+      Console.WriteLine("This is the base class virtual method.");
+   }
+}
+
+public class MyDerivedClass : MyBaseClass
+{
+   public override void MyVirtualMethod()
+   {
+      Console.WriteLine("This is the derived class override of the virtual method.");
+   }
+}
+```
+
+* **Abstract Methods**: An abstract method is a method that does not have a default implementation in the base class and must be implemented by any derived class.
+```cs
+public abstract class MyBaseClass
+{
+   public abstract void MyAbstractMethod();
+}
+
+public class MyDerivedClass : MyBaseClass
+{
+   public override void MyAbstractMethod()
+   {
+      Console.WriteLine("This is the derived class implementation of the abstract method.");
+   }
+}
+```
+
+
+---
+
+
+### How can you use inheritance and polymorphism together to achieve dynamic dispatch in C#?
+
+In C#, inheritance and polymorphism can be used together to achieve dynamic dispatch through method overriding. Dynamic dispatch allows for the selection of the most appropriate method to be called based on the runtime type of the object.
+
+```cs
+public class Shape
+{
+    public virtual void Draw()
+    {
+        Console.WriteLine("Drawing a shape.");
+    }
+}
+```
+```cs
+public class Circle : Shape
+{
+    public override void Draw()
+    {
+        Console.WriteLine("Drawing a circle.");
+    }
+}
+```
+```cs
+Shape shape1 = new Shape();
+Shape shape2 = new Circle();
+
+shape1.Draw(); // Output: "Drawing a shape."
+shape2.Draw(); // Output: "Drawing a circle."
+```
+This is an example of dynamic dispatch using inheritance and polymorphism in C#.
+
+---
+
+
+
+
+
+
+## LINQ
+
+### What is LINQ in C# and what is its purpose?
+
+LINQ (Language Integrated Query) is a feature of the C# programming language that provides a unified syntax for querying and manipulating data from various data sources such as collections, databases, XML documents, and more. LINQ allows developers to write queries using a familiar syntax that is similar to SQL, and it can be used with any data source that implements the IEnumerable or IQueryable interfaces.
+```cs
+var students = new List<Student>
+{
+    new Student { Name = "John", Age = 21, Grade = "A" },
+    new Student { Name = "Mary", Age = 22, Grade = "B" },
+    new Student { Name = "Jane", Age = 20, Grade = "A" }
+};
+
+var aStudents = students.Where(s => s.Grade == "A").ToList();
+```
+---
+
+### Can you explain the difference between a query expression and a method chain in LINQ?
+
+* A query expression is a declarative syntax for defining queries using a special set of keywords that are similar to those used in SQL. 
+```cs
+var query = from num in numbers
+            where num % 2 == 0
+            select num;
+```
+* A method chain, on the other hand, is an imperative syntax for defining queries using a series of extension methods that operate on an initial data source object. 
+```cs
+var query = numbers.Where(num => num % 2 == 0);
+```
+
+Both query expressions and method chains ultimately generate the same underlying code, so the choice between them often comes down to personal preference or readability.
+
+---
+
+### How can LINQ be used to perform grouping and aggregation operations on data?
+
+* **Grouping Data**:  
+  The GroupBy method in LINQ can be used to group data based on one or more properties. 
+```cs
+var products = new List<Product>
+{
+    new Product { Name = "Product1", Category = "Category1", Price = 10.00m },
+    new Product { Name = "Product2", Category = "Category2", Price = 20.00m },
+    new Product { Name = "Product3", Category = "Category1", Price = 30.00m },
+    new Product { Name = "Product4", Category = "Category2", Price = 40.00m },
+    new Product { Name = "Product5", Category = "Category1", Price = 50.00m }
+};
+```
+```cs
+var productsByCategory = products.GroupBy(p => p.Category);
+```
+
+* **Aggregating Data**:  
+  Aggregation functions such as Sum, Min, Max, Average, and Count can be used to calculate summary information for a group of data.
+```cs
+var totalPricesByCategory = products
+    .GroupBy(p => p.Category)
+    .Select(g => new { Category = g.Key, TotalPrice = g.Sum(p => p.Price) });
+```
+
+---
+
+## Events 
+
+### What is a delegate in C# and how is it used?
+
+In C#, a delegate is a type that represents a method with a specific signature. It can be used to reference a method and invoke it indirectly, which provides a flexible way of decoupling the caller from the callee.
+
+A delegate declaration defines the signature of the method that it can reference. For example, the following delegate declaration defines a delegate type named MyDelegate that can reference a method that takes two integers as parameters and returns an integer:
+
+```cs
+delegate int MyDelegate(int x, int y);
+```
+
+A delegate object can be created by instantiating a delegate type with a method name or a lambda expression that matches the signature of the delegate type. For example, the following code creates a delegate object that references a method named Add
+```cs
+MyDelegate myDelegate = Add;
+```
+or with a lambda expression:
+```cs
+MyDelegate myDelegate = (x, y) => x + y;
+```
+Once a delegate object is created, it can be invoked like a method. The following code invokes the delegate object created above:
+```cs
+int result = myDelegate(1, 2); // result == 3
+```
+
+Delegates can also be used as event handlers in C# programs. When an event occurs, the delegate associated with the event is invoked, which can trigger the corresponding event handling code.
+
+---
+
+### What is an event in C# and how is it different from a delegate?
+
+>**Delegates in C#**:  
+  
+A delegate is essentially a type-safe function pointer. It holds references to methods with a specific signature and return type, allowing methods to be passed as arguments or assigned to variables. Delegates enable dynamic method invocation, meaning that the methods they point to can be changed at runtime.
+
+**Key Features of Delegates**:  
+
+* **Type-Safety**: Delegates ensure that the methods they reference have the correct signature (input parameters and return type).
+* **Multicasting**: A single delegate can reference multiple methods. When invoked, it calls each method in the order they were added.
+* **Flexibility**: Delegates allow methods to be passed as parameters, useful for callback implementations, and facilitate decoupling of method logic from the caller.
+
+```cs
+public delegate void ProcessEvent(string message);
+
+public class EventProcessor
+{
+    public void ProcessLog(string message)
+    {
+        Console.WriteLine($"Logging: {message}");
+    }
+
+    public void ProcessAlert(string message)
+    {
+        Console.WriteLine($"Alert: {message}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        EventProcessor processor = new EventProcessor();
+        
+        // Instantiate the delegate
+        ProcessEvent processDelegate = processor.ProcessLog;
+        
+        // Multicast - add another method
+        processDelegate += processor.ProcessAlert;
+
+        // Invoke the delegate
+        processDelegate("Critical system error");
+    }
+}
+```
+
+> Events in C#
+
+An event is a specialized form of a delegate designed to enable safe and structured communication between objects, adhering to the publish-subscribe pattern. Events are used when one or more subscribers are interested in being notified when something occurs within a class.
+
+**Key Features of Events**:
+
+* **Encapsulation**: Unlike delegates, events add an additional layer of security by restricting the invocation of the event to the declaring class. Subscribers can only register or unregister from the event but cannot invoke it.
+* **Publish-Subscribe Model**: Events allow objects to subscribe to specific events (e.g., when a button is clicked), and the event is raised when the triggering condition occurs.
+* **Loose Coupling**: Events decouple the sender of the event from its subscribers. This means the class raising the event doesn’t need to know which specific methods will handle the event, which promotes a modular and maintainable design.
+
+```cs
+public delegate void Notify(string message);
+
+public class Publisher
+{
+    // Declare the event using the delegate
+    public event Notify OnPublishEvent;
+
+    public void Publish(string message)
+    {
+        // Raise the event if there are subscribers
+        OnPublishEvent?.Invoke(message);
+    }
+}
+
+public class Subscriber
+{
+    public void HandleEvent(string message)
+    {
+        Console.WriteLine($"Subscriber received: {message}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Publisher publisher = new Publisher();
+        Subscriber subscriber = new Subscriber();
+
+        // Subscribe to the event
+        publisher.OnPublishEvent += subscriber.HandleEvent;
+
+        // Trigger the event
+        publisher.Publish("New event occurred!");
+    }
+}
+```
+---
+
+
 
 ### How can you subscribe and unsubscribe to an event in C#?
 
@@ -963,92 +1098,8 @@ exampleObject.MyEvent += HandleMyEvent;
 // unsubscribe from the event
 exampleObject.MyEvent -= HandleMyEvent;
 ```
-
 ---
 
-### Can you explain the difference between an event and a delegate in C#?
-
-In C#, both events and delegates are important concepts related to handling and raising events, but they serve slightly different purposes.
-
-* **Delegates**:  
-  A delegate is a type that defines a method signature, allowing you to encapsulate a reference to a method and invoke it through the delegate. Delegates are often used to create callback mechanisms, where a method can be passed around and executed by other parts of the code.
-```cs
-public delegate void MyDelegate(string message);
-
-public class MyClass
-{
-    public void PrintMessage(string message)
-    {
-        Console.WriteLine(message);
-    }
-}
-
-class Program
-{
-    static void Main()
-    {
-        MyClass myObj = new MyClass();
-        MyDelegate myDelegate = myObj.PrintMessage;
-
-        myDelegate("Hello, delegates!");
-    }
-}
-```
-
-* **Events**:  
-  An event is a mechanism for one class (the publisher or sender) to notify other classes (subscribers or listeners) when something of interest happens. Events are based on delegates but provide a level of encapsulation and control over how subscribers can interact with the event.
-
-```cs
-public class EventPublisher
-{
-    public event EventHandler SomethingHappened;
-
-    public void DoSomething()
-    {
-        Console.WriteLine("Something is happening...");
-        OnSomethingHappened();
-    }
-
-    protected virtual void OnSomethingHappened()
-    {
-        SomethingHappened?.Invoke(this, EventArgs.Empty);
-    }
-}
-
-public class EventSubscriber
-{
-    public void HandleEvent(object sender, EventArgs e)
-    {
-        Console.WriteLine("Event handled by subscriber");
-    }
-}
-
-class Program
-{
-    static void Main()
-    {
-        EventPublisher publisher = new EventPublisher();
-        EventSubscriber subscriber = new EventSubscriber();
-
-        publisher.SomethingHappened += subscriber.HandleEvent;
-
-        publisher.DoSomething();
-    }
-}
-```
-
----
-
-
-
-
-## LINQ
-
-### What is LINQ in C# and what is its purpose?
-
-LINQ (Language Integrated Query) is a feature of the C# programming language that provides a unified syntax for querying and manipulating data from various data sources such as collections, databases, XML documents, and more. LINQ allows developers to write queries using a familiar syntax that is similar to SQL, and it can be used with any data source that implements the IEnumerable or IQueryable interfaces.
-
----
-  ## References
+## References
    - https://github.com/rcallaby/CSharp-Interview-Questions
     
