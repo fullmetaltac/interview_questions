@@ -4,7 +4,6 @@
     - [What is the difference between a method and a function in C#?](#what-is-the-difference-between-a-method-and-a-function-in-c)
     - [What is the difference between a value type and a reference type in C#?](#what-is-the-difference-between-a-value-type-and-a-reference-type-in-c)
     - [Can you explain the use of the "this" keyword in C#?](#can-you-explain-the-use-of-the-this-keyword-in-c)
-    - [What is an anonymous method in C# and how is it used?](#what-is-an-anonymous-method-in-c-and-how-is-it-used)
     - [Can you explain the difference between a static and an instance method in C#?](#can-you-explain-the-difference-between-a-static-and-an-instance-method-in-c)
     - [What is a generic type in C# and why is it used?](#what-is-a-generic-type-in-c-and-why-is-it-used)
     - [What is an extension method in C# and how is it implemented?](#what-is-an-extension-method-in-c-and-how-is-it-implemented)
@@ -19,7 +18,6 @@
     - [What is a sealed class in C# and why is it used?](#what-is-a-sealed-class-in-c-and-why-is-it-used)
     - [What is an abstract class in C# and when is it used?](#what-is-an-abstract-class-in-c-and-when-is-it-used)
     - [What is an interface in C# and what is its purpose?](#what-is-an-interface-in-c-and-what-is-its-purpose)
-    - [What is an abstract class in C# and how does it differ from a regular class?](#what-is-an-abstract-class-in-c-and-how-does-it-differ-from-a-regular-class)
     - [Can you explain the difference between an abstract class and an interface in C#?](#can-you-explain-the-difference-between-an-abstract-class-and-an-interface-in-c)
     - [What is a constructor in C# and what are its different types?](#what-is-a-constructor-in-c-and-what-are-its-different-types)
     - [What is the purpose of the base keyword in C#?](#what-is-the-purpose-of-the-base-keyword-in-c)
@@ -34,6 +32,7 @@
     - [What is a delegate in C# and how is it used?](#what-is-a-delegate-in-c-and-how-is-it-used)
     - [What is an event in C# and how is it different from a delegate?](#what-is-an-event-in-c-and-how-is-it-different-from-a-delegate)
     - [How can you subscribe and unsubscribe to an event in C#?](#how-can-you-subscribe-and-unsubscribe-to-an-event-in-c)
+    - [What is an anonymous method in C# and how is it used?](#what-is-an-anonymous-method-in-c-and-how-is-it-used)
   - [References](#references)
 
 
@@ -120,7 +119,7 @@ arr2[0] = 5;            // Changing arr2 also changes arr1
 // Strings:
 string str1 = "Hello";
 string str2 = str1;     // str2 references the same string as str1
-str2 = "Hi";            // Changing str2 does not affect str1
+str2 = "Hi";            // Creates a new string object
 ```
 ---
 
@@ -171,31 +170,6 @@ class MyClass {
    }
 }
 ```
----
-
-### What is an anonymous method in C# and how is it used?
-
-In C#, an anonymous method is a method that does not have a name and is defined inline within the code of another method or expression. It can be used in place of a named method anywhere a delegate is expected. A delegate is an object that can refer to a method and can be passed as a parameter or returned as a value.
-
-Anonymous methods can be defined using the delegate keyword, followed by the argument list and body of the method. 
-
-```cs
-delegate (int x, int y) {
-    return x + y;
-};
-```
-```cs
-int result = myDelegate(3, 4); // result = 7
-```
-
-Alternatively, C# also introduced lambda expressions, which are a shorter and more readable syntax for creating anonymous methods. For example, the anonymous method above can be expressed as a lambda expression like this:
-
-```cs
-(x, y) => x + y
-```
-
-Anonymous methods are commonly used in event handling and LINQ queries, among other places, where they allow for concise and flexible code.
-
 ---
 
 ### Can you explain the difference between a static and an instance method in C#?
@@ -662,12 +636,6 @@ public class PayPalPaymentProcessor : IPaymentProcessor
 ```
 ---
 
-### What is an abstract class in C# and how does it differ from a regular class?
-
-In C#, an abstract class is a class that cannot be instantiated directly and is designed to serve as a base or parent class for other classes. The main difference between an abstract class and a regular class is that an abstract class cannot be used to create objects directly. Instead, it is meant to be subclassed or derived from by other classes.
-
----
-
 ### Can you explain the difference between an abstract class and an interface in C#?
 
 **Abstract Class:**  
@@ -1088,6 +1056,35 @@ exampleObject.MyEvent += HandleMyEvent;
 exampleObject.MyEvent -= HandleMyEvent;
 ```
 ---
+
+### What is an anonymous method in C# and how is it used?
+
+In C#, an anonymous method is a method that does not have a name and is defined inline within the code of another method or expression. It can be used in place of a named method anywhere a delegate is expected. A delegate is an object that can refer to a method and can be passed as a parameter or returned as a value.
+
+Anonymous methods can be defined using the delegate keyword, followed by the argument list and body of the method. 
+
+```cs
+delegate (int x, int y) {
+    return x + y;
+};
+```
+```cs
+int result = myDelegate(3, 4); // result = 7
+```
+
+Alternatively, C# also introduced lambda expressions, which are a shorter and more readable syntax for creating anonymous methods. For example, the anonymous method above can be expressed as a lambda expression like this:
+
+```cs
+(x, y) => x + y
+```
+
+Anonymous methods are commonly used in event handling and LINQ queries, among other places, where they allow for concise and flexible code.
+
+---
+
+
+
+
 
 ## References
    - https://github.com/rcallaby/CSharp-Interview-Questions
