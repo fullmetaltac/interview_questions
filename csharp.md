@@ -22,6 +22,12 @@
     - [Explain the ?? operator and what is the correct way to use it in your code?](#explain-the--operator-and-what-is-the-correct-way-to-use-it-in-your-code)
     - [Can you please explain the use of the as operator in C# and the best way to use it?](#can-you-please-explain-the-use-of-the-as-operator-in-c-and-the-best-way-to-use-it)
     - [Can you please demonstrate how you would use a bitwise operator in C#?](#can-you-please-demonstrate-how-you-would-use-a-bitwise-operator-in-c)
+  - [Events](#events)
+    - [What is an event in C# and how does it work?](#what-is-an-event-in-c-and-how-does-it-work)
+    - [Can you give an example of how to declare and raise an event in C#?](#can-you-give-an-example-of-how-to-declare-and-raise-an-event-in-c)
+    - [What is a delegate in C# and how is it related to events?](#what-is-a-delegate-in-c-and-how-is-it-related-to-events)
+    - [How can you subscribe and unsubscribe to an event in C#?](#how-can-you-subscribe-and-unsubscribe-to-an-event-in-c)
+    - [Can you explain the difference between an event and a delegate in C#?](#can-you-explain-the-difference-between-an-event-and-a-delegate-in-c)
   - [LINQ](#linq)
     - [What is LINQ in C# and what is its purpose?](#what-is-linq-in-c-and-what-is-its-purpose)
   - [References](#references)
@@ -875,6 +881,166 @@ class Program
 ```
 
 ---
+
+
+
+
+
+
+## Events 
+
+### What is an event in C# and how does it work?
+
+In C#, an event is a mechanism that enables objects to communicate with each other by signaling that an action has occurred. Essentially, an event is a notification that something has happened that other parts of the program may be interested in.
+
+---
+
+### Can you give an example of how to declare and raise an event in C#?
+```cs
+using System;
+
+class Program
+{
+    // Declare the delegate (if using non-generic pattern).
+    public delegate void MyEventHandler(object sender, EventArgs e);
+
+    // Declare the event using the delegate.
+    public event MyEventHandler MyEvent;
+
+    // This will raise the event.
+    protected virtual void OnMyEvent(EventArgs e)
+    {
+        MyEventHandler handler = MyEvent;
+        if (handler != null)
+        {
+            handler(this, e);
+        }
+    }
+
+    static void Main()
+    {
+        Program p = new Program();
+
+        // Add the event handler.
+        p.MyEvent += new MyEventHandler(p_MyEvent);
+
+        // Call the method that raises the event.
+        p.RaiseMyEvent();
+    }
+
+    // The event handler.
+    static void p_MyEvent(object sender, EventArgs e)
+    {
+        Console.WriteLine("MyEvent is raised by: " + sender.ToString());
+    }
+
+    // This method raises the event.
+    public void RaiseMyEvent()
+    {
+        OnMyEvent(EventArgs.Empty);
+    }
+}
+```
+
+---
+
+### What is a delegate in C# and how is it related to events?
+
+In the context of events, a delegate is used to define the contract between an event publisher and its subscribers. An event publisher is an object that raises events, while an event subscriber is an object that listens to those events and responds to them. The delegate is used to define the signature of the event handler method, which is the method that will be called by the event publisher when the event is raised.
+
+---
+
+### How can you subscribe and unsubscribe to an event in C#?
+
+In C#, you can subscribe to and unsubscribe from events using the event keyword and the += and -= operators, respectively.
+
+```cs
+// subscribe to the event
+ExampleClass exampleObject = new ExampleClass();
+exampleObject.MyEvent += HandleMyEvent;
+```
+```cs
+// unsubscribe from the event
+exampleObject.MyEvent -= HandleMyEvent;
+```
+
+---
+
+### Can you explain the difference between an event and a delegate in C#?
+
+In C#, both events and delegates are important concepts related to handling and raising events, but they serve slightly different purposes.
+
+* **Delegates**:  
+  A delegate is a type that defines a method signature, allowing you to encapsulate a reference to a method and invoke it through the delegate. Delegates are often used to create callback mechanisms, where a method can be passed around and executed by other parts of the code.
+```cs
+public delegate void MyDelegate(string message);
+
+public class MyClass
+{
+    public void PrintMessage(string message)
+    {
+        Console.WriteLine(message);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MyClass myObj = new MyClass();
+        MyDelegate myDelegate = myObj.PrintMessage;
+
+        myDelegate("Hello, delegates!");
+    }
+}
+```
+
+* **Events**:  
+  An event is a mechanism for one class (the publisher or sender) to notify other classes (subscribers or listeners) when something of interest happens. Events are based on delegates but provide a level of encapsulation and control over how subscribers can interact with the event.
+
+```cs
+public class EventPublisher
+{
+    public event EventHandler SomethingHappened;
+
+    public void DoSomething()
+    {
+        Console.WriteLine("Something is happening...");
+        OnSomethingHappened();
+    }
+
+    protected virtual void OnSomethingHappened()
+    {
+        SomethingHappened?.Invoke(this, EventArgs.Empty);
+    }
+}
+
+public class EventSubscriber
+{
+    public void HandleEvent(object sender, EventArgs e)
+    {
+        Console.WriteLine("Event handled by subscriber");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        EventPublisher publisher = new EventPublisher();
+        EventSubscriber subscriber = new EventSubscriber();
+
+        publisher.SomethingHappened += subscriber.HandleEvent;
+
+        publisher.DoSomething();
+    }
+}
+```
+
+---
+
+
+
 
 ## LINQ
 
