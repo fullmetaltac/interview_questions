@@ -12,16 +12,21 @@
     - [What is the order in which `OnEnable`, `Awake`, and `Start` occur during runtime?](#what-is-the-order-in-which-onenable-awake-and-start-occur-during-runtime)
     - [Difference between `Update`, `FixedUpdate` and `LateUpdate`?](#difference-between-update-fixedupdate-and-lateupdate)
     - [How to prevent the existing GameObject from being destroyed when change Scene?](#how-to-prevent-the-existing-gameobject-from-being-destroyed-when-change-scene)
-    - [What function is used to rotate the object itself ?](#what-function-is-used-to-rotate-the-object-itself-)
     - [Describe the role of quaternions.](#describe-the-role-of-quaternions)
     - [List some ways to move an object in Unity.](#list-some-ways-to-move-an-object-in-unity)
+    - [What is Lerp in Unity?](#what-is-lerp-in-unity)
     - [Explain why `Time.deltaTime` should be used.](#explain-why-timedeltatime-should-be-used)
+    - [How to pause the game in Unity?](#how-to-pause-the-game-in-unity)
     - [How do you create and use a `Coroutine`?](#how-do-you-create-and-use-a-coroutine)
     - [What are ScriptableObjects?](#what-are-scriptableobjects)
     - [What is the difference between `GetComponent<T>()` and `FindObjectOfType<T>()`?](#what-is-the-difference-between-getcomponentt-and-findobjectoftypet)
+    - [What are the purposes and uses of \[SerializeField\] and \[HideInInspector\] attributes in Unity?](#what-are-the-purposes-and-uses-of-serializefield-and-hideininspector-attributes-in-unity)
+    - [What is the purpose and functionality of Raycast in Unity?](#what-is-the-purpose-and-functionality-of-raycast-in-unity)
     - [Why is using object pooling important? How does it work in Unity?](#why-is-using-object-pooling-important-how-does-it-work-in-unity)
     - [How to save local data?](#how-to-save-local-data)
-    - [Describe delegate use cases in unity.](#describe-delegate-use-cases-in-unity)
+    - [How to quit the game in Unity?](#how-to-quit-the-game-in-unity)
+    - [How to lock \& hide the cursor in Unity?](#how-to-lock--hide-the-cursor-in-unity)
+    - [How to use random values in Unity?](#how-to-use-random-values-in-unity)
   - [Graphics](#graphics)
     - [What is LOD and what are its advantages and disadvantages?](#what-is-lod-and-what-are-its-advantages-and-disadvantages)
     - [What is the use of Occlusion Culling?](#what-is-the-use-of-occlusion-culling)
@@ -181,13 +186,6 @@ void Awake()
 ```
 ---
 
-### What function is used to rotate the object itself ?
-
-```cs
-Transform.Rotate();
-```
----
-
 ### Describe the role of quaternions.
 
 **Quaternions** are used to represent rotations. The advantages of relative **Euler angles**: it can perform   
@@ -206,6 +204,42 @@ There are several ways to move an object. Here are some common methods:
 * Lerp Position
 ---
 
+### What is Lerp in Unity?
+
+Lerp, or Linear Interpolation, is a mathematical function in Unity that returns a value between two others at a point  
+on a linear scale.
+
+```cs
+lerpValue = Mathf.Lerp(minValue, maxValue, interpolationPoint);
+```
+
+The Lerp calculation returns a value from a known range, which is specified using a minimum and maximum value (a & b).  
+For example, a range of 0-100.
+
+The value that’s returned is defined by a third value, the interpolation point (t) which returns a point on the scale  
+between a and b.
+
+```cs
+float a = 0;
+float b = 50;
+float t = 0.5f;
+
+lerpValue = Mathf.Lerp(a, b, t);
+
+// Returns 25
+```
+```cs
+float a = 10;
+float b = 50;
+float t = 1;
+
+lerpValue = Mathf.Lerp(a, b, t);
+
+// Returns 50
+```
+
+---
+
 ### Explain why `Time.deltaTime` should be used.
 * Unity games run on different devices with varying hardware capabilities. If you use fixed values for movement or  
 animations without considering the frame rate, they might appear too fast on a high-performance device and too slow on  
@@ -221,9 +255,33 @@ control the speed of these effects based on the time elapsed, creating a more dy
 
 ---
 
+### How to pause the game in Unity?
+Setting the time scale affects the time and delta time measuring variables in the Time class.
+
+Put simply, changing the time scale from its default of one will speed up or slow the game down – for example, you can   
+run the game at half speed with a time scale of 0.5, or twice as fast with a timescale of 2). Setting it to zero,   
+pauses the game entirely.
+
+```cs
+void PauseGame ()
+{
+    Time.timeScale = 0;
+}
+
+void ResumeGame ()
+{
+    Time.timeScale = 1;
+}
+```
+
+---
+
+
 ### How do you create and use a `Coroutine`?
 
-While the main thread is running, another piece of logic processing is started at the same time to assist the execution of the current program. In other words, starting a **coroutine** is to start a logic that can be parallel to the program. Can be used to control motion, sequences, and object behaviour.
+While the main thread is running, another piece of logic processing is started at the same time to assist the execution   
+of the current program. In other words, starting a **coroutine** is to start a logic that can be parallel to the   
+program. Can be used to control motion, sequences, and object behaviour.
 
 ```cs
 IEnumerator MyCoroutine()
@@ -239,12 +297,93 @@ StartCoroutine(MyCoroutine());
 
 **ScriptableObjects** are data containers that can hold non-MonoBehaviour data and are useful for storing game configurations, data settings, etc.
 
+1. Create the ScriptableObject class:
+
+```cs
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "NewItem", menuName = "ScriptableObjects/Item")]
+public class Item : ScriptableObject
+{
+    public string itemName;
+    public int itemValue;
+}
+```
+2. Create an instance in the editor:  
+   * Right-click in the Project window.
+   * Select Create > ScriptableObjects > Item.
+   * Configure the itemName and itemValue in the Inspector.
+
+3. Use the ScriptableObject in a script:
+```cs
+using UnityEngine;
+
+public class ItemUser : MonoBehaviour
+{
+    public Item item;
+
+    void Start()
+    {
+        Debug.Log($"Item Name: {item.itemName}, Value: {item.itemValue}");
+    }
+}
+```
 ---
 
 ### What is the difference between `GetComponent<T>()` and `FindObjectOfType<T>()`?
 
 * `GetComponent<T>()` fetches a component attached to the same GameObject.
 * `FindObjectOfType<T>()` searches the scene for the first active instance of the specified type.
+
+---
+
+### What are the purposes and uses of [SerializeField] and [HideInInspector] attributes in Unity?
+
+* The [SerializeField] attribute forces a private field to be serialized and visible in the Unity Inspector.
+```cs
+using UnityEngine;
+
+public class Example : MonoBehaviour
+{
+    [SerializeField]
+    private int myPrivateValue; // Visible in Inspector but remains private in code
+}
+```
+* The [HideInInspector] attribute hides a public field from appearing in the Unity Inspector.
+```cs
+using UnityEngine;
+
+public class Example : MonoBehaviour
+{
+    [HideInInspector]
+    public int myHiddenValue; // Hidden in Inspector but remains public in code
+}
+```
+---
+
+### What is the purpose and functionality of Raycast in Unity?
+
+In Unity, Raycast is a method used to detect objects along a ray's path, often for collision detection, line-of-sight   
+checks, or input handling.
+
+```cs
+using UnityEngine;
+
+public class RaycastExample : MonoBehaviour
+{
+    void Update()
+    {
+        // Shoot a ray from the camera's position forward
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100f))
+        {
+            Debug.Log("Hit: " + hit.collider.name); // Log the object hit by the ray
+        }
+    }
+}
+```
 
 ---
 
@@ -264,95 +403,35 @@ etc. and displaying it again when used. This helps increase game performance sig
 
 ---
 
-### Describe delegate use cases in unity.
-
-Delegates in Unity game development have a variety of use cases. Delegates are a powerful feature in C# that allow you to define callbacks and event-driven behavior, which is particularly useful in game development for maintaining clean, modular, and decoupled code.
+### How to quit the game in Unity?
 
 ```cs
-// Custom Event Systems:
-public class Player : MonoBehaviour
-{
-    public delegate void HealthChanged(int currentHealth);
-    public static event HealthChanged OnHealthChanged;
-
-    private int health = 100;
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        OnHealthChanged?.Invoke(health); // Notify listeners
-    }
-}
-
-public class UIManager : MonoBehaviour
-{
-    private void OnEnable() => Player.OnHealthChanged += UpdateHealthUI;
-    private void OnDisable() => Player.OnHealthChanged -= UpdateHealthUI;
-
-    private void UpdateHealthUI(int health)
-    {
-        Debug.Log($"Health Updated: {health}");
-        // Update UI elements here
-    }
-}
+Application.Quit();
 ```
+---
 
+### How to lock & hide the cursor in Unity?
+
+* Lock the cursor: `Cursor.lockState = CursorLockMode.Locked;`
+* Hide the cursor: `Cursor.visible = false;`
+
+---
+
+
+### How to use random values in Unity?
+In Unity, you can use the Random class to generate random values.
 ```cs
-// Input Handling:
-public class InputManager : MonoBehaviour
-{
-    public delegate void JumpAction();
-    public static event JumpAction OnJump;
+float randomValue = Random.Range(0f, 1f); // Random float between 0 and 1
+int randomInt = Random.Range(0, 10); // Random integer between 0 and 9
+Vector3 randomPoint = Random.insideUnitSphere; // Random point within a sphere of radius 1
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            OnJump?.Invoke(); // Notify listeners of jump action
-        }
-    }
-}
+string[] colors = { "Red", "Blue", "Green" };
+string randomColor = colors[Random.Range(0, colors.Length)];
 
-public class PlayerMovement : MonoBehaviour
-{
-    private void OnEnable() => InputManager.OnJump += Jump;
+bool randomBool = Random.value > 0.5f; // 50% chance for true or false
+Quaternion randomRotation = Random.rotation;
 
-    private void OnDisable() => InputManager.OnJump -= Jump;
-
-    private void Jump()
-    {
-        Debug.Log("Player Jumped!");
-        // Add jump logic here
-    }
-}
 ```
-
-```cs
-// AI or NPC Behavior:
-public delegate void AlertAction(Vector3 playerPosition);
-public class Enemy : MonoBehaviour
-{
-    public static event AlertAction OnPlayerDetected;
-
-    void DetectPlayer(Vector3 playerPosition)
-    {
-        OnPlayerDetected?.Invoke(playerPosition);
-    }
-}
-
-public class Guard : MonoBehaviour
-{
-    private void OnEnable() => Enemy.OnPlayerDetected += ReactToAlert;
-    private void OnDisable() => Enemy.OnPlayerDetected -= ReactToAlert;
-
-    private void ReactToAlert(Vector3 playerPosition)
-    {
-        Debug.Log($"Guard reacting to player at {playerPosition}");
-        // Move toward player position or change state
-    }
-}
-```
-
 ---
 
 

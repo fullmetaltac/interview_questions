@@ -425,27 +425,16 @@ class Program
 
         // Bitwise AND
         int resultAnd = num1 & num2;  // Binary: 0010 (2 in decimal)
-        Console.WriteLine("Bitwise AND result: " + resultAnd);
-
         // Bitwise OR
         int resultOr = num1 | num2;   // Binary: 1110 (14 in decimal)
-        Console.WriteLine("Bitwise OR result: " + resultOr);
-
         // Bitwise XOR
         int resultXor = num1 ^ num2;  // Binary: 1100 (12 in decimal)
-        Console.WriteLine("Bitwise XOR result: " + resultXor);
-
         // Bitwise NOT (Unary)
         int resultNot = ~num1;        // Binary: 0101 (in two's complement)
-        Console.WriteLine("Bitwise NOT result: " + resultNot);
-
         // Bitwise Left Shift
         int resultLeftShift = num1 << 1;  // Binary: 10100 (20 in decimal)
-        Console.WriteLine("Bitwise Left Shift result: " + resultLeftShift);
-
         // Bitwise Right Shift
         int resultRightShift = num1 >> 1; // Binary: 0101 (5 in decimal)
-        Console.WriteLine("Bitwise Right Shift result: " + resultRightShift);
     }
 }
 ```
