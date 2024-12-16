@@ -18,9 +18,12 @@
     - [Explain why `Time.deltaTime` should be used.](#explain-why-timedeltatime-should-be-used)
     - [How to pause the game in Unity?](#how-to-pause-the-game-in-unity)
     - [How do you create and use a `Coroutine`?](#how-do-you-create-and-use-a-coroutine)
+    - [How do you use `async`/`await` in Unity, and how does it differ from coroutines?](#how-do-you-use-asyncawait-in-unity-and-how-does-it-differ-from-coroutines)
+    - [How can Events and Delegates be utilized in Unity?](#how-can-events-and-delegates-be-utilized-in-unity)
     - [What are ScriptableObjects?](#what-are-scriptableobjects)
     - [What is the difference between `GetComponent<T>()` and `FindObjectOfType<T>()`?](#what-is-the-difference-between-getcomponentt-and-findobjectoftypet)
-    - [What are the purposes and uses of \[SerializeField\] and \[HideInInspector\] attributes in Unity?](#what-are-the-purposes-and-uses-of-serializefield-and-hideininspector-attributes-in-unity)
+    - [What are the benefits of using a DI framework, such as Zenject, in Unity?](#what-are-the-benefits-of-using-a-di-framework-such-as-zenject-in-unity)
+    - [What are the purposes and uses of `[SerializeField]` and `[HideInInspector]` attributes in Unity?](#what-are-the-purposes-and-uses-of-serializefield-and-hideininspector-attributes-in-unity)
     - [What is the purpose and functionality of Raycast in Unity?](#what-is-the-purpose-and-functionality-of-raycast-in-unity)
     - [Why is using object pooling important? How does it work in Unity?](#why-is-using-object-pooling-important-how-does-it-work-in-unity)
     - [How to save local data?](#how-to-save-local-data)
@@ -290,6 +293,103 @@ StartCoroutine(MyCoroutine());
 ```
 ---
 
+### How do you use `async`/`await` in Unity, and how does it differ from coroutines?
+
+**Coroutines in Unity**:
+* Coroutines in Unity are special methods that allow you to pause execution (e.g., wait for a certain time or frame)   
+without blocking the main thread.
+* They are defined using IEnumerator and are managed by Unity's game loop. You use the StartCoroutine method to begin   
+a coroutine.  
+```cs
+IEnumerator MyCoroutine()
+{
+    Debug.Log("Start");
+    yield return new WaitForSeconds(1);  // Waits for 1 second
+    Debug.Log("End");
+}
+
+// Start the coroutine
+StartCoroutine(MyCoroutine());
+```
+* Coroutines in Unity are tied to the Unity engine's update cycle.
+* They rely on `yield` statements for pausing execution (e.g., `yield return new WaitForSeconds()` or `yield return null`).
+---
+
+**`async`/`await` in Unity**:  
+* `async`/`await` is part of the C# language and enables asynchronous programming. Unlike coroutines, it doesn't depend   
+on Unity's game loop.
+* You use `async` methods and `await` keywords to perform non-blocking, asynchronous operations. It's useful for tasks   
+like I/O operations or waiting for external services without freezing the main thread.
+```cs
+async Task MyAsyncMethod()
+{
+    Debug.Log("Start");
+    await Task.Delay(1000);  // Waits for 1 second (non-blocking)
+    Debug.Log("End");
+}
+
+// Call the async method
+MyAsyncMethod();
+```
+* `Task.Delay` is used for waiting in `async` methods (instead of `WaitForSeconds`).
+* You can use `async`/`await` for multi-threaded operations or tasks outside Unity's main thread.
+
+**Key Differences**:  
+
+|Feature              |	Coroutines                                         |	async/await                                       |
+|---------------------|----------------------------------------------------|----------------------------------------------------|
+|Syntax               |	`IEnumerator` + `yield`                            |	`async` and `await` with `Task`                   |
+|Tied to Unity engine |	Yes, runs within Unity's game loop                 |	No, independent of Unity’s update cycle           |
+|Use case             |	Game-related tasks (e.g., animation, timed events) |	Asynchronous operations (e.g., I/O, web requests) |
+|Threading            |	Always runs on the main thread                     |	Can run on multiple threads                       |
+
+### How can Events and Delegates be utilized in Unity?
+
+In Unity, **Events** and **Delegates** are used for communication between scripts, enabling decoupled and flexible code.
+
+* **Delegates**: They are function pointers that allow you to define and pass methods as parameters. In Unity, you can   
+use delegates to define custom callback systems for actions like player input, UI interactions, or gameplay mechanics.
+
+* **Events**: Events are built on delegates but provide a safer and more structured way to notify multiple listeners   
+when something happens. Unity uses events in patterns like subscribing to a method when an event is invoked (e.g., player health changes or enemy spawn).
+```cs
+using System;
+using UnityEngine;
+
+public class EventExample : MonoBehaviour
+{
+    public delegate void OnPlayerScored(int score);
+    public static event OnPlayerScored PlayerScored;
+
+    public void ScorePoint(int score)
+    {
+        Debug.Log("Player scored!");
+        PlayerScored?.Invoke(score); // Invoke the event
+    }
+}
+
+public class ScoreDisplay : MonoBehaviour
+{
+    private void OnEnable()
+    {
+        EventExample.PlayerScored += UpdateScoreDisplay; // Subscribe to the event
+    }
+
+    private void OnDisable()
+    {
+        EventExample.PlayerScored -= UpdateScoreDisplay; // Unsubscribe from the event
+    }
+
+    private void UpdateScoreDisplay(int score)
+    {
+        Debug.Log($"Score updated: {score}");
+    }
+}
+```
+This ensures a decoupled relationship between the event broadcaster (`EventExample`) and the listener (`ScoreDisplay`).
+
+---
+
 ### What are ScriptableObjects?
 
 **ScriptableObjects** are data containers that can hold non-MonoBehaviour data and are useful for storing game configurations, data settings, etc.
@@ -336,7 +436,70 @@ public class ItemUser : MonoBehaviour
 
 ---
 
-### What are the purposes and uses of [SerializeField] and [HideInInspector] attributes in Unity?
+### What are the benefits of using a DI framework, such as Zenject, in Unity?
+
+Using dependency injection (DI) frameworks like Zenject in Unity helps manage dependencies between objects, promoting   
+clean, maintainable, and testable code. Zenject automates object creation, dependency resolution, and lifecycle   
+management, reducing tightly coupled code.
+
+**Example Setup with Zenject**:  
+1. Define your services and classes:
+```cs
+public interface IAudioService
+{
+    void PlaySound();
+}
+
+public class AudioService : IAudioService
+{
+    public void PlaySound()
+    {
+        Debug.Log("Playing sound");
+    }
+}
+
+public class GameManager
+{
+    private readonly IAudioService _audioService;
+
+    public GameManager(IAudioService audioService)
+    {
+        _audioService = audioService;
+    }
+
+    public void StartGame()
+    {
+        _audioService.PlaySound();
+    }
+}
+```
+2. Create an Installer: 
+```cs
+public class GameInstaller : MonoInstaller
+{
+    public override void InstallBindings()
+    {
+        Container.Bind<IAudioService>().To<AudioService>().AsSingle();
+        Container.Bind<GameManager>().AsSingle();
+    }
+}
+```
+3. Inject and use the dependencies:
+```cs
+public class GameController : MonoBehaviour
+{
+    [Inject]
+    private GameManager _gameManager;
+    
+    void Start()
+    {
+        _gameManager.StartGame();
+    }
+}
+```
+---
+
+### What are the purposes and uses of `[SerializeField]` and `[HideInInspector]` attributes in Unity?
 
 * The [SerializeField] attribute forces a private field to be serialized and visible in the Unity Inspector.
 ```cs
@@ -503,4 +666,4 @@ want to modify the renderer's material, use material instead.
  - https://github.com/GuardianOfGods/unity-interview-questions
  - https://github.com/Unity-Technologies/game-programming-patterns-demo/
  - https://docs.unity3d.com/6000.0/Documentation/Manual/execution-order.html
-  
+ - https://medium.com/@poornaprasad.v1/getting-started-with-zenject-for-unity-a-beginner-friendly-guide-f27df5458c04

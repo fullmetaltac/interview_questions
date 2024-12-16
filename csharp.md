@@ -683,13 +683,13 @@ public interface IAnimal
 
 **Key Differences**
 
-| Feature                   | Abstract Class                          | Interface                         |
-|---------------------------|-----------------------------------------|-----------------------------------|
+| Feature                    | Abstract Class                           | Interface                                  |
+|----------------------------|------------------------------------------|--------------------------------------------|
 | **Implementation**         | Can include concrete methods and fields. | Cannot include concrete methods or fields. |
-| **Inheritance**            | Single inheritance allowed.            | Multiple inheritance allowed.     |
-| **Access Modifiers**       | Members can have any access modifier.   | All members are implicitly `public`. |
-| **Constructors**           | Can have constructors.                 | Cannot have constructors.         |
-| **Usage Scenario**         | Use for shared behavior or base class.  | Use for defining a contract.      |
+| **Inheritance**            | Single inheritance allowed.              | Multiple inheritance allowed.              |
+| **Access Modifiers**       | Members can have any access modifier.    | All members are implicitly `public`.       |
+| **Constructors**           | Can have constructors.                   | Cannot have constructors.                  |
+| **Usage Scenario**         | Use for shared behavior or base class.   | Use for defining a contract.               |
 
 ---
 
