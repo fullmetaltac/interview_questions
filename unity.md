@@ -551,9 +551,66 @@ public class RaycastExample : MonoBehaviour
 
 ###  Why is using object pooling important? How does it work in Unity?
 
-Reusing GameObjects after being destroyed such as artillery shells, fx, etc. costs memory each time they are destroyed  
-and created. Using Pooling is understood as just hiding the GameObject, then resetting its position, rotation angle,  
-etc. and displaying it again when used. This helps increase game performance significantly.
+**Object pooling** is important because it improves **performance** and **memory efficiency** by reusing objects instead of   
+creating and destroying them repeatedly. This is especially beneficial in scenarios like spawning projectiles, enemies,   
+or other frequently-used objects, where constant instantiation and garbage collection can slow down your game.
+
+**How it works in Unity**:  
+* **Preallocate Objects**: Create a pool of reusable objects at the start of the game.
+* **Enable/Disable** Instead of **Instantiate/Destroy**: When an object is needed, retrieve it from the pool and activate it. When it's no longer needed, deactivate it and return it to the pool.
+* **Reuse**: Recycled objects reduce CPU and memory overhead
+```cs
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ObjectPool : MonoBehaviour
+{
+    public GameObject prefab; // Object to pool
+    public int poolSize = 10;
+    private Queue<GameObject> pool;
+
+    void Start()
+    {
+        // Initialize pool
+        pool = new Queue<GameObject>();
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject obj = Instantiate(prefab);
+            obj.SetActive(false);
+            pool.Enqueue(obj);
+        }
+    }
+
+    public GameObject GetFromPool()
+    {
+        if (pool.Count > 0)
+        {
+            GameObject obj = pool.Dequeue();
+            obj.SetActive(true);
+            return obj;
+        }
+        return null; // Handle pool exhaustion if needed
+    }
+
+    public void ReturnToPool(GameObject obj)
+    {
+        obj.SetActive(false);
+        pool.Enqueue(obj);
+    }
+}
+```
+```cs
+void SpawnObject()
+{
+    GameObject obj = objectPool.GetFromPool();
+    if (obj != null)
+    {
+        obj.transform.position = spawnPosition;
+    }
+}
+```
+
+This way, the system efficiently manages active and inactive objects, reducing runtime overhead.
 
 ---
 
