@@ -41,6 +41,7 @@
     - [What is an object in Python?](#what-is-an-object-in-python)
     - [What is the self keyword in Python?](#what-is-the-self-keyword-in-python)
     - [What is the super() function in Python?](#what-is-the-super-function-in-python)
+    - [How can you override the + operator in Python?](#how-can-you-override-the--operator-in-python)
     - [How can you prevent method overriding in Python?](#how-can-you-prevent-method-overriding-in-python)
     - [What is the purpose of the @property decorator?](#what-is-the-purpose-of-the-property-decorator)
     - [What is meta class in Python.](#what-is-meta-class-in-python)
@@ -791,7 +792,6 @@ A decorator is a design pattern in Python that allows a user to add new function
 def make_pretty(func):
     def inner():
         print("I got decorated")
-
         func()
     return inner
 
@@ -826,7 +826,6 @@ def smart_divide(func):
         if b == 0:
             print("Whoops! cannot divide")
             return
-
         return func(a, b)
     return inner
 
@@ -1390,6 +1389,36 @@ if __name__ == "__main__":
     doctest.testmod()
 ```
 
+---
+
+### How can you override the + operator in Python?
+
+```python
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        if isinstance(other, Vector):
+            return Vector(self.x + other.x, self.y + other.y)
+        return NotImplemented
+
+    def __repr__(self):
+        return f"Vector({self.x}, {self.y})"
+
+def main():
+    """
+    >>> v1 = Vector(2, 4)
+    >>> v2 = Vector(3, 5)
+    >>> v1 + v2
+    Vector(5, 9)
+    """
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
 ---
 
 ### How can you prevent method overriding in Python?
