@@ -1,5 +1,6 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
+  - [General](#general)
     - [What to include in a bug report?](#what-to-include-in-a-bug-report)
     - [What to include in a test case?](#what-to-include-in-a-test-case)
     - [What is the Testing Pyramid?](#what-is-the-testing-pyramid)
@@ -7,8 +8,19 @@
     - [Test Strategy vs Test Plan.](#test-strategy-vs-test-plan)
     - [Test Coverage Metrics](#test-coverage-metrics)
     - [Classification of Different Types of Testing](#classification-of-different-types-of-testing)
+  - [pytest](#pytest)
+    - [What is a Pytest fixture?](#what-is-a-pytest-fixture)
+    - [Explain the `autouse` flag in fixtures.](#explain-the-autouse-flag-in-fixtures)
+    - [What are pytest's fixture scopes?](#what-are-pytests-fixture-scopes)
+    - [How do you mark a test in Pytest?](#how-do-you-mark-a-test-in-pytest)
+    - [What is parameterized testing in Pytest?](#what-is-parameterized-testing-in-pytest)
+    - [How do you handle exceptions in Pytest?](#how-do-you-handle-exceptions-in-pytest)
+    - [How do you run tests in parallel using Pytest?](#how-do-you-run-tests-in-parallel-using-pytest)
+    - [What is the purpose of the conftest.py file in Pytest?](#what-is-the-purpose-of-the-conftestpy-file-in-pytest)
+    - [How do you create custom Pytest hooks, and what are some common hooks?](#how-do-you-create-custom-pytest-hooks-and-what-are-some-common-hooks)
   - [References](#references)
 
+## General
 
 ### What to include in a bug report?
 
@@ -122,11 +134,142 @@ Testing is divided into two types – *Functional* Testing and *Non functional* 
 
 ---
 
+## pytest
+
+### What is a Pytest fixture?
+
+In testing, a fixture provides a defined, reliable and consistent context for the tests. This could include environment   
+(for example a database configured with known parameters) or content (such as a dataset).
+
+```python
+import pytest
+
+@pytest.fixture
+def sample_data():
+    return {"key": "value"}
+
+def test_data(sample_data):
+    assert sample_data["key"] == "value"
+```
+
+Tests don’t have to be limited to a single fixture, either. They can depend on as many fixtures as you want, and   
+fixtures can use other fixtures, as well. This is where pytest’s fixture system really shines.
+
+---
+
+### Explain the `autouse` flag in fixtures.
+
+Automatically applied to all tests in their scope.
+
+```python
+@pytest.fixture(autouse=True)
+def setup_environment():
+    print("Setting up environment")
+```
+---
+### What are pytest's fixture scopes?
+
+You can specify the scope using the scope parameter in the @pytest.fixture decorator.
+
+```python
+@pytest.fixture(scope="module")
+def example_fixture():
+    return "This is an example"
+```
+
+|Scope      |	Lifetime|
+|-----------|------------------------------------------|
+|function   |	Per test function (default).           |
+|class      |	Per test class.                        |
+|module     |	Per module (file).                     |
+|session    |	Per pytest session (entire test suite).|
+
+---
+
+### How do you mark a test in Pytest?
+
+```ini
+# pytest.ini
+[pytest]
+markers =
+    slow: marks tests as slow
+```
+```python
+import pytest
+
+@pytest.mark.slow
+def test_slow_function():
+    assert True
+```
+```shell
+pytest -m "not slow"
+```
+---
+
+### What is parameterized testing in Pytest?
+
+Parameterized tests allow you to run the same test with different inputs.
+
+```python
+import pytest
+
+@pytest.mark.parametrize("a, b, result", [(1, 1, 2), (2, 3, 5), (3, 5, 8)])
+def test_addition(a, b, result):
+    assert a + b == result
+```
+---
+
+### How do you handle exceptions in Pytest?
+
+```python
+import pytest
+
+def test_exception():
+    with pytest.raises(ZeroDivisionError):
+        1 / 0
+```
+---
+
+### How do you run tests in parallel using Pytest?
+
+```shell
+pip install pytest-xdist
+pytest -n <num_of_cores>
+```
+---
+
+### What is the purpose of the conftest.py file in Pytest?
+
+`conftest.py` is a configuration file used to share fixtures and hooks across multiple test files.
+
+---
+
+### How do you create custom Pytest hooks, and what are some common hooks?
+
+* Custom hooks allow extending Pytest's behavior.
+* Hooks are implemented in `conftest.py` using Pytest’s hook system.
+
+```python
+# conftest.py
+def pytest_runtest_logreport(report):
+    if report.when == "call" and report.outcome == "failed":
+        with open("failed_tests.log", "a") as f:
+            f.write(f"FAILED: {report.nodeid}\n")
+```
+
+**Common hooks**:  
+* `pytest_configure(config)`: Called after command-line options are parsed.
+* `pytest_collection_modifyitems(config, items)`: Modify collected test items.
+* `pytest_runtest_teardown(item)`: Called after each test teardown.
+
+--- 
+
 ## References
-- https://testsigma.com/blog/qa-interview-questions/#
+- https://docs.pytest.org/en/stable/
 - https://semaphoreci.com/blog/testing-pyramid
+- https://testsigma.com/blog/qa-interview-questions/#
 - https://katalon.com/resources-center/blog/test-plan   
-- https://www.testrail.com/blog/effective-test-cases-templates/
 - https://www.browserstack.com/guide/types-of-testing
 - https://www.browserstack.com/guide/how-to-write-a-bug-report
+- https://www.testrail.com/blog/effective-test-cases-templates/
 - https://www.browserstack.com/guide/test-coverage-metrics-in-software-testing

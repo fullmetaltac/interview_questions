@@ -1989,6 +1989,11 @@ if __name__ == "__main__":
 :bulb: A type checker like `mypy` or`pyright` is a tool used to enforce type hinting in Python. 
 
 ```shell
+pip install mypy
+mypy .
+```
+
+```shell
 pip install pyright    
 pyright my_file.py
 ```
