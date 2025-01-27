@@ -706,6 +706,7 @@ select * FROM invoices;
 ---
 
 ## Database Normalization
+![db_normalization](https://github.com/user-attachments/assets/75305f35-701a-47a4-b0ab-8408248ef159)
 
 - **First Normal Form (1NF)**  
 This normalization level ensures that each column in your data contains only atomic values. Atomic values in this   
