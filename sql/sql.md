@@ -16,6 +16,7 @@
     - [What is Cursor? How to use a Cursor?](#what-is-cursor-how-to-use-a-cursor)
     - [What is a Function?](#what-is-a-function)
     - [What is a Stored Procedure?](#what-is-a-stored-procedure)
+  - [Database Normalization](#database-normalization)
   - [References](#references)
 
 
@@ -704,6 +705,39 @@ select * FROM invoices;
 
 ---
 
+## Database Normalization
+
+- **First Normal Form (1NF)**  
+This normalization level ensures that each column in your data contains only atomic values. Atomic values in this   
+context means that each entry in a column is indivisible. It is like saying that each cell in a spreadsheet should hold  
+just one piece of information. 1NF ensures atomicity of data, with each column cell containing only a single value and  
+each column having unique names.
+
+- **Second Normal Form (2NF)**  
+Eliminates partial dependencies by ensuring that non-key attributes depend only on the primary key. What this means, in  
+essence, is that there should be a direct relationship between each column and the primary key, and not between other   
+columns.
+
+- **Third Normal Form (3NF)**  
+Removes transitive dependencies by ensuring that non-key attributes depend only on the primary key. This level of  
+normalization builds on 2NF.
+
+- **Boyce-Codd Normal Form (BCNF)**  
+This is a more strict version of 3NF that addresses additional anomalies. At this normalization level, every   
+determinant is a candidate key.
+
+- **Fourth Normal Form (4NF)**  
+This is a normalization level that builds on BCNF by dealing with multi-valued dependencies.
+
+- **Fifth Normal Form (5NF)**
+5NF is the highest normalization level that addresses join dependencies. It is used in specific scenarios to further   
+minimize redundancy by breaking a table into smaller tables.
+
+
+---
+
+
 ## References
 - https://www.postgresqltutorial.com/
 - https://www.interviewbit.com/sql-interview-questions/ 
+- https://www.datacamp.com/tutorial/normalization-in-sql
