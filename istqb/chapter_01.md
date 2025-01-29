@@ -15,7 +15,7 @@
 2) As part of which test process do you determine the exit criteria?
     - (A) Test planning.
     - (B) Evaluating exit criteria and reporting.
-    - (C) closure
+    - (C) Test closure.
     - (D) Test control.
     <details><summary>Answer:</summary>A</details></br>
 
