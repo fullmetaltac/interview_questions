@@ -7,6 +7,7 @@
 - [SQL](sql/sql.md)
 - ---
 - [QA](qa.md)
+- [ISTQB - Chapter 1](istqb/chapter_01.md)
 - ---
 - [C#](csharp.md)
 - [Unity](unity.md)
