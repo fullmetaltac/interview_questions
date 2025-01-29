@@ -6,17 +6,18 @@
 ---
 ## Exam Set 1
 1) Which of the following is a MAJOR task of test planning?
-   1. Scheduling test analysis and design tasks.
-   1. Initiating corrective actions.
-   1. Monitoring progress and test coverage
-   1. Measuring and analyzing results.
-    <details><summary>Answer:</summary>1</details></br>
+    - (A) Scheduling test analysis and design tasks.
+    - (B) Initiating corrective actions.
+    - (C) Monitoring progress and test coverage
+    - (D) Measuring and analyzing results.
+    <details><summary>Answer:</summary>A</details></br>
+
 2) As part of which test process do you determine the exit criteria?
-   1. Test planning.
-   2. Evaluating exit criteria and reporting.
-   3. closure
-   4. Test control.
-    <details><summary>Answer:</summary>1</details></br>
+    - (A) Test planning.
+    - (B) Evaluating exit criteria and reporting.
+    - (C) closure
+    - (D) Test control.
+    <details><summary>Answer:</summary>A</details></br>
 
 3) Which of the following is a MAJOR task of test implementation and execution?
     1. Measuring and analyzing results.
