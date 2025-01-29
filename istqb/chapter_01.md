@@ -46,7 +46,7 @@
     - (C) Assigning resources.
     - (D) Building the test environment
     - (E) Writing test conditions.
-
+    <br />
     1. A, B & D are true, C & E are false
     2. B & C are true, A, D & E are false
     3. D & E are true, A, B & C are false
