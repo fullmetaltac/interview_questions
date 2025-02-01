@@ -330,6 +330,5 @@ executives why some defects are likely to be missed?
 <details><summary>Answer:</summary>3</details></br>
 
 ## References:
-- https://glossary.istqb.org
 - https://github.com/jalizadeh/ISTQB-Exam-Questions
 - https://www.softwaretestinggenius.com/istqb-certification-exam-sample-papers-q-1-to-10/
