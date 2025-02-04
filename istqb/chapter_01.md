@@ -1,10 +1,10 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
   - [Exam Set 1](#exam-set-1)
-  - [Exam Set 3](#exam-set-3)
   - [References:](#references)
 
 ---
+
 ## Exam Set 1
 
 1) Which of the following is a MAJOR task of test planning?
@@ -307,27 +307,6 @@
     1. Is more expensive if found in requirements than functional design
     1. Can never be determined
     <details><summary>Answer:</summary>2</details></br>
-
-## Exam Set 3
-
-21) A test team consistently finds between 90% and 95% of the defects present in the system under test. While the test   
-manager understands that this is a good defect-detection percentage for her test team and industry, senior management   
-and executives remain disappointed in the test group, saying that the test team misses too many bugs. Given that the   
-users are generally happy with the system and that the failures which have occurred have generally been low impact,   
-which of the following testing principles is most likely to help the test manager explain to these managers and   
-executives why some defects are likely to be missed?
-    1. Exhaustive testing is impossible
-    2. Defect clustering
-    3. Pesticide paradox
-    4. Absence-of-errors fallacy
-<details><summary>Answer:</summary>1</details></br>
-
-22) According to the ISTQB Glossary, regression testing is required for what purpose?
-    1. To verify the success of corrective actions.
-    2. To prevent a task from being incorrectly considered completed.
-    3. To ensure that defects have not been introduced by a modification.
-    4. To motivate better unit testing by the programmers
-<details><summary>Answer:</summary>3</details></br>
 
 ## References:
 - https://github.com/jalizadeh/ISTQB-Exam-Questions
