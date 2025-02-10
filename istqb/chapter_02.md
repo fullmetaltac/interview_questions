@@ -320,4 +320,5 @@ management that the system meets specifications
 
 ## References:
 - https://github.com/jalizadeh/ISTQB-Exam-Questions
-- https://www.softwaretestinggenius.com/istqb-certification-exam-sample-papers-q-1-to-10/
+- https://www.softwaretestinggenius.com/manual-testing/quality-systems/software-testing-skill-test/
+- https://www.softwaretestinggenius.com/certifications-resources/istqb-foundation-exam-sample-question-papers/
