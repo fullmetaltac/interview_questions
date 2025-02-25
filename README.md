@@ -9,10 +9,7 @@
 - [SQL](sql/sql.md)
 - ---
 - [QA](qa.md)
-- [ISTQB - Chapter 1](istqb/chapter_01.md)
-- [ISTQB - Chapter 2](istqb/chapter_02.md)
-- [ISTQB - Chapter 3](istqb/chapter_03.md)
-- [ISTQB - Chapter 4](istqb/chapter_04.md)
+- [ISTQB - Notes](istqb/chapters.md)
 - ---
 - [C#](csharp.md)
 - [Unity](unity.md)
