@@ -12,7 +12,11 @@
     - [Test types: the targets of testing](#test-types-the-targets-of-testing)
     - [Maintenance testing](#maintenance-testing)
     - [SAMPLE EXAM QUESTIONS](#sample-exam-questions-1)
-  - [Chapter 3](#chapter-3)
+  - [Chapter 3 - Static techniques](#chapter-3---static-techniques)
+    - [Reviews and the test process](#reviews-and-the-test-process)
+    - [Review process](#review-process)
+    - [Static analysis by tools](#static-analysis-by-tools)
+    - [SAMPLE EXAM QUESTIONS](#sample-exam-questions-2)
   - [Chapter 4](#chapter-4)
   - [Chapter 5](#chapter-5)
   - [Chapter 6](#chapter-6)
@@ -408,8 +412,162 @@ whole regression test to run in case other parts of the system have been adverse
 1. Performed by an independent test team.
 1. Useful to test software developed for a specific customer or user.
     <details><summary>Answer:</summary>1</details></br>
-    
-## Chapter 3
+
+## Chapter 3 - Static techniques
+
+### Reviews and the test process
+
+From Section 3.1, you should be able to explain the importance and advantages of static testing. You should know  
+the difference between static testing and dynamic testing, and also understand the concept of reviews. You should  
+be able to recognize the software work products that can be examined by static testing. You should know the glossary  
+terms **static testing**, **dynamic testing** and **reviews**.
+
+> **static testing** - Testing that does not involve the execution of a test item.
+
+> **dynamic testing** - Testing that involves the execution of the test item.
+
+
+### Review process
+
+From Section 3.2, you should understand the difference between formal and informal reviews. You should be able to  
+recall the main phases of a typical formal review. The main roles within reviews and their responsibilities should  
+be clear to you. You should know the differences between the various types of formal review: technical review,  
+walkthrough and inspection. Finally you should be able to explain the factors for successful performance of reviews.  
+You should know the glossary terms **entry criteria**, **exit criteria**, **formal review**, **informal review**,  
+**inspection**, **moderator**, **reviewer**, **scribe**, **technical review** and **walkthrough**.
+
+> **entry criteria** - The set of conditions for officially starting a defined task.
+
+> **exit criteria** - The set of conditions for officially completing a defined task.
+
+> **formal review** - A review that follows a defined process with a formally documented output.
+
+> **informal review** - A type of review that does not follow a defined process and has no formally documented output.
+
+> **inspection** - A type of formal review that uses defined team roles and measurement to identify defects in a work  
+product, and improve the review process and the software development process.
+
+> **moderator** - (1) The person responsible for running review meetings. (2) The person who performs a usability  
+test session.
+
+> **reviewer** - A participant in a review who identifies defects in the work product.
+
+> **scribe** - A person who records information at a review meeting.
+
+> **technical review** - A formal review by technical experts that examine the quality of a work product and identify  
+discrepancies from specifications and standards.
+
+> **walkthrough** - A type of review in which an author leads members of the review through a work product and the  
+members ask questions and make comments about possible issues.
+
+### Static analysis by tools 
+
+From Section 3.3, you should understand the objective of static analysis and be able to compare it to static and  
+dynamic testing. You should be able to describe the main features of static analysis and recall typical defects that  
+can be found using static analysis. Finally, you should be able to recall the benefits of using static analysis. You  
+should now the glossary terms **compiler**, **cyclomatic complexity**, **control flow**, **data flow** and  
+**static analysis**.
+
+> **cyclomatic complexity** - The maximum number of linear, independent paths through a program.
+
+> **control flow analysis** - A type of static analysis based on a representation of unique paths for executing  
+a component or system.
+
+> **data flow analysis** - A type of static analysis based on the lifecycle of variables.
+
+> **static analysis** - The process of evaluating a component or system without executing it, based on its form,  
+structure, content, or documentation.
+
+### SAMPLE EXAM QUESTIONS
+
+1) Which of the following artifacts can be examined by using review techniques?
+
+1. Software code
+1. Requirements specification
+1. Test designs
+1. All of the above
+    <details><summary>Answer:</summary>4</details></br>
+
+2) Which statement about the function of a static analysis tool is true?
+
+1. Gives quality information about the code without executing it.
+1. Checks expected results against actual results.
+1. Can detect memory leaks.
+1. Gives information about what code has and has not been exercised. 
+    <details><summary>Answer:</summary>1</details></br>
+
+3) Which is not a type of review?
+
+1. Walkthrough
+1. Inspection
+1. Informal review
+1. Management approval
+    <details><summary>Answer:</summary>4</details></br>
+
+4) What statement about reviews is true?
+
+1. Inspections are led by a trained moderator, whereas technical reviews are not necessarily.
+1. Technical reviews are led by a trained leader, inspections are not.
+1. In a walkthrough, the author does not attend.
+1. Participants for a walkthrough always need to be thoroughly trained. 
+    <details><summary>Answer:</summary>1</details></br>
+
+5) What is the main difference between a walkthrough and an inspection?
+
+1. An inspection is led by the authors, whilst a walk through is led by a trained moderator.
+1. An inspection has a trained leader, whilst a walk through has no leader.
+1. Authors are not present during inspections, whilst they are during walkthroughs.
+1. A walkthrough is led by the author, whilst an inspection is led by a trained moderator. 
+    <details><summary>Answer:</summary>4</details></br>
+
+6) Which of the following characteristics and types of review processes belong together?
+
+1. Led by the author
+2. Undocumented
+3. No management participation
+4. Led by a trained moderator or leader
+5. Uses entry and exit criteria
+
+- (s) Inspection
+- (t) Technical review
+- (u) Informal review
+- (v) Walkthrough
+
+1. s = 4, t = 3, u = 2 and 5, v = 1
+1. s = 4 and 5, t = 3, u = 2, v = 1
+1. s = 1 and 5, t = 3, u = 2, v = 4
+1. s = 5, t = 4, u = 3, v = 1 and 2 
+    <details><summary>Answer:</summary>2</details></br>
+
+7) What statement about static analysis is true?
+
+1. With static analysis, defects can be found that are difficult to find with dynamic testing.
+1. Compiling is not a form of static analysis.
+1. When properly performed, static analysis makes functional testing redundant.
+1. Static analysis finds all faults. 
+    <details><summary>Answer:</summary>1</details></br>
+
+8) Which of the following statements about early test design are true and which are false?
+
+1. Defects found during early test design are more expensive to fix.
+2. Early test design can find defects.
+3. Early test design can cause changes to the requirements.
+4. Early test design takes more effort.
+
+1. 1 and 3 are true. 2 and 4 are false.
+1. 2 is true. 1, 3 and 4 are false.
+1. 2 and 3 are true. 1 and 4 are false.
+1. 2, 3 and 4 are true. 1 is false. 
+    <details><summary>Answer:</summary>3</details></br>
+
+9) Static code analysis typically identifies all but one of the following problems. Which is it?
+
+1. Unreachable code
+1. Undeclared variables
+1. Faults in the requirements
+1. Too few comments 
+    <details><summary>Answer:</summary>3</details></br>
+
 
 ## Chapter 4
 
