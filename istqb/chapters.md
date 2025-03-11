@@ -17,7 +17,14 @@
     - [Review process](#review-process)
     - [Static analysis by tools](#static-analysis-by-tools)
     - [SAMPLE EXAM QUESTIONS](#sample-exam-questions-2)
-  - [Chapter 4](#chapter-4)
+  - [Chapter 4 - Test design techniques](#chapter-4---test-design-techniques)
+    - [Identifying test conditions and designing test cases](#identifying-test-conditions-and-designing-test-cases)
+    - [Categories of test design techniques](#categories-of-test-design-techniques)
+    - [Specification-based or black-box techniques](#specification-based-or-black-box-techniques)
+    - [Structure-based or white-box techniques](#structure-based-or-white-box-techniques)
+    - [Experience-based techniques](#experience-based-techniques)
+    - [Choosing a test technique](#choosing-a-test-technique)
+    - [SAMPLE EXAM QUESTIONS](#sample-exam-questions-3)
   - [Chapter 5](#chapter-5)
   - [Chapter 6](#chapter-6)
   - [References:](#references)
@@ -569,8 +576,310 @@ structure, content, or documentation.
     <details><summary>Answer:</summary>3</details></br>
 
 
-## Chapter 4
+## Chapter 4 - Test design techniques
 
+### Identifying test conditions and designing test cases
+
+From Section 4.1, you should now be able to differentiate between a test condition, a test case and a test procedure,  
+and know that they are documented in a test design specification, a test case specification and a test procedure  
+specification respectively. You should be able to write test cases that include expected results and that show clear  
+traceability to the test basis (e.g. requirements). You should be able to translate test cases into a test procedure  
+specification at the appropriate level of detail for testers and you should be able to write a test execution schedule  
+for a given set of test cases that takes into account priorities as well as technical and logical dependencies. You  
+should know the glossary terms **test case**, **test case specification**, **test condition**, **test data**,  
+**test procedure specification**, **test script** and **traceability**.
+
+> **test case** - A set of preconditions, inputs, actions (where applicable), expected results and postconditions,  
+developed based on test conditions.
+
+> **test specification** -The complete documentation of the test design, test cases, and test scripts for a specific  
+test item.
+
+> **test condition** - A testable aspect of a component or system identified as a basis for testing.
+
+> **test data** - Data needed for test execution.
+
+> **test procedure** - A sequence of test cases in execution order and any associated actions that may be required to  
+set up the initial preconditions and any wrap-up activities after execution.
+
+> **test script** - A sequence of instructions for the execution of a test.
+
+> **traceability** - The ability to establish explicit relationships between related work products or items within  
+work products.
+
+### Categories of test design techniques 
+
+From Section 4.2 (categories of test design techniques), you should be able to give reasons why both specification-based (black-box) and structure-based (white-box) approaches are useful, and list the common techniques   
+for each of these approaches. You should be able to explain the characteristics and differences between  
+specification-based, structure-based and experience-based techniques. You should know the glossary terms  
+**black-box test design techniques**, **experience-based test design techniques**,  
+**specification-based test design techniques**, **structure-based test design techniques** and   
+**white-box test design techniques**.
+
+> **black-box test technique** - A test technique based on the specification of a component or system.
+
+> **experience-based test technique** - A test technique based on the tester's experience, knowledge and intuition.
+
+> **white-box test technique** - A test technique based on the internal structure of a component or system.
+
+### Specification-based or black-box techniques
+
+From Section 4.3, you should be able to write test cases from given software models using equivalence partitioning,  
+boundary value analysis, decision tables and state transition diagrams. You should understand the main purpose of each  
+of these four techniques, what level and type of testing could use each technique and how coverage can be measured for  
+each of them. You should also understand the concept and benefits of use case testing. You should know the glossary  
+terms **boundary value analysis**, **decision table testing**, **equivalence partitioning**,   
+**state transition testing** and **use case testing**.
+
+> **boundary value analysis** - A black-box test technique in which test cases are designed based on boundary values.
+
+> **decision table testing** - A black-box test technique in which test cases are designed to exercise the   
+combinations of conditions and the resulting actions shown in a decision table.
+
+> **equivalence partitioning** - A black-box test technique in which test conditions are equivalence partitions  
+exercised by one representative member of each partition.
+
+> **state transition testing** - A black-box test technique in which test cases are designed to exercise elements of  
+a state transition model.
+
+> **use case testing** - A black-box test technique in which test cases are designed to exercise use case behaviors.
+
+### Structure-based or white-box techniques
+
+From Section 4.4, you should be able to describe the concept and importance of code coverage. You should be able to  
+explain the concepts of statement and decision coverage and understand that these concepts can also be used at test  
+levels other than component testing (such as business procedures at system test level). You should be able to write  
+test cases from given control flows using statement testing and decision testing, and you should be able to assess  
+statement and decision coverage for completeness. You should know the glossary terms **code coverage**,  
+**decision coverage**, **statement coverage**, **structural testing**, **structure-based testing**  
+and **white-box testing**.
+
+> **decision coverage** - The coverage of decision outcomes.
+
+> **statement coverage** - The coverage of executable statements.
+
+> **white-box testing** - Testing based on an analysis of the internal structure of the component or system.
+
+> **white-box test technique** - A test technique based on the internal structure of a component or system.
+
+### Experience-based techniques
+
+From Section 4.5, you should be able to remember the reasons for writing test cases based on intuition, experience and  
+knowledge about common defects and you should be able to compare experience-based techniques with specification-based  
+techniques. You should know the glossary terms **error guessing** and **exploratory testing**.
+
+> **error guessing** - A test technique in which tests are derived on the basis of the tester's knowledge of past  
+failures, or general knowledge of failure modes.
+
+> **exploratory testing** - An approach to testing in which the testers dynamically design and execute tests based on  
+their knowledge, exploration of the test item and the results of previous tests.
+
+### Choosing a test technique
+
+From Section 4.6, you should be able to list the factors that influence the selection of the appropriate test design  
+technique for a particular type of problem, such as the type of system, risk, customer requirements, models for use  
+case modeling, requirements models or testing knowledge. 
+
+
+### SAMPLE EXAM QUESTIONS
+
+1) In which document described in IEEE 829 would you find instructions for the steps to be
+taken for a test including set-up, logging, environment and measurement?
+
+1. Test plan
+1. Test design specification
+1. Test case specification
+1. Test procedure specification
+    <details><summary>Answer:</summary>D</details></br>
+
+2) With a highly experienced tester with a good business background, which approach to defining test  
+procedures would be effective and most efficient for a project under severe time pressure?
+
+1. A high-level outline of the test conditions and general steps to take.
+1. Every step in the test spelled out in detail.
+1. A high-level outline of the test conditions with the steps to take discussed in detail with another experienced tester.
+1. Detailed documentation of all test cases and careful records of each step taken in the testing
+    <details><summary>Answer:</summary>A</details></br>
+
+
+3) Put the test cases that implement the following test conditions into the best order for the test execution   
+schedule, for a test that is checking modifications of customers on a database.
+
+1. Print modified customer record.
+2. Change customer address: house number and street name.
+3. Capture and print the on-screen error message.
+4. Change customer address: postal code.
+5. Confirm existing customer is on the database by opening that record.
+6. Close the customer record and close the database.
+7. Try to add a new customer with no details at all.
+
+- 5,4,2,1,3,7,6
+- 4,2,5,1,6,7,3
+- 5,4,2,1,7,3,6
+- 5,1,2,3,4,7,6
+    <details><summary>Answer:</summary>C</details></br>
+
+4) Why are both specification-based and structure-based testing techniques useful?
+
+1. They find different types of defect.
+1. Using more techniques is always better.
+1. Both find the same types of defect.
+1. Because specifications tend to be unstructured.
+    <details><summary>Answer:</summary>A</details></br>
+
+5) What is a key characteristic of structure-based testing techniques?
+
+a. They are mainly used to assess the structure of a specification.
+b. They are used both to measure coverage and to design tests to increase coverage.
+c. They are based on the skills and experience of the tester.
+d. They use a formal or informal model of the software or component.
+    <details><summary>Answer:</summary>B</details></br>
+
+6) Which of the following would be an example of decision-table testing for a financial application  
+applied at the system-test level?
+
+1. A table containing rules for combinations of inputs to two fields on a screen.
+1. A table containing rules for interfaces between components.
+1. A table containing rules for mortgage applications.
+1. A table containing rules for chess.
+    <details><summary>Answer:</summary>C</details></br>
+
+7) Which of the following could be a coverage measure for state transition testing?
+
+- (V) All states have been reached.
+- (W) The response time for each transaction is adequate.
+- (X) Every transition has been exercised.
+- (Y) All boundaries have been exercised.
+- (Z) Specific sequences of transitions have been exercised.
+
+1. X, Y and Z
+1. V, X, Y and Z
+1. W, X and Y
+1. V, X and Z
+    <details><summary>Answer:</summary>D</details></br>
+
+8) Postal rates for 'light letters' are 25p up to l0g, 35p up to 50g plus an extra l0p for each  
+additional 25g up to l00g. Which test inputs (in grams) would be selected using equivalence partitioning?
+
+1. 8, 42, 82, 102
+1. 4, 15, 65, 92, 159
+1. 10, 50, 75, 100
+1. 5, 20, 40, 60, 80
+    <details><summary>Answer:</summary>B</details></br>
+
+9) Which of the following could be used to assess the coverage achieved for   
+specification-based (black-box) test techniques?
+
+- (V) Decision outcomes exercised
+- (W) Partitions exercised
+- (X) Boundaries exercised
+- (Y) State transitions exercised
+- (Z) Statements exercised
+
+1. V, W, Y or Z
+1. W, X or Y
+1. V, X or Z
+1. W, X, Y or Z
+    <details><summary>Answer:</summary>B</details></br>
+
+10) Which of the following structurebased test design technique would be  
+most likely to be applied to?
+
+- (1) Boundaries between mortgage interest rate bands.
+- (2) An invalid transition between two different arrears statuses.
+- (3) The business process flow for mortgage approval.
+- (4) Control flow of the program to calculate repayments.
+
+1. 2, 3 and 4
+1. 2 and 4
+1. 3 and 4
+1. 1, 2 and 3
+    <details><summary>Answer:</summary>C</details></br>
+
+11) Use case testing is useful for which of the following?
+
+- (P) Designing acceptance tests with users or customers.
+- (Q) Making sure that the mainstream business processes are tested.
+- (R) Finding defects in the interaction between components.
+- (S) Identifying the maximum and minimum values for every input field. 
+- (T) Identifying thepercentage of statements exercised by a sets of tests.
+
+1. P, Q and R
+1. Q, S and T
+1. P, Q and S
+1. R, S and T
+    <details><summary>Answer:</summary>A</details></br>
+
+12) Which of the following statements about the relationship between statement coverage  
+and decision coverage is correct?
+
+1. 100% decision coverage is achieved if statement coverage is greater than 90%.
+1. 100% statement coverage is achieved if decision coverage is greater than 90%.
+1. 100% decision coverage always means 100% statement coverage.
+1. 100% statement coverage always means 100% decision coverage.
+    <details><summary>Answer:</summary>C</details></br>
+
+13) If you are flying with an economy ticket, there is a possibility that you may get upgraded to business class,  
+especially if you hold a gold card in the airline's frequent flier program. If you don't hold a gold card, there is  
+a possibility that you will get 'bumped' off the flight if it is full and you check in late. This is shown in figure.  
+Note that each box (i.e. statement) has been numbered. Three tests have been run:  
+
+- (Test 1) : Gold card holder who gets upgraded to business class
+- (Test 2) : Non-gold card holder who stays in economy
+- (Test 3) : A person who is bumped from the flight
+
+<TODO add picture>
+
+What is the statement coverage of these three tests?
+
+1. 60%
+1. 70%
+1. 80%
+1. 90%
+    <details><summary>Answer:</summary>C</details></br>
+
+14) Why are error guessing and exploratory testing good to do?
+
+1. They can find defects missed by specification-based and structure-based techniques.
+1. They don't require any training to be as effective as formal techniques.
+1. They can be used most effectively when there are good specifications.
+1. They will ensure that all of the code or system is tested.
+    <details><summary>Answer:</summary>A</details></br>
+
+15) How do experience-based techniques differ from specification-based techniques?
+
+1. They depend on the tester's understanding of the way the system is structured rather than on a
+documented record of what the system should do.
+1. They depend on having older testers rather than younger testers.
+1. They depend on a documented record of what the system should do rather than on an individual's personal view.
+1. They depend on an individual's personal view rather than on a documented record of what the system should do.
+    <details><summary>Answer:</summary>D</details></br>
+
+16) When choosing which technique to use in a given situation, which factors should be taken into account?
+
+- (U) previous experience of types of defects found in this or similar systems
+- (V) the existing knowledge of the testers
+- (W) regulatory standards that apply
+- (X) the type of test execution tool that will be used
+- (Y) the documentation available
+- (Z) previous experience in the development language
+
+1. V, W, Y and Z
+1. U, V, W and Y
+1. U, X and Y
+1. V, W and Y
+    <details><summary>Answer:</summary>И</details></br>
+
+17) Given the state diagram in Figure, which test case is the minimum series of valid transitions to cover every state?
+
+<TODO add picture>
+
+1. SS-S1-S2-S4-S1-S3-ES
+1. SS-S1-S2-S3-S4-ES
+1. SS-S1-S2-S4-S1-S3-S4-S1-S3-ES
+1. SS-S1-S4-S2-S1-S3-ES
+    <details><summary>Answer:</summary>A</details></br>
+    
 ## Chapter 5
 
 ## Chapter 6
