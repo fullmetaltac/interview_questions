@@ -868,7 +868,7 @@ documented record of what the system should do.
 1. U, V, W and Y
 1. U, X and Y
 1. V, W and Y
-    <details><summary>Answer:</summary>И</details></br>
+    <details><summary>Answer:</summary>B</details></br>
 
 17) Given the state diagram in Figure, which test case is the minimum series of valid transitions to cover every state?
 
@@ -879,7 +879,7 @@ documented record of what the system should do.
 1. SS-S1-S2-S4-S1-S3-S4-S1-S3-ES
 1. SS-S1-S4-S2-S1-S3-ES
     <details><summary>Answer:</summary>A</details></br>
-    
+
 ## Chapter 5
 
 ## Chapter 6

@@ -9,7 +9,7 @@
 - [SQL](sql/sql.md)
 - ---
 - [QA](qa.md)
-- [ISTQB - Notes](istqb/chapters.md)
+- [ISTQB](istqb/chapters.md)
 - ---
 - [C#](csharp.md)
 - [Unity](unity.md)
