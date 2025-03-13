@@ -25,7 +25,14 @@
     - [Experience-based techniques](#experience-based-techniques)
     - [Choosing a test technique](#choosing-a-test-technique)
     - [SAMPLE EXAM QUESTIONS](#sample-exam-questions-3)
-  - [Chapter 5](#chapter-5)
+  - [Chapter 5 - Test management](#chapter-5---test-management)
+    - [Test organization](#test-organization)
+    - [Test plans, estimates, and strategies](#test-plans-estimates-and-strategies)
+    - [Test progress monitoring and control](#test-progress-monitoring-and-control)
+    - [Configuration management](#configuration-management)
+    - [Risk and testing](#risk-and-testing)
+    - [Incident management](#incident-management)
+    - [SAMPLE EXAM QUESTIONS](#sample-exam-questions-4)
   - [Chapter 6](#chapter-6)
   - [References:](#references)
 
@@ -828,7 +835,7 @@ Note that each box (i.e. statement) has been numbered. Three tests have been run
 - (Test 2) : Non-gold card holder who stays in economy
 - (Test 3) : A person who is bumped from the flight
 
-![4 5](https://github.com/user-attachments/assets/e28a495c-8505-4fe3-b8f2-70ebb7aa904b)
+![figure](https://github.com/user-attachments/assets/e28a495c-8505-4fe3-b8f2-70ebb7aa904b)
 
 What is the statement coverage of these three tests?
 
@@ -872,7 +879,7 @@ documented record of what the system should do.
 
 17) Given the state diagram in Figure, which test case is the minimum series of valid transitions to cover every state?
 
-![4 6](https://github.com/user-attachments/assets/8203a1ed-1f4b-4129-979f-42f669e9b51f)
+![figure](https://github.com/user-attachments/assets/8203a1ed-1f4b-4129-979f-42f669e9b51f)
 
 1. SS-S1-S2-S4-S1-S3-ES
 1. SS-S1-S2-S3-S4-ES
@@ -880,8 +887,318 @@ documented record of what the system should do.
 1. SS-S1-S4-S2-S1-S3-ES
     <details><summary>Answer:</summary>A</details></br>
 
-## Chapter 5
+## Chapter 5 - Test management
 
+
+### Test organization
+
+From Section 5.1, you should now be able to explain the basic ideas of test organization. You should know why  
+independent testing is important, but also be able to analyze the potential benefits and problems associated with  
+independent test teams. You should recognize the types of people and skills needed in a test team and recall the   
+tasks that a tester and a test leader will carry out. You should know the glossary terms **tester**, **test leader**  
+and **test manager**.
+
+> **tester** - A person who performs testing.
+
+> **test leader** - On large projects, the person who reports to the test manager and is responsible for project  
+management of a particular test level or a particular set of testing activities.
+
+> **test manager** - The person responsible for project management of testing activities, resources, and evaluation  
+of a test object.
+
+### Test plans, estimates, and strategies
+
+From Section 5.2, you should now understand the fundamentals of test planning and estimation. You should know the  
+reasons for writing test plans and be able to explain how test plans relate to projects, test levels or phases, test  
+targets and test execution. You should know which parts of the test process require special attention in test  
+planning. You should be able to explain the justification behind various entry and exit criteria that might relate to  
+projects, test levels or phases and test targets. You should be able to distinguish the purpose and content of test  
+plans from that of test design specifications, test cases and test procedures, and know the IEEE 829 outline for a   
+test plan. You should know the factors that affect the effort involved in testing, including especially test  
+strategies  (approaches) and how they affect testing. You should be able to explain how metrics, expertise and  
+negotiation are used for estimating. You should know the glossary terms **entry criteria**, **exit criteria**,  
+**exploratory testing**, **test approach**, **test level**, **test plan**, **test procedure** and **test strategy**.
+
+> **entry criteria** - The set of conditions for officially starting a defined task.
+
+> **exit criteria** - The set of conditions for officially completing a defined task.
+
+> **exploratory testing** - An approach to testing in which the testers dynamically design and execute tests based  
+on their knowledge, exploration of the test item and the results of previous tests.
+
+> **test approach** - test approach The manner of implementing testing tasks.  
+
+> **test level** - A specific instantiation of a test process.
+
+> **test plan** - Documentation describing the test objectives to be achieved and the means and the schedule  
+for achieving them, organized to coordinate testing activities.
+
+> **test procedure** - A sequence of test cases in execution order and any associated actions that may be required  
+to set up the initial preconditions and any wrap-up activities after execution.
+
+> **test strategy** - A description of how to perform testing to reach test objectives under given circumstances.
+
+### Test progress monitoring and control
+
+From Section 5.3, you should be able to explain the essentials of test progress monitoring and control. You should  
+know the common metrics that are captured, logged and used for monitoring, as well as ways to present these metrics.  
+You should be able to analyze, interpret and explain test metrics that can be useful for reporting test status and for  
+making decisions about how to control test progress. You should be able to explain a typical test status report and   
+know the IEEE 829 test summary report and test log. You should know the glossary terms **defect density**,   
+**failure rate**, **test control**, **test coverage**, **test monitoring** and **test report**.
+
+> **defect density** - The number of defects per unit size of a work product.
+
+> **failure rate** - The ratio of the number of failures of a given category to a given unit of measure.
+
+> **test control** - The activity that develops and applies corrective actions to get a test project on track when  
+it deviates from what was planned.
+
+> **test coverage** - The degree to which specified coverage items are exercised by a test suite, expressed  
+as a percentage.
+
+> **test monitoring** -The activity that checks the status of testing activities, identifies any variances from   
+planned or expected, and reports status to stakeholders.
+
+> **test report** - Documentation summarizing testing and results.
+
+### Configuration management
+
+From Section 5.4, you should now understand the basics of configuration management that relate to testing. You should be
+able to summarize how good configuration management helps us do our testing work better. You should know the glossary terms **configuration management** and **version control**.
+
+> **configuration management** -  A discipline applying technical and administrative direction and surveillance to  
+identify and document the functional and physical characteristics of a configuration item, control changes to those  
+characteristics, record and report change processing and implementation status, and verify that it complies with  
+specified requirements.
+
+### Risk and testing
+
+From Section 5.5, you should now be able to explain how risk and testing relate. You should know that a risk is a  
+potential undesirable or negative outcome and that most of the risks we are interested in relate to the achievement of  
+project objectives. You should know about likelihood and impact as factors that determine the importance of a risk.  
+You should be able to compare and contrast risks to the product (and its quality) and risks to the project itself  
+and know typical risks to the product and project. You should be able to describe how to use risk analysis and risk  
+management for testing and test planning. You should know the glossary terms **product risk**, **project risk**,  
+**risk** and **risk-based testing**.
+
+> **product risk** - A risk that impacts the quality of a product.
+
+> **project risk** - A risk that impacts project success.
+
+> **risk** - A factor that could result in future negative consequences.
+
+> **risk-based testing** - A test approach in which the management, selection, prioritization, and use of test  
+activities and resources are based on corresponding risk types and risk levels.
+
+### Incident management
+
+From Section 5.6, you should now understand incident logging and be able to use incident management on your projects.  
+You should know the content of an incident report according to the IEEE 829 standard. You should be able to write a  
+high-quality report based on test results and manage that report through its life cycle. You should know the glossary  
+term **incident logging**.
+
+### SAMPLE EXAM QUESTIONS
+
+1) Why is independent testing important?
+
+1. Independent testing is usually cheaper than testing your own work.
+1. Independent testing is more effective at finding defects.
+1. Independent testers should determine the processes and methodologies used.
+1. Independent testers are dispassionate about whether the project succeeds or fails.
+    <details><summary>Answer:</summary>2</details></br>
+
+2) Which of the following is among the typical tasks of a test leader?
+
+1. Develop system requirements, design specifications and usage models.
+1. Handle all test automation duties.
+1. Keep tests and test coverage hidden from programmers.
+1. Gather and report test progress metrics.
+    <details><summary>Answer:</summary>4</details></br>
+
+3) According to the ISTQB Glossary, what do we mean when we call someone a test manager?
+
+1. A test manager manages a collection of test leaders.
+1. A test manager is the leader of a test team or teams.
+1. A test manager gets paid more than a test leader.
+1. A test manager reports to a test leader
+    <details><summary>Answer:</summary>2</details></br>
+
+4) What is the primary difference between the test plan, the test design specification,  
+and the test procedure specification?
+
+1. The test plan describes one or more levels of testing, the test design specification identifies the  
+associated high-level test cases and a test procedure specification describes the actions for executing a test.
+1. The test plan is for managers, the test design specification is for programmers and the test  
+procedure specification is for testers who are automating tests.
+1. The test plan is the least thorough, the test procedure specification is the most thorough and  
+the test design specification is midway between the two.
+1. The test plan is finished in the first third of the project, the test design specification is finished in  
+the middle third of the project and the test procedure specification is finished in the last third of the project.
+    <details><summary>Answer:</summary>1</details></br>
+
+5) Which of the following factors is an influence on the test effort involved in most projects?
+
+1. Geographical separation of tester and programmers.
+1. The departure of the test manager during the project.
+1. The quality of the information used to develop the tests.
+1. Unexpected long-term illness by a member of the project team.
+    <details><summary>Answer:</summary>3</details></br>
+
+6) The ISTQB Foundation Syllabus establishes a fundamental test process where test planning occurs early in the  
+project, while test execution occurs at the end. Which of the following elements of the test plan, while specified  
+during test planning, is assessed during test execution?
+
+1. Test tasks
+1. Environmental needs
+1. Exit criteria
+1. Test team training
+    <details><summary>Answer:</summary>3</details></br>
+
+7) Consider the following exit criteria which might be found in a test plan:
+
+- (I) No known customer-critical defects.
+- (II) All interfaces between components tested.
+- (III) 100% code coverage of all units.
+- (IV) All specified requirements satisfied.
+- (V) System functionality matches legacy system for all business rules.
+
+Which of the following statements is true about whether these exit criteria belong  
+in an acceptance test plan?
+
+1. All statements belong in an acceptance test plan.
+1. Only statement I belongs in an acceptance test plan.
+1. Only statements I, II, and V belong in an acceptance test plan.
+1. Only statements I, IV, and V belong in an acceptance test plan.
+    <details><summary>Answer:</summary>4</details></br>
+
+8) According to the ISTQB Glossary, what is a test level?
+
+1. A group of test activities that are organized together.
+1. One or more test design specification documents.
+1. A test type.
+1. An ISTQB certification.
+    <details><summary>Answer:</summary>1</details></br>
+
+9)  Which of the following metrics would be most useful to monitor during test execution?
+
+1. Percentage of test cases written.
+1. Number of test environments remaining to be configured.
+1. Number of defects found and fixed.
+1. Percentage of requirements for which a test has been written.
+    <details><summary>Answer:</summary>3</details></br>
+
+10) During test execution, the test manager describes the following situation to the project team: '90% of the test  
+cases have been run. 20% of the test cases have identified defects. 127 defects have been found. 112 defects have  
+been fixed and have passed confirmation testing. Of the remaining 15 defects, project management has decided that  
+they do not need to be fixed prior to release.' Which of the following is the most reasonable interpretation of  
+this test status report?
+
+1. The remaining 15 defects should be confirmation tested prior to release.
+1. The remaining 10% of test cases should be run prior to release.
+1. The system is now ready for release with no further testing or development effort.
+1. The programmers should focus their attention on fixing the remaining known defects prior to release
+    <details><summary>Answer:</summary>2</details></br>
+
+11) In a test summary report, the project's test leader makes the following statement,  
+'The payment processing subsystem fails to accept payments from American Express cardholders, which is  
+considered a must-work feature for this release.' This statement is likely to be found in which  
+of the following sections?
+
+1. Evaluation
+1. Summary of activities
+1. Variances
+1. Incident description
+    <details><summary>Answer:</summary>1</details></br>
+
+12) During an early period of test execution, a defect is located, resolved and confirmed as resolved by re-testing,  
+but is seen again later during subsequent test execution. Which of the following is a testing-related aspect of  
+configuration management that is most likely to have broken down?
+
+1. Traceability
+1. Confirmation testing
+1. Configuration control
+1. Test documentation management
+    <details><summary>Answer:</summary>3</details></br>
+
+13) You are working as a tester on a project to develop a point-of-sales system for grocery stores and  
+other similar retail outlets. Which of the following is a product risk for such a project?
+
+1. The arrival of a more-reliable competing product on the market.
+1. Delivery of an incomplete test release to the first cycle of system test.
+1. An excessively high number of defect fixes fail during re-testing.
+1. Failure to accept allowed credit cards
+    <details><summary>Answer:</summary>4</details></br>
+
+14) A product risk analysis meeting is held during the project planning period.   
+Which of the following determines the level of risk?
+
+1. Difficulty of fixing related problems in code
+1. The harm that might result to the user
+1. The price for which the software is sold
+1. The technical staff in the meeting
+    <details><summary>Answer:</summary>2</details></br>
+
+15) You are writing a test plan using the IEEE 829 template and are currently completing  
+the Risks and Contingencies section. Which of the following is most likely to be listed as a project risk?
+
+1. Unexpected illness of a key team member
+1. Excessively slow transaction-processing time
+1. Data corruption under network congestion
+1. Failure to handle a key use case
+    <details><summary>Answer:</summary>1</details></br>
+
+16) You and the project stakeholders develop a list of product risks and project risks during the planning stage of a project. What else should you do with those lists of risks during test planning?
+
+1. Determine the extent of testing required for the product risks and the mitigation and contingency  
+actions required for the project risks.
+1. Obtain the resources needed to completely cover each product risk with tests and transfer  
+responsibility for the project risks to the project manager.
+1. Execute sufficient tests for the product risks, based on the likelihood and impact of each product  
+risk and execute mitigation actions for all project risks.
+1. No further risk management action is required at the test planning stage.
+    <details><summary>Answer:</summary>1</details></br>
+
+17) According to the ISTQB Glossary, a product risk is related to which of the following?
+
+1. Control of the test project
+1. The test object
+1. A single test item
+1. A potential negative outcome
+    <details><summary>Answer:</summary>2</details></br>
+
+18) In an incident report, the tester makes the following statement, At this point, I expect to receive an error  
+message explaining the rejection of this invalid input and asking me to enter a valid input. Instead the system   
+accepts the input, displays an hourglass for between one and five seconds and finally terminates abnormally, giving   
+the message, "Unexpected data type: 15. Click to continue." ' This statement is likely to be found in which of the  
+following sections of an IEEE 829 standard incident report?
+
+1. Summary
+1. Impact
+1. Item pass/fail criteria
+1. Incident description
+    <details><summary>Answer:</summary>4</details></br>
+
+19) According to the ISTQB Glossary, what do we call a document that describes any event that occurred during  
+testing which requires further investigation?
+
+1. A bug report
+1. A defect report
+1. An incident report
+1. A test summary report
+    <details><summary>Answer:</summary>3</details></br>
+
+20) A product risk analysis is performed during the planning stage of the test process. During the execution stage  
+of the test process, the test manager directs the testers to classify each defect report by the known product risk  
+it relates to (or to 'other'). Once a week, the test manager runs a report that shows the percentage of defects  
+related to each known product risk and to unknown risks. What is one possible use of such a report?
+
+1. To identify new risks to system quality.
+1. To locate defect clusters in product subsystems.
+1. To check risk coverage by tests.
+1. To measure exploratory testing
+    <details><summary>Answer:</summary>1</details></br>
+    
 ## Chapter 6
 
 
