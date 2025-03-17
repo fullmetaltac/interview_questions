@@ -4,7 +4,7 @@
 - [Design patterns](design_patterns.md)
 - [Data structures](data_structures.md)
 - [PCAP](pcap.ipynb)
-- [hackerrank](hackerrank.md)
+- [HackerRank](hackerrank.md)
 - ---
 - [SQL](sql/sql.md)
 - ---

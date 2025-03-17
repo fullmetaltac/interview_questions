@@ -2,7 +2,7 @@
 - [Table of Contents](#table-of-contents)
   - [Chapter 1 - Fundamentals of testing](#chapter-1---fundamentals-of-testing)
     - [Why is testing necessary?](#why-is-testing-necessary)
-    - [What is testing?. Testing principles.](#what-is-testing-testing-principles)
+    - [What is testing? Testing principles.](#what-is-testing-testing-principles)
     - [Fundamental test process.](#fundamental-test-process)
     - [The psychology of testing.](#the-psychology-of-testing)
     - [SAMPLE EXAM QUESTIONS](#sample-exam-questions)
@@ -72,7 +72,7 @@ or system and related work products.
 > **exhaustive testing** - A test approach in which the test suite comprises all combinations of input values and  
 preconditions.
 
-### What is testing?. Testing principles.
+### What is testing? Testing principles.
 
 From Section 1.2, you should now know what testing is. You should be able  
 to remember the common objectives of testing. You should be able to describe  
@@ -465,7 +465,7 @@ You should know the glossary terms **entry criteria**, **exit criteria**, **form
 > **inspection** - A type of formal review that uses defined team roles and measurement to identify defects in a work  
 product, and improve the review process and the software development process.
 
-> **moderator** - (1) The person responsible for running review meetings. (2) The person who performs a usability  
+> **moderator** - The person responsible for running review meetings. (2) The person who performs a usability  
 test session.
 
 > **reviewer** - A participant in a review who identifies defects in the work product.
