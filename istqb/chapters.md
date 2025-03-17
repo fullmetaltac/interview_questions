@@ -33,7 +33,11 @@
     - [Risk and testing](#risk-and-testing)
     - [Incident management](#incident-management)
     - [SAMPLE EXAM QUESTIONS](#sample-exam-questions-4)
-  - [Chapter 6](#chapter-6)
+  - [Chapter 6 - Tool support for testing](#chapter-6---tool-support-for-testing)
+    - [Types of test tool](#types-of-test-tool)
+    - [Effective use of tools: Potential benefits and risks](#effective-use-of-tools-potential-benefits-and-risks)
+    - [Introducing a tool into an organization](#introducing-a-tool-into-an-organization)
+    - [SAMPLE EXAM QUESTIONS](#sample-exam-questions-5)
   - [References:](#references)
 
 ---
@@ -1199,7 +1203,135 @@ related to each known product risk and to unknown risks. What is one possible us
 1. To measure exploratory testing
     <details><summary>Answer:</summary>1</details></br>
     
-## Chapter 6
+## Chapter 6 - Tool support for testing
+
+### Types of test tool
+
+From Section 6.1, you should now be able to classify different types of test tools according to the test process  
+activities that they support. You should also recognize the tools that may help developers in their testing   
+(shown by '(D)' below). In addition to the list below, you should recognize that there are tools that support   
+specific application areas and that general-purpose tools can also be used to support testing. The tools you   
+should now recognize are:
+
+Tools that support the management of testing and tests:
+- test management tool;
+- requirements management tool;
+- incident management tool;
+- configuration management tool.
+
+Tools that support static testing:
+- review process support tool;
+- static analysis tool (D);
+- modeling tool (D).
+
+Tools that support test specification:
+- test design tool;
+- test data preparation tool.
+
+Tools that support test execution and logging:
+- test execution tool;
+- test harness and unit test framework tool (D);
+- test comparator;
+- coverage measurement tool (D);
+- security tool.
+
+Tools that support performance and monitoring:
+- dynamic analysis tool;
+- performance-testing, load-testing and stress-testing tool;
+- monitoring tool.
+
+In addition to the tools already listed, you should know the glossary terms
+**debugging tool**, **driver**, **probe effect** and **stub**.
+
+> **debugging** - The process of finding, analyzing and removing the causes of failures in a component or system.
+
+> **driver** -A component or tool that temporarily replaces another component and controls or calls a test item  
+in isolation.
+
+> **stub** - A type of test double providing predefined responses.
+
+### Effective use of tools: Potential benefits and risks
+
+From Section 6.2, you should be able to summarize the potential benefits and potential risks of tool support for  
+testing in general. You should recognize that some tools have special considerations, including test execution tools,  
+performance-testing tools, static analysis tools and test management tools. You should know the glossary terms  
+**data-driven testing**, **keyword-driven testing** and **scripting language** and recognize these as associated with  
+test execution tools.
+
+> **data-driven testing** -A scripting technique that uses data files to contain the test data and expected results  
+needed to execute the test scripts.
+
+> **keyword-driven testing** - A scripting technique in which test scripts contain high-level keywords and supporting  
+files that contain low-level scripts that implement those keywords.
+
+### Introducing a tool into an organization
+
+From Section 6.3, you should be able to state the main principles of introducing a tool into an organization   
+(e.g. assessing organizational maturity, clear requirements and objective criteria, proof-of-concept, vendor  
+evaluation, coaching and mentoring). You should be able to state the goals of a proof-ofconcept or piloting phase for  
+tool evaluation (e.g. learn about the tool, assess fit with current practices, decide on standards, assess benefits).  
+You should recognize that simply acquiring a tool is not the only factor in achieving good tool support; there are   
+many other factors that are important for success (e.g. incremental roll-out, adapting processes, training and  
+coaching, defining usage guidelines, learning lessons and monitoring benefits). There are no specific definitions   
+for this section.
+
+### SAMPLE EXAM QUESTIONS
+
+1) Which tools help to support static testing?
+
+1. Static analysis tools and test execution tools.
+1. Review process support tools, static analysis tools and coverage measurement tools.
+1. Dynamic analysis tools and modeling tools.
+1. Review process support tools, static analysis tools and modeling tools.
+    <details><summary>Answer:</summary>4</details></br>
+
+2) Which test activities are supported by test harness or unit test framework tools?
+
+1. Test management and control.
+1. Test specification and design.
+1. Test execution and logging.
+1. Performance and monitoring.
+    <details><summary>Answer:</summary>3</details></br>
+
+3) What are the potential benefits from using tools in general to support testing?
+
+1. Greater quality of code, reduction in the number of testers needed, better objectives for testing.
+1. Greater repeatability of tests, reduction in repetitive work, objective assessment.
+1. Greater responsiveness of users, reduction of tests run, objectives not necessary.
+1. Greater quality of code, reduction in paperwork, fewer objections to the tests.
+    <details><summary>Answer:</summary>2</details></br>
+
+4) What is a potential risk in using tools to support testing?
+
+1. Unrealistic expectations, expecting the tool to do too much.
+1. Insufficient reliance on the tool, i.e. still doing manual testing when a test execution tool has been purchased.
+1. The tool may find defects that aren't there.
+1. The tool will repeat exactly the same thing it did the previous time.
+    <details><summary>Answer:</summary>1</details></br>
+
+5) Which of the following are advanced scripting techniques for test execution tools?
+
+1. Data-driven and keyword-driven
+1. Data-driven and capture-driven
+1. Capture-driven and keyhole-driven
+1. Playback-driven and keyword-driven
+    <details><summary>Answer:</summary>1</details></br>
+
+6) Which of the following would NOT be done as part of selecting a tool for an organization?
+
+1. Assess organizational maturity, strengths and weaknesses.
+1. Roll out the tool to as many users as possible within the organization.
+1. Evaluate the tool features against clear requirements and objective criteria.
+1. Identify internal requirements for coaching and mentoring in the use of the tool.
+    <details><summary>Answer:</summary>2</details></br>
+
+7) Which of the following is a goal for a proof-of-concept or pilot phase for tool evaluation?
+
+1. Decide which tool to acquire.
+1. Decide on the main objectives and requirements for this type of tool.
+1. Evaluate the tool vendor including training, support and commercial aspects.
+1. Decide on standard ways of using, managing, storing and maintaining the tool and the test assets.
+    <details><summary>Answer:</summary>4</details></br>
 
 
 ## References:
