@@ -8,6 +8,8 @@
 - ---
 - [SQL](sql/sql.md)
 - ---
+- [AWS](aws/aws.md)
+- ---
 - [QA](qa.md)
 - [ISTQB](istqb/chapters.md)
 - ---
