@@ -6,6 +6,7 @@
 - [Elastic Load Balancing & Auto Scaling Groups](elb_asg.md)
 - [Amazon S3](s3.md)
 - [Databases & Analytics](databases.md)
+- [Other Compute](other_compute.md)
 
 ## References
 - https://github.com/kananinirav/AWS-Certified-Cloud-Practitioner-Notes
