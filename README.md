@@ -4,16 +4,23 @@
 - [Design patterns](design_patterns.md)
 - [Data structures](data_structures.md)
 - [PCAP](pcap.ipynb)
-- [HackerRank](hackerrank.md)
-- ---
-- [JavaScript](js/js.md)
+- [HackerRank(TODO)](hackerrank.md)
 - ---
 - [SQL](sql/sql.md)
 - ---
 - [AWS](aws/aws.md)
 - ---
+- [Networking(TODO)](networking/networking.md)
+- ---
+- [DevOps(TODO)](devops/devops.md)
+- ---
 - [QA](qa.md)
 - [ISTQB](istqb/chapters.md)
 - ---
+- [JavaScript(TODO)](js/js.md)
+- [TypeScript(TODO)](js/ts.md)
+- ---
 - [C#](csharp.md)
 - [Unity](unity.md)
+- - ---
+- [Java](java/java.md)

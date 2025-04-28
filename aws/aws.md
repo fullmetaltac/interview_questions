@@ -16,8 +16,8 @@
 - [Machine Learning](machine_learning.md)
 - [Account Management, Billing & Support](account_management_billing_support.md)
 - [Advanced Identity](advanced_identity.md)
-- [Other AWS Services]()
-- [AWS Architecting & Ecosystem]()
+- [Other AWS Services](other_aws_services.md)
+- [AWS Architecting & Ecosystem](architecting_and_ecosystem.md)
 
 ## References
 - https://github.com/kananinirav/AWS-Certified-Cloud-Practitioner-Notes
