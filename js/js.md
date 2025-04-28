@@ -16,6 +16,10 @@
     - [What is a unary function?](#what-is-a-unary-function)
     - [What is the currying function?](#what-is-the-currying-function)
     - [What is a pure function?](#what-is-a-pure-function)
+    - [What is the purpose of the let keyword?](#what-is-the-purpose-of-the-let-keyword)
+    - [What is the difference between let and var?](#what-is-the-difference-between-let-and-var)
+    - [What is the reason to choose the name let as a keyword?](#what-is-the-reason-to-choose-the-name-let-as-a-keyword)
+    - [How do you redeclare variables in a switch block without an error](#how-do-you-redeclare-variables-in-a-switch-block-without-an-error)
   - [References](#references)
 
 
@@ -449,9 +453,95 @@ As per the above code snippets, the **Push** function is impure itself by alteri
 
 Remember that Pure functions are important as they simplify unit testing without any side effects and no need for dependency injection. They also avoid tight coupling and make it harder to break your application by not having any side effects. These principles are coming together with the **Immutability** concept of ES6: giving preference to **const** over **let** usage.
 
+---
+
+### What is the purpose of the let keyword?
+
+
+The `let` statement declares a **block scope local variable**. Hence the variables defined with let keyword are limited in scope to the block, statement, or expression on which it is used. Whereas variables declared with the `var` keyword used to define a variable globally, or locally to an entire function regardless of block scope.
+
+Let's take an example to demonstrate the usage,
+
+```js
+let counter = 30;
+if (counter === 30) {
+  let counter = 31;
+  console.log(counter); // 31
+}
+console.log(counter); // 30 (because the variable in if block won't exist here)
+```
 
 ---
 
+### What is the difference between let and var?
+
+You can list out the differences in a tabular format
+
+| var                                                            | let                                           |
+| -------------------------------------------------------------- | --------------------------------------------- |
+| It has been available from the beginning of JavaScript         | Introduced as part of ES6                     |
+| It has function scope                                          | It has block scope                            |
+| Variable declaration will be hoisted, initialized as undefined | Hoisted but not initialized                   |
+| It is possible to re-declare the variable in the same scope    | It is not possible to re-declare the variable |
+
+Let's take an example to see the difference,
+```js
+function userDetails(username) {
+  if (username) {
+    console.log(salary); // undefined due to hoisting
+    console.log(age); // ReferenceError: Cannot access 'age' before initialization
+    let age = 30;
+    var salary = 10000;
+  }
+  console.log(salary); //10000 (accessible due to function scope)
+  console.log(age); //error: age is not defined(due to block scope)
+}
+userDetails("John");
+```
+---
+
+### What is the reason to choose the name let as a keyword?
+
+`let` is a mathematical statement that was adopted by early programming languages like **Scheme** and **Basic**. It has been borrowed from dozens of other languages that use let already as a traditional keyword as close to `var` as possible.
+
+---
+
+### How do you redeclare variables in a switch block without an error
+
+If you try to redeclare variables in a `switch block` then it will cause errors because there is only one block. For example, the below code block throws a syntax error as below,
+
+```js
+let counter = 1;
+switch (x) {
+  case 0:
+    let name;
+    break;
+
+  case 1:
+    let name; // SyntaxError for redeclaration.
+    break;
+}
+```
+
+To avoid this error, you can create a nested block inside a case clause and create a new block scoped lexical environment.
+
+```js
+let counter = 1;
+switch (x) {
+  case 0: {
+    let name;
+    break;
+  }
+  case 1: {
+    let name; // No SyntaxError for redeclaration.
+    break;
+  }
+}
+```
+
+
+
+---
 
 ---
 
