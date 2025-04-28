@@ -6,6 +6,8 @@
 - [PCAP](pcap.ipynb)
 - [HackerRank](hackerrank.md)
 - ---
+- [JavaScript](js/js.md)
+- ---
 - [SQL](sql/sql.md)
 - ---
 - [AWS](aws/aws.md)
