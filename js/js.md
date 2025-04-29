@@ -116,6 +116,27 @@
     - [What is an event queue?](#what-is-an-event-queue)
     - [What is a decorator?](#what-is-a-decorator)
     - [What is typescript?](#what-is-typescript)
+    - [What are the differences between javascript and typescript?](#what-are-the-differences-between-javascript-and-typescript)
+    - [What are the advantages of typescript over javascript?](#what-are-the-advantages-of-typescript-over-javascript)
+    - [What is a constructor method?](#what-is-a-constructor-method)
+    - [How do you call the constructor of a parent class?](#how-do-you-call-the-constructor-of-a-parent-class)
+    - [What Is Obfuscation in javascript?](#what-is-obfuscation-in-javascript)
+    - [Why do you need Obfuscation?](#why-do-you-need-obfuscation)
+    - [What is Minification?](#what-is-minification)
+    - [What are the advantages of minification?](#what-are-the-advantages-of-minification)
+    - [Is enums feature available in javascript?](#is-enums-feature-available-in-javascript)
+    - [What is an enum?](#what-is-an-enum)
+    - [How do you get property descriptors of an object](#how-do-you-get-property-descriptors-of-an-object)
+    - [How do you extend classes?](#how-do-you-extend-classes)
+    - [How do you compare scalar arrays?](#how-do-you-compare-scalar-arrays)
+    - [Does JavaScript supports namespace?](#does-javascript-supports-namespace)
+    - [How do you declare namespace?](#how-do-you-declare-namespace)
+    - [What is V8 JavaScript engine?](#what-is-v8-javascript-engine)
+    - [Why do you need to avoid with statement?](#why-do-you-need-to-avoid-with-statement)
+    - [List down some of the features of ES6](#list-down-some-of-the-features-of-es6)
+    - [What are template literals?](#what-are-template-literals)
+    - [What is destructuring assignment?](#what-is-destructuring-assignment)
+    - [Does javascript uses mixins](#does-javascript-uses-mixins)
   - [References](#references)
 
 
@@ -2230,9 +2251,418 @@ console.log(greeting(user));
 ```
 The greeting method allows only string type as argument.
 
+---
+
+### What are the differences between javascript and typescript?
+
+Below are the list of differences between javascript and typescript,
+
+| feature             | typescript                            | javascript                                      |
+| ------------------- | ------------------------------------- | ----------------------------------------------- |
+| Language paradigm   | Object oriented programming language  | Scripting language                              |
+| Typing support      | Supports static typing                | It has dynamic typing                           |
+| Modules             | Supported                             | Not supported                                   |
+| Interface           | It has interfaces concept             | Doesn't support interfaces                      |
+| Optional parameters | Functions support optional parameters | No support of optional parameters for functions |
+
+
+### What are the advantages of typescript over javascript?
+Below are some of the advantages of typescript over javascript,
+
+- TypeScript is able to find compile time errors at the development time only and it makes sures less runtime errors. Whereas javascript is an interpreted language.
+- TypeScript is strongly-typed or supports static typing which allows for checking type correctness at compile time. This is not available in javascript.
+- TypeScript compiler can compile the .ts files into ES3,ES4 and ES5 unlike ES6 features of javascript which may not be supported in some browsers.
 
 ---
 
+### What is a constructor method?
+The constructor method is a special method for creating and initializing an object created within a class. If you do not specify a constructor method, a default constructor is used. The example usage of constructor would be as below,
+
+```js
+class Employee {
+  constructor() {
+    this.name = "John";
+  }
+}
+
+var employeeObject = new Employee();
+
+console.log(employeeObject.name); // John
+```
+
+---
+
+### How do you call the constructor of a parent class?
+You can use the super keyword to call the constructor of a parent class. Remember that super() must be called before using 'this' reference. Otherwise it will cause a reference error. Let's the usage of it,
+
+```js
+class Square extends Rectangle {
+  constructor(length) {
+    super(length, length);
+    this.name = "Square";
+  }
+
+  get area() {
+    return this.width * this.height;
+  }
+
+  set area(value) {
+    this.area = value;
+  }
+}
+```
+---
+
+### What Is Obfuscation in javascript?
+Obfuscation is the deliberate act of creating obfuscated javascript code(i.e, source or machine code) that is difficult for humans to understand. It is something similar to encryption, but a machine can understand the code and execute it. Let's see the below function before Obfuscation,
+
+```js
+function greeting() {
+  console.log("Hello, welcome to JS world");
+}
+```
+And after the code Obfuscation, it would be appeared as below,
+
+```js
+eval(
+  (function (p, a, c, k, e, d) {
+    e = function (c) {
+      return c;
+    };
+    if (!"".replace(/^/, String)) {
+      while (c--) {
+        d[c] = k[c] || c;
+      }
+      k = [
+        function (e) {
+          return d[e];
+        },
+      ];
+      e = function () {
+        return "\\w+";
+      };
+      c = 1;
+    }
+    while (c--) {
+      if (k[c]) {
+        p = p.replace(new RegExp("\\b" + e(c) + "\\b", "g"), k[c]);
+      }
+    }
+    return p;
+  })(
+    "2 1(){0.3('4, 7 6 5 8')}",
+    9,
+    9,
+    "console|greeting|function|log|Hello|JS|to|welcome|world".split("|"),
+    0,
+    {}
+  )
+);
+```
+---
+
+### Why do you need Obfuscation?
+Below are the few reasons for Obfuscation,
+
+- The Code size will be reduced. So data transfers between server and client will be fast.
+- It hides the business logic from outside world and protects the code from others
+- Reverse engineering is highly difficult
+- The download time will be reduced
+
+---
+
+### What is Minification?
+
+Minification is the process of removing all unnecessary characters(empty spaces are removed) and variables will be renamed without changing it's functionality. It is also a type of obfuscation .
+
+---
+### What are the advantages of minification?
+
+Normally it is recommended to use minification for heavy traffic and intensive requirements of resources. It reduces file sizes with below benefits,
+
+- Decreases loading times of a web page
+- Saves bandwidth usages
+
+---
+
+### Is enums feature available in javascript?
+No, javascript does not natively support enums. But there are different kinds of solutions to simulate them even though they may not provide exact equivalents. For example, you can use freeze or seal on object,
+
+```js
+var DaysEnum = Object.freeze({"monday":1, "tuesday":2, "wednesday":3, ...})
+```
+
+---
+
+### What is an enum?
+An enum is a type restricting variables to one value from a predefined set of constants. JavaScript has no enums but typescript provides built-in enum support.
+
+```js
+enum Color {
+ RED, GREEN, BLUE
+}
+```
+---
+
+### How do you get property descriptors of an object
+You can use the `Object.getOwnPropertyDescriptors()` method which returns all own property descriptors of a given object. The example usage of this method is below,
+
+```js
+const newObject = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+const descriptorsObject = Object.getOwnPropertyDescriptors(newObject);
+console.log(descriptorsObject.a.writable); //true
+console.log(descriptorsObject.a.configurable); //true
+console.log(descriptorsObject.a.enumerable); //true
+console.log(descriptorsObject.a.value); // 1
+```
+
+---
+
+### How do you extend classes?
+The extends keyword is used in class declarations/expressions to create a class which is a child of another class. It can be used to subclass custom classes as well as built-in objects. The syntax would be as below,
+
+```js
+class ChildClass extends ParentClass { ... }
+```
+Let's take an example of Square subclass from Polygon parent class,
+
+```js
+class Square extends Rectangle {
+  constructor(length) {
+    super(length, length);
+    this.name = "Square";
+  }
+
+  get area() {
+    return this.width * this.height;
+  }
+
+  set area(value) {
+    this.area = value;
+  }
+}
+
+```
+---
+
+### How do you compare scalar arrays?
+You can use length and every method of arrays to compare two scalar(compared directly using ===) arrays. The combination of these expressions can give the expected result,
+
+```js
+const arrayFirst = [1, 2, 3, 4, 5];
+const arraySecond = [1, 2, 3, 4, 5];
+console.log(
+  arrayFirst.length === arraySecond.length &&
+    arrayFirst.every((value, index) => value === arraySecond[index])
+); // true
+```
+If you would like to compare arrays irrespective of order then you should sort them before,
+
+```js
+const arrayFirst = [2, 3, 1, 4, 5];
+const arraySecond = [1, 2, 3, 4, 5];
+console.log(
+  arrayFirst.length === arraySecond.length &&
+    arrayFirst.sort().every((value, index) => value === arraySecond[index])
+); //true
+```
+
+---
+
+### Does JavaScript supports namespace?
+JavaScript doesn’t support namespace by default. So if you create any element(function, method, object, variable) then it becomes global and pollutes the global namespace. Let's take an example of defining two functions without any namespace,
+
+```js
+function func1() {
+  console.log("This is a first definition");
+}
+function func1() {
+  console.log("This is a second definition");
+}
+func1(); // This is a second definition
+```
+It always calls the second function definition. In this case, namespace will solve the name collision problem.
+
+---
+
+### How do you declare namespace?
+Even though JavaScript lacks namespaces, we can use Objects , IIFE to create namespaces.
+
+1. Using **Object Literal Notation**: Let's wrap variables and functions inside an Object literal which acts as a namespace. After that you can access them using object notation
+
+```js
+var namespaceOne = {
+    function func1() {
+        console.log("This is a first definition");
+    }
+}
+var namespaceTwo = {
+      function func1() {
+          console.log("This is a second definition");
+      }
+  }
+namespaceOne.func1(); // This is a first definition
+namespaceTwo.func1(); // This is a second definition
+```
+
+2. Using **IIFE** (Immediately invoked function expression): The outer pair of parentheses of IIFE creates a local scope for all the code inside of it and makes the anonymous function a function expression. Due to that, you can create the same function in two different function expressions to act as a namespace.
+
+```js
+(function () {
+  function fun1() {
+    console.log("This is a first definition");
+  }
+  fun1();
+})();
+
+(function () {
+  function fun1() {
+    console.log("This is a second definition");
+  }
+  fun1();
+})();
+```
+3. Using a block and a let/const declaration: In ECMAScript 6, you can simply use a block and a let declaration to restrict the scope of a variable to a block.
+
+```js
+{
+  let myFunction = function fun1() {
+    console.log("This is a first definition");
+  };
+  myFunction();
+}
+//myFunction(): ReferenceError: myFunction is not defined.
+
+{
+  let myFunction = function fun1() {
+    console.log("This is a second definition");
+  };
+  myFunction();
+}
+//myFunction(): ReferenceError: myFunction is not defined.
+```
+
+---
+
+### What is V8 JavaScript engine?
+V8 is an open source high-performance JavaScript engine used by the Google Chrome browser, written in C++. It is also being used in the node.js project. It implements ECMAScript and WebAssembly, and runs on Windows 7 or later, macOS 10.12+, and Linux systems that use x64, IA-32, ARM, or MIPS processors. Note: It can run standalone, or can be embedded into any C++ application. 
+
+---
+
+### Why do you need to avoid with statement?
+JavaScript's with statement was intended to provide a shorthand for writing recurring accesses to objects. So it can help reduce file size by reducing the need to repeat a lengthy object reference without performance penalty. Let's take an example where it is used to avoid redundancy when accessing an object several times.
+
+```js
+a.b.c.greeting = "welcome";
+a.b.c.age = 32;
+```
+
+Using with it turns this into:
+
+```js
+with (a.b.c) {
+  greeting = "welcome";
+  age = 32;
+}
+```
+But this with statement creates performance problems since one cannot predict whether an argument will refer to a real variable or to a property inside the with argument.
+
+---
+
+### List down some of the features of ES6
+Below are the list of some new features of ES6,
+
+- Support for constants or immutable variables
+- Block-scope support for variables, constants and functions
+- Arrow functions
+- Default parameters
+- Rest and Spread Parameters
+- Template Literals
+- Multi-line Strings
+- Destructuring Assignment
+- Enhanced Object Literals
+- Promises
+- Classes
+- Modules
+
+---
+
+### What are template literals?
+Template literals or template strings are string literals allowing embedded expressions. These are enclosed by the back-tick (`) character instead of double or single quotes. In ES6, this feature enables using dynamic expressions as below,
+
+```js
+var greeting = `Welcome to JS World, Mr. ${firstName} ${lastName}.`;
+```
+In ES5, you need break string like below,
+
+```js
+var greeting = 'Welcome to JS World, Mr. ' + firstName + ' ' + lastName.`
+```
+**Note**: You can use multi-line strings and string interpolation features with template literals.
+
+
+---
+
+### What is destructuring assignment?
+The destructuring assignment is a JavaScript expression that makes it possible to unpack values from arrays or properties from objects into distinct variables. Let's get the month values from an array using destructuring assignment
+
+```js
+var [one, two, three] = ["JAN", "FEB", "MARCH"];
+
+console.log(one); // "JAN"
+console.log(two); // "FEB"
+console.log(three); // "MARCH"
+```
+
+and you can get user properties of an object using destructuring assignment,
+
+```js
+var { name, age } = { name: "John", age: 32 };
+
+console.log(name); // John
+console.log(age); // 32
+```
+
+---
+
+### Does javascript uses mixins
+Mixin is a generic object-oriented programming term - is a class containing methods that can be used by other classes without a need to inherit from it. In JavaScript we can only inherit from a single object. ie. There can be only one `[[prototype]]` for an object.
+
+But sometimes we require to extend more than one, to overcome this we can use Mixin which helps to copy methods to the prototype of another class.
+
+Say for instance, we've two classes `User` and `CleanRoom`. Suppose we need to add `CleanRoom` functionality to `User`, so that user can clean the room at demand. Here's where concept called mixins comes into picture.
+
+```js
+// mixin
+let cleanRoomMixin = {
+  cleanRoom() {
+    alert(`Hello ${this.name}, your room is clean now`);
+  },
+  sayBye() {
+    alert(`Bye ${this.name}`);
+  },
+};
+
+// usage:
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+// copy the methods
+Object.assign(User.prototype, cleanRoomMixin);
+
+// now User can clean the room
+new User("Dude").cleanRoom(); // Hello Dude, your room is clean now!
+
+```
+
+---
 ## References
    - https://github.com/sudheerj/javascript-interview-questions
    - https://github.com/yangshun/top-javascript-interview-questions
