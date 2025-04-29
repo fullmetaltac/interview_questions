@@ -79,7 +79,6 @@
     - [What is a debugger statement](#what-is-a-debugger-statement)
     - [What is a conditional operator in javascript?](#what-is-a-conditional-operator-in-javascript)
     - [What is the difference between proto and prototype?](#what-is-the-difference-between-proto-and-prototype)
-  - [| Usage      | Frequently used                                              | Rarely used                                                |](#-usage-------frequently-used-----------------------------------------------rarely-used------------------------------------------------)
     - [What is a freeze method?](#what-is-a-freeze-method)
     - [What is the purpose of freeze method?](#what-is-the-purpose-of-freeze-method)
     - [What is a rest parameter?](#what-is-a-rest-parameter)
@@ -1558,13 +1557,16 @@ The `__proto__` object is the actual object that is used in the lookup chain to 
 new Employee().__proto__ === Employee.prototype;
 new Employee().prototype === undefined;
 ```
+
 There are few more differences,
+
 | feature    | Prototype                                                    | proto                                                      |
 | ---------- | ------------------------------------------------------------ | ---------------------------------------------------------- |
 | Access     | All the function constructors have prototype properties.     | All the objects have \_\_proto\_\_ property                |
 | Purpose    | Used to reduce memory wastage with a single copy of function | Used in lookup chain to resolve methods, constructors etc. |
 | ECMAScript | Introduced in ES6                                            | Introduced in ES5                                          |
 | Usage      | Frequently used                                              | Rarely used                                                |
+
 ---
 
 ### What is a freeze method?
