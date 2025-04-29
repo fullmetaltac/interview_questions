@@ -87,6 +87,36 @@
     - [How do you determine two values same or not using object?](#how-do-you-determine-two-values-same-or-not-using-object)
     - [How do you copy properties from one object to other](#how-do-you-copy-properties-from-one-object-to-other)
     - [What are the applications of assign method?](#what-are-the-applications-of-assign-method)
+    - [What is a proxy object](#what-is-a-proxy-object)
+    - [What is the purpose of seal method?](#what-is-the-purpose-of-seal-method)
+    - [What are the applications of seal method?](#what-are-the-applications-of-seal-method)
+    - [How do you get enumerable key and value pairs?](#how-do-you-get-enumerable-key-and-value-pairs)
+    - [What is the main difference between Object.values and Object.entries method?](#what-is-the-main-difference-between-objectvalues-and-objectentries-method)
+    - [How can you get the list of keys of any object?](#how-can-you-get-the-list-of-keys-of-any-object)
+    - [How do you create an object with prototype?](#how-do-you-create-an-object-with-prototype)
+    - [What is a WeakSet?](#what-is-a-weakset)
+    - [What are the differences between WeakSet and Set?](#what-are-the-differences-between-weakset-and-set)
+    - [What is a WeakMap?](#what-is-a-weakmap)
+    - [What are the differences between WeakMap and Map?](#what-are-the-differences-between-weakmap-and-map)
+    - [What is the purpose of uneval](#what-is-the-purpose-of-uneval)
+    - [What is the difference between uneval and eval?](#what-is-the-difference-between-uneval-and-eval)
+    - [What is an anonymous function?](#what-is-an-anonymous-function)
+    - [What is the precedence order between local and global variables?](#what-is-the-precedence-order-between-local-and-global-variables)
+    - [What are javascript accessors](#what-are-javascript-accessors)
+    - [How do you define property on Object constructor?](#how-do-you-define-property-on-object-constructor)
+    - [What is the difference between get and defineProperty?](#what-is-the-difference-between-get-and-defineproperty)
+    - [What are the advantages of Getters and Setters?](#what-are-the-advantages-of-getters-and-setters)
+    - [Can I add getters and setters using defineProperty method?](#can-i-add-getters-and-setters-using-defineproperty-method)
+    - [What are primitive data types?](#what-are-primitive-data-types)
+    - [What are the different ways to access object properties?](#what-are-the-different-ways-to-access-object-properties)
+    - [What is an error object?](#what-is-an-error-object)
+    - [What are the different error names from error object?](#what-are-the-different-error-names-from-error-object)
+    - [What is nodejs?](#what-is-nodejs)
+    - [What is an event loop?](#what-is-an-event-loop)
+    - [What is call stack?](#what-is-call-stack)
+    - [What is an event queue?](#what-is-an-event-queue)
+    - [What is a decorator?](#what-is-a-decorator)
+    - [What is typescript?](#what-is-typescript)
   - [References](#references)
 
 
@@ -1669,6 +1699,535 @@ Below are the some of main applications of Object.assign() method,
 
 - It is used for cloning an object.
 - It is used to merge objects with the same properties.
+
+---
+
+### What is a proxy object
+The Proxy object is used to define custom behavior for fundamental operations such as property lookup, assignment, enumeration, function invocation, etc.
+
+A proxy is created with two parameters: a target object which you want to proxy and a handler object which contains methods to intercept fundamental operations. The syntax would be as follows,
+
+```js
+var p = new Proxy(target, handler);
+```
+
+Let's take a look at below examples of proxy object and how the get method which customize the lookup behavior,
+
+```js
+ //Example1:
+
+   const person = {
+     name: 'Sudheer Jonna',
+     age: 35
+   };
+
+ const handler = {
+   get(target, prop) {
+     if (prop === 'name') {
+       return 'Mr. ' + target[prop];
+     }
+     return target[prop];
+   }
+ };
+
+ const proxy = new Proxy(person, handler);
+
+ //Example2: 
+
+ var handler1 = {
+   get: function (obj, prop) {
+     return prop in obj ? obj[prop] : 100;
+   },
+ };
+
+ var p = new Proxy({}, handler1);
+ p.a = 10;
+ p.b = null;
+
+ console.log(p.a, p.b); // 10, null
+ console.log("c" in p, p.c); // false, 100
+```
+
+In the above code, it uses `get` handler which define the behavior of the proxy when an operation is performed on it. These proxies are mainly used for some of the below cross-cutting concerns.
+
+- Logging
+- Authentication or Authorization
+- Data binding and observables
+- Function parameter validation
+
+**Note**: This is a new feature in ES6.
+
+---
+
+### What is the purpose of seal method?
+The `Object.seal()` method is used to seal an object, by preventing new properties from being added to it and marking all existing properties as non-configurable. But values of present properties can still be changed as long as they are writable. The next level of immutability would be the `Object.freeze()` method. Let's see the below example to understand more about seal() method
+
+```js
+const object = {
+  property: "Welcome JS world",
+};
+Object.seal(object);
+object.property = "Welcome to object world";
+console.log(Object.isSealed(object)); // true
+delete object.property; // You cannot delete when sealed
+console.log(object.property); //Welcome to object world
+```
+
+---
+
+### What are the applications of seal method?
+Below are the main applications of Object.seal() method,
+
+- It is used for sealing objects and arrays.
+- It is used to make properties of an object non-configurable.
+
+---
+
+### How do you get enumerable key and value pairs?
+The Object.entries() method is used to return an array of a given object's own enumerable string-keyed property [key, value] pairs, in the same order as that provided by a for...in loop. Let's see the functionality of object.entries() method in an example,
+
+```js
+const object = {
+  a: "Good morning",
+  b: 100,
+};
+
+for (let [key, value] of Object.entries(object)) {
+  console.log(`${key}: ${value}`); // a: 'Good morning'
+  // b: 100
+}
+```
+
+---
+
+### What is the main difference between Object.values and Object.entries method?
+The Object.values() method's behavior is similar to Object.entries() method but it returns an array of values instead [key,value] pairs.
+
+```js
+const object = {
+  a: "Good morning",
+  b: 100,
+};
+
+for (let value of Object.values(object)) {
+  console.log(`${value}`); // 'Good morning \n100'
+}
+```
+
+---
+
+### How can you get the list of keys of any object?
+You can use the Object.keys() method which is used to return an array of a given object's own property names, in the same order as we get with a normal loop. For example, you can get the keys of a user object,
+
+```js
+const user = {
+  name: "John",
+  gender: "male",
+  age: 40,
+};
+
+console.log(Object.keys(user)); //['name', 'gender', 'age']
+```
+
+---
+
+### How do you create an object with prototype?
+The Object.create() method is used to create a new object with the specified prototype object and properties. i.e, It uses an existing object as the prototype of the newly created object. It returns a new object with the specified prototype object and properties.
+
+```js
+const user = {
+  name: "John",
+  printInfo: function () {
+    console.log(`My name is ${this.name}.`);
+  },
+};
+
+const admin = Object.create(user);
+
+admin.name = "Nick"; // Remember that "name" is a property set on "admin" but not on "user" object
+
+admin.printInfo(); // My name is Nick
+```
+
+---
+### What is a WeakSet?
+WeakSet is used to store a collection of weakly(weak references) held objects. The syntax would be as follows,
+
+```js
+new WeakSet([iterable]);
+```
+
+Let's see the below example to explain it's behavior,
+
+```js
+var ws = new WeakSet();
+var user = {};
+ws.add(user);
+ws.has(user); // true
+ws.delete(user); // removes user from the set
+ws.has(user); // false, user has been removed
+```
+
+---
+
+### What are the differences between WeakSet and Set?
+The main difference is that references to objects in Set are strong while references to objects in WeakSet are weak. i.e, An object in WeakSet can be garbage collected if there is no other reference to it. Other differences are,
+
+- Sets can store any value Whereas WeakSets can store only collections of objects
+- WeakSet does not have size property unlike Set
+- WeakSet does not have methods such as clear, keys, values, entries, forEach.
+- WeakSet is not iterable.
+
+---
+
+### What is a WeakMap?
+The WeakMap object is a collection of key/value pairs in which the keys are weakly referenced. In this case, keys must be objects and the values can be arbitrary values. The syntax looks like the following:
+
+```js
+new WeakMap([iterable]);
+```
+Let's see the below example to explain it's behavior,
+
+```js
+var ws = new WeakMap();
+var user = {};
+ws.set(user);
+ws.has(user); // true
+ws.delete(user); // removes user from the map
+ws.has(user); // false, user has been removed
+```
+
+---
+
+### What are the differences between WeakMap and Map?
+The main difference is that references to key objects in Map are strong while references to key objects in WeakMap are weak. i.e, A key object in WeakMap can be garbage collected if there is no other reference to it. Other differences are,
+
+- Maps can store any key type Whereas WeakMaps can store only collections of key objects
+- WeakMap does not have size property unlike Map
+- WeakMap does not have methods such as clear, keys, values, entries, forEach.
+- WeakMap is not iterable. 
+
+---
+
+### What is the purpose of uneval
+The uneval() is an inbuilt function which is used to create a string representation of the source code of an Object. It is a top-level function and is not associated with any object. Let's see the below example to know more about it's functionality,
+
+```js
+var a = 1;
+uneval(a); // returns a String containing 1
+uneval(function user() {}); // returns "(function user(){})"
+```
+
+The `uneval()` function has been deprecated. It is recommended to use `toString()` for functions and `JSON.toStringify()` for other cases.
+
+```js
+function user() {}
+console.log(user.toString()); // returns "(function user(){})"
+```
+
+---
+
+### What is the difference between uneval and eval?
+The uneval function returns the source of a given object; whereas the eval function does the opposite, by evaluating that source code in a different memory area. Let's see an example to clarify the difference,
+
+```js
+var msg = uneval(function greeting() {
+  return "Hello, Good morning";
+});
+var greeting = eval(msg);
+greeting(); // returns "Hello, Good morning"
+```
+
+---
+
+### What is an anonymous function?
+An anonymous function is a function without a name! Anonymous functions are commonly assigned to a variable name or used as a callback function. The syntax would be as below,
+
+```js
+function (optionalParameters) {
+  //do something
+}
+
+const myFunction = function(){ //Anonymous function assigned to a variable
+  //do something
+};
+
+[1, 2, 3].map(function(element){ //Anonymous function used as a callback function
+  //do something
+});
+```
+Let's see the above anonymous function in an example,
+
+```js
+var x = function (a, b) {
+  return a * b;
+};
+var z = x(5, 10);
+console.log(z); // 50
+```
+
+---
+
+### What is the precedence order between local and global variables?
+A local variable takes precedence over a global variable with the same name. Let's see this behavior in an example.
+
+```js
+var msg = "Good morning";
+function greeting() {
+  msg = "Good Evening";
+  console.log(msg); // Good Evening
+}
+greeting();
+```
+
+---
+
+### What are javascript accessors
+ECMAScript 5 introduced javascript object accessors or computed properties through getters and setters. Getters uses the get keyword whereas Setters uses the set keyword.
+
+```js
+var user = {
+  firstName: "John",
+  lastName: "Abraham",
+  language: "en",
+  get lang() {
+    return this.language;
+  },
+  set lang(lang) {
+    this.language = lang;
+  },
+};
+console.log(user.lang); // getter access lang as en
+user.lang = "fr";
+console.log(user.lang); // setter used to set lang as fr
+```
+
+---
+
+### How do you define property on Object constructor?
+The Object.defineProperty() static method is used to define a new property directly on an object, or modify an existing property on an object, and returns the object. Let's see an example to know how to define property,
+
+```js
+const newObject = {};
+
+Object.defineProperty(newObject, "newProperty", {
+  value: 100,
+  writable: false,
+});
+
+console.log(newObject.newProperty); // 100
+
+newObject.newProperty = 200; // It throws an error in strict mode due to writable setting
+
+```
+
+---
+
+### What is the difference between get and defineProperty?
+Both have similar results unless you use classes. If you use `get` the property will be defined on the prototype of the object whereas using `Object.defineProperty()` the property will be defined on the instance it is applied to.
+
+---
+
+### What are the advantages of Getters and Setters?
+Below are the list of benefits of Getters and Setters,
+
+- They provide simpler syntax
+- They are used for defining computed properties, or accessors in JS.
+- Useful to provide equivalence relation between properties and methods
+- They can provide better data quality
+- Useful for doing things behind the scenes with the encapsulated logic.
+
+---
+
+### Can I add getters and setters using defineProperty method?
+Yes, You can use the `Object.defineProperty()` method to add Getters and Setters. For example, the below counter object uses increment, decrement, add and subtract properties,
+
+```js
+var obj = { counter: 0 };
+
+// Define getters
+Object.defineProperty(obj, "increment", {
+  get: function () {
+    this.counter++;
+    return this.counter;
+  },
+});
+Object.defineProperty(obj, "decrement", {
+  get: function () {
+    this.counter--;
+    return this.counter;
+  },
+});
+
+// Define setters
+Object.defineProperty(obj, "add", {
+  set: function (value) {
+    this.counter += value;
+  },
+});
+Object.defineProperty(obj, "subtract", {
+  set: function (value) {
+    this.counter -= value;
+  },
+});
+
+obj.add = 10;
+obj.subtract = 5;
+console.log(obj.increment); //6
+console.log(obj.decrement); //5
+```
+
+---
+
+### What are primitive data types?
+A primitive data type is data that has a primitive value (which has no properties or methods). There are 7 types of primitive data types.
+
+- string
+- number
+- boolean
+- null
+- undefined
+- bigint
+- symbol
+
+---
+
+### What are the different ways to access object properties?
+There are 3 possible ways for accessing the property of an object.
+
+1. Dot notation: It uses dot for accessing the properties
+```js
+objectName.property;
+```
+2. Square brackets notation: It uses square brackets for property access
+```js
+objectName["property"];
+```
+3. Expression notation: It uses expression in the square brackets
+```js
+objectName[expression];
+```
+---
+
+### What is an error object?
+An error object is a built in error object that provides error information when an error occurs. It has two properties: name and message. For example, the below function logs error details,
+
+```js
+try {
+  greeting("Welcome");
+} catch (err) {
+  console.log(err.name + "<br>" + err.message);
+} 
+```
+---
+
+### What are the different error names from error object?
+
+There are 7 different types of error names returned from error object,
+| Error Name     | Description                                        |
+| -------------- | -------------------------------------------------- |
+| AggregateError | An error indicating that multiple errors occurred  |
+| EvalError      | An error has occurred in the eval() function       |
+| RangeError     | An error has occurred with a number "out of range" |
+| ReferenceError | An error due to an illegal reference               |
+| SyntaxError    | An error due to a syntax error                     |
+| TypeError      | An error due to a type error                       |
+| URIError       | An error due to encodeURI()                        |
+
+---
+
+### What is nodejs?
+Node.js is a server-side platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications. It is an event-based, non-blocking, asynchronous I/O runtime that uses Google's V8 JavaScript engine and libuv library.
+
+---
+
+### What is an event loop?
+The event loop is a process that continuously monitors both the call stack and the event queue and checks whether or not the call stack is empty. If the call stack is empty and there are pending events in the event queue, the event loop dequeues the event from the event queue and pushes it to the call stack. The call stack executes the event, and any additional events generated during the execution are added to the end of the event queue.
+
+**Note**: The event loop allows Node.js to perform non-blocking I/O operations, even though JavaScript is single-threaded, by offloading operations to the system kernel whenever possible. Since most modern kernels are multi-threaded, they can handle multiple operations executing in the background.
+
+---
+
+### What is call stack?
+Call Stack is a data structure for javascript interpreters to keep track of function calls(creates execution context) in the program. It has two major actions,
+
+Whenever you call a function for its execution, you are pushing it to the stack.
+Whenever the execution is completed, the function is popped out of the stack.
+Let's take an example and it's state representation in a diagram format
+
+```js
+function hungry() {
+  eatFruits();
+}
+function eatFruits() {
+  return "I'm eating fruits";
+}
+
+// Invoke the `hungry` function
+hungry();
+```
+The above code processed in a call stack as below,
+
+- Add the hungry() function to the call stack list and execute the code.
+- Add the eatFruits() function to the call stack list and execute the code.
+- Delete the eatFruits() function from our call stack list.
+- Delete the hungry() function from the call stack list since there are no items anymore.
+
+<img src="images/call-stack.png">
+
+---
+
+### What is an event queue?
+The event queue follows the queue data structure. It stores async callbacks to be added to the call stack. It is also known as the Callback Queue or Macrotask Queue.
+
+Whenever the call stack receives an async function, it is moved into the Web API. Based on the function, Web API executes it and awaits the result. Once it is finished, it moves the callback into the event queue (the callback of the promise is moved into the microtask queue).
+
+The event loop constantly checks whether or not the call stack is empty. Once the call stack is empty and there is a callback in the event queue, the event loop moves the callback into the call stack. But if there is a callback in the microtask queue as well, it is moved first. The microtask queue has a higher priority than the event queue.
+
+---
+
+### What is a decorator?
+A decorator is an expression that evaluates to a function and that takes the target, name, and decorator descriptor as arguments. Also, it optionally returns a decorator descriptor to install on the target object. Let's define admin decorator for user class at design time,
+
+```js
+function admin(isAdmin) {
+   return function(target) {
+       target.isAdmin = isAdmin;
+   }
+}
+
+@admin(true)
+class User() {
+}
+console.log(User.isAdmin); //true
+
+ @admin(false)
+ class User() {
+ }
+ console.log(User.isAdmin); //false
+```
+
+---
+
+### What is typescript?
+TypeScript is a typed superset of JavaScript created by Microsoft that adds optional types, classes, async/await, and many other features, and compiles to plain JavaScript. Angular is built entirely in TypeScript and is used as the primary language. You can install it globally as
+
+```bash
+npm install -g typescript
+```
+Let's see a simple example of TypeScript usage,
+
+```js
+function greeting(name: string): string {
+  return "Hello, " + name;
+}
+
+let user = "Sudheer";
+
+console.log(greeting(user));
+```
+The greeting method allows only string type as argument.
+
 
 ---
 
