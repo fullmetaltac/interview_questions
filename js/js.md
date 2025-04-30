@@ -49,8 +49,8 @@
     - [What is the purpose of the delete operator](#what-is-the-purpose-of-the-delete-operator)
     - [What is typeof operator?](#what-is-typeof-operator)
     - [What is undefined property?](#what-is-undefined-property)
-    - [What is null value](#what-is-null-value)
-    - [What is the difference between null and undefined](#what-is-the-difference-between-null-and-undefined)
+    - [What is null value?](#what-is-null-value)
+    - [What is the difference between null and undefined?](#what-is-the-difference-between-null-and-undefined)
     - [What is eval?](#what-is-eval)
     - [What is isNaN?](#what-is-isnan)
     - [What are the differences between undeclared and undefined variables?](#what-are-the-differences-between-undeclared-and-undefined-variables)
@@ -136,7 +136,14 @@
     - [List down some of the features of ES6](#list-down-some-of-the-features-of-es6)
     - [What are template literals?](#what-are-template-literals)
     - [What is destructuring assignment?](#what-is-destructuring-assignment)
-    - [Does javascript uses mixins](#does-javascript-uses-mixins)
+    - [Does javascript uses mixins?](#does-javascript-uses-mixins)
+    - [What is an async function?](#what-is-an-async-function)
+    - [What are the different kinds of generators?](#what-are-the-different-kinds-of-generators)
+    - [What are the differences between for...of and for...in statements?](#what-are-the-differences-between-forof-and-forin-statements)
+    - [How do you define instance and non-instance properties?](#how-do-you-define-instance-and-non-instance-properties)
+    - [What is nullish coalescing operator (??)?](#what-is-nullish-coalescing-operator-)
+    - [What is the difference between dense and sparse arrays?](#what-is-the-difference-between-dense-and-sparse-arrays)
+    - [What are the different ways to create sparse arrays?](#what-are-the-different-ways-to-create-sparse-arrays)
   - [References](#references)
 
 
@@ -1131,7 +1138,7 @@ user = undefined;
 
 ---
 
-### What is null value
+### What is null value?
 The value null represents the intentional absence of any object value. It is one of JavaScript's primitive values. The type of null value is object. You can empty the variable by setting the value to null.
 
 ```js
@@ -1141,7 +1148,7 @@ console.log(typeof user); //object
 
 ---
 
-### What is the difference between null and undefined
+### What is the difference between null and undefined?
 Below are the main differences between null and undefined,
 
 | Null                                                                                            | Undefined                                                                                               |
@@ -2629,7 +2636,7 @@ console.log(age); // 32
 
 ---
 
-### Does javascript uses mixins
+### Does javascript uses mixins?
 Mixin is a generic object-oriented programming term - is a class containing methods that can be used by other classes without a need to inherit from it. In JavaScript we can only inherit from a single object. ie. There can be only one `[[prototype]]` for an object.
 
 But sometimes we require to extend more than one, to overcome this we can use Mixin which helps to copy methods to the prototype of another class.
@@ -2660,6 +2667,197 @@ Object.assign(User.prototype, cleanRoomMixin);
 // now User can clean the room
 new User("Dude").cleanRoom(); // Hello Dude, your room is clean now!
 
+```
+
+---
+
+### What is an async function?
+An async function is a function declared with the async keyword which enables asynchronous, promise-based behavior to be written in a cleaner style by avoiding promise chains. These functions can contain zero or more await expressions.
+
+Let's take a below async function example,
+
+```js
+async function logger() {
+  let data = await fetch("http://someapi.com/users"); // pause until fetch returns
+  console.log(data);
+}
+logger();
+```
+It is basically syntax sugar over ES2015 promises and generators. 
+
+---
+
+### What are the different kinds of generators?
+There are five kinds of generators,
+
+1. Generator function declaration:
+
+```js
+function* myGenFunc() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+const genObj = myGenFunc();
+```
+2. Generator function expressions:
+
+```js
+const myGenFunc = function* () {
+  yield 1;
+  yield 2;
+  yield 3;
+};
+const genObj = myGenFunc();
+```
+3. Generator method definitions in object literals:
+
+```js
+const myObj = {
+  *myGeneratorMethod() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
+const genObj = myObj.myGeneratorMethod();
+```
+
+4. Generator method definitions in class:
+
+```js
+class MyClass {
+  *myGeneratorMethod() {
+    yield 1;
+    yield 2;
+    yield 3;
+  }
+}
+const myObject = new MyClass();
+const genObj = myObject.myGeneratorMethod();
+```
+
+5. Generator as a computed property:
+
+```js
+const SomeObj = {
+  *[Symbol.iterator]() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
+
+console.log(Array.from(SomeObj)); // [ 1, 2, 3 ]
+```
+
+---
+
+### What are the differences between for...of and for...in statements?
+Both for...in and for...of statements iterate over js data structures. The only difference is over what they iterate:
+
+- for..in iterates over all enumerable property keys of an object
+- for..of iterates over the values of an iterable object.  
+
+Let's explain this difference with an example,
+
+```js
+let arr = ["a", "b", "c"];
+
+arr.newProp = "newVlue";
+
+// key are the property keys
+for (let key in arr) {
+  console.log(key); // 0, 1, 2 & newProp
+}
+
+// value are the property values
+for (let value of arr) {
+  console.log(value); // a, b, c
+}
+```
+Since for..in loop iterates over the keys of the object, the first loop logs 0, 1, 2 and newProp while iterating over the array object. The for..of loop iterates over the values of a arr data structure and logs a, b, c in the console.
+
+---
+
+### How do you define instance and non-instance properties?
+The Instance properties must be defined inside of class methods. For example, name and age properties defined inside constructor as below,
+
+```js
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+```
+But Static(class) and prototype data properties must be defined outside of the ClassBody declaration. Let's assign the age value for Person class as below,
+
+
+```js
+Person.staticAge = 30;
+Person.prototype.prototypeAge = 40;
+```
+
+---
+
+### What is nullish coalescing operator (??)?
+
+It is a logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand. This can be contrasted with the logical OR (||) operator, which returns the right-hand side operand if the left operand is any falsy value, not only null or undefined.
+
+```js
+console.log(null ?? true); // true
+console.log(false ?? true); // false
+console.log(undefined ?? true); // true 
+```
+---
+
+### What is the difference between dense and sparse arrays?
+An array contains items at each index starting from first(0) to last(array.length - 1) is called as Dense array. Whereas if at least one item is missing at any index, the array is called as sparse.
+
+Let's see the below two kind of arrays,
+
+```js
+const avengers = ["Ironman", "Hulk", "CaptainAmerica"];
+console.log(avengers[0]); // 'Ironman'
+console.log(avengers[1]); // 'Hulk'
+console.log(avengers[2]); // 'CaptainAmerica'
+console.log(avengers.length); // 3
+
+const justiceLeague = ["Superman", "Aquaman", , "Batman"];
+console.log(justiceLeague[0]); // 'Superman'
+console.log(justiceLeague[1]); // 'Aquaman'
+console.log(justiceLeague[2]); // undefined
+console.log(justiceLeague[3]); // 'Batman'
+console.log(justiceLeague.length); // 4 
+```
+
+---
+
+### What are the different ways to create sparse arrays?
+There are 4 different ways to create sparse arrays in JavaScript
+
+1. **Array literal**: Omit a value when using the array literal
+```js
+const justiceLeague = ["Superman", "Aquaman", , "Batman"];
+console.log(justiceLeague); // ['Superman', 'Aquaman', empty ,'Batman']
+```
+2. **Array() constructor**: Invoking Array(length) or new Array(length)
+```js
+const array = Array(3);
+console.log(array); // [empty, empty ,empty]
+```
+3. **Delete operator**: Using delete array[index] operator on the array
+```js
+const justiceLeague = ["Superman", "Aquaman", "Batman"];
+delete justiceLeague[1];
+console.log(justiceLeague); // ['Superman', empty, ,'Batman']
+```
+4. **Increase length property**: Increasing length property of an array
+```js
+const justiceLeague = ["Superman", "Aquaman", "Batman"];
+justiceLeague.length = 5;
+console.log(justiceLeague); // ['Superman', 'Aquaman', 'Batman', empty, empty]
 ```
 
 ---
