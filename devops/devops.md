@@ -3,6 +3,8 @@
   - [GIT](#git)
     - [git ref log](#git-ref-log)
     - [merge vs rebase](#merge-vs-rebase)
+  - [Docker](#docker)
+  - [k8s](#k8s)
     - [What function does DNS play on a network?](#what-function-does-dns-play-on-a-network)
   - [References](#references)
 
@@ -11,6 +13,10 @@
 ### git ref log
 
 ### merge vs rebase
+
+## Docker
+
+## k8s
 
 ### What function does DNS play on a network?
 
