@@ -7,7 +7,7 @@
     - [What is scope in javascript?](#what-is-scope-in-javascript)
     - [What is the Temporal Dead Zone?](#what-is-the-temporal-dead-zone)
     - [What is the difference between == and === operators?](#what-is-the-difference-between--and--operators)
-    - [How do you redeclare variables in a switch block without an error](#how-do-you-redeclare-variables-in-a-switch-block-without-an-error)
+    - [How do you redeclare variables in a switch block without an error?](#how-do-you-redeclare-variables-in-a-switch-block-without-an-error)
     - [What is JSON and its common operations?](#what-is-json-and-its-common-operations)
     - [What is the difference between Call, Apply and Bind?](#what-is-the-difference-between-call-apply-and-bind)
     - [How do you decode or encode a URL in JavaScript?](#how-do-you-decode-or-encode-a-url-in-javascript)
@@ -15,7 +15,7 @@
     - [Why do you need strict mode?](#why-do-you-need-strict-mode)
     - [How do you declare strict mode?](#how-do-you-declare-strict-mode)
     - [What is the purpose of double exclamation?](#what-is-the-purpose-of-double-exclamation)
-    - [What is the purpose of the delete operator](#what-is-the-purpose-of-the-delete-operator)
+    - [What is the purpose of the delete operator?](#what-is-the-purpose-of-the-delete-operator)
     - [What is typeof operator?](#what-is-typeof-operator)
     - [What is undefined property?](#what-is-undefined-property)
     - [What is null value?](#what-is-null-value)
@@ -28,18 +28,18 @@
     - [What is NaN property?](#what-is-nan-property)
     - [What is the purpose of isFinite function?](#what-is-the-purpose-of-isfinite-function)
     - [How do you check whether a string contains a substring?](#how-do-you-check-whether-a-string-contains-a-substring)
-    - [How do you check if a key exists in an object](#how-do-you-check-if-a-key-exists-in-an-object)
-    - [How do you loop through or enumerate javascript object](#how-do-you-loop-through-or-enumerate-javascript-object)
+    - [How do you check if a key exists in an object?](#how-do-you-check-if-a-key-exists-in-an-object)
+    - [How do you loop through or enumerate javascript object?](#how-do-you-loop-through-or-enumerate-javascript-object)
     - [How do you assign default values to variables?](#how-do-you-assign-default-values-to-variables)
     - [What are js labels?](#what-are-js-labels)
     - [How do you search a string for a pattern?](#how-do-you-search-a-string-for-a-pattern)
-    - [What is the purpose of exec method](#what-is-the-purpose-of-exec-method)
-    - [What is a debugger statement](#what-is-a-debugger-statement)
+    - [What is the purpose of exec method?](#what-is-the-purpose-of-exec-method)
+    - [What is a debugger statement?](#what-is-a-debugger-statement)
     - [What is a conditional operator in javascript?](#what-is-a-conditional-operator-in-javascript)
-    - [What is the purpose of uneval](#what-is-the-purpose-of-uneval)
+    - [What is the purpose of uneval?](#what-is-the-purpose-of-uneval)
     - [What is the difference between uneval and eval?](#what-is-the-difference-between-uneval-and-eval)
     - [What is the precedence order between local and global variables?](#what-is-the-precedence-order-between-local-and-global-variables)
-    - [What are javascript accessors](#what-are-javascript-accessors)
+    - [What are javascript accessors?](#what-are-javascript-accessors)
     - [What is nodejs?](#what-is-nodejs)
     - [What is typescript?](#what-is-typescript)
     - [What are the differences between javascript and typescript?](#what-are-the-differences-between-javascript-and-typescript)
@@ -77,7 +77,7 @@
     - [What is a callback hell?](#what-is-a-callback-hell)
     - [What is callback in callback?](#what-is-callback-in-callback)
     - [Can we define properties for functions?](#can-we-define-properties-for-functions)
-    - [What is a polyfill](#what-is-a-polyfill)
+    - [What is a polyfill?](#what-is-a-polyfill)
     - [What is a rest parameter?](#what-is-a-rest-parameter)
     - [What is a spread operator?](#what-is-a-spread-operator)
     - [What is a decorator?](#what-is-a-decorator)
@@ -134,9 +134,9 @@
     - [What is promise chaining?](#what-is-promise-chaining)
     - [What is promise.all?](#what-is-promiseall)
     - [What is the purpose of the race method in promise?](#what-is-the-purpose-of-the-race-method-in-promise)
-    - [What are the pros and cons of promises over callbacks](#what-are-the-pros-and-cons-of-promises-over-callbacks)
-    - [What is the use of setTimeout](#what-is-the-use-of-settimeout)
-    - [What is the use of setInterval](#what-is-the-use-of-setinterval)
+    - [What are the pros and cons of promises over callbacks?](#what-are-the-pros-and-cons-of-promises-over-callbacks)
+    - [What is the use of setTimeout?](#what-is-the-use-of-settimeout)
+    - [What is the use of setInterval?](#what-is-the-use-of-setinterval)
     - [What is the purpose of clearTimeout method?](#what-is-the-purpose-of-cleartimeout-method)
     - [What is the purpose of clearInterval method?](#what-is-the-purpose-of-clearinterval-method)
     - [What is an event loop?](#what-is-an-event-loop)
@@ -260,7 +260,7 @@ NaN == NaN or NaN === NaN // false
 ---
 
 
-### How do you redeclare variables in a switch block without an error
+### How do you redeclare variables in a switch block without an error?
 
 If you try to redeclare variables in a `switch block` then it will cause errors because there is only one block. For example, the below code block throws a syntax error as below,
 
@@ -437,7 +437,7 @@ console.log(navigator.userAgent.match(/MSIE 8.0/)); // returns either an Array o
 
 ---
 
-### What is the purpose of the delete operator
+### What is the purpose of the delete operator?
 The delete operator is used to delete the property as well as its value.
 
 ```js
@@ -602,7 +602,7 @@ regex.test(mainString);
 
 ---
 
-### How do you check if a key exists in an object
+### How do you check if a key exists in an object?
 You can check whether a key exists in an object or not using three approaches,
 
 1. Using **in** operator: You can use the in operator whether a key exists in an object or not 
@@ -636,7 +636,7 @@ console.log(user.nickName !== undefined); // false
 
 ---
 
-### How do you loop through or enumerate javascript object
+### How do you loop through or enumerate javascript object?
 You can use the `for-in` loop to loop through javascript object. You can also make sure that the key you get is an actual property of an object, and doesn't come from the prototype using `hasOwnProperty` method.
 
 ```js
@@ -699,7 +699,7 @@ console.log(pattern.test("How are you?")); //true
 
 ---
 
-### What is the purpose of exec method
+### What is the purpose of exec method?
 The purpose of exec method is similar to test method but it executes a search for a match in a specified string and returns a result array, or null instead of returning true/false.
 
 ```js
@@ -709,7 +709,7 @@ console.log(pattern.exec("How are you?")); //["you", index: 8, input: "How are y
 
 ---
 
-### What is a debugger statement
+### What is a debugger statement?
 The debugger statement invokes any available debugging functionality, such as setting a breakpoint. If no debugging functionality is available, this statement has no effect. For example, in the below function a debugger statement has been inserted. So execution is paused at the debugger statement just like a breakpoint in the script source.
 
 ```js
@@ -735,7 +735,7 @@ console.log(
 ---
 
 
-### What is the purpose of uneval
+### What is the purpose of uneval?
 The uneval() is an inbuilt function which is used to create a string representation of the source code of an Object. It is a top-level function and is not associated with any object. Let's see the below example to know more about it's functionality,
 
 ```js
@@ -780,7 +780,7 @@ greeting();
 
 ---
 
-### What are javascript accessors
+### What are javascript accessors?
 ECMAScript 5 introduced javascript object accessors or computed properties through getters and setters. Getters uses the get keyword whereas Setters uses the set keyword.
 
 ```js
@@ -1485,7 +1485,7 @@ fn.profile = function (y) {
 
 ---
 
-### What is a polyfill
+### What is a polyfill?
 A polyfill is a piece of JS code used to provide modern functionality on older browsers that do not natively support it. For example, Silverlight plugin polyfill can be used to mimic the functionality of an HTML Canvas element on Microsoft Internet Explorer 7.
 
 There are two main polyfill libraries available,
@@ -2687,7 +2687,7 @@ Promise.race([promise1, promise2]).then(function (value) {
 
 ---
 
-### What are the pros and cons of promises over callbacks
+### What are the pros and cons of promises over callbacks?
 Below are the list of pros and cons of promises over callbacks,
 
 **Pros**:
@@ -2705,7 +2705,7 @@ Below are the list of pros and cons of promises over callbacks,
 
 ---
 
-### What is the use of setTimeout
+### What is the use of setTimeout?
 The setTimeout() method is used to call a function or evaluate an expression after a specified number of milliseconds. For example, let's log a message after 2 seconds using setTimeout method,
 
 ```js
@@ -2716,7 +2716,7 @@ setTimeout(function () {
 
 ---
 
-### What is the use of setInterval
+### What is the use of setInterval?
 The setInterval() method is used to call a function or evaluate an expression at specified intervals (in milliseconds). For example, let's log a message after 2 seconds using setInterval method,
 
 ```js

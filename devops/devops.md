@@ -1,8 +1,16 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
+  - [GIT](#git)
+    - [git ref log](#git-ref-log)
+    - [merge vs rebase](#merge-vs-rebase)
     - [What function does DNS play on a network?](#what-function-does-dns-play-on-a-network)
   - [References](#references)
 
+## GIT
+
+### git ref log
+
+### merge vs rebase
 
 ### What function does DNS play on a network?
 
