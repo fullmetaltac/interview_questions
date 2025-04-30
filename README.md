@@ -17,7 +17,7 @@
 - [QA](qa.md)
 - [ISTQB](istqb/chapters.md)
 - ---
-- [JavaScript(TODO)](js/js.md)
+- [JavaScript](js/js.md)
 - [TypeScript(TODO)](js/ts.md)
 - ---
 - [C#](csharp.md)
