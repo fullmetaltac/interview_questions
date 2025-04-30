@@ -139,10 +139,8 @@
     - [What is the use of setInterval?](#what-is-the-use-of-setinterval)
     - [What is the purpose of clearTimeout method?](#what-is-the-purpose-of-cleartimeout-method)
     - [What is the purpose of clearInterval method?](#what-is-the-purpose-of-clearinterval-method)
-    - [What is an event loop?](#what-is-an-event-loop)
-    - [What is call stack?](#what-is-call-stack)
-    - [What is an event queue?](#what-is-an-event-queue)
     - [What is an async function?](#what-is-an-async-function)
+    - [What is the event loop in JavaScript runtimes?](#what-is-the-event-loop-in-javascript-runtimes)
   - [References](#references)
 
 
@@ -2771,52 +2769,6 @@ function stop() {
 
 ---
 
-### What is an event loop?
-The event loop is a process that continuously monitors both the call stack and the event queue and checks whether or not the call stack is empty. If the call stack is empty and there are pending events in the event queue, the event loop dequeues the event from the event queue and pushes it to the call stack. The call stack executes the event, and any additional events generated during the execution are added to the end of the event queue.
-
-**Note**: The event loop allows Node.js to perform non-blocking I/O operations, even though JavaScript is single-threaded, by offloading operations to the system kernel whenever possible. Since most modern kernels are multi-threaded, they can handle multiple operations executing in the background.
-
----
-
-### What is call stack?
-Call Stack is a data structure for javascript interpreters to keep track of function calls(creates execution context) in the program. It has two major actions,
-
-Whenever you call a function for its execution, you are pushing it to the stack.
-Whenever the execution is completed, the function is popped out of the stack.
-Let's take an example and it's state representation in a diagram format
-
-```js
-function hungry() {
-  eatFruits();
-}
-function eatFruits() {
-  return "I'm eating fruits";
-}
-
-// Invoke the `hungry` function
-hungry();
-```
-The above code processed in a call stack as below,
-
-- Add the hungry() function to the call stack list and execute the code.
-- Add the eatFruits() function to the call stack list and execute the code.
-- Delete the eatFruits() function from our call stack list.
-- Delete the hungry() function from the call stack list since there are no items anymore.
-
-<img src="images/call-stack.png">
-
----
-
-### What is an event queue?
-The event queue follows the queue data structure. It stores async callbacks to be added to the call stack. It is also known as the Callback Queue or Macrotask Queue.
-
-Whenever the call stack receives an async function, it is moved into the Web API. Based on the function, Web API executes it and awaits the result. Once it is finished, it moves the callback into the event queue (the callback of the promise is moved into the microtask queue).
-
-The event loop constantly checks whether or not the call stack is empty. Once the call stack is empty and there is a callback in the event queue, the event loop moves the callback into the call stack. But if there is a callback in the microtask queue as well, it is moved first. The microtask queue has a higher priority than the event queue.
-
----
-
-
 ### What is an async function?
 An async function is a function declared with the async keyword which enables asynchronous, promise-based behavior to be written in a cleaner style by avoiding promise chains. These functions can contain zero or more await expressions.
 
@@ -2832,6 +2784,36 @@ logger();
 It is basically syntax sugar over ES2015 promises and generators. 
 
 ---
+
+### What is the event loop in JavaScript runtimes?
+
+<!-- Update here: /questions/what-is-event-loop-what-is-the-difference-between-call-stack-and-task-queue/en-US.mdx -->
+
+The event loop is concept within the JavaScript runtime environment regarding how asynchronous operations are executed within JavaScript engines. It works as such:
+
+1. The JavaScript engine starts executing scripts, placing synchronous operations on the call stack.
+2. When an asynchronous operation is encountered (e.g., `setTimeout()`, HTTP request), it is offloaded to the respective Web API or Node.js API to handle the operation in the background.
+3. Once the asynchronous operation completes, its callback function is placed in the respective queues – task queues (also known as macrotask queues / callback queues) or microtask queues. We will refer to "task queue" as "macrotask queue" from here on to better differentiate from the microtask queue.
+4. The event loop continuously monitors the call stack and executes items on the call stack. If/when the call stack is empty:
+   1. Microtask queue is processed. Microtasks include promise callbacks (`then`, `catch`, `finally`), `MutationObserver` callbacks, and calls to `queueMicrotask()`. The event loop takes the first callback from the microtask queue and pushes it to the call stack for execution. This repeats until the microtask queue is empty.
+   2. Macrotask queue is processed. Macrotasks include web APIs like `setTimeout()`, HTTP requests, user interface event handlers like clicks, scrolls, etc. The event loop dequeues the first callback from the macrotask queue and pushes it onto the call stack for execution. However, after a macrotask queue callback is processed, the event loop does not proceed with the next macrotask yet! The event loop first checks the microtask queue. Checking the microtask queue is necessary as microtasks have higher priority than macrotask queue callbacks. The macrotask queue callback that was just executed could have added more microtasks!
+      1. If the microtask queue is non-empty, process them as per the previous step.
+      2. If the microtask queue is empty, the next macrotask queue callback is processed. This repeats until the macrotask queue is empty.
+5. This process continues indefinitely, allowing the JavaScript engine to handle both synchronous and asynchronous operations efficiently without blocking the call stack.
+
+The unfortunate truth is that it is extremely hard to explain the event loop well using only text. We recommend checking out one of the following excellent videos explaining the event loop:
+
+- [JavaScript Visualized - Event Loop, Web APIs, (Micro)task Queue](https://www.youtube.com/watch?v=eiC58R16hb8) (2024): Lydia Hallie is a popular educator on JavaScript and this is the best recent videos explaining the event loop. There's also an [accompanying blog post](https://www.lydiahallie.com/blog/event-loop) for those who prefer detailed text-based explanations.
+- [In the Loop](https://www.youtube.com/watch?v=cCOL7MC4Pl0) (2018): Jake Archibald previously from the Chrome team provides a visual demonstration of the event loop during JSConf 2018, accounting for different types of tasks.
+- [What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ) (2014): Philip Robert's gave this epic talk at JSConf 2014 and it is one of the most viewed JavaScript videos on YouTube.
+
+We recommend watching [Lydia's video](https://www.youtube.com/watch?v=eiC58R16hb8) as it is the most modern and concise explanation standing at only 13 minutes long whereas the other videos are at least 30 minutes long. Her video is sufficient for the purpose of interviews.
+
+<!-- Update here: /questions/what-is-event-loop-what-is-the-difference-between-call-stack-and-task-queue/en-US.mdx -->
+
+<br>
+    
+> Read the [detailed answer](https://www.greatfrontend.com/questions/quiz/what-is-event-loop-what-is-the-difference-between-call-stack-and-task-queue?language=js&tab=quiz) on [GreatFrontEnd](https://greatfrontend.com/) which allows progress tracking, contains more code samples, and useful resources.
 
 ## References
    - https://github.com/sudheerj/javascript-interview-questions
