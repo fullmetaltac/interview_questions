@@ -9,6 +9,7 @@
     - [What is SMTP?](#what-is-smtp)
     - [UDP](#udp)
     - [TCP](#tcp)
+    - [What happens when you navigate to an URL?](#what-happens-when-you-navigate-to-an-url)
   - [References](#references)
 
 ### What function does DNS play on a network?
@@ -118,11 +119,45 @@ When talking about the header of TCP, these fields are significant:
 
 2. **State machine**:  
 
+HTTP is stateless, so TCP which is under the HTTP is also stateless. It seems like that TCP links two ends, client and server, but it is actually that both these two ends maintain the state together:
+
+![State-Machine](images/state-machine.png)
+
+The state machine of TCP is very complicated, and it is closely related to the handshake of opening and closing a connection. Now we'll talk something about these two kinds of handshake. Before that, you'd better know something about RTT(Round-Trip-Time), an important index of performance. It is the time it takes for a signal to be sent plus the time it takes for an acknowledgement of that signal to be received.
+
+3. **Three-way handshake**
+
+![three-way-handshake](images/3-way-handshake.png)
+
+In TCP, the end which is active open is called the client and the passive open is called the server. No matter client or server can send and receive data after connection, so TCP is a bi-directional communication protocol. At first, both ends are closed. Before communication, both of the ends will create the TCB(TCP Control Block). After that, the server will be in the LISTEN state and begin to wait for the data from the client.
+
+- **First handshake**
+
+The client sends a connect request which contains an SYN. After that, the client is in the status called `SYN-SENT`.
+
+- **Second handshake**
+
+After getting the request, the server will send a response if it agrees to establish a connect and then turn to `SYN_RECEIVED`. There is also an SYN in the response.
+
+- **Third handshake**
+
+When the client receives the agreement of establishing a connection, it needs to send an acknowledgement. After that the client turns to `ESTABLISHED`, and the server turns to the same state after receiving the acknowledgement. The connection is established successfully by now.
 
 
+### What happens when you navigate to an URL?
+
+1. Do the DNS query first, it will offer the most suitable IP address with the intelligent DNS parsing.
+2. The following is the TCP handshake. The application layer will deliver the data to the transport layer where the TCP protocols will point out the ports of both ends, and then transport the data to the network layer. The IP protocols in the network layer will determine the IP address and how to navigate to the router, and then the packet will be packaged to data frames. And at last is the physical transport.
+3. After the TCP handshake is the TLS handshake, and then is the formal data transport. 
+4. It is possible for the data to go through the load balancing servers before its accesses to the server. The load balancing server will deliver the requests to the application servers and response with an HTML file.
+5. After getting the response, the browser will check the status code, it will continue parsing the file with the status code 200. As for 400 or 500, it will throw an error. If there is 300 code, it will redirect to a new URL. And there is also a redirection counter to avoiding too much redirection by throwing an error.
+6. The browser will parse the file, do decompression if the file type is with compressions like gzip and then parse the file by the encoding type. 
+7. After the successful parsing, the render flow will start formally. It will construct the DOM tree by HTML and construct the CSSOM with CSS. If there is a `script` tag, browser will check it whether has the `async` or `defer` attributes, the former will download and execute the JS file in parallel, and the latter will load the file first then wait to execute until the HTML has been parsed. If none of them, it will block the render engine until the JS file has been executed. HTTP/2 may highly improve the download efficiency for pictures.
+8. The `DOMContentLoaded` event will be triggered after the initial HTML has been loaded and parsed completely.
+9. The Render tree will be constructed following the CSSOM and the DOM tree, in which the layout of page elements, styles and so on will be calculated.
+10. In the process of constructing the Render tree, the browser will call the GPU to paint, composite the layers and display the contents on the screen.
 
 ## References
+ - https://github.com/gracco/sysadmin-interview-questions
  - https://github.com/InterviewMap/CS-Interview-Knowledge-Map/blob/master/Network/Network_en.md
- - https://github.com/nairuzabulhul/.CodeBits/blob/master/InterviewQuestions/Top%20100%20Networking%20Interview%20Questions%20%26%20Answers.md
- - https://www.interviewbit.com/networking-interview-questions/
     

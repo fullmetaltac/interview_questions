@@ -3,6 +3,7 @@
   - [Git](#git)
     - [git ref log](#git-ref-log)
     - [merge vs rebase](#merge-vs-rebase)
+    - [git stash](#git-stash)
   - [Docker](#docker)
     - [Dockerfile Example](#dockerfile-example)
   - [Kubernetes](#kubernetes)
@@ -81,9 +82,22 @@ git checkout feature-branch
 git rebase main
 ```
 
+Use rebase when you want a clean, linear history, especially before pushing a feature branch.
+
 ---
 
-Use rebase when you want a clean, linear history, especially before pushing a feature branch.
+### git stash
+
+Use git stash to save the current state of the working directory while you want to check out branch, if you don't want to use commit.
+
+```shell
+git stash
+```
+This command can record the current state of the working directory, if you want to recover it, you can do like this:
+```shell
+git stash pop
+```
+then you'll back to the exactly state before.
 
 ## Docker
 
@@ -390,5 +404,5 @@ Makes the command run in a background sub shell, and becomes a job.
 ---
 
 ## References
- - https://github.com/gracco/sysadmin-interview-questions/blob/master/README.md
+ - https://github.com/gracco/sysadmin-interview-questions
     
