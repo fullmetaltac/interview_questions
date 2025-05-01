@@ -3,12 +3,12 @@
     - [What function does DNS play on a network?](#what-function-does-dns-play-on-a-network)
     - [What is HTTP?](#what-is-http)
     - [What are HTTP status codes?](#what-are-http-status-codes)
-    - [Describe the most common HTTP methods/verbs](#describe-the-most-common-http-methodsverbs)
+    - [What are the most common HTTP methods/verbs?](#what-are-the-most-common-http-methodsverbs)
     - [What is an HTTP proxy and how does it work?](#what-is-an-http-proxy-and-how-does-it-work)
-    - [Describe briefly how HTTPS works.](#describe-briefly-how-https-works)
+    - [How HTTPS works?](#how-https-works)
     - [What is SMTP?](#what-is-smtp)
-    - [UDP](#udp)
-    - [TCP](#tcp)
+    - [What is UDP?](#what-is-udp)
+    - [What is TCP?](#what-is-tcp)
     - [What happens when you navigate to an URL?](#what-happens-when-you-navigate-to-an-url)
   - [References](#references)
 
@@ -38,7 +38,7 @@ The most commmons status codes are:
 - `500` - INTERNAL SERVER ERROR - server threw some exceptions while running the method
 - `502` - BAD GATEWAY - Server was not able to get the response from another upstream server
 
-### Describe the most common HTTP methods/verbs
+### What are the most common HTTP methods/verbs?
 
 - `GET` - Read only operation, used to fetch detail from the server, downloads
 - `POST` - This method is used for the creationg of new resources on the server
@@ -54,7 +54,7 @@ The most commmons status codes are:
 
 An HTTP **proxy** it's a service that forwards HTTP connections, for example a user A want's to access a server www.b.com, but for security reasons the user cannot have direct access on internet, so the user's browser will ask for the HTTP proxy to access the website, the webserver from www.b.com will receive a HTTP message from the proxy and will answer as usual, but in the http HEADER from the message will be changed by the HTTP proxy server who will add or change some headers like User-Agent, X-Forwarded-For, used a lot by companies that need to control their users Internet access.
 
-### Describe briefly how HTTPS works.
+### How HTTPS works?
 
 **HTTPS** use the same HTTP protocol but creates a security layer(tunnel) using SSL/TLS, on top of it, this prevents anyone modify or inspect what's happening inside this tunnel and ensure the client it's communicating with the right server. The SSL handshake is established and after that all HTTP responses are send by. The SSL uses both types of encryption, symmetrical and assymetrical, first when the key exchange happens, a assymetrical encriptions is put in place to the result of the key exchange be a symmetrical encryption.
 
@@ -62,7 +62,7 @@ An HTTP **proxy** it's a service that forwards HTTP connections, for example a u
 
 **SMTP** ( Simple Mail transport protocol) works in the application layer, and uses a process called "store and forward", working close to a MTA (Mail Tranfer Agent), this MTA service sends via SMTP a package with the messages, when this message arrives at the destination, the client will use POP3/IMAP to download it.
 
-### UDP
+### What is UDP?
 
 1. **Message-oriented**:
 <br>
@@ -98,7 +98,7 @@ The transmission modes of UDP contains not only one-to-one, but also one-to-many
 
 ---
 
-### TCP
+### What is TCP?
 
 1. **Header**:  
 The header of TCP is much more complicated than UDP's:

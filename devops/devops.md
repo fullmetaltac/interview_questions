@@ -2,7 +2,7 @@
 - [Table of Contents](#table-of-contents)
   - [Git](#git)
     - [git ref log](#git-ref-log)
-    - [merge vs rebase](#merge-vs-rebase)
+    - [git merge vs git rebase](#git-merge-vs-git-rebase)
     - [git stash](#git-stash)
   - [Docker](#docker)
     - [Dockerfile Example](#dockerfile-example)
@@ -19,11 +19,11 @@
     - [What command will show the available disk space on the Unix/Linux system?](#what-command-will-show-the-available-disk-space-on-the-unixlinux-system)
     - [What commands do you know that can be used to check DNS records?](#what-commands-do-you-know-that-can-be-used-to-check-dns-records)
     - [What Unix/Linux commands will alter a files ownership, files permissions?](#what-unixlinux-commands-will-alter-a-files-ownership-files-permissions)
-    - [What does chmod +x FILENAMEdo?](#what-does-chmod-x-filenamedo)
+    - [What does chmod +x FILENAME do?](#what-does-chmod-x-filename-do)
     - [How to add/remove a group from a user?](#how-to-addremove-a-group-from-a-user)
     - [What does CTRL-c do?](#what-does-ctrl-c-do)
     - [What is in /etc/services?](#what-is-in-etcservices)
-    - [How to redirect STDOUT and STDERR in bash? (\> /dev/null 2\>\&1)](#how-to-redirect-stdout-and-stderr-in-bash--devnull-21)
+    - [How to redirect STDOUT and STDERR in bash?](#how-to-redirect-stdout-and-stderr-in-bash)
     - [What is the diference between Telnet and SSH?](#what-is-the-diference-between-telnet-and-ssh)
     - [What command can be used to view the load averages?](#what-command-can-be-used-to-view-the-load-averages)
     - [What do the following commands do and how would you use them?](#what-do-the-following-commands-do-and-how-would-you-use-them)
@@ -60,7 +60,7 @@ git checkout HEAD@{1}
 
 ---
 
-### merge vs rebase
+### git merge vs git rebase
 
 - **git merge**:  
 
@@ -279,7 +279,7 @@ df -h
 
 ---
 
-### What does chmod +x FILENAMEdo?
+### What does chmod +x FILENAME do?
 
 Add a execute permission to a file for all users
 
@@ -307,7 +307,7 @@ Example the command `netstat` or `ss` without the `-n` parameter
 
 ---
 
-### How to redirect STDOUT and STDERR in bash? (> /dev/null 2>&1)
+### How to redirect STDOUT and STDERR in bash?
 
 - `1>` - redirect the STDOUT
 - `1>>` - redirect the STDOUT in append mode
