@@ -12,7 +12,7 @@
 - ---
 - [Networking(TODO)](networking/networking.md)
 - ---
-- [DevOps(TODO)](devops/devops.md)
+- [DevOps](devops/devops.md)
 - ---
 - [QA](qa.md)
 - [ISTQB](istqb/chapters.md)

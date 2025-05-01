@@ -360,24 +360,24 @@ Makes the command run in a background sub shell, and becomes a job.
 
 ### Explain briefly each one of the process states and all signals
 
-  - CREATED or NEW STATE, in this moment the process wait the admission to the ready state, by the scheduler
-  - RUNNING/RUNNABLE (R) the process has been loaded into main memory and is awaiting execution by the CPU, or it's using CPU core right now
-  - SLEEPING a sleeping process is a process waiting for a resource to be available, I/O operation to complete for example, or an event to happen. There is two states of SLEEPING process
-    - Interrruptible Sleep (S) - Process that can be terminated before the wake up condition is fulfilled without any consequences.
-    - Uninterruptible Sleep (D) - Process that can't be killed, in the example of I/O operation, the act the process it's in uniterruptible sleep (D) until a the I/O operation to complete and wake up.
-  - STOPPED (T) - A process becomes stopped when it receives the SIGSTOP signal, when stopped the process execution is suspended and only signals it will handle are SIGKILL and SIGCONT
-  - Zombie (Z) it's a state after completing the execution or being explicitly killed, but the process remains as a zombie until the parent process call the wait system call to read its exit status, and finally ending the process lifetime.
+  - **CREATED** or **NEW STATE**, in this moment the process wait the admission to the ready state, by the scheduler
+  - **RUNNING/RUNNABLE** (R) the process has been loaded into main memory and is awaiting execution by the CPU, or it's using CPU core right now
+  - **SLEEPING** a sleeping process is a process waiting for a resource to be available, I/O operation to complete for example, or an event to happen. There is two states of SLEEPING process
+    - **Interrruptible Sleep** (S) - Process that can be terminated before the wake up condition is fulfilled without any consequences.
+    - **Uninterruptible Sleep** (D) - Process that can't be killed, in the example of I/O operation, the act the process it's in uniterruptible sleep (D) until a the I/O operation to complete and wake up.
+  - **STOPPED** (T) - A process becomes stopped when it receives the SIGSTOP signal, when stopped the process execution is suspended and only signals it will handle are SIGKILL and SIGCONT
+  - **Zombie** (Z) it's a state after completing the execution or being explicitly killed, but the process remains as a zombie until the parent process call the wait system call to read its exit status, and finally ending the process lifetime.
   - Process SIGNALS are one of the ways process communicate among themselves and with the kernel. Exceptionally SIGKILL and SIGSTOP signals cannot be handled or blocked.
-    - SIGTERM - the default signal sent by kill command, Asks the process to terminate voluntarily
-    - SIGKILL - unlike SIGTERM, forces the process to terminate, can't be blocked or handled
-    - SIGSTOP - suspend the process execution, putting in stopped state. In this state, the process will do nothing but accept SIGKILL or SIGCONT.
-    - SIGSTP - almost identical to SIGSTOP, the only difference is it can be blocked or handled, this is the signal sent when you type `<ctrl>+z` in the terminal
-    - SIGCONT - if a process is in stopped state, it will put it back in the RUNNING/RUNNABLE state and resume it execution. If the process is in any other state, it's silently ignored.
-    - SIGINT - generated when the user type `<ctrl>+c` in the terminal, it interrupts the current command processing and wait for user's next command.
-    - SIGQUIT - generated when eht user type `<ctrl>+\` in the terminal, normally it will force the process to produce a core dump and terminate.
-    - SIGALARM - signal used to wake up sleeping process, normally scheduled by alarm system call.
-    - SIGCHLD - sinal send from a child process to its parent process when its state changes.
-    - SIGHUP - the signal indicates the terminal handling the process has been disconnected and/or parent process terminated. To run a process that won't terminate when the terminal disconnects, you can start it using the command `nohup`.
+    - **SIGTERM** - the default signal sent by kill command, Asks the process to terminate voluntarily
+    - **SIGKILL** - unlike SIGTERM, forces the process to terminate, can't be blocked or handled
+    - **SIGSTOP** - suspend the process execution, putting in stopped state. In this state, the process will do nothing but accept SIGKILL or SIGCONT.
+    - **SIGSTP** - almost identical to SIGSTOP, the only difference is it can be blocked or handled, this is the signal sent when you type `<ctrl>+z` in the terminal
+    - **SIGCONT** - if a process is in stopped state, it will put it back in the RUNNING/RUNNABLE state and resume it execution. If the process is in any other state, it's silently ignored.
+    - **SIGINT** - generated when the user type `<ctrl>+c` in the terminal, it interrupts the current command processing and wait for user's next command.
+    - **SIGQUIT** - generated when eht user type `<ctrl>+\` in the terminal, normally it will force the process to produce a core dump and terminate.
+    - **SIGALARM** - signal used to wake up sleeping process, normally scheduled by alarm system call.
+    - **SIGCHLD** - sinal send from a child process to its parent process when its state changes.
+    - **SIGHUP** - the signal indicates the terminal handling the process has been disconnected and/or parent process terminated. To run a process that won't terminate when the terminal disconnects, you can start it using the command `nohup`.
 
 ---
 
