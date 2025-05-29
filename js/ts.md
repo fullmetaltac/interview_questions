@@ -2,6 +2,7 @@
 - [Table of Contents](#table-of-contents)
   - [Basics](#basics)
     - [What is TypeScript, and how does it differ from JavaScript?](#what-is-typescript-and-how-does-it-differ-from-javascript)
+    - [What are data types available in TypeScript?](#what-are-data-types-available-in-typescript)
     - [What are the differences between var, let, and const?](#what-are-the-differences-between-var-let-and-const)
     - [What is any type?](#what-is-any-type)
     - [unknown vs any](#unknown-vs-any)
@@ -12,13 +13,14 @@
   - [OOP](#oop)
     - [What are classes in TypeScript?](#what-are-classes-in-typescript)
     - [What are interfaces in TypeScript?](#what-are-interfaces-in-typescript)
+    - [What is the implements clause?](#what-is-the-implements-clause)
     - [What are generics?](#what-are-generics)
     - [What are enums?](#what-are-enums)
     - [What are access modifiers?](#what-are-access-modifiers)
     - [What is a namespace?](#what-is-a-namespace)
     - [What is optional chaining?](#what-is-optional-chaining)
     - [what is type compatibility?](#what-is-type-compatibility)
-    - [Explain the difference between type and interface.](#explain-the-difference-between-type-and-interface)
+    - [What is the difference between type and interface?](#what-is-the-difference-between-type-and-interface)
     - [What is a discriminated union?](#what-is-a-discriminated-union)
     - [What are mapped types?](#what-are-mapped-types)
     - [What are conditional types?](#what-are-conditional-types)
@@ -39,6 +41,41 @@ Key differences between TypeScript and JavaScript include:
 - **Interfaces and Classes**: TypeScript supports the latest JavaScript features, such as classes and interfaces, which are not available in some older JavaScript versions
 - **Compile-time Errors**: The TypeScript compiler provides errors at compile-time, whereas JavaScript gives you an error at runtime. Early error-catching helps reduce the chance of running faulty code and speeds up bug-fixing
 - **Tooling**: TypeScript has powerful tools for navigating code and automatic refactoring, which improves developer experience
+
+---
+
+### What are data types available in TypeScript?
+
+TypeScript supports all JavaScript data types, plus its own static types for better safety and clarity.
+
+**Basic Data Types:**  
+ 
+| Type        | Description                        | Example                          |
+| ----------- | ---------------------------------- | -------------------------------- |
+| `number`    | All numbers (int, float, etc.)     | `let x: number = 42;`            |
+| `string`    | Text                               | `let name: string = "Alice";`    |
+| `boolean`   | True/false                         | `let isOn: boolean = true;`      |
+| `null`      | Null value                         | `let n: null = null;`            |
+| `undefined` | Undefined value                    | `let u: undefined = undefined;`  |
+| `any`       | Any value (disables type checking) | `let val: any = 5;`              |
+| `unknown`   | Unknown type (safer than `any`)    | `let data: unknown = "test";`    |
+| `never`     | Never returns/occurs               | `function fail(): never { ... }` |
+| `void`      | No return value                    | `function log(): void { ... }`   |
+
+
+**Advanced/Custom Types:**
+
+| Type                 | Description                              | Example                                  |
+| -------------------- | ---------------------------------------- | ---------------------------------------- |
+| `array`              | List of elements of same type            | `let nums: number[] = [1, 2, 3];`        |
+| `tuple`              | Fixed-size, ordered array of types       | `let pair: [string, number] = ["A", 1];` |
+| `enum`               | Named set of numeric or string constants | `enum Color { Red, Green }`              |
+| `object`             | Non-primitive types                      | `let obj: object = { x: 10 };`           |
+| `union`              | One of several types                     | `let id: string \| number;`              |
+| `literal`            | Specific fixed value                     | `let status: "success" \| "error";`      |
+| `type` / `interface` | Custom structured types                  | `type Person = { name: string }`         |
+| `function`           | Functions with typed params/return       | `let fn: () => void;`                    |
+
 
 ---
 
@@ -218,6 +255,31 @@ user.greet(); // Output: Hello, I'm Alice
 
 ---
 
+### What is the implements clause?
+
+The **implements** clause in TypeScript is used when a class agrees to follow the structure of an interface. It ensures the class implements all required properties and methods defined by the interface.
+
+```ts
+interface Animal {
+  name: string;
+  speak(): void;
+}
+
+class Dog implements Animal {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} barks.`);
+  }
+}
+```
+
+---
+
 ### What are generics?
 
 **Generics** in TypeScript let you write **reusable**, **type-safe** code that works with any **data type**, without losing type information.
@@ -317,7 +379,7 @@ p1 = p2; // Compatible: p2 has all required fields of Person
 
 ---
 
-### Explain the difference between type and interface.
+### What is the difference between type and interface?
 
 
 Here’s a quick comparison of type vs interface in TypeScript:
@@ -519,9 +581,5 @@ function infiniteLoop(): never {
 
 ## References
   - https://zerotomastery.io/blog/typescript-interview-questions/
-  - https://www.interviewbit.com/typescript-interview-questions/
-  - https://www.geeksforgeeks.org/typescript-interview-questions/
-  - https://github.com/Devinterview-io/typescript-interview-questions
-  - https://github.com/aershov24/typescript-interview-questions
-  - https://github.com/FAQGURU/FAQGURU/blob/master/topics/en/typeScript.md
+  - https://github.com/FAQGURU/FAQGURU/blob/master/topics/en/typeScript.md#what-is-getterssetters-in-typescript
     
