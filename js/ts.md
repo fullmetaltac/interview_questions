@@ -5,17 +5,17 @@
     - [What are data types available in TypeScript?](#what-are-data-types-available-in-typescript)
     - [What are the differences between var, let, and const?](#what-are-the-differences-between-var-let-and-const)
     - [What is any type?](#what-is-any-type)
-    - [What are differences between `unknown` and `any`?](#what-are-differences-between-unknown-and-any)
+    - [What are differences between unknown and any?](#what-are-differences-between-unknown-and-any)
     - [What are modules?](#what-are-modules)
     - [What is a decorator?](#what-is-a-decorator)
     - [What are property decorators?](#what-are-property-decorators)
-    - [Strict null checks](#strict-null-checks)
+    - [What are strict null checks?](#what-are-strict-null-checks)
     - [What are union types?](#what-are-union-types)
   - [OOP](#oop)
     - [What are classes in TypeScript?](#what-are-classes-in-typescript)
     - [How to call base class constructor?](#how-to-call-base-class-constructor)
     - [What are getters and setters?](#what-are-getters-and-setters)
-    - [How to implement class constants?](#how-to-implement-class-constants)
+    - [What are class constants?](#what-are-class-constants)
     - [What are interfaces in TypeScript?](#what-are-interfaces-in-typescript)
     - [What is the implements clause?](#what-is-the-implements-clause)
     - [What are generics?](#what-are-generics)
@@ -31,7 +31,7 @@
     - [What are rest parameters and spread operators?](#what-are-rest-parameters-and-spread-operators)
     - [What is the keyof keyword?](#what-is-the-keyof-keyword)
     - [What are utility types like Partial, Readonly, and Record?](#what-are-utility-types-like-partial-readonly-and-record)
-    - [What is never?](#what-is-never)
+    - [What is never type?](#what-is-never-type)
   - [Setup](#setup)
     - [Basic setup](#basic-setup)
   - [References](#references)
@@ -114,7 +114,7 @@ data = { key: "value" };
 
 ---
 
-### What are differences between `unknown` and `any`?
+### What are differences between unknown and any?
 
 | Feature           | `any`                  | `unknown`                                  |
 | ----------------- | ---------------------- | ------------------------------------------ |
@@ -201,7 +201,7 @@ class Person {
 
 ---
 
-### Strict null checks
+### What are strict null checks?
 
 Strict null checks is a TypeScript feature that prevents assigning `null` or `undefined` to variables unless explicitly allowed.
 
@@ -306,7 +306,7 @@ console.log(p.age);       // getter called → 25
 
 ---
 
-### How to implement class constants?
+### What are class constants?
 
 In TypeScript, you can implement class constants using the `static` and `readonly` keywords.
 
@@ -650,7 +650,7 @@ const roles: Record<"admin" | "user", boolean> = {
 ```
 ---
 
-### What is never?
+### What is never type?
 
 
 In TypeScript, the **never** type represents values that never occur — it's used when a function never returns or a value is impossible.
