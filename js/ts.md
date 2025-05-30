@@ -5,7 +5,7 @@
     - [What are data types available in TypeScript?](#what-are-data-types-available-in-typescript)
     - [What are the differences between var, let, and const?](#what-are-the-differences-between-var-let-and-const)
     - [What is any type?](#what-is-any-type)
-    - [unknown vs any](#unknown-vs-any)
+    - [What are differences between `unknown` and `any`?](#what-are-differences-between-unknown-and-any)
     - [What are modules?](#what-are-modules)
     - [What is a decorator?](#what-is-a-decorator)
     - [What are property decorators?](#what-are-property-decorators)
@@ -32,7 +32,7 @@
     - [What is the keyof keyword?](#what-is-the-keyof-keyword)
     - [What are utility types like Partial, Readonly, and Record?](#what-are-utility-types-like-partial-readonly-and-record)
     - [What is never?](#what-is-never)
-    - [Setup](#setup)
+  - [Setup](#setup)
     - [Basic setup](#basic-setup)
   - [References](#references)
 
@@ -114,7 +114,7 @@ data = { key: "value" };
 
 ---
 
-### unknown vs any
+### What are differences between `unknown` and `any`?
 
 | Feature           | `any`                  | `unknown`                                  |
 | ----------------- | ---------------------- | ------------------------------------------ |
@@ -668,7 +668,7 @@ function infiniteLoop(): never {
 
 ```
 
-### Setup
+## Setup
 
 ### Basic setup
 
