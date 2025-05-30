@@ -8,10 +8,14 @@
     - [unknown vs any](#unknown-vs-any)
     - [What are modules?](#what-are-modules)
     - [What is a decorator?](#what-is-a-decorator)
+    - [What are property decorators?](#what-are-property-decorators)
     - [Strict null checks](#strict-null-checks)
     - [What are union types?](#what-are-union-types)
   - [OOP](#oop)
     - [What are classes in TypeScript?](#what-are-classes-in-typescript)
+    - [How to call base class constructor?](#how-to-call-base-class-constructor)
+    - [What are getters and setters?](#what-are-getters-and-setters)
+    - [How to implement class constants?](#how-to-implement-class-constants)
     - [What are interfaces in TypeScript?](#what-are-interfaces-in-typescript)
     - [What is the implements clause?](#what-is-the-implements-clause)
     - [What are generics?](#what-are-generics)
@@ -28,6 +32,8 @@
     - [What is the keyof keyword?](#what-is-the-keyof-keyword)
     - [What are utility types like Partial, Readonly, and Record?](#what-are-utility-types-like-partial-readonly-and-record)
     - [What is never?](#what-is-never)
+    - [Setup](#setup)
+    - [Basic setup](#basic-setup)
   - [References](#references)
 
 ## Basics
@@ -173,6 +179,26 @@ class Person {
   name = "Alice";
 }
 ```
+
+---
+
+### What are property decorators?
+
+Property decorators in TypeScript are special functions that can be attached to class properties to add metadata or behavior at runtime or during compilation.
+
+They are part of experimental features and require `experimentalDecorators` enabled in `tsconfig.json`.
+
+```ts
+function LogProperty(target: any, propertyKey: string) {
+  console.log(`Property decorated: ${propertyKey}`);
+}
+
+class Person {
+  @LogProperty
+  name: string;
+}
+```
+
 ---
 
 ### Strict null checks
@@ -228,6 +254,69 @@ user.greet(); // Hi, I'm Bob
 - `public`, `private`, `protected` control access.
 - Supports inheritance: `class Student extends Person`.
 - Can implement interfaces.
+
+---
+
+### How to call base class constructor?
+
+To call a **base class constructor** in TypeScript, use the `super()` keyword inside the child class constructor. This ensures the parent class is properly initialized.
+
+```ts
+class Animal {
+  constructor(public name: string) {
+    console.log(`Animal created: ${name}`);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name: string, public breed: string) {
+    super(name); // Call to base class constructor
+    console.log(`Breed: ${breed}`);
+  }
+}
+
+const dog = new Dog("Buddy", "Labrador");
+```
+
+---
+
+### What are getters and setters?
+
+**Getters** and **setters** in TypeScript are special methods that allow you to control access to an object's properties — like computed properties or validation wrappers.
+
+```ts
+class Person {
+  private _age: number = 0;
+
+  get age(): number {
+    return this._age;
+  }
+
+  set age(value: number) {
+    if (value >= 0) {
+      this._age = value;
+    }
+  }
+}
+
+const p = new Person();
+p.age = 25;               // setter called
+console.log(p.age);       // getter called → 25
+```
+
+---
+
+### How to implement class constants?
+
+In TypeScript, you can implement class constants using the `static` and `readonly` keywords.
+
+```ts
+class MathUtils {
+  static readonly PI = 3.14159;
+}
+
+console.log(MathUtils.PI); // Output: 3.14159
+```
 
 ---
 
@@ -579,7 +668,82 @@ function infiniteLoop(): never {
 
 ```
 
+### Setup
+
+### Basic setup
+
+- Initialize the Project
+
+```shell
+mkdir new-app
+cd new-app
+npm init -y
+```
+- Install TypeScript
+
+```shell
+npm install typescript @types/node --save-dev
+```
+
+- Configure TypeScript
+
+```shell
+npx tsc --init
+```
+
+Ensure the following settings are included in `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
+}
+```
+-  Create Project Structure
+
+```shell
+mkdir src
+touch src/index.ts
+```
+
+- Write the Code
+
+Open the `src/index.ts` file and add the following code:
+
+```ts
+function sayHello(): void {
+    console.log("Hello, World!");
+}
+
+sayHello();
+```
+
+- Compile and run
+
+Add scripts in `package.json`:
+
+```json
+"scripts": {
+  "build": "tsc",
+  "start": "node dist/index.js"
+}
+```
+
+```shell
+npm build && npm start
+```
+
+---
+
+
 ## References
   - https://zerotomastery.io/blog/typescript-interview-questions/
-  - https://github.com/FAQGURU/FAQGURU/blob/master/topics/en/typeScript.md#what-is-getterssetters-in-typescript
+  - https://github.com/FAQGURU/FAQGURU/blob/master/topics/en/typeScript.md
     
