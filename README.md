@@ -18,6 +18,7 @@
 - [ISTQB](istqb/chapters.md)
 - ---
 - [CEH](ceh/content.md)
+- [HTB](htb/content.md)
 - ---
 - [JavaScript](js/js.md)
 - [TypeScript](js/ts.md)
