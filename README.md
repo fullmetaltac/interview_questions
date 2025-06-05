@@ -17,7 +17,7 @@
 - [QA](qa.md)
 - [ISTQB](istqb/chapters.md)
 - ---
-- [CEH](ceh/chapters.md)
+- [CEH](ceh/content.md)
 - ---
 - [JavaScript](js/js.md)
 - [TypeScript](js/ts.md)
