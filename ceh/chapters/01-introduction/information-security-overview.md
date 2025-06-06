@@ -50,11 +50,11 @@
   - Hole in software that is either [1]
     - Unknown to the one that's interested in mitigating in (e.g. vendor)
     - Known but patch has not been developed
-  - Targeted attacks often include zero-day vulnerabilities [3]
+  - Targeted attacks often include zero-day vulnerabilities
   - ❗ A vulnerability is not zero day once it's disclosed and patched
 - **Zero-day exploit**
   - Taking advantage of zero-day vulnerabilities
-  - Often done by using malware [3]
+  - Often done by using malware
 - Flow
   1. Attacker discovers the vulnerability
   2. Attacker exploits vulnerability
@@ -78,7 +78,6 @@
 
 [1]: https://en.wikipedia.org/wiki/Zero-day_(computing)
 [2]: https://us.norton.com/internetsecurity-emerging-threats-how-do-zero-day-vulnerabilities-work.html
-[3]: https://blog.trendmicro.com/trendlabs-security-intelligence/common-misconceptions-it-admins-have-on-targeted-attacks/
 
 ### Daisy chaining
 
