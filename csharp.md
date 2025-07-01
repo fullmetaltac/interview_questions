@@ -1,6 +1,10 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
   - [General](#general)
+    - [What is Boxing and Unboxing?](#what-is-boxing-and-unboxing)
+  - [Boxing allocates memory on the heap and can negatively impact performance if overused.](#boxing-allocates-memory-on-the-heap-and-can-negatively-impact-performance-if-overused)
+    - [What is the difference between ref and out?](#what-is-the-difference-between-ref-and-out)
+    - [What does the using keyword do?](#what-does-the-using-keyword-do)
     - [What is the difference between a method and a function in C#?](#what-is-the-difference-between-a-method-and-a-function-in-c)
     - [What is the difference between a value type and a reference type in C#?](#what-is-the-difference-between-a-value-type-and-a-reference-type-in-c)
     - [Can you explain the use of the "this" keyword in C#?](#can-you-explain-the-use-of-the-this-keyword-in-c)
@@ -13,6 +17,7 @@
     - [Explain the ?? operator and what is the correct way to use it in your code?](#explain-the--operator-and-what-is-the-correct-way-to-use-it-in-your-code)
     - [Can you explain the use of the as operator in C# and the best way to use it?](#can-you-explain-the-use-of-the-as-operator-in-c-and-the-best-way-to-use-it)
     - [Can you demonstrate how you would use a bitwise operator in C#?](#can-you-demonstrate-how-you-would-use-a-bitwise-operator-in-c)
+    - [What is the difference between IEnumerable and IQueryable?](#what-is-the-difference-between-ienumerable-and-iqueryable)
   - [Object oriented programming](#object-oriented-programming)
     - [What is object-oriented programming?](#what-is-object-oriented-programming)
     - [What is a sealed class in C# and why is it used?](#what-is-a-sealed-class-in-c-and-why-is-it-used)
@@ -33,10 +38,57 @@
     - [What is an event in C# and how is it different from a delegate?](#what-is-an-event-in-c-and-how-is-it-different-from-a-delegate)
     - [How can you subscribe and unsubscribe to an event in C#?](#how-can-you-subscribe-and-unsubscribe-to-an-event-in-c)
     - [What is an anonymous method in C# and how is it used?](#what-is-an-anonymous-method-in-c-and-how-is-it-used)
+  - [Concurrency and Asynchronous Programming](#concurrency-and-asynchronous-programming)
+    - [What is async/await?](#what-is-asyncawait)
+    - [What is the difference between Task and Thread?](#what-is-the-difference-between-task-and-thread)
+    - [What is a coroutine in C#?](#what-is-a-coroutine-in-c)
   - [References](#references)
 
 
 ## General
+
+### What is Boxing and Unboxing?
+Boxing is the process of converting a value type (e.g., int) to a reference type (object).
+Unboxing is the reverse: extracting the value type from the object.
+
+```cs
+int x = 10;
+object obj = x;       // Boxing
+int y = (int)obj;     // Unboxing
+```
+Boxing allocates memory on the heap and can negatively impact performance if overused.
+---
+
+### What is the difference between ref and out?
+
+| Feature                     | `ref`    | `out`        |
+| --------------------------- | -------- | ------------ |
+| Initialization before use   | Required | Not required |
+| Must assign value in method | Optional | Required     |
+
+
+```cs
+void Test(ref int a, out int b) {
+    a += 1;
+    b = 10;
+}
+```
+
+- `ref` allows a method to read and modify an already initialized variable.
+
+- `out` is used to return multiple values; the variable must be assigned inside the method.
+
+---
+
+### What does the using keyword do?
+
+Automatically disposes of resources (implements `IDisposable`) when the scope ends.
+
+```cs
+using (var file = new FileStream("test.txt", FileMode.Open)) {
+    // File is automatically closed when block ends
+}
+```
 
 ### What is the difference between a method and a function in C#?
 
@@ -415,9 +467,19 @@ class Program
 
 ---
 
+### What is the difference between IEnumerable and IQueryable?
 
+| Feature      | `IEnumerable`      | `IQueryable`                |
+| ------------ | ------------------ | --------------------------- |
+| Execution    | In-memory          | Database-side (deferred)    |
+| Suitable for | LINQ to Objects    | LINQ to Entities (e.g., EF) |
+| Filtering    | After loading data | Translated to SQL query     |
 
+- `IEnumerable` is best for in-memory collections.
 
+- `IQueryable` builds expression trees and executes queries on the data source (e.g., SQL DB).
+
+---
 
 ## Object oriented programming 
 
@@ -683,13 +745,13 @@ public interface IAnimal
 
 **Key Differences**
 
-| Feature                    | Abstract Class                           | Interface                                  |
-|----------------------------|------------------------------------------|--------------------------------------------|
-| **Implementation**         | Can include concrete methods and fields. | Cannot include concrete methods or fields. |
-| **Inheritance**            | Single inheritance allowed.              | Multiple inheritance allowed.              |
-| **Access Modifiers**       | Members can have any access modifier.    | All members are implicitly `public`.       |
-| **Constructors**           | Can have constructors.                   | Cannot have constructors.                  |
-| **Usage Scenario**         | Use for shared behavior or base class.   | Use for defining a contract.               |
+| Feature              | Abstract Class                           | Interface                                  |
+| -------------------- | ---------------------------------------- | ------------------------------------------ |
+| **Implementation**   | Can include concrete methods and fields. | Cannot include concrete methods or fields. |
+| **Inheritance**      | Single inheritance allowed.              | Multiple inheritance allowed.              |
+| **Access Modifiers** | Members can have any access modifier.    | All members are implicitly `public`.       |
+| **Constructors**     | Can have constructors.                   | Cannot have constructors.                  |
+| **Usage Scenario**   | Use for shared behavior or base class.   | Use for defining a contract.               |
 
 ---
 
@@ -1083,7 +1145,71 @@ Anonymous methods are commonly used in event handling and LINQ queries, among ot
 ---
 
 
+## Concurrency and Asynchronous Programming
 
+###  What is async/await?
+
+`async` and `await` are used for asynchronous programming in C# to avoid blocking the main thread.
+
+```cs
+public async Task<string> GetDataAsync() {
+    var response = await httpClient.GetStringAsync("https://api.com");
+    return response;
+}
+```
+
+- `async` marks a method as asynchronous.
+
+- `await` pauses execution until the awaited task is complete.
+
+- Great for I/O-bound tasks (web requests, file access).
+
+---
+
+### What is the difference between Task and Thread?
+
+| Feature     | `Task`                        | `Thread`                     |
+| ----------- | ----------------------------- | ---------------------------- |
+| Abstraction | High-level                    | Low-level                    |
+| Lightweight | Yes                           | No (more expensive)          |
+| Managed by  | Task Scheduler (.NET runtime) | OS-level thread management   |
+| Best for    | Asynchronous programming      | Long-running background work |
+
+- `Task` is preferred for asynchronous operations, especially with `async/await`.
+
+- `Thread` gives more control but is heavier and harder to manage.
+
+---
+
+### What is a coroutine in C#?
+
+In C#, coroutines are a feature primarily used in Unity (a game engine built with C#) to allow execution of methods over multiple frames without blocking the main thread.
+
+A coroutine is a special method that can pause its execution (yield) and resume later.
+
+It is declared as a method that returns `IEnumerator` and uses `yield return` to control the execution flow.
+
+
+```cs
+IEnumerator WaitAndPrint() {
+    yield return new WaitForSeconds(2f); // Wait for 2 seconds
+    Debug.Log("Printed after delay");
+}
+```
+
+You start a coroutine in Unity like this:
+
+```cs
+StartCoroutine(WaitAndPrint());
+```
+
+- Used for asynchronous behavior like delays, animations, or timed sequences.
+
+- Not the same as `async/await` or multithreading.
+
+- Runs on the main Unity thread, so it’s safe to interact with game objects.
+
+---
 
 
 ## References
