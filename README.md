@@ -3,8 +3,8 @@
 - [SOLID](python/solid.md)
 - [Design patterns](python/design_patterns.md)
 - [Data structures](python/data_structures.md)
+- [Challenges](python/problems.md)
 - [PCAP](python/pcap.ipynb)
-- [Typical challenges](python/problems.md)
 - [HackerRank](python/hackerrank.md)
 - ---
 - [SQL](sql/sql.md)

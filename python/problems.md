@@ -41,6 +41,18 @@
 ```python
 def reverse_string(s):
     return s[::-1]
+
+
+def main():
+    """
+    >>> reverse_string("test")
+    'tset'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -50,6 +62,20 @@ def reverse_string(s):
 ```python 
 def is_palindrome(s):
     return s == s[::-1]
+
+
+def main():
+    """
+    >>> is_palindrome("test")
+    False
+    >>> is_palindrome("anna")
+    True
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -58,8 +84,21 @@ def is_palindrome(s):
 
 ```python
 def fizzbuzz(n):
-    return ["Fizz" * (i % 3 == 0) + "Buzz" * (i % 5 == 0) or str(i) for i in range(1, n + 1)]
+    return [
+        "Fizz" * (i % 3 == 0) + "Buzz" * (i % 5 == 0) or str(i) for i in range(1, n + 1)
+    ]
 
+
+def main():
+    """
+    >>> fizzbuzz(15)
+    ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz', '11', 'Fizz', '13', '14', 'FizzBuzz']
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -69,6 +108,18 @@ def fizzbuzz(n):
 ```python
 def find_max(nums):
     return max(nums)
+
+
+def main():
+    """
+    >>> find_max([15, 3, 9, 27, 5])
+    27
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -79,6 +130,18 @@ def find_max(nums):
 def sum_digits(n):
     return sum(int(d) for d in str(abs(n)))
 
+
+def main():
+    """
+    >>> sum_digits(12345)
+    15
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
 ```
 
 ---
@@ -87,7 +150,19 @@ def sum_digits(n):
 
 ```python
 def count_vowels(s):
-    return sum(1 for ch in s.lower() if ch in 'aeiou')
+    return sum(1 for ch in s.lower() if ch in "aeiou")
+
+
+def main():
+    """
+    >>> count_vowels("Hello World")
+    3
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -97,6 +172,18 @@ def count_vowels(s):
 ```python
 def factorial(n):
     return 1 if n == 0 else n * factorial(n - 1)
+
+
+def main():
+    """
+    >>> factorial(7)
+    5040
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -111,6 +198,18 @@ def find_duplicates(lst):
             dupes.add(x)
         seen.add(x)
     return list(dupes)
+
+
+def main():
+    """
+    >>> find_duplicates([1,2,3,4,5,1,2,3])
+    [1, 2, 3]
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -121,6 +220,19 @@ def find_duplicates(lst):
 def is_anagram(a, b):
     return sorted(a) == sorted(b)
 
+
+def main():
+    """
+    >>> is_anagram('listen', 'silent')
+    True
+    >>> is_anagram('dog', 'good')
+    False
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -352,7 +464,28 @@ def deserialize(data):
 ### Word Ladder (BFS)
 
 ```python
-# TODO
+from collections import deque
+
+def ladderLength(beginWord, endWord, wordList):
+    word_set = set(wordList)
+    if endWord not in word_set:
+        return 0
+
+    queue = deque([(beginWord, 1)])
+
+    while queue:
+        word, length = queue.popleft()
+
+        for i in range(len(word)):
+            for c in 'abcdefghijklmnopqrstuvwxyz':
+                new_word = word[:i] + c + word[i+1:]
+                if new_word == endWord:
+                    return length + 1
+                if new_word in word_set:
+                    queue.append((new_word, length + 1))
+                    word_set.remove(new_word)
+
+    return 0
 ```
 
 ---
