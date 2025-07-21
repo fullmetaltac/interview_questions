@@ -251,6 +251,17 @@ def merge_sorted(a, b):
             j += 1
     return res + a[i:] + b[j:]
 
+
+def main():
+    """
+    >>> merge_sorted([1, 4, 6, 10], [2, 5, 7, 12])
+    [1, 2, 4, 5, 6, 7, 10, 12]
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -270,6 +281,19 @@ def is_valid(s):
             stack.append(ch)
     return not stack
 
+
+def main():
+    """
+    >>> is_valid("{[()[]{}]}")
+    True
+    >>> is_valid("{[(])}")
+    False
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -284,6 +308,23 @@ def two_sum(nums, target):
             return [seen[target - num], i]
         seen[num] = i
 
+
+def main():
+    """
+    >>> two_sum([2, 7, 11, 15], 9)         
+    [0, 1]
+    >>> two_sum([3, 2, 4], 6)              
+    [1, 2]
+    >>> two_sum([-1, -2, -3, -4, -5], -8)
+    [2, 4]
+    >>> two_sum([1, 2, 3], 10) 
+    
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -294,6 +335,17 @@ def two_sum(nums, target):
 def remove_duplicates(lst):
     return list(dict.fromkeys(lst))
 
+
+def main():
+    """
+    >>> remove_duplicates([1, 2, 1, 7, 11, 1, 15, 15])
+    [1, 2, 7, 11, 15]
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -302,13 +354,36 @@ def remove_duplicates(lst):
 
 ```python
 def binary_search(arr, target):
-    l, r = 0, len(arr)-1
+    l, r = 0, len(arr) - 1
     while l <= r:
         m = (l + r) // 2
-        if arr[m] == target: return m
-        elif arr[m] < target: l = m + 1
-        else: r = m - 1
+        if arr[m] == target:
+            return m
+        elif arr[m] < target:
+            l = m + 1
+        else:
+            r = m - 1
     return -1
+
+
+def main():
+    """
+    >>> binary_search([1, 3, 5, 7, 9], 5)
+    2
+    >>> binary_search([1, 2, 3, 4, 5], 1)
+    0
+    >>> binary_search([10, 20, 30, 40], 40)
+    3
+    >>> binary_search([2, 4, 6, 8], 5)
+    -1
+    >>> binary_search([], 1)
+    -1
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -318,12 +393,28 @@ def binary_search(arr, target):
 
 ```python
 def longest_common_prefix(strs):
-    if not strs: return ""
+    if not strs:
+        return ""
     for i in range(len(strs[0])):
         if any(i >= len(s) or s[i] != strs[0][i] for s in strs):
             return strs[0][:i]
     return strs[0]
 
+
+def main():
+    """
+    >>> longest_common_prefix(["flower", "flow", "flight"])
+    'fl'
+    >>> longest_common_prefix(["dog", "racecar", "car"])
+    ''
+    >>> longest_common_prefix(["interspecies", "interstellar", "interstate"])
+    'inters'
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -333,11 +424,25 @@ def longest_common_prefix(strs):
 
 ```python
 from collections import defaultdict
+
+
 def group_anagrams(strs):
     res = defaultdict(list)
     for s in strs:
         res[tuple(sorted(s))].append(s)
     return list(res.values())
+
+
+def main():
+    """
+    >>> group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
+    [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -349,6 +454,18 @@ def group_anagrams(strs):
 def rotate(matrix):
     return [list(row) for row in zip(*matrix[::-1])]
 
+
+def main():
+    """
+    >>> rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    [[7, 4, 1], [8, 5, 2], [9, 6, 3]]
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
 ```
 
 ---
@@ -358,12 +475,30 @@ def rotate(matrix):
 
 ```python
 from collections import Counter
-def first_unique(s):
+
+
+def first_unique_char(s):
     counts = Counter(s)
-    for i, c in enumerate(s):
+    for c in s:
         if counts[c] == 1:
-            return i
-    return -1
+            return c
+    return None
+
+
+def main():
+    """
+    >>> first_unique_char("leetcode")
+    'l'
+    >>> first_unique_char("loveleetcode")
+    'v'
+    >>> first_unique_char("aabb")
+
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -374,9 +509,26 @@ def first_unique(s):
 ```python
 from collections import Counter
 import heapq
+
+
 def top_k_frequent(nums, k):
     return [x for x, _ in heapq.nlargest(k, Counter(nums).items(), key=lambda x: x[1])]
 
+
+def main():
+    """
+    >>> top_k_frequent([1,1,1,2,2,3], 2)
+    [1, 2]
+    >>> top_k_frequent(["a", "b", "a", "c"], 1)
+    ['a']
+    >>> top_k_frequent([4, 4, 4, 5, 5, 6], 3)
+    [4, 5, 6]
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -403,6 +555,27 @@ class MinStack:
     def get_min(self):
         return self.min_stack[-1]
 
+
+def main():
+    """
+    >>> s = MinStack()
+    >>> s.push(3)
+    >>> s.push(5)
+    >>> s.push(2)
+    >>> s.push(1)
+    >>> s.get_min()
+    1
+    >>> s.pop()
+    >>> s.get_min()
+    2
+    >>> s.top()
+    2
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -413,13 +586,16 @@ class MinStack:
 
 ```python
 from collections import OrderedDict
+
+
 class LRUCache:
     def __init__(self, capacity: int):
         self.cache = OrderedDict()
         self.cap = capacity
 
     def get(self, key):
-        if key not in self.cache: return -1
+        if key not in self.cache:
+            return -1
         self.cache.move_to_end(key)
         return self.cache[key]
 
@@ -442,19 +618,25 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 def serialize(root):
-    if not root: return "None"
+    if not root:
+        return "None"
     return f"{root.val},{serialize(root.left)},{serialize(root.right)}"
+
 
 def deserialize(data):
     vals = iter(data.split(","))
+
     def build():
         val = next(vals)
-        if val == "None": return None
+        if val == "None":
+            return None
         node = TreeNode(int(val))
         node.left = build()
         node.right = build()
         return node
+
     return build()
 ```
 
@@ -465,6 +647,7 @@ def deserialize(data):
 
 ```python
 from collections import deque
+
 
 def ladderLength(beginWord, endWord, wordList):
     word_set = set(wordList)
@@ -477,8 +660,8 @@ def ladderLength(beginWord, endWord, wordList):
         word, length = queue.popleft()
 
         for i in range(len(word)):
-            for c in 'abcdefghijklmnopqrstuvwxyz':
-                new_word = word[:i] + c + word[i+1:]
+            for c in "abcdefghijklmnopqrstuvwxyz":
+                new_word = word[:i] + c + word[i + 1 :]
                 if new_word == endWord:
                     return length + 1
                 if new_word in word_set:
@@ -510,7 +693,46 @@ def length_of_longest_substring(s):
 
 
 ```python
-# TODO
+def find_median_sorted_arrays(nums1, nums2):
+    if len(nums1) > len(nums2):
+        nums1, nums2 = nums2, nums1
+
+    x, y = len(nums1), len(nums2)
+    low, high = 0, x
+
+    while low <= high:
+        partitionX = (low + high) // 2
+        partitionY = (x + y + 1) // 2 - partitionX
+
+        maxLeftX = float("-inf") if partitionX == 0 else nums1[partitionX - 1]
+        minRightX = float("inf") if partitionX == x else nums1[partitionX]
+
+        maxLeftY = float("-inf") if partitionY == 0 else nums2[partitionY - 1]
+        minRightY = float("inf") if partitionY == y else nums2[partitionY]
+
+        if maxLeftX <= minRightY and maxLeftY <= minRightX:
+            if (x + y) % 2 == 0:
+                return (max(maxLeftX, maxLeftY) + min(minRightX, minRightY)) / 2
+            else:
+                return max(maxLeftX, maxLeftY)
+        elif maxLeftX > minRightY:
+            high = partitionX - 1
+        else:
+            low = partitionX + 1
+
+    raise ValueError("Input arrays are not sorted properly")
+
+
+def main():
+    """
+    >>> find_median_sorted_arrays([1, 2], [3, 4])
+    2.5
+    """
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
 ```
 
 ---
@@ -520,10 +742,11 @@ def length_of_longest_substring(s):
 
 ```python
 def permutations(s):
-    if len(s) == 0: return [""]
+    if len(s) == 0:
+        return [""]
     res = []
     for i, ch in enumerate(s):
-        for perm in permutations(s[:i] + s[i+1:]):
+        for perm in permutations(s[:i] + s[i + 1 :]):
             res.append(ch + perm)
     return res
 ```
