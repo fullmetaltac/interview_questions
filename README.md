@@ -1,10 +1,11 @@
 ### Topics
-- [Python](python.md)
-- [SOLID](solid.md)
-- [Design patterns](design_patterns.md)
-- [Data structures](data_structures.md)
-- [PCAP](pcap.ipynb)
-- [HackerRank](hackerrank.md)
+- [Python](python/python.md)
+- [SOLID](python/solid.md)
+- [Design patterns](python/design_patterns.md)
+- [Data structures](python/data_structures.md)
+- [PCAP](python/pcap.ipynb)
+- [Typical challenges](python/problems.md)
+- [HackerRank](python/hackerrank.md)
 - ---
 - [SQL](sql/sql.md)
 - ---
