@@ -23,7 +23,7 @@
     - [What are access modifiers?](#what-are-access-modifiers)
     - [What is a namespace?](#what-is-a-namespace)
     - [What is optional chaining?](#what-is-optional-chaining)
-    - [what is type compatibility?](#what-is-type-compatibility)
+    - [What is type compatibility?](#what-is-type-compatibility)
     - [What is the difference between type and interface?](#what-is-the-difference-between-type-and-interface)
     - [What is a discriminated union?](#what-is-a-discriminated-union)
     - [What are mapped types?](#what-are-mapped-types)
@@ -449,7 +449,7 @@ console.log(user.profile?.email);   // undefined (no error)
 
 ---
 
-### what is type compatibility?
+### What is type compatibility?
 
 
 Type compatibility in TypeScript is the ability to assign one type to another if their structures are compatible — this is based on structural typing (not nominal typing).
