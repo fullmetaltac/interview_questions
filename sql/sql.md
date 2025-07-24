@@ -739,6 +739,7 @@ minimize redundancy by breaking a table into smaller tables.
 
 
 ## References
+- https://sqlzoo.net/wiki/SQL_Tutorial
 - https://www.postgresqltutorial.com/
 - https://www.interviewbit.com/sql-interview-questions/ 
 - https://www.datacamp.com/tutorial/normalization-in-sql
